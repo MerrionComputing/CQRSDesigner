@@ -24,3 +24,5 @@ available to other systems in a microservices architecture.
 
 The generated code for any given projection has two parts - a filter function that decides if the projection will handle a 
 given [event type](event.md) and a handler function that updates the projection property.
+
+![Projection code](images/codegen_projections_typed_HandlesEventType.png)
