@@ -25,9 +25,9 @@ To intall the CQRS Designer you can install directly from nuget or download the 
  ![install from vsix](images/install_vsix.PNG)
 
 ## Further documentation:-
-[Using the designer](designer_howto.md) - a step by step guide on creating CQRS models using the designer
-[The source code](src/readme.md) - overview of how the source code is organised in projects
-[Hosting on Azure](hosting_azure.md) - How to host a CQRS model on Microsoft Azure using serverless functions and event grid
+* [Using the designer](designer_howto.md) - a step by step guide on creating CQRS models using the designer
+* [The source code](src/readme.md) - overview of how the source code is organised in projects
+* [Hosting on Azure](hosting_azure.md) - How to host a CQRS model on Microsoft Azure using serverless functions and event grid
 
 
 
