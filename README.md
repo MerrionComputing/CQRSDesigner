@@ -5,7 +5,7 @@ This Visual Studio plug-in designer is an early attempt to bridge that gap.  It 
 
 ![The visual model](images/bank_account_medium_complexity_domain_clean.PNG)
 
-The visual model for each aggregate is created by adding the [events](event.md) that can occur, the [projections](projection.md) and [classifiers](classifier.md) that can be run agains these events, the [commands](command.png) that change state in the aggregate and the [queries](query.md) that can be run to get state information out of the system.
+The visual model for each aggregate is created by adding the [events](event.md) that can occur, the [projections](projection.md) and [classifiers](classifier.md) that can be run agains these events, the [commands](command.png) that change state in the [aggregate](aggregate.md) and the [queries](query.md) that can be run to get state information out of the system.
 
 ## Introduction to CQRS
 
