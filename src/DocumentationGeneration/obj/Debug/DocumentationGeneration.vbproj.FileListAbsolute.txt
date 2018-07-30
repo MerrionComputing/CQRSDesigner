@@ -1,0 +1,12 @@
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.Resources.resources
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.GenerateResource.Cache
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.CoreCompileInputs.cache
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.dll.config
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.dll
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.pdb
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.xml
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.dll
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.xml
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.pdb
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.CopyComplete
+D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbprojAssemblyReference.cache

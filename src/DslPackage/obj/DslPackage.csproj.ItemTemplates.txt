@@ -1,0 +1,2 @@
+C:\Users\Dunca\OneDrive\Documents\Visual Studio 2015\Templates\ItemTemplates\CSharp\1033\CQRSdsl.zip
+C:\Users\Dunca\OneDrive\Documents\Visual Studio 2015\Templates\ItemTemplates\VisualBasic\1033\CQRSdsl.zip

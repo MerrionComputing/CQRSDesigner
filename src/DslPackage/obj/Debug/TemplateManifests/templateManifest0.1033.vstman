@@ -1,0 +1,32 @@
+﻿<VSTemplateManifest Version="1.0" Locale="1033" xmlns="http://schemas.microsoft.com/developer/vstemplatemanifest/2015">
+  <VSTemplateContainer TemplateType="Item">
+    <RelativePathOnDisk>CSharp\1033\CQRSdsl</RelativePathOnDisk>
+    <TemplateFileName>CSharp.vstemplate</TemplateFileName>
+    <VSTemplateHeader>
+      <TemplateData xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+        <TemplateID>{2a128cdd-2168-43b4-aa13-58856dd1d726}</TemplateID>
+        <Name Package="{5f54fc41-4897-47e5-b71f-8ff66160144e}" ID="103" />
+        <Description Package="{5f54fc41-4897-47e5-b71f-8ff66160144e}" ID="102" />
+        <Icon Package="{5f54fc41-4897-47e5-b71f-8ff66160144e}" ID="201" />
+        <ProjectType>CSharp</ProjectType>
+        <SortOrder>360</SortOrder>
+        <DefaultName>CQRSdsl.cqrsx</DefaultName>
+      </TemplateData>
+    </VSTemplateHeader>
+  </VSTemplateContainer>
+  <VSTemplateContainer TemplateType="Item">
+    <RelativePathOnDisk>VisualBasic\1033\CQRSdsl</RelativePathOnDisk>
+    <TemplateFileName>VisualBasic.vstemplate</TemplateFileName>
+    <VSTemplateHeader>
+      <TemplateData xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
+        <TemplateID>{4f99a5ec-00a5-4068-bd1d-10e22cb4680d}</TemplateID>
+        <Name Package="{5f54fc41-4897-47e5-b71f-8ff66160144e}" ID="103" />
+        <Description Package="{5f54fc41-4897-47e5-b71f-8ff66160144e}" ID="102" />
+        <Icon Package="{5f54fc41-4897-47e5-b71f-8ff66160144e}" ID="201" />
+        <ProjectType>VisualBasic</ProjectType>
+        <SortOrder>360</SortOrder>
+        <DefaultName>CQRSdsl.cqrsx</DefaultName>
+      </TemplateData>
+    </VSTemplateHeader>
+  </VSTemplateContainer>
+</VSTemplateManifest>

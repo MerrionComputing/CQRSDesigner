@@ -1,0 +1,12 @@
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.Resources.resources
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbproj.GenerateResource.Cache
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CoreCompileInputs.cache
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.dll.config
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.dll
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.pdb
+D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.xml
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.dll
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.xml
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.pdb
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CopyComplete
+D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache

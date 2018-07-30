@@ -1,0 +1,865 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CQRSAzure.CQRSdsl.CodeGeneration
+</name>
+</assembly>
+<members>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.AggregateIdentifierCodeGenerator.FilenameBase">
+ <summary>
+ The filename base to use when saving this aggregate's code
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ClassifierCodeGenerator">
+ <summary>
+ Code generation for a single instance of a classifier for an identity group
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ClassifierCodeGenerator.FilenameBase">
+ <summary>
+ The filename base to use when saving this classifier's code
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.CodeGenerationUtilities">
+ <summary>
+ General utility functions for making code generatio easier
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CodeGenerationUtilities.ToVBCodeString(System.CodeDom.CodeCompileUnit)">
+ <summary>
+ Turn whatever code compile unit is passed in to VB.Net code in a multi-line string
+ </summary>
+ <param name="codeUnitToShow">
+ The program graph (partial or complete) to turn into VB code
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CodeGenerationUtilities.ToCSharpCodeString(System.CodeDom.CodeCompileUnit)">
+ <summary>
+ Turn whatever code compile unit is passed in to C# code in a multi-line string
+ </summary>
+ <param name="codeUnitToShow">
+ The program graph (partial or complete) to turn into C# code
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CodeGenerationUtilities.Wrap(System.CodeDom.CodeTypeDeclaration)">
+ <summary>
+ Wraps a type in a namespace so it can be generated as code
+ </summary>
+ <param name="codeClass">
+ The class we want to wrap up in a namespace for converting to a code snippet
+ </param>
+ <returns></returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile">
+ <summary>
+ Class to be used to generate the project file(s) - eiother .csproj or .vbproj for the CQRS model
+ </summary>
+ <remarks>
+ There are differences between .csproj and .vbproj files that this class needs to deal with
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile.ProjectGuid">
+ <summary>
+ The unique identifier of the project
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile.ProjectName">
+ <summary>
+ The base name that will be the name of the project file 
+ </summary>
+ <remarks>
+ This will need a .vbproj or .csproj suffix as appropriate
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile.IncludedSourceFilenames">
+ <summary>
+ The set of source filenames to compile in this project
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile.IncludedReferences">
+ <summary>
+ The list of references in the project
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile.AddSourceFile(System.String)">
+ <summary>
+ Add a newly generated source file to the project source files list
+ </summary>
+ <param name="filename">
+ The name of the generated source filename
+ </param>
+ <remarks>
+ These are added to an item group using Compile Include="" 
+ </remarks>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile.AddReference(System.String)">
+ <summary>
+ Add a required reference to the set of references in the project
+ </summary>
+ <param name="referenceName">
+ The fully qualified name of the reference to add
+ </param>
+ <remarks>
+ No hit path is specified as that would vary between machines
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.CommandDefinitionCodeGenerator.NamespaceHierarchy">
+ <summary>
+ Return the namespace of the aggregate that owns this command definition
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.AggregateInstanceSQLCodeGenerator">
+ <summary>
+ Code generate for the top-level event stream table that all events occuring to an
+ aggregate are stored into
+ </summary>
+ <remarks>
+ This class has a property for the unique key, sequence number, event type and timestamp which can
+ then be linked to a details table for each event instance 
+ </remarks>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration">
+ <summary>
+ Class for the utility functions pertaining to generating code to be use dby entity framework (code first) to
+ create and use the data model 
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration.CreateDBSetProperty(System.String,System.Boolean)">
+ <summary>
+ Creates a DBSet member to prepresent the event stream of this aggregate
+ </summary>
+ <param name="aggregateName">
+ The name of the aggregate we are creatinmg a DBSet based event stream for 
+ </param>
+ <returns>
+ Public Property AggregateInstances As DBSet(Of AggregateInstance)
+ </returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration.MakeDBSetTypeReference(System.String)">
+ <summary>
+ Create a type reference  for DBSet(Of AggregateInstance)
+ </summary>
+ <param name="aggregatename">
+ The name of the aggregate we are creatinmg a DBSet based event stream for 
+ </param>
+ <returns>
+ DBSet(Of AggregateInstance)
+ </returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration.MakeAggregateInstanceName(System.String,System.Boolean,System.Boolean)">
+ <summary>
+ Add "Instance" to the aggregate name
+ </summary>
+ <param name="aggregateName">
+ The name of the aggregate type
+ </param>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EventDefinitionSQLCodeGenerator">
+ <summary>
+ Code generator to create the entity framework classes that correspond to the events that can occur for any given aggregate identifier
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.SQLCodeGenerator">
+ <summary>
+ Code generator to create the DBContext derived classes required to implement the event streams for this CQRS model using Entity Framework
+ code-first 
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.SQLCodeGenerator.#ctor(CQRSAzure.CQRSdsl.Dsl.CQRSModel)">
+ <summary>
+ Create a new SQL code generator to create the DBContext code for this model
+ </summary>
+ <param name="modelToGenerate">
+ The CQRS model to generate the code for
+ </param>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.TableFieldPropertyEntity">
+ <summary>
+ Utility class for creating the fields that will be used to create the DB tables backing the event stream and it's events
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.TableFieldPropertyEntity.IsKeyField">
+ <summary>
+ Is this field a key field for this table
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.EventCodeGenerator.NamespaceHierarchy">
+ <summary>
+ Get the namespace of the aggregate that owns this event
+ </summary>
+ <remarks>
+ This allows different aggregates to have events with the same name without causing code errors
+ </remarks>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EventCodeGenerator.ToMemberName(System.String,System.Boolean,System.Boolean)">
+ <summary>
+ Turn the given event property name to a valid code property name
+ </summary>
+ <param name="propertyName">
+ The name of the property as used in the model
+ </param>
+ <param name="backingField">
+ Are we creating the private backing field, rather than the public property
+ </param>
+ <param name="inputParameter">
+ If true, this parameter needs to be given a different name to indicate that it is an input parameter
+ </param>
+ <returns>
+ An appropriate name to use for the code property/field
+ </returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.IEntityCodeGenerator">
+ <summary>
+ Interface for the common functionality that all the code generrators provide
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.IEntityInterfaceCodeGenerator">
+ <summary>
+ Interface for the functionality used to create an interface for a generated class to 
+ implement
+ </summary>
+ <remarks>
+ This is used to allow separation by interface - for example if generatin mock classes for 
+ unit testing
+ </remarks>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.IEntityInterfaceCodeGenerator.GenerateInterface">
+ <summary>
+ Generate the code compile unit graph for the interface generated for this entity
+ </summary>
+ <returns>
+ A code graph that will create the specific interface
+ </returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.IEntityImplementationCodeGenerator.GenerateImplementation">
+ <summary>
+ Generate the code compile unit graph for the code that implements the interface
+ for this specific entity
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.IEntityCodeGeneratorBase.FilenameBase">
+ <summary>
+ The filename base to use when saving this entity's code
+ </summary>
+ <remarks>
+ This will have the .vb or .cs extension added as appropriate when the code is generated
+ </remarks>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.IEntityCodeGeneratorBase.SetCodeGenerationOptions(CQRSAzure.CQRSdsl.CustomCode.Interfaces.IModelCodeGenerationOptions)">
+ <summary>
+ Set any per-user options that can affect how this code is generated
+ </summary>
+ <param name="options">
+ The specific options to use
+ </param>
+ <remarks>
+ Each entity code genrator will need to decide which options do or do not apply to it
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.IEntityCodeGeneratorBase.NamespaceHierarchy">
+ <summary>
+ The list of namespaces that make up the entity namespace in code
+ </summary>
+ <returns>
+ This is implemented as a list rather than a single string so it can be shown
+ hierarchically in the documentation side
+ </returns>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.IEntityCodeGeneratorBase.RequiredNamespaces">
+ <summary>
+ The set of namespaces required when code-generating this entity
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator">
+ <summary>
+ A class to perform the code generation for a complete CQRS model from it's XML
+ </summary>
+ <remarks>
+ Code will be generated in partial classes / partial interfaces so that it can readily be 
+ integrated with customisations
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.Options">
+ <summary>
+ The code generation options to use when generating the source code for this model
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.GenerateCode">
+ <summary>
+ Generate the code in the language currently selected in the options
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.GenerateModelProject(CQRSAzure.CQRSdsl.CodeGeneration.CodeProjectFile,CQRSAzure.CQRSdsl.Dsl.ModelCodeGenerationOptions)">
+ <summary>
+ Create a project file (.csproj or .vbproj) for the code files linked to the given project
+ </summary>
+ <param name="modelProject">
+ The project template with the code files and references it will use
+ </param>
+ <param name="options">
+ Additional options on how the code should be generated
+ </param>
+ <remarks>
+ A code file may be included in multiple projects if that makes sense
+ </remarks>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.GenerateModelCode(System.CodeDom.Compiler.CodeDomProvider,System.CodeDom.Compiler.CodeGeneratorOptions)">
+ <summary>
+ Generate source code files for the given CQRS model given the code generator and options provided
+ </summary>
+ <param name="provider">
+ The code DOM provider for the specific language to generate the code in
+ </param>
+ <param name="codeGenOptions">
+ Additional formatting options to use when generating the code
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.#ctor(CQRSAzure.CQRSdsl.Dsl.CQRSModel)">
+ <summary>
+ Create a code generator for the specific CQRS model
+ </summary>
+ <param name="modelToGenerate">
+ The CQRS model that will be turned into code
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.#ctor(CQRSAzure.CQRSdsl.Dsl.CQRSModel,CQRSAzure.CQRSdsl.CustomCode.Interfaces.IModelCodeGenerationOptions)">
+ <summary>
+ Create a code generator for the specific CQRS model with teh given code gen options
+ </summary>
+ <param name="modelToGenerate">
+ The CQRS model that will be turned into code
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.StandardCodeGeneratedAttribute">
+ <summary>
+ Standard code generated attribute to add onto everything we generate
+ </summary>
+ <returns>
+ &lt;GeneratedCodeAttribute("CQRS On Azure - DSL", "1.0.0.0") &gt;
+ </returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType">
+ <summary>
+ The different types of source code that can be code generated by this library from the CQRS model
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.NotSet">
+ <summary>
+ Unknown or not set file type
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.AggregateIdentifierInterface">
+ <summary>
+ An interface for an aggregate in the model
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.AggregateIdentifier">
+ <summary>
+ The implementation code of an aggregate in the model
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.QueryDefinitionInterface">
+ <summary>
+ Interface file for a query definition
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.QueryDefinition">
+ <summary>
+ Implementation for a query definition
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.QueryImplementationInterface">
+ <summary>
+ Interface for a query implementation 
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.QueryImplementation">
+ <summary>
+ Implementation code for a query implementation
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.CommandDefinitionInterface">
+ <summary>
+ Interface defining a command definition
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.CommandDefinition">
+ <summary>
+ Implementation code of a command definition
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.CommandImplementationInterface">
+ <summary>
+ Interface of a command execution implementation
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.CommandImplementation">
+ <summary>
+ Implementation code for a command execution
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.EventDefinitionInterface">
+ <summary>
+ Interface defining an event
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.EventDefinition">
+ <summary>
+ Implementation of the definition of an event
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.ProjectionInterface">
+ <summary>
+ Interface defining a projection
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.Projection">
+ <summary>
+ Implementation code of a projection
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.IdentityGroupInterface">
+ <summary>
+ Interface defining an identity group
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.IdentityGroup">
+ <summary>
+ Concrete implementation of an identity group
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.ClassifierInterface">
+ <summary>
+ Interface for an identity group classifier
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType.Classifier">
+ <summary>
+ Concrete implementation of an identity group classifier
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.CreateSourceCodeFile(System.String,System.CodeDom.CodeCompileUnit,CQRSAzure.CQRSdsl.Dsl.ModelCodeGenerationOptions,System.String,CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType)">
+ <summary>
+ Creates a source code file to hold the source code for a particular part of the CQRS domain model
+ </summary>
+ <param name="filenameBase">
+ The filename (without language suffix) tpo store the code in
+ </param>
+ <param name="codeUnit">
+ The Roslyn code compile unit that makes up the source code to write to the file
+ </param>
+ <param name="options">
+ Additional code generation options that affect how source code files are generated
+ </param>
+ <param name="modelName">
+ The root name of the CQRS model to which this new source file belongs
+ </param>
+ <param name="sourceFileType">
+ The type of file this is 
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.AddSourceFileToProjects(System.String,CQRSAzure.CQRSdsl.CodeGeneration.ModelCodeGenerator.ModelSourceFileType)">
+ <summary>
+ Depending on the type of the file decide which project(s) to add it to and do so
+ </summary>
+ <param name="filenameBase">
+ The filename of the generated code
+ </param>
+ <param name="sourceFileType">
+ The defined type of file this code file is for
+ </param>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration">
+ <summary>
+ Utility functions for generating comments in the code
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration.SummaryCommentSection(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Add a summary comment section
+ </summary>
+ <param name="commentText">
+ The lines of comment to put in the summary section
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration.ReturnsCommentSection(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Add a returns comment section
+ </summary>
+ <param name="commentText">
+ The lines of comment to put in the returns section
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration.RemarksCommentSection(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Add a remarks comment section
+ </summary>
+ <param name="commentText">
+ The lines of comment to put in the remarks section
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration.ParamCommentsSection(System.String,System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Add a parameter comment for the named parameter
+ </summary>
+ <param name="parameterName">
+ The name of the parameter
+ </param>
+ <param name="commentText">
+ The comment to attach to the parameter
+ </param>
+ <returns></returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration.BaseCommentSection(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ A general function to wrap a comment in XML documentation attributes
+ </summary>
+ <param name="sectionName">The name of the section - e.g. summary, remarks, returns </param>
+ <param name="commentText">The content of the section
+ </param>
+ <returns>
+ A code comment collection that can be attached to anything that takes XML comments
+ </returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.CommentGeneration.OpenCommentSection(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Create a comment to start an XML comment section
+ </summary>
+ <param name="sectionName">
+ The name of the section - remarks, summary, returns, param etc.
+ </param>
+ <param name="sectionAttributes">
+ Additional attributes to put in the open section tag (optional)
+ </param>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.InterfaceCodeGeneration">
+ <summary>
+ Utility functions for generating interfaces in the code generation
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.InterfaceCodeGeneration.ImplementsGenericInterfaceReference(System.String,System.Collections.Generic.IList{System.CodeDom.CodeTypeReference})">
+ <summary>
+ 
+ </summary>
+ <param name="interfaceName">
+ The base name of the interface
+ </param>
+ <param name="genericTypes">
+ The set of types (in order) of the generic interface
+ </param>
+ <returns></returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.PropertyCodeGeneration">
+ <summary>
+ Utility functions for creating the properties of the classes in code generation
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.PropertyCodeGeneration.PublicConstant(System.String,System.CodeDom.CodeTypeReference,System.CodeDom.CodePrimitiveExpression)">
+ <summary>
+ Create a new public constant for the given name and data type and value
+ </summary>
+ <param name="constantName">
+ The name of the constant 
+ </param>
+ <param name="dataType">
+ The data type of the constant
+ </param>
+ <param name="value">
+ The value that the constant is set to
+ </param>
+ <returns></returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.PropertyCodeGeneration.PrivateBackingMembers(System.Collections.Generic.IList{CQRSAzure.CQRSdsl.CustomCode.Interfaces.IPropertyEntity},System.Boolean)">
+ <summary>
+ Create the set of private fields backing an event/projection etc. property 
+ </summary>
+ <param name="eventProperties">
+ The set of properties for which to create a member declaration
+ </param>
+ <param name="readOnlyProperty">
+ If true, make the proeprty read-only so it may only be set in the class constructor
+ </param>
+ <returns>
+ Ideally the properties should be read only so that the class can be considered immutable
+ </returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.PropertyCodeGeneration.PublicMember(CQRSAzure.CQRSdsl.CustomCode.Interfaces.IPropertyEntity,System.String)">
+ <summary>
+ Generate a public (get-only) property backed by the private member 
+ </summary>
+ <param name="eventProp">
+ The property desfinition for which to create a public member declaration
+ </param>
+ <param name="interfaceName">
+ The name of the interface this property is implementing
+ </param>
+ <returns></returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ConstructorCodeGenerator.EventConstructor(System.CodeDom.CodeTypeReference,System.Collections.Generic.IList{CQRSAzure.CQRSdsl.CustomCode.Interfaces.IEventPropertyEntity})">
+ <summary>
+ Returns a call to invoke the given event class using the parameters passed in
+ </summary>
+ <param name="classToInvoke">
+ The reference to the class to invoke the constructor on
+ </param>
+ <param name="eventProperties">
+ The properties that will be turned into parameters 
+ </param>
+ <returns></returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ConstructorCodeGenerator.SerializationConstructor(System.Collections.Generic.IEnumerable{CQRSAzure.CQRSdsl.CustomCode.Interfaces.IEventPropertyEntity})">
+ <summary>
+ Create a serialization constructor that fills all the properties from the serialisation context
+ </summary>
+ <param name="eventProperties">
+ The list of properties in the event definition to be read from the serialization info 
+ </param>
+ <returns>
+ Protected Sub New(ByVal info As SerializationInfo, ByVal context As StreamingContext)
+ </returns>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.MethodCodeGenerator.PublicParameterisedFunction(System.String,System.CodeDom.CodeTypeReference,System.Collections.Generic.IList{System.CodeDom.CodeParameterDeclarationExpression})">
+ <summary>
+ Return the definition of a parameterised function 
+ </summary>
+ <param name="functionName">
+ The name to use for this function
+ </param>
+ <param name="returnType">
+ The data type to be returned from the function
+ </param>
+ <param name="parameters">
+ The set of input parameters for the function
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.MethodCodeGenerator.PublicParameterisedSub(System.String,System.Collections.Generic.IList{System.CodeDom.CodeParameterDeclarationExpression},System.Boolean,System.CodeDom.CodeTypeParameterCollection)">
+ <summary>
+ Return the definition of a parameterised subroutine (void function) 
+ </summary>
+ <param name="functionName">
+ The name to use for this function
+ </param>
+ <param name="parameters">
+ The set of input parameters for the function
+ </param>
+ <param name="makeStatic">
+ Whether to make this a static method or not
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.MethodCodeGenerator.PublicParameterisedFunction(System.String,System.Collections.Generic.IList{System.CodeDom.CodeParameterDeclarationExpression},System.CodeDom.CodeTypeReference,System.Boolean,System.Boolean,System.CodeDom.CodeTypeParameterCollection)">
+ <summary>
+ Create a public function with the given name and properties
+ </summary>
+ <param name="functionName">
+ The name of the function
+ </param>
+ <param name="parameters">
+ The parameters to apply
+ </param>
+ <param name="returnType">
+ The data type the function returns (if not set this will return void and thereby be a subroutine)
+ </param>
+ <param name="makeStatic">
+ If set make this a static function
+ </param>
+ <param name="genericTypeRestrictions">
+ If set, apply these generic type restrictions to the function
+ </param>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.AttributeCodeGenerator.ParameterisedAttribute(System.String,System.Collections.Generic.IList{System.CodeDom.CodeAttributeArgument})">
+ <summary>
+ Create a parameterised attribute to tag a class or property
+ </summary>
+ <param name="AttributeName">
+ The attribute name to use - this should be a fully qualified name if ambiguity is possible
+ </param>
+ <param name="parameters">
+ The set of parameters to use to construct the attribute 
+ </param>
+ <returns></returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator">
+ <summary>
+ A class to generate a .csprj or .vbprj for a subset of the files
+ generated 
+ </summary>
+ <remarks>
+ There are no CodeDom classes for this so this is just a fudge xml writer that makes
+ files that look like Visual Studio projects
+ </remarks>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.CommandDefinition">
+ <summary>
+ The definition of commands into the domain
+ </summary>
+ <remarks>
+ This can be used to define an API 
+ </remarks>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.CommandHandler">
+ <summary>
+ The processing of commands in the domain
+ </summary>
+ <remarks>
+ This should only be deployed on the server(s) side
+ </remarks>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.QueryDefinition">
+ <summary>
+ The definition of queries out of the domain
+ </summary>
+ <remarks>
+ This can be used to define an API
+ </remarks>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.QueryHandler">
+ <summary>
+ The processing of queries on the domain
+ </summary>
+ <remarks>
+ This should only be deployed on the server(s) side
+ </remarks>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.EventSourcing">
+ <summary>
+ The events and projections that store the data history of the domain
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.IdentityGroups">
+ <summary>
+ The classifier and identity groups logic
+ </summary>
+ <remarks>
+ These are kept separate from event sourcing but that is not
+ mandatory
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectName">
+ <summary>
+ The base name to save this project file as
+ </summary>
+ <returns>
+ e.g. [domain].events , [domain].[comand] etc.
+ </returns>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ProjectItem.ValidCompileActions">
+ <summary>
+ The compile actions that are valid for our model code generation context
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ProjectItem.ValidCompileActions.None">
+ <summary>
+ Do nothing but reference the file in the solution
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ProjectItem.ValidCompileActions.Reference">
+ <summary>
+ Reference a namespace
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ProjectItem.ValidCompileActions.Import">
+ <summary>
+ Import a specific namespace
+ </summary>
+</member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ProjectItem.ValidCompileActions.Compile">
+ <summary>
+ Compile the referenced source code item
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator">
+ <summary>
+ Code generation for a projection
+ </summary>
+</member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.BasePropertyPublicMember(CQRSAzure.CQRSdsl.CustomCode.Interfaces.IPropertyEntity)">
+ <summary>
+ Generate a public property backed by the projection base base.GetPropertyValue(Of T)()
+ </summary>
+ <param name="projProp">
+ The projection property for which to get the value
+ </param>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.ProjectionEventPropertyOperationCodeGenerator">
+ <summary>
+ Generate the actual implementation of an event property operation
+ </summary>
+ <remarks>
+ This is not an entity code generation in its own right - we just separate this into a class of its own for unit testing
+ It needs to allow for an implementation that uses base class properties
+ ( return base.GetPropertyValue &lt; DateTime &gt; (nameof(  Start_Date_and_Time)) )
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.ProjectionEventPropertyOperationCodeGenerator.Implementation">
+ <summary>
+ Implementation based on the simple projection with its own private members
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.ProjectionEventPropertyOperationCodeGenerator.ProjectionBaseImplementation">
+ <summary>
+ Generate an implementation that uses the underlying properties on
+ base.GetPropertyValue and base.SetPropertyValue
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.QueryDefinitionCodeGenerator">
+ <summary>
+ Code generation for a query definition
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.QueryHandlerCodeGenerator">
+ <summary>
+ Code generation for a query handler
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EventSerialisationCodeGenerator">
+ <summary>
+ Code generator to create the partial class responsible for the serialisation/deserialisation 
+ of an event instance
+ </summary>
+ <remarks>
+ This is required because different versions of an event may add, alter or even remove properties
+ and the serialiser needs to be able to cope with this
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.EventSerialisationCodeGenerator.NamespaceHierarchy">
+ <summary>
+ Get the namespace of the aggregate that owns this event
+ (This will be the same as the event definition namespace as this is a partial class of same)
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EventSerializerCodeGenerator">
+ <summary>
+ Generate a class that derives from EventSerializer(Of TEvent As {New, IEvent}) to speed up
+ the serialisation of this event type not reliant on reflection
+ </summary>
+ <remarks>
+ 
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.EventSerializerCodeGenerator.NamespaceHierarchy">
+ <summary>
+ Get the namespace of the aggregate that owns this event
+ (This will be the same as the event definition namespace as this is a partial class of same)
+ </summary>
+</member>
+</members>
+</doc>
