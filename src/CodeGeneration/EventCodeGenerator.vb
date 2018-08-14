@@ -323,6 +323,8 @@ Public Class EventCodeGenerator
                 Return New CodeTypeReference(GetType(System.UInt32))
             Case PropertyDataType.String
                 Return New CodeTypeReference(GetType(System.String))
+            Case PropertyDataType.GUID
+                Return New CodeTypeReference(GetType(System.Guid))
             Case Else
                 Return New CodeTypeReference(GetType(System.Object))
         End Select
@@ -348,6 +350,8 @@ Public Class EventCodeGenerator
                 Return "UInt"
             Case PropertyDataType.String
                 Return "String"
+            Case PropertyDataType.GUID
+                Return "Guid"
             Case Else
                 Return "Object"
         End Select

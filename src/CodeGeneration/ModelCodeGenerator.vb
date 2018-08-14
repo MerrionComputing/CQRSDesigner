@@ -932,6 +932,8 @@ Public Class InterfaceCodeGeneration
                 Return New CodeTypeReference(GetType(Integer))
             Case PropertyDataType.String
                 Return New CodeTypeReference(GetType(String))
+            Case PropertyDataType.GUID
+                Return New CodeTypeReference(GetType(Guid))
             Case Else
                 Return New CodeTypeReference(GetType(Object))
         End Select
@@ -1291,20 +1293,23 @@ Public Class ConstructorCodeGenerator
                       New CodeMethodReferenceExpression(New CodeArgumentReferenceExpression("info"), "GetInt32"),
                       {New CodePrimitiveExpression(EventCodeGenerator.ToMemberName(evtProperty.Name, False))})
                 Case Else
-                    'Define the assignment source e.g. info.GetValue("EventOneStringProperty", GetType(String))
+
+                    'Define the assignment source e.g. (Type)info.GetValue("EventOneStringProperty", property.GetType())
                     sourceField = New CodeMethodInvokeExpression(
                         New CodeMethodReferenceExpression(New CodeArgumentReferenceExpression("info"), "GetValue"),
                         {New CodePrimitiveExpression(EventCodeGenerator.ToMemberName(evtProperty.Name, False)),
-                        New CodeMethodInvokeExpression(New CodeMethodReferenceExpression(Nothing, "GetType"), {
-                         New CodeTypeReferenceExpression(EventCodeGenerator.ToMemberType(evtProperty.DataType))
-                        })
-                        })
+                        New CodeMethodInvokeExpression(New CodeMethodReferenceExpression(targetField, "GetType"), {})})
+
             End Select
 
-
+            ' Fix the type cast assignment..
+            Dim sourceExpression As CodeExpression = sourceField
+            If evtProperty.DataType = PropertyDataType.GUID Then
+                sourceExpression = New CodeCastExpression(EventCodeGenerator.ToMemberType(evtProperty.DataType), sourceField)
+            End If
 
             'Add the assigmnemt to the constructor body
-            serialiseConstructor.Statements.Add(New CodeAssignStatement(targetField, sourceField))
+            serialiseConstructor.Statements.Add(New CodeAssignStatement(targetField, sourceExpression))
         Next
 
         Return serialiseConstructor
