@@ -106,6 +106,34 @@ Public Class IdentityGroupCodeGenerator
                                                                                    "This should be removed if serialisation is not needed"}))
         classDeclaration.Members.Add(emptyConstructor)
 
+        'add ReadOnly Property Name As String
+        Dim nameProperty = PropertyCodeGeneration.PublicMember("Name",
+                                                              PropertyDataType.String,
+                                                              omitBackingProperty:=True
+                                                              )
+        If (nameProperty IsNot Nothing) Then
+            MethodCodeGenerator.MakeOverrides(nameProperty)
+            nameProperty.GetStatements.Add(New CodeMethodReturnStatement(New CodePrimitiveExpression(m_identitygroup.Name)))
+            classDeclaration.Members.Add(nameProperty)
+        End If
+
+        'add ReadOnly Property ParentGroupName As String
+        Dim parentnameProperty = PropertyCodeGeneration.PublicMember("ParentName",
+                                                              PropertyDataType.String,
+                                                              omitBackingProperty:=True
+                                                              )
+        If (parentnameProperty IsNot Nothing) Then
+            MethodCodeGenerator.MakeOverrides(parentnameProperty)
+            If (String.IsNullOrWhiteSpace(m_identitygroup.ParentName)) Then
+                'Default to ALL
+                parentnameProperty.GetStatements.Add(New CodeMethodReturnStatement(New CodePrimitiveExpression("ALL")))
+            Else
+                parentnameProperty.GetStatements.Add(New CodeMethodReturnStatement(New CodePrimitiveExpression(m_identitygroup.ParentName)))
+            End If
+
+            classDeclaration.Members.Add(parentnameProperty)
+        End If
+
         'put the built class into the namespace
         aggregateNamespace.Types.Add(classDeclaration)
 

@@ -1158,6 +1158,15 @@
             </summary>
             <returns>A task whose completion signals the conclusion of the asynchronous operation.</returns>
         </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.GetTaskSchedulerForReadLockRequest">
+            <summary>
+            Get the task scheduler to execute the continuation when the lock is acquired.
+             AsyncReaderWriterLock uses a special <see cref="T:System.Threading.SynchronizationContext"/> to handle execusive locks, and will ignore task scheduler provided, so this is only used in a read lock scenario.
+            This method is called within the execution context to wait the read lock, so it can pick up <see cref="T:System.Threading.Tasks.TaskScheduler"/> based on the current execution context.
+            Note: the task scheduler is only used, when the lock is issued later.  If the lock is issued immediately when <see cref="P:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.CanCurrentThreadHoldActiveLock"/> returns true, it will be ignored.
+            </summary>
+            <returns>A task scheduler to schedule the continutation task when a lock is issued.</returns>
+        </member>
         <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.ThrowIfUnsupportedThreadOrSyncContext">
             <summary>
             Throws an exception if called on an STA thread.
@@ -1636,6 +1645,11 @@
             We retain this value simply so that in hang reports we can identify the method we issued the lock to.
             </remarks>
         </member>
+        <member name="F:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter.continuationTaskScheduler">
+            <summary>
+            The TaskScheduler to invoke the continuation.
+            </summary>
+        </member>
         <member name="F:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter.releaseAsyncTask">
             <summary>
             The task from a prior call to <see cref="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter.ReleaseAsync(System.Boolean)"/>, if any.
@@ -1730,6 +1744,13 @@
             </summary>
             <param name="continuation">The delegate.</param>
         </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter.UnsafeOnCompleted(System.Action)">
+            <summary>
+            Sets the delegate to execute when the lock is available
+            without flowing ExecutionContext.
+            </summary>
+            <param name="continuation">The delegate.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter.GetResult">
             <summary>
             Applies the issued lock to the caller and returns the value used to release the lock.
@@ -1757,6 +1778,13 @@
             Responds to lock request cancellation.
             </summary>
             <param name="state">The <see cref="T:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter"/> instance being canceled.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.Awaiter.OnCompleted(System.Action,System.Boolean)">
+            <summary>
+            Sets the delegate to execute when the lock is available.
+            </summary>
+            <param name="continuation">The delegate.</param>
+            <param name="flowExecutionContext">A value indicating whether to flow ExecutionContext.</param>
         </member>
         <member name="F:Microsoft.VisualStudio.Threading.AsyncReaderWriterLock.NonConcurrentSynchronizationContext.semaphoreHoldingManagedThreadId">
             <summary>
@@ -2026,6 +2054,12 @@
             </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterResourceLock`2.ResourceAwaiter.OnCompleted(System.Action)">
+            <summary>
+            Sets the delegate to execute when the lock is available.
+            </summary>
+            <param name="continuation">The delegate.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AsyncReaderWriterResourceLock`2.ResourceAwaiter.UnsafeOnCompleted(System.Action)">
             <summary>
             Sets the delegate to execute when the lock is available.
             </summary>
@@ -2495,6 +2529,31 @@
             <param name="continueOnCapturedContext">A value indicating whether the continuation should run on the captured <see cref="T:System.Threading.SynchronizationContext"/>, if any.</param>
             <returns>An awaitable.</returns>
         </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ConfigureAwaitRunInline(System.Threading.Tasks.Task)">
+            <summary>
+            Gets an awaitable that schedules the continuation with a preference to executing synchronously on the callstack that completed the <see cref="T:System.Threading.Tasks.Task"/>,
+            without regard to thread ID or any <see cref="T:System.Threading.SynchronizationContext"/> that may be applied when the continuation is scheduled or when the antecedent completes.
+            </summary>
+            <param name="antecedent">The task to await on.</param>
+            <returns>An awaitable.</returns>
+            <remarks>
+            If there is not enough stack space remaining on the thread that is completing the <paramref name="antecedent"/> <see cref="T:System.Threading.Tasks.Task"/>,
+            the continuation may be scheduled on the threadpool.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ConfigureAwaitRunInline``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Gets an awaitable that schedules the continuation with a preference to executing synchronously on the callstack that completed the <see cref="T:System.Threading.Tasks.Task"/>,
+            without regard to thread ID or any <see cref="T:System.Threading.SynchronizationContext"/> that may be applied when the continuation is scheduled or when the antecedent completes.
+            </summary>
+            <typeparam name="T">The type of value returned by the awaited <see cref="T:System.Threading.Tasks.Task"/>.</typeparam>
+            <param name="antecedent">The task to await on.</param>
+            <returns>An awaitable.</returns>
+            <remarks>
+            If there is not enough stack space remaining on the thread that is completing the <paramref name="antecedent"/> <see cref="T:System.Threading.Tasks.Task"/>,
+            the continuation may be scheduled on the threadpool.
+            </remarks>
+        </member>
         <member name="T:Microsoft.VisualStudio.Threading.AwaitExtensions.TaskSchedulerAwaitable">
             <summary>
             An awaitable that executes continuations on the specified task scheduler.
@@ -2559,6 +2618,13 @@
             </summary>
             <param name="continuation">The delegate to invoke.</param>
         </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.TaskSchedulerAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>
+            Schedules a continuation to execute using the specified task scheduler
+            without capturing the ExecutionContext.
+            </summary>
+            <param name="continuation">The action.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.TaskSchedulerAwaiter.GetResult">
             <summary>
             Does nothing.
@@ -2616,10 +2682,127 @@
             </summary>
             <param name="continuation">The delegate to invoke.</param>
         </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ConfiguredTaskYieldAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>
+            Schedules a delegate for execution at the conclusion of a task's execution
+            without capturing the ExecutionContext.
+            </summary>
+            <param name="continuation">The action.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ConfiguredTaskYieldAwaiter.GetResult">
             <summary>
             Does nothing.
             </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable">
+            <summary>
+            A Task awaitable that has affinity to executing callbacks synchronously on the completing callstack.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable.antecedent">
+            <summary>
+            The task whose completion will execute the continuation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable.#ctor(System.Threading.Tasks.Task)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable"/> struct.
+            </summary>
+            <param name="antecedent">The task whose completion will execute the continuation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable.GetAwaiter">
+            <summary>
+            Gets the awaiter.
+            </summary>
+            <returns>The awaiter</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter">
+            <summary>
+            A Task awaiter that has affinity to executing callbacks synchronously on the completing callstack.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter.antecedent">
+            <summary>
+            The task whose completion will execute the continuation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter.#ctor(System.Threading.Tasks.Task)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter"/> struct.
+            </summary>
+            <param name="antecedent">The task whose completion will execute the continuation.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter.IsCompleted">
+            <summary>
+            Gets a value indicating whether the antedent <see cref="T:System.Threading.Tasks.Task"/> has already completed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter.GetResult">
+            <summary>
+            Rethrows any exception thrown by the antecedent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter.OnCompleted(System.Action)">
+            <summary>
+            Schedules a callback to run when the antecedent task completes.
+            </summary>
+            <param name="continuation">The callback to invoke.</param>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable`1">
+            <summary>
+            A Task awaitable that has affinity to executing callbacks synchronously on the completing callstack.
+            </summary>
+            <typeparam name="T">The type of value returned by the awaited <see cref="T:System.Threading.Tasks.Task"/>.</typeparam>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable`1.antecedent">
+            <summary>
+            The task whose completion will execute the continuation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable`1.#ctor(System.Threading.Tasks.Task{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable`1"/> struct.
+            </summary>
+            <param name="antecedent">The task whose completion will execute the continuation.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaitable`1.GetAwaiter">
+            <summary>
+            Gets the awaiter.
+            </summary>
+            <returns>The awaiter</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1">
+            <summary>
+            A Task awaiter that has affinity to executing callbacks synchronously on the completing callstack.
+            </summary>
+            <typeparam name="T">The type of value returned by the awaited <see cref="T:System.Threading.Tasks.Task"/>.</typeparam>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1.antecedent">
+            <summary>
+            The task whose completion will execute the continuation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1.#ctor(System.Threading.Tasks.Task{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1"/> struct.
+            </summary>
+            <param name="antecedent">The task whose completion will execute the continuation.</param>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1.IsCompleted">
+            <summary>
+            Gets a value indicating whether the antedent <see cref="T:System.Threading.Tasks.Task"/> has already completed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1.GetResult">
+            <summary>
+            Rethrows any exception thrown by the antecedent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.AwaitExtensions.ExecuteContinuationSynchronouslyAwaiter`1.OnCompleted(System.Action)">
+            <summary>
+            Schedules a callback to run when the antecedent task completes.
+            </summary>
+            <param name="continuation">The callback to invoke.</param>
         </member>
         <member name="T:Microsoft.VisualStudio.Threading.DelegatingJoinableTaskFactory">
             <summary>
@@ -2908,6 +3091,12 @@
             </summary>
         </member>
         <member name="M:Microsoft.VisualStudio.Threading.InlineResumable.OnCompleted(System.Action)">
+            <summary>
+            Stores the continuation for later execution when <see cref="M:Microsoft.VisualStudio.Threading.InlineResumable.Resume"/> is invoked.
+            </summary>
+            <param name="continuation">The delegate to execute later.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.InlineResumable.UnsafeOnCompleted(System.Action)">
             <summary>
             Stores the continuation for later execution when <see cref="M:Microsoft.VisualStudio.Threading.InlineResumable.Resume"/> is invoked.
             </summary>
@@ -4545,6 +4734,13 @@
             Gets a value indicating whether the caller is already on the Main thread.
             </summary>
         </member>
+        <member name="M:Microsoft.VisualStudio.Threading.JoinableTaskFactory.MainThreadAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>
+            Schedules a continuation for execution on the Main thread
+            without capturing the ExecutionContext.
+            </summary>
+            <param name="continuation">The action to invoke when the operation completes.</param>
+        </member>
         <member name="M:Microsoft.VisualStudio.Threading.JoinableTaskFactory.MainThreadAwaiter.OnCompleted(System.Action)">
             <summary>
             Schedules a continuation for execution on the Main thread.
@@ -4555,6 +4751,13 @@
             <summary>
             Called on the Main thread to prepare it to execute the continuation.
             </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.JoinableTaskFactory.MainThreadAwaiter.OnCompleted(System.Action,System.Boolean)">
+            <summary>
+            Schedules a continuation for execution on the Main thread.
+            </summary>
+            <param name="continuation">The action to invoke when the operation completes.</param>
+            <param name="flowExecutionContext">A value indicating whether to capture and reapply the current ExecutionContext for the continuation.</param>
         </member>
         <member name="T:Microsoft.VisualStudio.Threading.JoinableTaskFactory.RunFramework">
             <summary>
@@ -5079,6 +5282,297 @@
             </summary>
             <returns>A task that completes when all progress is complete.</returns>
         </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore">
+            <summary>
+            A <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskFactory" />-aware semaphore that allows reentrancy without consuming another slot in the semaphore.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.joinableTaskFactory">
+            <summary>
+            The factory to wrap all pending and active semaphore requests with to mitigate deadlocks.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.joinableTaskCollection">
+            <summary>
+            The collection of all semaphore holders (and possibly waiters), which waiters should join to mitigate deadlocks.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.semaphore">
+            <summary>
+            The underlying semaphore primitive.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.#ctor(System.Int32,Microsoft.VisualStudio.Threading.JoinableTaskContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> class.
+            </summary>
+            <param name="initialCount">The initial number of concurrent operations to allow.</param>
+            <param name="joinableTaskContext">The <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> to use to mitigate deadlocks.</param>
+            <devremarks>
+            This is private protected so that others cannot derive from this type but we can within the assembly.
+            </devremarks>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode">
+            <summary>
+            Describes ways the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> may behave when a semaphore request is made in a context that is already in the semaphore.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.NotAllowed">
+            <summary>
+            Reject all requests when the caller has already entered the semaphore
+            (and not yet exited) by throwing an <see cref="T:System.InvalidOperationException"/>.
+            </summary>
+            <remarks>
+            When reentrancy is not expected this is the recommended mode as it will prevent deadlocks
+            when unexpected reentrancy is detected.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.NotRecognized">
+            <summary>
+            Each request occupies a unique slot in the semaphore.
+            Reentrancy is not recognized and may lead to deadlocks if the reentrancy level exceeds the count on the semaphore.
+            This resembles the behavior of the <see cref="T:Microsoft.VisualStudio.Threading.AsyncSemaphore"/> class.
+            </summary>
+            <remarks>
+            If reentrancy is not in the design, but <see cref="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.NotAllowed"/> leads to exceptions due to
+            ExecutionContext flowing unexpectedly, this mode may be the best option.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.Stack">
+            <summary>
+            A request made by a caller that is already in the semaphore is immediately executed,
+            and shares the same semaphore slot with its parent.
+            This nested request must exit before its parent (Strict LIFO/stack behavior).
+            Exiting the semaphore before a child has or after the parent has will cause an
+            <see cref="T:System.InvalidOperationException"/> to fault the <see cref="T:System.Threading.Tasks.Task"/> returned
+            from <see cref="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)"/>.
+            </summary>
+            <remarks>
+            When reentrancy is a requirement, this mode helps ensure that reentrancy only happens
+            where code enters a semaphore, then awaits on other code that itself may enter the semaphore.
+            When a violation occurs, this semaphore transitions into a faulted state, after which any call
+            will throw an <see cref="T:System.InvalidOperationException"/>.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.Freeform">
+            <summary>
+            A request made by a caller that is already in the semaphore is immediately executed,
+            and shares the same semaphore slot with its parent.
+            The slot is only released when all requests have exited, which may be in any order.
+            </summary>
+            <remarks>
+            This is the most permissive, but has the highest risk that leaked semaphore access will remain undetected.
+            Leaked semaphore access is a condition where code is inappropriately considered parented to another semaphore holder,
+            leading to it being allowed to run code within the semaphore, potentially in parallel with the actual semaphore holder.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Threading.ReentrantSemaphore.CurrentCount">
+            <summary>
+            Gets the number of openings that remain in the semaphore.
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Threading.ReentrantSemaphore.IsJoinableTaskAware">
+            <summary>
+            Gets a value indicating whether this instance is using Joinable Task aware or not.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.Create(System.Int32,Microsoft.VisualStudio.Threading.JoinableTaskContext,Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> class.
+            </summary>
+            <param name="initialCount">The initial number of concurrent operations to allow.</param>
+            <param name="joinableTaskContext">The <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> to use to mitigate deadlocks.</param>
+            <param name="mode">How to respond to a semaphore request by a caller that has already entered the semaphore.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <summary>
+            Executes a given operation within the semaphore.
+            </summary>
+            <param name="operation">
+            The delegate to invoke once the semaphore is entered. If a <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> was supplied to the constructor,
+            this delegate will execute on the main thread if this is invoked on the main thread, otherwise it will be invoked on the
+            threadpool. When no <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> is supplied to the constructor, this delegate will execute on the
+            caller's context.
+            </param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>A task that completes with the result of <paramref name="operation"/>, after the semaphore has been exited.</returns>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.SuppressRelevance">
+            <summary>
+            Conceals evidence that the caller has entered this <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> till its result is disposed.
+            </summary>
+            <returns>A value to dispose to restore visibility of any presence in this semaphore.</returns>
+            <remarks>
+            <para>This method is useful when the caller is about to spin off another operation (e.g. scheduling work to the threadpool)
+            that it does not consider vital to its own completion, in order to prevent the spun off work from abusing the
+            caller's right to the semaphore.</para>
+            <para>This is a safe call to make whether or not the semaphore is currently held, or whether reentrancy is allowed on this instance.</para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.Dispose(System.Boolean)">
+            <summary>
+            Disposes managed and unmanaged resources held by this instance.
+            </summary>
+            <param name="disposing"><c>true</c> if <see cref="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.Dispose"/> was called; <c>false</c> if the object is being finalized.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ThrowIfFaulted">
+            <summary>
+            Throws an exception if this instance has been faulted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.DisposeReleaserNoThrow(Microsoft.VisualStudio.Threading.AsyncSemaphore.Releaser)">
+            <summary>
+            Disposes the specfied release, swallowing certain exceptions.
+            </summary>
+            <param name="releaser">The releaser to dispose.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ExecuteCoreAsync(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Executes the semaphore request.
+            </summary>
+            <param name="semaphoreUser">The delegate that requests the semaphore and executes code within it.</param>
+            <returns>A value for the caller to await on.</returns>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance">
+            <summary>
+            A structure that hides any evidence that the caller has entered a <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> till this value is disposed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance.disposeAction">
+            <summary>
+            The delegate to invoke on disposal.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance.semaphore">
+            <summary>
+            The instance that is suppressing relevance.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance.state">
+            <summary>
+            The argument to pass to the delegate.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance.#ctor(System.Action{Microsoft.VisualStudio.Threading.ReentrantSemaphore,System.Object},Microsoft.VisualStudio.Threading.ReentrantSemaphore,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance"/> struct.
+            </summary>
+            <param name="disposeAction">The delegate to invoke on disposal.</param>
+            <param name="semaphore">The instance that is suppressing relevance.</param>
+            <param name="state">The argument to pass to the delegate.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.RevertRelevance.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotRecognizedSemaphore">
+            <summary>
+            An implementation of <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> supporting the <see cref="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.NotRecognized"/> mode.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotRecognizedSemaphore.#ctor(System.Int32,Microsoft.VisualStudio.Threading.JoinableTaskContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotRecognizedSemaphore"/> class.
+            </summary>
+            <param name="initialCount">The initial number of concurrent operations to allow.</param>
+            <param name="joinableTaskContext">The <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> to use to mitigate deadlocks.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotRecognizedSemaphore.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotAllowedSemaphore">
+            <summary>
+            An implementation of <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> supporting the <see cref="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.NotAllowed"/> mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotAllowedSemaphore.reentrancyDetection">
+            <summary>
+            The means to recognize that a caller has already entered the semaphore.
+            </summary>
+            <devremarks>
+            We use <see cref="T:System.Runtime.CompilerServices.StrongBox`1"/> instead of just <see cref="T:System.Boolean"/> here for two reasons:
+            1. Our own <see cref="T:Microsoft.VisualStudio.Threading.AsyncLocal`1"/> class requires a ref type for the generic type argument.
+            2. (more importantly) we need all forks of an ExecutionContext to observe updates to the value.
+               But ExecutionContext is copy-on-write so forks don't see changes to it.
+               <see cref="T:System.Runtime.CompilerServices.StrongBox`1"/> lets us store and later update the boxed value of the existing box reference.
+            </devremarks>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotAllowedSemaphore.#ctor(System.Int32,Microsoft.VisualStudio.Threading.JoinableTaskContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotAllowedSemaphore"/> class.
+            </summary>
+            <param name="initialCount">The initial number of concurrent operations to allow.</param>
+            <param name="joinableTaskContext">The <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> to use to mitigate deadlocks.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotAllowedSemaphore.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.NotAllowedSemaphore.SuppressRelevance">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore">
+            <summary>
+            An implementation of <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> supporting the <see cref="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.Stack"/> mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore.reentrantCount">
+            <summary>
+            The means to recognize that a caller has already entered the semaphore.
+            </summary>
+            <devremarks>
+            We use <see cref="T:System.Runtime.CompilerServices.StrongBox`1"/> instead of just <see cref="T:Microsoft.VisualStudio.Threading.AsyncSemaphore.Releaser"/> here
+            so that we have a unique identity for each Releaser that we can recognize as a means to verify
+            the integrity of the "stack" of semaphore reentrant requests.
+            </devremarks>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore.faulted">
+            <summary>
+            A flag to indicate this instance was misused and the data it protects should not be touched as it may be corrupted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore.#ctor(System.Int32,Microsoft.VisualStudio.Threading.JoinableTaskContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore"/> class.
+            </summary>
+            <param name="initialCount">The initial number of concurrent operations to allow.</param>
+            <param name="joinableTaskContext">The <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> to use to mitigate deadlocks.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore.SuppressRelevance">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.StackSemaphore.ThrowIfFaulted">
+            <summary>
+            Throws an exception if this instance has been faulted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.FreeformSemaphore">
+            <summary>
+            An implementation of <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore"/> supporting the <see cref="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.ReentrancyMode.Freeform"/> mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.VisualStudio.Threading.ReentrantSemaphore.FreeformSemaphore.reentrantCount">
+            <summary>
+            The means to recognize that a caller has already entered the semaphore.
+            </summary>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.FreeformSemaphore.#ctor(System.Int32,Microsoft.VisualStudio.Threading.JoinableTaskContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Threading.ReentrantSemaphore.FreeformSemaphore"/> class.
+            </summary>
+            <param name="initialCount">The initial number of concurrent operations to allow.</param>
+            <param name="joinableTaskContext">The <see cref="T:Microsoft.VisualStudio.Threading.JoinableTaskContext"/> to use to mitigate deadlocks.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.FreeformSemaphore.ExecuteAsync(System.Func{System.Threading.Tasks.Task},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.ReentrantSemaphore.FreeformSemaphore.SuppressRelevance">
+            <inheritdoc />
+        </member>
         <member name="T:Microsoft.VisualStudio.Threading.RegistryChangeNotificationFilters">
             <summary>
             The various types of data within a registry key that generate notifications
@@ -5235,6 +5729,16 @@
         <member name="P:Microsoft.VisualStudio.Threading.Strings.QueueEmpty">
             <summary>
               Looks up a localized string similar to The queue is empty..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Threading.Strings.SemaphoreMisused">
+            <summary>
+              Looks up a localized string similar to This semaphore has been misused and can no longer be used..
+            </summary>
+        </member>
+        <member name="P:Microsoft.VisualStudio.Threading.Strings.SemaphoreStackNestingViolated">
+            <summary>
+              Looks up a localized string similar to Nested semaphore requests must be released in LIFO order when the reentrancy setting is: &apos;{0}&apos;.
             </summary>
         </member>
         <member name="P:Microsoft.VisualStudio.Threading.Strings.STAThreadCallerNotAllowed">
@@ -5825,6 +6329,13 @@
         <member name="M:Microsoft.VisualStudio.Threading.TplExtensions.NoThrowTaskAwaiter.OnCompleted(System.Action)">
             <summary>
             Schedules a delegate for execution at the conclusion of a task's execution.
+            </summary>
+            <param name="continuation">The action.</param>
+        </member>
+        <member name="M:Microsoft.VisualStudio.Threading.TplExtensions.NoThrowTaskAwaiter.UnsafeOnCompleted(System.Action)">
+            <summary>
+            Schedules a delegate for execution at the conclusion of a task's execution
+            without capturing the ExecutionContext.
             </summary>
             <param name="continuation">The action.</param>
         </member>

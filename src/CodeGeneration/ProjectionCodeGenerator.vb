@@ -48,7 +48,7 @@ Public Class ProjectionCodeGenerator
             interfaceDeclaration.BaseTypes.Add(genericEventInterface)
         Else
             'Make this implement IProjectionUntyped
-            Dim untypedProjectionInterface As CodeTypeReference = InterfaceCodeGeneration.ImplementsInterfaceReference("IProjectionUntyped")
+            Dim untypedProjectionInterface As CodeTypeReference = InterfaceCodeGeneration.ImplementsInterfaceReference("ProjectionUntyped")
             interfaceDeclaration.BaseTypes.Add(untypedProjectionInterface)
         End If
 
@@ -224,6 +224,9 @@ Public Class ProjectionCodeGenerator
 
             If (HandleEventJSonFunction IsNot Nothing) Then
 
+                'Make it override the base function
+                MethodCodeGenerator.MakeOverrides(HandleEventJSonFunction)
+
                 Dim parameventFullName As New CodeVariableReferenceExpression("eventFullName")
 
 
@@ -233,18 +236,14 @@ Public Class ProjectionCodeGenerator
                     Dim boolCondition As New CodeBinaryOperatorExpression()
                     boolCondition.Operator = CodeBinaryOperatorType.ValueEquality
                     boolCondition.Left = parameventFullName
-                    Dim typeOfEvent As New CodeTypeOfExpression(evd.Name)
+                    Dim typeOfEvent As New CodeTypeOfExpression(ModelCodeGenerator.MakeValidCodeName(evd.Name))
                     Dim typeofEventFullname As New CodeMethodReferenceExpression(typeOfEvent, "FullName")
                     boolCondition.Right = typeofEventFullname
                     ifThen.Condition = boolCondition
                     ' Handle the given type of event
-                    'if (eventFullName == typeof(Formed).FullName) 
-                    '{
-                    '   HandleEvent<Formed>(eventToHandle.ToObject<Formed>());
-                    '}
                     ifThen.TrueStatements.Add(New CodeCommentStatement($"Handle the {evd.Name} event"))
 
-                    Dim paramTypeReference As CodeTypeReference = New CodeTypeReference(evd.Name)
+                    Dim paramTypeReference As CodeTypeReference = New CodeTypeReference(ModelCodeGenerator.MakeValidCodeName(evd.Name))
                     Dim handleEventMethodRef As New CodeMethodReferenceExpression(New CodeThisReferenceExpression(), "HandleEvent", {paramTypeReference})
 
                     Dim toObjectMethodReference As New CodeMethodReferenceExpression(New CodeVariableReferenceExpression("eventToHandle"),
@@ -264,15 +263,32 @@ Public Class ProjectionCodeGenerator
             End If
 
             '2: public override bool HandlesEventTypeByName(string eventTypeFullName)
-            Dim HandlesEventTypeByNameFunction As CodeMemberMethod = MethodCodeGenerator.PublicParameterisedFunction("HandleEventJSon",
+            Dim HandlesEventTypeByNameFunction As CodeMemberMethod = MethodCodeGenerator.PublicParameterisedFunction("HandlesEventTypeByName",
                                                                                             {New CodeParameterDeclarationExpression("String", "eventTypeFullName")},
-                                                                                            returnType:=New CodeTypeReference(GetType(Boolean)),
-                                                                                            makeOverride:=True)
+                                                                                            returnType:=New CodeTypeReference(GetType(Boolean))
+                                                                                            )
+
+
+
 
 
             If (HandlesEventTypeByNameFunction IsNot Nothing) Then
 
+                'Make it override the base function
+                MethodCodeGenerator.MakeOverrides(HandlesEventTypeByNameFunction)
+
                 Dim parameventTypeFullName As New CodeVariableReferenceExpression("eventTypeFullName")
+
+                'Add comments to this sub
+                Dim handledTypesByNameDocumentation As New List(Of String)()
+                handledTypesByNameDocumentation.Add("Event types handled")
+                For Each evd As EventDefinition In m_projection.EventDefinitions
+                    handledTypesByNameDocumentation.Add(evd.Name & " - " & evd.Description)
+                Next
+                HandlesEventTypeByNameFunction.Comments.AddRange(CommentGeneration.SummaryCommentSection({"Does the projection handle this event type"}))
+                HandlesEventTypeByNameFunction.Comments.AddRange(CommentGeneration.ParamCommentsSection(parameventTypeFullName.VariableName,
+                                                                                                        {"The event type to check"}))
+                HandlesEventTypeByNameFunction.Comments.AddRange(CommentGeneration.RemarksCommentSection(handledTypesByNameDocumentation.ToArray()))
 
                 For Each evd As EventDefinition In m_projection.EventDefinitions
                     'Pass it on to the given Types handler e.g.
@@ -280,7 +296,7 @@ Public Class ProjectionCodeGenerator
                     Dim boolCondition As New CodeBinaryOperatorExpression()
                     boolCondition.Operator = CodeBinaryOperatorType.ValueEquality
                     boolCondition.Left = parameventTypeFullName
-                    Dim typeOfEvent As New CodeTypeOfExpression(evd.Name)
+                    Dim typeOfEvent As New CodeTypeOfExpression(ModelCodeGenerator.MakeValidCodeName(evd.Name))
                     Dim typeofEventFullname As New CodeMethodReferenceExpression(typeOfEvent, "FullName")
                     boolCondition.Right = typeofEventFullname
                     ifThen.Condition = boolCondition
@@ -378,12 +394,6 @@ Public Class ProjectionCodeGenerator
             Dim getTypeEventToHandle As New CodeMethodInvokeExpression(parameventToHandle, "GetType", {})
 
             For Each evd As EventDefinition In m_projection.EventDefinitions
-                'If the type is this type, pass it on to the relevant handler already coded
-                'TODO: Handle the given type of event
-                'if (eventToHandle.GetType() == typeof(Formed)) 
-                '{
-                '   HandleEvent<Formed>(eventToHandle as Formed);
-                '}
                 Dim ifThen As CodeConditionStatement = New CodeConditionStatement()
                 Dim boolCondition As New CodeBinaryOperatorExpression()
                 boolCondition.Operator = CodeBinaryOperatorType.ValueEquality

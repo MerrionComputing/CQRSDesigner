@@ -46,8 +46,7 @@ Public Class ModelProjectGenerator
         ''' The classifier and identity groups logic
         ''' </summary>
         ''' <remarks>
-        ''' These are kept separate from event sourcing but that is not
-        ''' mandatory
+        ''' These are kept separate from event sourcing but that is not mandatory
         ''' </remarks>
         IdentityGroups
     End Enum
