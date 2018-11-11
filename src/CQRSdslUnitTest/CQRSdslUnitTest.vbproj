@@ -130,6 +130,7 @@
     <Compile Include="HTMLDocumentationPageUnitTest.vb" />
     <Compile Include="InterfaceCodeGenerationUnitTest.vb" />
     <Compile Include="Mocking\AggregateIdentifierMock.vb" />
+    <Compile Include="Mocking\ClassifierDefinitionMock.vb" />
     <Compile Include="Mocking\EventDefinitionMock.vb" />
     <Compile Include="ModelCodeGenerationOptionsUnitTest.vb" />
     <Compile Include="ModelProjectGeneratorUnitTest.vb" />
@@ -152,6 +153,7 @@
     <Compile Include="ProjectionCodeGenerationUnitTest.vb" />
     <Compile Include="HTMLDocumentationWriterUnitTest.vb" />
     <Compile Include="EntityFrameworkCodeGenerationUnitTest.vb" />
+    <Compile Include="ClassifierCodeGeneratorUnitTest.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

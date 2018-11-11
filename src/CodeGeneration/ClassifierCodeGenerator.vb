@@ -470,7 +470,12 @@ Public Class ClassifierCodeGenerator
                 ifThenElse.Condition = boolCondition
 
             Case PropertyEvaluation.IsEmpty
-                '
+                'Logically, this only applies to strings...
+                Dim isNullOrWhitespaceMethod As New CodeMethodInvokeExpression(
+                    New CodeMethodReferenceExpression(stringReference, "IsNullOrWhiteSpace"
+                    ), {targetReference})
+                ifThenElse.Condition = isNullOrWhitespaceMethod
+
 
             Case PropertyEvaluation.IsGreaterThan
                 boolCondition.Left = sourceReference

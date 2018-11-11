@@ -113,6 +113,10 @@ Public Class ModelCodeGenerator
 
         Using fWrite As IO.FileStream = System.IO.File.Create(System.IO.Path.Combine(options.DirectoryRoot.FullName, filenameBase))
             If (fWrite.CanWrite) Then
+                Dim xwSettings As New System.Xml.XmlWriterSettings()
+                xwSettings.NewLineOnAttributes = True
+                xwSettings.Indent = True
+
                 Using sw As System.Xml.XmlWriter = System.Xml.XmlWriter.Create(fWrite)
                     'Make the XML indented for easier reading
                     sw.WriteStartDocument()
@@ -136,7 +140,8 @@ Public Class ModelCodeGenerator
                     sw.WriteElementString("AssemblyName", modelProject.ProjectName)
                     sw.WriteElementString("SchemaVersion", "2.0")
                     '<>v4.6</TargetFrameworkVersion>
-                    sw.WriteElementString("TargetFrameworkVersion", "4.6")
+                    'netstandard2.0;net472
+                    sw.WriteElementString("TargetFrameworks", "netstandard2.0;net40;net472")
                     sw.WriteEndElement()
 
                     'Build
@@ -635,15 +640,18 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_HANDLER).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.QueryDefinition
                 'add to query def and query handler projects
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_DEFINITION)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_DEFINITION).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.QueryImplementationInterface
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_HANDLER).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.QueryImplementation
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_HANDLER).AddSourceFile(filenameBase)
@@ -657,14 +665,17 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.CommandDefinition
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER).AddSourceFile(filenameBase)
+                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_DEFINITION)) Then
+                    m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_DEFINITION).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.CommandImplementationInterface
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.CommandImplementation
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER).AddSourceFile(filenameBase)
@@ -680,6 +691,10 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
                 End If
+                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
+                    m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
+                End If
+
             Case ModelSourceFileType.Projection
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
@@ -689,6 +704,7 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.EventDefinition
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
@@ -698,14 +714,8 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
                 End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_DEFINITION)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_DEFINITION).AddSourceFile(filenameBase)
-                End If
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER).AddSourceFile(filenameBase)
-                End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_DEFINITION)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_DEFINITION).AddSourceFile(filenameBase)
                 End If
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_HANDLER)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_HANDLER).AddSourceFile(filenameBase)
@@ -713,9 +723,7 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
                 End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
-                End If
+
             Case ModelSourceFileType.IdentityGroup
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
@@ -725,25 +733,8 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
                 End If
+
             Case ModelSourceFileType.AggregateIdentifierInterface
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
-                End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_DEFINITION)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_DEFINITION).AddSourceFile(filenameBase)
-                End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_COMMAND_HANDLER).AddSourceFile(filenameBase)
-                End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_DEFINITION)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_DEFINITION).AddSourceFile(filenameBase)
-                End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_QUERY_HANDLER)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_QUERY_HANDLER).AddSourceFile(filenameBase)
-                End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
-                End If
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
                 End If
@@ -752,9 +743,7 @@ Public Class ModelCodeGenerator
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)
                 End If
-                If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_EVENT_SOURCING)) Then
-                    m_modelProjects(CodeProjectFile.PROJECTNAME_EVENT_SOURCING).AddSourceFile(filenameBase)
-                End If
+
             Case ModelSourceFileType.Classifier
                 If (m_modelProjects.ContainsKey(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP)) Then
                     m_modelProjects(CodeProjectFile.PROJECTNAME_IDENTITY_GROUP).AddSourceFile(filenameBase)

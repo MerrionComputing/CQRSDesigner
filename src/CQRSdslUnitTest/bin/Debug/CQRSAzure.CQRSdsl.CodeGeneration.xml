@@ -749,8 +749,7 @@ CQRSAzure.CQRSdsl.CodeGeneration
  The classifier and identity groups logic
  </summary>
  <remarks>
- These are kept separate from event sourcing but that is not
- mandatory
+ These are kept separate from event sourcing but that is not mandatory
  </remarks>
 </member>
 <member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectName">

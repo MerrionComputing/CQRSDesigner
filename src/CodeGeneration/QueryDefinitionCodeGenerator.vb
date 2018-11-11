@@ -10,7 +10,7 @@ Public Class QueryDefinitionCodeGenerator
 
     Public Const QUERY_FILENAME_IDENTIFIER = "queryDefinition"
     Public Const QUERY_DEFINITION_SUFFIX As String = "Definition"
-    Public Const QUERY_RETURN_SUFFIX = "_Return"
+    Public Const QUERY_RETURN_SUFFIX = "Return"
 
     Private ReadOnly m_query As QueryDefinition
 
@@ -47,7 +47,7 @@ Public Class QueryDefinitionCodeGenerator
         End If
 
         ' Add an interface definition of the "Return" (TResult) part of the query definition
-        Dim interfaceReturnDeclaration As CodeTypeDeclaration = InterfaceCodeGeneration.InterfaceDeclaration(Me.QueryDefinitionName & QUERY_RETURN_SUFFIX)
+        Dim interfaceReturnDeclaration As CodeTypeDeclaration = InterfaceCodeGeneration.InterfaceDeclaration(m_query.Name & "_" & QUERY_RETURN_SUFFIX)
         If (m_query.QueryReturnParameters.Count > 0) Then
             For Each retProp In m_query.QueryReturnParameters
                 Dim eventmember As CodeMemberProperty = InterfaceCodeGeneration.SimplePropertyDeclaration(True, retProp.Name, retProp.DataType)
@@ -279,10 +279,10 @@ Public Class QueryDefinitionCodeGenerator
 
         If (queryDef.MultiRowResults) Then
             '(Of IEnumerable(Of TResult))
-            Return New CodeTypeReference("IEnumerable", {InterfaceCodeGeneration.ImplementsInterfaceReference(queryDef.Name & "_" & QUERY_DEFINITION_SUFFIX & QUERY_RETURN_SUFFIX)})
+            Return New CodeTypeReference("IEnumerable", {InterfaceCodeGeneration.ImplementsInterfaceReference(queryDef.Name & "_" & QUERY_RETURN_SUFFIX)})
         Else
             '(Of TResult)
-            Return InterfaceCodeGeneration.ImplementsInterfaceReference(queryDef.Name & "_" & QUERY_DEFINITION_SUFFIX & QUERY_RETURN_SUFFIX)
+            Return InterfaceCodeGeneration.ImplementsInterfaceReference(queryDef.Name & "_" & QUERY_RETURN_SUFFIX)
         End If
 
     End Function
