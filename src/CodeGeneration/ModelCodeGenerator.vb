@@ -113,6 +113,10 @@ Public Class ModelCodeGenerator
 
         Using fWrite As IO.FileStream = System.IO.File.Create(System.IO.Path.Combine(options.DirectoryRoot.FullName, filenameBase))
             If (fWrite.CanWrite) Then
+                Dim xwSettings As New System.Xml.XmlWriterSettings()
+                xwSettings.NewLineOnAttributes = True
+                xwSettings.Indent = True
+
                 Using sw As System.Xml.XmlWriter = System.Xml.XmlWriter.Create(fWrite)
                     'Make the XML indented for easier reading
                     sw.WriteStartDocument()
@@ -137,7 +141,7 @@ Public Class ModelCodeGenerator
                     sw.WriteElementString("SchemaVersion", "2.0")
                     '<>v4.6</TargetFrameworkVersion>
                     'netstandard2.0;net472
-                    sw.WriteElementString("TargetFrameworks", "netstandard2.0;net472")
+                    sw.WriteElementString("TargetFrameworks", "netstandard2.0;net40;net472")
                     sw.WriteEndElement()
 
                     'Build
