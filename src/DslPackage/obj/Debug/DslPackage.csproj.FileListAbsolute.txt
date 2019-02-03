@@ -22,3 +22,15 @@ D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\obj\Debug\CQRSAzure.CQRSd
 D:\Source\Workspaces\CQRS on Azure\Designer\Binaries\extension.vsixmanifest
 D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\obj\Debug\DslPackage.csproj.CopyComplete
 D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\obj\Debug\DslPackage.csprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\DslPackage.csprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\VSPackage.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\CQRSAzure.CQRSdsl.Properties.Resources.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\DslPackage.csproj.GenerateResource.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\Commands.cto
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\VSCT.read.1.tlog
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\VSCT.write.1.tlog
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\resources.json
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\ctoFiles.json
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\VSPackage.resources.original
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\mergeCto.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\DslPackage.csproj.CoreCompileInputs.cache

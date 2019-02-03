@@ -76,3 +76,5 @@ D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\obj\Release\extension.vsi
 D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\bin\Release\CQRSAzure.CQRSdsl.DslPackage.vsix
 D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\bin\Release\extension.vsixmanifest
 D:\Source\Workspaces\CQRS on Azure\Designer\DslPackage\bin\Release\GeneratedCode\CQRSdslSchema.xsd
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Release\CQRSAzure.CQRSdsl.DslPackage.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Release\CQRSAzure.CQRSdsl.DslPackage.pdb

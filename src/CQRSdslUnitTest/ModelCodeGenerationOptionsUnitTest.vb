@@ -27,8 +27,8 @@ Public Class ModelCodeGenerationOptionsUnitTest
                                                                                        ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.StronglyTyped,
                                                                                        New System.IO.DirectoryInfo("C:\temp"),
                                                                                        False,
-                                                                                       False,
-                                                                                       False)
+                                                                                       False
+                                                                                       )
 
         actual = testObj.CodeLanguage
 

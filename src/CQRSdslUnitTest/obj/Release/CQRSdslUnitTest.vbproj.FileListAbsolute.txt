@@ -95,3 +95,10 @@ D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\obj\Release\CQRSdslU
 D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.dll
 D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.xml
 D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.pdb
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.vbprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.Resources.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.vbproj.GenerateResource.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.vbproj.CoreCompileInputs.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.xml
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.pdb

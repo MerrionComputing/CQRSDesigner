@@ -68,3 +68,10 @@ D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Release\CodeGener
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.dll
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.xml
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.pdb
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CodeGeneration.vbprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.Resources.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CodeGeneration.vbproj.GenerateResource.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CodeGeneration.vbproj.CoreCompileInputs.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.xml
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Release\CQRSAzure.CQRSdsl.CodeGeneration.pdb

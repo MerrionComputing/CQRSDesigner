@@ -109,3 +109,7 @@ D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\bin\Debug\Microsoft.
 D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\bin\Debug\Microsoft.Diagnostics.Tracing.EventSource.dll
 D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\obj\Debug\CQRSdslUnitTest.vbproj.CopyComplete
 D:\Source\Workspaces\CQRS on Azure\Designer\CQRSdslUnitTest\obj\Debug\CQRSdslUnitTest.vbprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Debug\CQRSdslUnitTest.vbprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Debug\CQRSdslUnitTest.Resources.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Debug\CQRSdslUnitTest.vbproj.GenerateResource.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Debug\CQRSdslUnitTest.vbproj.CoreCompileInputs.cache
