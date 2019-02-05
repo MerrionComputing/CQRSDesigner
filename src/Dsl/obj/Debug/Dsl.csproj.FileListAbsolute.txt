@@ -10,14 +10,14 @@ D:\Source\Workspaces\CQRS on Azure\Designer\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.
 D:\Source\Workspaces\CQRS on Azure\Designer\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.pdb
 D:\Source\Workspaces\CQRS on Azure\Designer\Dsl\obj\Debug\Dsl.csproj.CopyComplete
 D:\Source\Workspaces\CQRS on Azure\Designer\Dsl\obj\Debug\Dsl.csprojAssemblyReference.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.Dsl.dll.config
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.Dsl.dll
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.Dsl.pdb
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.CustomCode.UI.UserInterfaceMessages.resources
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.CustomCode.Validation.ValidationMessages.resources
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx.resources
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\Dsl.csproj.GenerateResource.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\Dsl.csproj.CoreCompileInputs.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.Dsl.dll.config
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.Dsl.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.Dsl.pdb
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\Dsl.csproj.CopyComplete
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.pdb

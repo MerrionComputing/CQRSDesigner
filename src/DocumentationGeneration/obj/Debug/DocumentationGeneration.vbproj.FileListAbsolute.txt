@@ -10,14 +10,14 @@ D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\CQ
 D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.pdb
 D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.CopyComplete
 D:\Source\Workspaces\CQRS on Azure\Designer\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbprojAssemblyReference.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.dll.config
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.dll
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.pdb
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbprojAssemblyReference.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.Resources.resources
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.GenerateResource.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.CoreCompileInputs.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.dll.config
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.pdb
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DocumentationGeneration.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\DocumentationGeneration.vbproj.CopyComplete
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DocumentationGeneration\obj\Debug\CQRSAzure.CQRSdsl.DocumentationGeneration.xml

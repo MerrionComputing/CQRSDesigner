@@ -4,7 +4,7 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)microsoft.visualstudio.threading.analyzers\15.8.209\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.visualstudio.threading.analyzers\15.8.209\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.visualstudio.threading.analyzers\16.0.96-beta\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.visualstudio.threading.analyzers\16.0.96-beta\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.visualstudio.sdk.analyzers\15.8.36\build\Microsoft.VisualStudio.SDK.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.visualstudio.sdk.analyzers\15.8.36\build\Microsoft.VisualStudio.SDK.Analyzers.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.vssdk.buildtools\15.9.3039\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.vssdk.buildtools\15.9.3039\build\Microsoft.VSSDK.BuildTools.targets')" />
   </ImportGroup>

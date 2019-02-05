@@ -10,7 +10,10 @@ D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.C
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.pdb
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CopyComplete
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.Resources.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.GenerateResource.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CoreCompileInputs.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.dll.config
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.pdb
@@ -22,6 +25,7 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\csi.exe
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\csi.exe.config
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\csi.rsp
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\Microsoft.CodeAnalysis.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\Microsoft.CodeAnalysis.Scripting.dll
@@ -63,10 +67,6 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\vbc.exe.config
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\vbc.rsp
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\VBCSCompiler.exe
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\VBCSCompiler.exe.config
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.Resources.resources
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.GenerateResource.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CoreCompileInputs.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CopyComplete
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.xml

@@ -17,11 +17,11 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/15.8.209": {
+      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading.Analyzers": "15.8.209",
-          "Microsoft.VisualStudio.Validation": "15.3.15"
+          "Microsoft.VisualStudio.Validation": "15.3.15",
+          "System.Threading.Tasks.Extensions": "4.3.0"
         },
         "frameworkAssemblies": [
           "WindowsBase"
@@ -74,17 +74,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/15.8.209": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/15.9.28307": {
+      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "15.6.31",
-          "StreamJsonRpc": "1.3.23"
+          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
+          "StreamJsonRpc": "1.5.38-beta"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -264,7 +264,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Collections.Immutable/1.5.0": {
+      "System.Collections.Immutable/1.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
@@ -273,17 +273,17 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
-      "System.Composition/1.2.0": {
+      "System.Composition/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Convention": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0",
-          "System.Composition.TypedParts": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Convention": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11",
+          "System.Composition.TypedParts": "1.3.0-preview.19073.11"
         }
       },
-      "System.Composition.AttributedModel/1.2.0": {
+      "System.Composition.AttributedModel/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
@@ -292,10 +292,10 @@
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
         }
       },
-      "System.Composition.Convention/1.2.0": {
+      "System.Composition.Convention/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
@@ -304,10 +304,10 @@
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
         }
       },
-      "System.Composition.Hosting/1.2.0": {
+      "System.Composition.Hosting/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
@@ -316,7 +316,7 @@
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
         }
       },
-      "System.Composition.Runtime/1.2.0": {
+      "System.Composition.Runtime/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
@@ -325,12 +325,12 @@
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
         }
       },
-      "System.Composition.TypedParts/1.2.0": {
+      "System.Composition.TypedParts/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.TypedParts.dll": {}
@@ -373,11 +373,11 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.IO.Pipelines/4.5.3": {
+      "System.IO.Pipelines/4.6.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Memory": "4.5.1",
+          "System.Buffers": "4.5.0",
+          "System.Memory": "4.5.0",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "compile": {
@@ -479,7 +479,7 @@
           "lib/net462/System.Reflection.dll": {}
         }
       },
-      "System.Reflection.Emit/4.3.0": {
+      "System.Reflection.Emit/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -497,10 +497,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Reflection.Metadata/1.6.0": {
+      "System.Reflection.Metadata/1.7.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Collections.Immutable": "1.5.0"
+          "System.Collections.Immutable": "1.6.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
@@ -542,7 +542,7 @@
           "lib/net462/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "System.Runtime.CompilerServices.Unsafe/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -708,10 +708,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.2": {
+      "System.Threading.Tasks.Extensions/4.6.0-preview.18571.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview.18571.3"
         },
         "compile": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
@@ -782,11 +782,11 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/15.8.209": {
+      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading.Analyzers": "15.8.209",
-          "Microsoft.VisualStudio.Validation": "15.3.15"
+          "Microsoft.VisualStudio.Validation": "15.3.15",
+          "System.Threading.Tasks.Extensions": "4.3.0"
         },
         "frameworkAssemblies": [
           "WindowsBase"
@@ -839,17 +839,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/15.8.209": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/15.9.28307": {
+      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "15.6.31",
-          "StreamJsonRpc": "1.3.23"
+          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
+          "StreamJsonRpc": "1.5.38-beta"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -1029,7 +1029,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Collections.Immutable/1.5.0": {
+      "System.Collections.Immutable/1.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
@@ -1038,17 +1038,17 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
-      "System.Composition/1.2.0": {
+      "System.Composition/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Convention": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0",
-          "System.Composition.TypedParts": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Convention": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11",
+          "System.Composition.TypedParts": "1.3.0-preview.19073.11"
         }
       },
-      "System.Composition.AttributedModel/1.2.0": {
+      "System.Composition.AttributedModel/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
@@ -1057,10 +1057,10 @@
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
         }
       },
-      "System.Composition.Convention/1.2.0": {
+      "System.Composition.Convention/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
@@ -1069,10 +1069,10 @@
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
         }
       },
-      "System.Composition.Hosting/1.2.0": {
+      "System.Composition.Hosting/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
@@ -1081,7 +1081,7 @@
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
         }
       },
-      "System.Composition.Runtime/1.2.0": {
+      "System.Composition.Runtime/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
@@ -1090,12 +1090,12 @@
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
         }
       },
-      "System.Composition.TypedParts/1.2.0": {
+      "System.Composition.TypedParts/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.TypedParts.dll": {}
@@ -1138,11 +1138,11 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.IO.Pipelines/4.5.3": {
+      "System.IO.Pipelines/4.6.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Memory": "4.5.1",
+          "System.Buffers": "4.5.0",
+          "System.Memory": "4.5.0",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "compile": {
@@ -1234,7 +1234,7 @@
           "lib/net462/System.Reflection.dll": {}
         }
       },
-      "System.Reflection.Emit/4.3.0": {
+      "System.Reflection.Emit/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -1252,10 +1252,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Reflection.Metadata/1.6.0": {
+      "System.Reflection.Metadata/1.7.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Collections.Immutable": "1.5.0"
+          "System.Collections.Immutable": "1.6.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
@@ -1297,7 +1297,7 @@
           "lib/net462/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "System.Runtime.CompilerServices.Unsafe/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -1429,10 +1429,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.2": {
+      "System.Threading.Tasks.Extensions/4.6.0-preview.18571.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview.18571.3"
         },
         "compile": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
@@ -1503,11 +1503,11 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/15.8.209": {
+      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading.Analyzers": "15.8.209",
-          "Microsoft.VisualStudio.Validation": "15.3.15"
+          "Microsoft.VisualStudio.Validation": "15.3.15",
+          "System.Threading.Tasks.Extensions": "4.3.0"
         },
         "frameworkAssemblies": [
           "WindowsBase"
@@ -1560,17 +1560,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/15.8.209": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/15.9.28307": {
+      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "15.6.31",
-          "StreamJsonRpc": "1.3.23"
+          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
+          "StreamJsonRpc": "1.5.38-beta"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -1750,7 +1750,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Collections.Immutable/1.5.0": {
+      "System.Collections.Immutable/1.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
@@ -1759,17 +1759,17 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
-      "System.Composition/1.2.0": {
+      "System.Composition/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Convention": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0",
-          "System.Composition.TypedParts": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Convention": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11",
+          "System.Composition.TypedParts": "1.3.0-preview.19073.11"
         }
       },
-      "System.Composition.AttributedModel/1.2.0": {
+      "System.Composition.AttributedModel/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
@@ -1778,10 +1778,10 @@
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
         }
       },
-      "System.Composition.Convention/1.2.0": {
+      "System.Composition.Convention/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
@@ -1790,10 +1790,10 @@
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
         }
       },
-      "System.Composition.Hosting/1.2.0": {
+      "System.Composition.Hosting/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
@@ -1802,7 +1802,7 @@
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
         }
       },
-      "System.Composition.Runtime/1.2.0": {
+      "System.Composition.Runtime/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
@@ -1811,12 +1811,12 @@
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
         }
       },
-      "System.Composition.TypedParts/1.2.0": {
+      "System.Composition.TypedParts/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.TypedParts.dll": {}
@@ -1859,11 +1859,11 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.IO.Pipelines/4.5.3": {
+      "System.IO.Pipelines/4.6.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Memory": "4.5.1",
+          "System.Buffers": "4.5.0",
+          "System.Memory": "4.5.0",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "compile": {
@@ -1955,7 +1955,7 @@
           "lib/net462/System.Reflection.dll": {}
         }
       },
-      "System.Reflection.Emit/4.3.0": {
+      "System.Reflection.Emit/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -1973,10 +1973,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Reflection.Metadata/1.6.0": {
+      "System.Reflection.Metadata/1.7.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Collections.Immutable": "1.5.0"
+          "System.Collections.Immutable": "1.6.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
@@ -2018,7 +2018,7 @@
           "lib/net462/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "System.Runtime.CompilerServices.Unsafe/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -2150,10 +2150,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.2": {
+      "System.Threading.Tasks.Extensions/4.6.0-preview.18571.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview.18571.3"
         },
         "compile": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
@@ -2224,11 +2224,11 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/15.8.209": {
+      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading.Analyzers": "15.8.209",
-          "Microsoft.VisualStudio.Validation": "15.3.15"
+          "Microsoft.VisualStudio.Validation": "15.3.15",
+          "System.Threading.Tasks.Extensions": "4.3.0"
         },
         "frameworkAssemblies": [
           "WindowsBase"
@@ -2281,17 +2281,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/15.8.209": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/15.9.28307": {
+      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "15.6.31",
-          "StreamJsonRpc": "1.3.23"
+          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
+          "StreamJsonRpc": "1.5.38-beta"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -2471,7 +2471,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Collections.Immutable/1.5.0": {
+      "System.Collections.Immutable/1.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
@@ -2480,17 +2480,17 @@
           "lib/netstandard2.0/System.Collections.Immutable.dll": {}
         }
       },
-      "System.Composition/1.2.0": {
+      "System.Composition/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Convention": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0",
-          "System.Composition.TypedParts": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Convention": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11",
+          "System.Composition.TypedParts": "1.3.0-preview.19073.11"
         }
       },
-      "System.Composition.AttributedModel/1.2.0": {
+      "System.Composition.AttributedModel/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
@@ -2499,10 +2499,10 @@
           "lib/netstandard2.0/System.Composition.AttributedModel.dll": {}
         }
       },
-      "System.Composition.Convention/1.2.0": {
+      "System.Composition.Convention/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
@@ -2511,10 +2511,10 @@
           "lib/netstandard2.0/System.Composition.Convention.dll": {}
         }
       },
-      "System.Composition.Hosting/1.2.0": {
+      "System.Composition.Hosting/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
@@ -2523,7 +2523,7 @@
           "lib/netstandard2.0/System.Composition.Hosting.dll": {}
         }
       },
-      "System.Composition.Runtime/1.2.0": {
+      "System.Composition.Runtime/1.3.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
@@ -2532,12 +2532,12 @@
           "lib/netstandard2.0/System.Composition.Runtime.dll": {}
         }
       },
-      "System.Composition.TypedParts/1.2.0": {
+      "System.Composition.TypedParts/1.3.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Composition.AttributedModel": "1.2.0",
-          "System.Composition.Hosting": "1.2.0",
-          "System.Composition.Runtime": "1.2.0"
+          "System.Composition.AttributedModel": "1.3.0-preview.19073.11",
+          "System.Composition.Hosting": "1.3.0-preview.19073.11",
+          "System.Composition.Runtime": "1.3.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Composition.TypedParts.dll": {}
@@ -2580,11 +2580,11 @@
           "lib/net462/System.IO.dll": {}
         }
       },
-      "System.IO.Pipelines/4.5.3": {
+      "System.IO.Pipelines/4.6.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Memory": "4.5.1",
+          "System.Buffers": "4.5.0",
+          "System.Memory": "4.5.0",
           "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "compile": {
@@ -2676,7 +2676,7 @@
           "lib/net462/System.Reflection.dll": {}
         }
       },
-      "System.Reflection.Emit/4.3.0": {
+      "System.Reflection.Emit/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -2694,10 +2694,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Reflection.Metadata/1.6.0": {
+      "System.Reflection.Metadata/1.7.0-preview.19073.11": {
         "type": "package",
         "dependencies": {
-          "System.Collections.Immutable": "1.5.0"
+          "System.Collections.Immutable": "1.6.0-preview.19073.11"
         },
         "compile": {
           "lib/netstandard2.0/System.Reflection.Metadata.dll": {}
@@ -2739,7 +2739,7 @@
           "lib/net462/System.Runtime.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "System.Runtime.CompilerServices.Unsafe/4.6.0-preview.19073.11": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -2871,10 +2871,10 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.2": {
+      "System.Threading.Tasks.Extensions/4.6.0-preview.18571.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0-preview.18571.3"
         },
         "compile": {
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
@@ -2961,10 +2961,10 @@
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.VisualStudio.Threading/15.8.209": {
-      "sha512": "qgLpbHdlnb/6m+n+ESU9VXYxQOeozuhbp4ZOvO2K0WR+ugjMQGKlC3S4Edr6ljgJV7q8d1aawUwYyyHcq5Cgag==",
+    "Microsoft.VisualStudio.Threading/16.0.96-beta": {
+      "sha512": "gE+co6o7Hs1PE1/1QXik2d3tnGVWsl2HG+5FJ+oU88FlMfPBW1LRS2CpEAVv+DQuO8NhSlf1g5Q37gAnhq/E4Q==",
       "type": "package",
-      "path": "microsoft.visualstudio.threading/15.8.209",
+      "path": "microsoft.visualstudio.threading/16.0.96-beta",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3000,22 +3000,6 @@
         "lib/net46/tr/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/net46/zh-Hans/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/net46/zh-Hant/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/Microsoft.VisualStudio.Threading.dll",
-        "lib/netstandard1.1/Microsoft.VisualStudio.Threading.pdb",
-        "lib/netstandard1.1/Microsoft.VisualStudio.Threading.xml",
-        "lib/netstandard1.1/cs/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/de/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/es/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/fr/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/it/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/ja/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/ko/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/pl/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/pt-BR/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/ru/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/tr/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/zh-Hans/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/netstandard1.1/zh-Hant/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/netstandard1.3/Microsoft.VisualStudio.Threading.dll",
         "lib/netstandard1.3/Microsoft.VisualStudio.Threading.pdb",
         "lib/netstandard1.3/Microsoft.VisualStudio.Threading.xml",
@@ -3048,30 +3032,14 @@
         "lib/netstandard2.0/tr/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/netstandard2.0/zh-Hans/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/netstandard2.0/zh-Hant/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/Microsoft.VisualStudio.Threading.dll",
-        "lib/portable-net45+win8+wpa81/Microsoft.VisualStudio.Threading.pdb",
-        "lib/portable-net45+win8+wpa81/Microsoft.VisualStudio.Threading.xml",
-        "lib/portable-net45+win8+wpa81/cs/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/de/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/es/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/fr/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/it/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/ja/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/ko/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/pl/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/pt-BR/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/ru/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/tr/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/zh-Hans/Microsoft.VisualStudio.Threading.resources.dll",
-        "lib/portable-net45+win8+wpa81/zh-Hant/Microsoft.VisualStudio.Threading.resources.dll",
-        "microsoft.visualstudio.threading.15.8.209.nupkg.sha512",
+        "microsoft.visualstudio.threading.16.0.96-beta.nupkg.sha512",
         "microsoft.visualstudio.threading.nuspec"
       ]
     },
-    "Microsoft.VisualStudio.Threading.Analyzers/15.8.209": {
-      "sha512": "YdgmE14rpAPUxUx3xf/zewCFpTCVnAGjeJmXBGwuIDMeG2g3mhIxpqZcCrd00vAItmjimx3lIMr9AcWdvqwLoA==",
+    "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
+      "sha512": "O3ZELOovwOoqkDTDfhsbAOSgBgOzewoEIvR1Q7igNYhcfcgnujYzUNc2Ltz++HXeciZRIA0Il2tevOEG6QoWEQ==",
       "type": "package",
-      "path": "microsoft.visualstudio.threading.analyzers/15.8.209",
+      "path": "microsoft.visualstudio.threading.analyzers/16.0.96-beta",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -3091,26 +3059,27 @@
         "analyzers/cs/tr/Microsoft.VisualStudio.Threading.Analyzers.resources.dll",
         "analyzers/cs/zh-Hans/Microsoft.VisualStudio.Threading.Analyzers.resources.dll",
         "analyzers/cs/zh-Hant/Microsoft.VisualStudio.Threading.Analyzers.resources.dll",
+        "build/AdditionalFiles/vs-threading.LegacyThreadSwitchingMembers.txt",
         "build/AdditionalFiles/vs-threading.MainThreadAssertingMethods.txt",
         "build/AdditionalFiles/vs-threading.MainThreadSwitchingMethods.txt",
         "build/AdditionalFiles/vs-threading.MembersRequiringMainThread.txt",
         "build/Microsoft.VisualStudio.Threading.Analyzers.targets",
-        "microsoft.visualstudio.threading.analyzers.15.8.209.nupkg.sha512",
+        "microsoft.visualstudio.threading.analyzers.16.0.96-beta.nupkg.sha512",
         "microsoft.visualstudio.threading.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.VisualStudio.Utilities/15.9.28307": {
-      "sha512": "pTkuHTrX5A4FoeKOYlXJT72V+/nxfqoQK3TrholgKR8jhzcT2sgB7fR4Cfpq3DvxQnQ7mpXBHDevAvT/hl/AYA==",
+    "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
+      "sha512": "wYFHQlb0yaKBqrpVadIakZ67TjGv5zfFjll9O50JLk0jZRnEUq+EJ0tdxKiMqMuB/eooI57hEf17i6w3PGBbAg==",
       "type": "package",
-      "path": "microsoft.visualstudio.utilities/15.9.28307",
+      "path": "microsoft.visualstudio.utilities/16.0.28528-pre",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net46/Microsoft.VisualStudio.Utilities.dll",
         "lib/net46/Microsoft.VisualStudio.Utilities.xml",
-        "microsoft.visualstudio.utilities.15.9.28307.nupkg.sha512",
+        "microsoft.visualstudio.utilities.16.0.28528-pre.nupkg.sha512",
         "microsoft.visualstudio.utilities.nuspec"
       ]
     },
@@ -3501,10 +3470,10 @@
         "system.collections.nuspec"
       ]
     },
-    "System.Collections.Immutable/1.5.0": {
-      "sha512": "EXKiDFsChZW0RjrZ4FYHu9aW6+P4MCgEDCklsVseRfhoO0F+dXeMSsMRAlVXIo06kGJ/zv+2w1a2uc2+kxxSaQ==",
+    "System.Collections.Immutable/1.6.0-preview.19073.11": {
+      "sha512": "Y4h+c3utmxQ0A2uQqq4oVFwtjaEeEITeP4Mg3sfULsZ90Dw5ziUip1/jYg/fZ71U72V5rGt0HYh/f5wdV06y8w==",
       "type": "package",
-      "path": "system.collections.immutable/1.5.0",
+      "path": "system.collections.immutable/1.6.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3518,31 +3487,31 @@
         "lib/netstandard2.0/System.Collections.Immutable.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.xml",
-        "system.collections.immutable.1.5.0.nupkg.sha512",
+        "system.collections.immutable.1.6.0-preview.19073.11.nupkg.sha512",
         "system.collections.immutable.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Composition/1.2.0": {
-      "sha512": "nTgIj77StlLM7CW3uFM3B/0Yen5udzaeSQcdSCVV3wIlRGYsXYLjZWTYa9m8IBjQiyZKsukKYaogqhOa6QUlDA==",
+    "System.Composition/1.3.0-preview.19073.11": {
+      "sha512": "fM4ErUdkjBfKdeUbR0sO/puJuOWJGaS3lbvJKaCmZrheNDogOd+W8QaBM/km5dlo7A5LrxYgUXq9yH5YHctpKg==",
       "type": "package",
-      "path": "system.composition/1.2.0",
+      "path": "system.composition/1.3.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "system.composition.1.2.0.nupkg.sha512",
+        "system.composition.1.3.0-preview.19073.11.nupkg.sha512",
         "system.composition.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Composition.AttributedModel/1.2.0": {
-      "sha512": "IQ2bn1BR/Q7gapjnXR/HGh0BMtjYVU0t0uPZ3LXE4yfwjM7x/HcImJxwwhUtnL+YWU5/pTOhzZnqsjwKJpWaug==",
+    "System.Composition.AttributedModel/1.3.0-preview.19073.11": {
+      "sha512": "eOp8+orv/l9HkcZjnHwgQ1JAobO5zd4kEEGPGSBkuxktDvCM8vGqjWil57XQdJZ+be9UJtBau8j6A65ybFuReA==",
       "type": "package",
-      "path": "system.composition.attributedmodel/1.2.0",
+      "path": "system.composition.attributedmodel/1.3.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3550,17 +3519,18 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/System.Composition.AttributedModel.dll",
         "lib/netstandard2.0/System.Composition.AttributedModel.dll",
+        "lib/netstandard2.0/System.Composition.AttributedModel.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Composition.AttributedModel.dll",
-        "system.composition.attributedmodel.1.2.0.nupkg.sha512",
+        "system.composition.attributedmodel.1.3.0-preview.19073.11.nupkg.sha512",
         "system.composition.attributedmodel.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Composition.Convention/1.2.0": {
-      "sha512": "g9PSAdL/0dT3GZbdwt5r238RLHfnn+ujRVhoOGvVNjbbhlgZeKcDA+zsje4Y81csMywAPsDXkeXrBigtjINurg==",
+    "System.Composition.Convention/1.3.0-preview.19073.11": {
+      "sha512": "Fud6shV8owh3B4cxBMCzlRE+Q/bvUUsOH+B147fWFxlsnOgUjinAc6FfkKFi09GAoCBDvezC/0HgZJozOJZfbw==",
       "type": "package",
-      "path": "system.composition.convention/1.2.0",
+      "path": "system.composition.convention/1.3.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3568,17 +3538,18 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/System.Composition.Convention.dll",
         "lib/netstandard2.0/System.Composition.Convention.dll",
+        "lib/netstandard2.0/System.Composition.Convention.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Composition.Convention.dll",
-        "system.composition.convention.1.2.0.nupkg.sha512",
+        "system.composition.convention.1.3.0-preview.19073.11.nupkg.sha512",
         "system.composition.convention.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Composition.Hosting/1.2.0": {
-      "sha512": "NQa4OanHFuWVpMuj3+0RnoAq2v+5KQNA3+EYuhmuDbOfR06o7rYjzs9FHP0XWJWN85vqnM76dgAgj46OYsDV8A==",
+    "System.Composition.Hosting/1.3.0-preview.19073.11": {
+      "sha512": "N4JxX/BbkQT2GOAFngpc7g0Nz9LizrwGx9+ILGYDwSsIbJLlaobFlYsJlkvbmzcUAXrct8NGyQQkTTxmLY+XDQ==",
       "type": "package",
-      "path": "system.composition.hosting/1.2.0",
+      "path": "system.composition.hosting/1.3.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3586,17 +3557,18 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/System.Composition.Hosting.dll",
         "lib/netstandard2.0/System.Composition.Hosting.dll",
+        "lib/netstandard2.0/System.Composition.Hosting.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Composition.Hosting.dll",
-        "system.composition.hosting.1.2.0.nupkg.sha512",
+        "system.composition.hosting.1.3.0-preview.19073.11.nupkg.sha512",
         "system.composition.hosting.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Composition.Runtime/1.2.0": {
-      "sha512": "F8Ef3y9/JKbK4lEqJScFnfhT8/CwboGS890a/Js9E11wb1N6rl63pU8wxRPmy2MUUUHSafxrF3ooIh94pNEF0g==",
+    "System.Composition.Runtime/1.3.0-preview.19073.11": {
+      "sha512": "QDVPhBkvnaBSbxxvP51nEW8c79n6QKuEDbbG4bs2eYWHd6TKzld2t/CJR8la/nypHq+ckfd0UGAysBijj9lecA==",
       "type": "package",
-      "path": "system.composition.runtime/1.2.0",
+      "path": "system.composition.runtime/1.3.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3604,17 +3576,18 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/System.Composition.Runtime.dll",
         "lib/netstandard2.0/System.Composition.Runtime.dll",
+        "lib/netstandard2.0/System.Composition.Runtime.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Composition.Runtime.dll",
-        "system.composition.runtime.1.2.0.nupkg.sha512",
+        "system.composition.runtime.1.3.0-preview.19073.11.nupkg.sha512",
         "system.composition.runtime.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Composition.TypedParts/1.2.0": {
-      "sha512": "cLjoUGnaLRkJSwL6FLEx3aJanDgwEtyoEqf9cE6Z5ipbjNXAlk7W11uwNfHaECxdPa/QfGbvaRd4i24gxc5ygg==",
+    "System.Composition.TypedParts/1.3.0-preview.19073.11": {
+      "sha512": "E4XXkFtfXzIwjMtV47GYSNJ0E6jFNcSsiQntZciLB6ry5ulUOjLYZNaqyThTlhWOE9sdwdvxCG0Mp+VRno+T7Q==",
       "type": "package",
-      "path": "system.composition.typedparts/1.2.0",
+      "path": "system.composition.typedparts/1.3.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3622,8 +3595,9 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/System.Composition.TypedParts.dll",
         "lib/netstandard2.0/System.Composition.TypedParts.dll",
+        "lib/netstandard2.0/System.Composition.TypedParts.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Composition.TypedParts.dll",
-        "system.composition.typedparts.1.2.0.nupkg.sha512",
+        "system.composition.typedparts.1.3.0-preview.19073.11.nupkg.sha512",
         "system.composition.typedparts.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3843,22 +3817,22 @@
         "system.io.nuspec"
       ]
     },
-    "System.IO.Pipelines/4.5.3": {
-      "sha512": "k6Ac5MuJ/GbFo7l/bB0Bxg0JxHReDi19eW1wuDGIy/iSIAJob0cNHChvILde/v4fdX1ZNmL2Nr7axKG21wbNLw==",
+    "System.IO.Pipelines/4.6.0-preview.19073.11": {
+      "sha512": "c52fHXujatDB5Fyux/JGZdZeNbWpsrv5k0Hf81qCP3InL32LZVKJoO87pMotXWjnnPlRm1ogvw3EpdRw9qHsFQ==",
       "type": "package",
-      "path": "system.io.pipelines/4.5.3",
+      "path": "system.io.pipelines/4.6.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/netcoreapp2.1/System.IO.Pipelines.dll",
-        "lib/netcoreapp2.1/System.IO.Pipelines.xml",
+        "lib/netcoreapp3.0/System.IO.Pipelines.dll",
+        "lib/netcoreapp3.0/System.IO.Pipelines.xml",
         "lib/netstandard1.3/System.IO.Pipelines.dll",
         "lib/netstandard1.3/System.IO.Pipelines.xml",
         "lib/netstandard2.0/System.IO.Pipelines.dll",
         "lib/netstandard2.0/System.IO.Pipelines.xml",
-        "system.io.pipelines.4.5.3.nupkg.sha512",
+        "system.io.pipelines.4.6.0-preview.19073.11.nupkg.sha512",
         "system.io.pipelines.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4159,25 +4133,30 @@
         "system.reflection.nuspec"
       ]
     },
-    "System.Reflection.Emit/4.3.0": {
-      "sha512": "228FG0jLcIwTVJyz8CLFKueVqQK36ANazUManGaJHkO0icjiIypKW7YLWLIWahyIkdh5M7mV2dJepllLyA1SKg==",
+    "System.Reflection.Emit/4.6.0-preview.19073.11": {
+      "sha512": "GgJIYLmQ5CChu+eLJCJMbtl1nUyBA0dXAhNSCVYy+xN48QOOSj747eneid0UTtzDLcUgU03mzxqJxM9KmiITrQ==",
       "type": "package",
-      "path": "system.reflection.emit/4.3.0",
+      "path": "system.reflection.emit/4.6.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/monotouch10/_._",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/monoandroid10/_._",
         "lib/net45/_._",
         "lib/netcore50/System.Reflection.Emit.dll",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Reflection.Emit.dll",
+        "lib/netstandard1.1/System.Reflection.Emit.xml",
         "lib/netstandard1.3/System.Reflection.Emit.dll",
-        "lib/xamarinios10/_._",
+        "lib/netstandard2.0/System.Reflection.Emit.dll",
+        "lib/netstandard2.0/System.Reflection.Emit.xml",
+        "lib/uap10.0.16299/System.Reflection.Emit.dll",
+        "lib/uap10.0.16299/System.Reflection.Emit.xml",
         "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
+        "ref/monoandroid10/_._",
         "ref/net45/_._",
+        "ref/netcoreapp2.0/_._",
         "ref/netstandard1.1/System.Reflection.Emit.dll",
         "ref/netstandard1.1/System.Reflection.Emit.xml",
         "ref/netstandard1.1/de/System.Reflection.Emit.xml",
@@ -4189,9 +4168,19 @@
         "ref/netstandard1.1/ru/System.Reflection.Emit.xml",
         "ref/netstandard1.1/zh-hans/System.Reflection.Emit.xml",
         "ref/netstandard1.1/zh-hant/System.Reflection.Emit.xml",
+        "ref/netstandard2.0/System.Reflection.Emit.dll",
+        "ref/netstandard2.0/System.Reflection.Emit.xml",
+        "ref/uap10.0.16299/System.Reflection.Emit.dll",
+        "ref/uap10.0.16299/System.Reflection.Emit.xml",
         "ref/xamarinmac20/_._",
-        "system.reflection.emit.4.3.0.nupkg.sha512",
-        "system.reflection.emit.nuspec"
+        "runtimes/aot/lib/netcore50/System.Reflection.Emit.dll",
+        "runtimes/aot/lib/netcore50/System.Reflection.Emit.xml",
+        "runtimes/aot/lib/uap10.0.16299/System.Reflection.Emit.dll",
+        "runtimes/aot/lib/uap10.0.16299/System.Reflection.Emit.xml",
+        "system.reflection.emit.4.6.0-preview.19073.11.nupkg.sha512",
+        "system.reflection.emit.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Reflection.Extensions/4.3.0": {
@@ -4250,10 +4239,10 @@
         "system.reflection.extensions.nuspec"
       ]
     },
-    "System.Reflection.Metadata/1.6.0": {
-      "sha512": "COC1aiAJjCoA5GBF+QKL2uLqEBew4JsCkQmoHKbN3TlOZKa2fKLz5CpiRQKDz0RsAOEGsVKqOD5bomsXq/4STQ==",
+    "System.Reflection.Metadata/1.7.0-preview.19073.11": {
+      "sha512": "4qaDyxgqZjHQQpnRyTF3SvpZP4g60gaO+R7UMvSpczoco/fqc3cU2w7TCQU178dgcBDqiE9oiHxEEKiU137k7w==",
       "type": "package",
-      "path": "system.reflection.metadata/1.6.0",
+      "path": "system.reflection.metadata/1.7.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4265,7 +4254,7 @@
         "lib/netstandard2.0/System.Reflection.Metadata.xml",
         "lib/portable-net45+win8/System.Reflection.Metadata.dll",
         "lib/portable-net45+win8/System.Reflection.Metadata.xml",
-        "system.reflection.metadata.1.6.0.nupkg.sha512",
+        "system.reflection.metadata.1.7.0-preview.19073.11.nupkg.sha512",
         "system.reflection.metadata.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -4474,10 +4463,10 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
-      "sha512": "wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
+    "System.Runtime.CompilerServices.Unsafe/4.6.0-preview.19073.11": {
+      "sha512": "5OGrgo+iPSV5HI3z+aauvwLprHsCzbkvnATlEEj/eIzUgOLhOPguo0Uf2iQRGjOdt7zuqF4ve6y6ZoTtVHXHXQ==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.2",
+      "path": "system.runtime.compilerservices.unsafe/4.6.0-preview.19073.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4489,11 +4478,13 @@
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/uap10.0.16300/_._",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+        "ref/uap10.0.16300/_._",
+        "system.runtime.compilerservices.unsafe.4.6.0-preview.19073.11.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -5018,10 +5009,10 @@
         "system.threading.nuspec"
       ]
     },
-    "System.Threading.Tasks.Extensions/4.5.2": {
-      "sha512": "BG/TNxDFv0svAzx8OiMXDlsHfGw623BZ8tCXw4YLhDFDvDhNUEV58jKYMGRnkbJNm7c3JNNJDiN7JBMzxRBR2w==",
+    "System.Threading.Tasks.Extensions/4.6.0-preview.18571.3": {
+      "sha512": "yPsPf2tND0iqnGVBFMJhvoEpb7Tx6r/k0MRGR8IHGbEWM/Ra30e53LPX6M7bQx4O+tmJ7iC5LVwfRzY1XYfKvg==",
       "type": "package",
-      "path": "system.threading.tasks.extensions/4.5.2",
+      "path": "system.threading.tasks.extensions/4.6.0-preview.18571.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -5036,6 +5027,7 @@
         "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
+        "lib/uap10.0.16300/_._",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
@@ -5043,11 +5035,12 @@
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
         "ref/netcoreapp2.1/_._",
+        "ref/uap10.0.16300/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.threading.tasks.extensions.4.5.2.nupkg.sha512",
+        "system.threading.tasks.extensions.4.6.0-preview.18571.3.nupkg.sha512",
         "system.threading.tasks.extensions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -5121,38 +5114,38 @@
       "Microsoft.Composition >= 1.0.31",
       "Microsoft.VSSDK.BuildTools >= 15.9.3039",
       "Microsoft.VisualStudio.SDK.Analyzers >= 15.8.36",
-      "Microsoft.VisualStudio.Threading >= 15.8.209",
-      "Microsoft.VisualStudio.Threading.Analyzers >= 15.8.209",
-      "Microsoft.VisualStudio.Utilities >= 15.9.28307",
+      "Microsoft.VisualStudio.Threading >= 16.0.96-beta",
+      "Microsoft.VisualStudio.Threading.Analyzers >= 16.0.96-beta",
+      "Microsoft.VisualStudio.Utilities >= 16.0.28528-pre",
       "Microsoft.VisualStudio.Validation >= 15.3.58",
       "Nerdbank.Streams >= 2.0.214",
       "Newtonsoft.Json >= 12.0.1",
       "StreamJsonRpc >= 2.0.140",
       "System.Buffers >= 4.5.0",
       "System.Collections >= 4.3.0",
-      "System.Collections.Immutable >= 1.5.0",
-      "System.Composition >= 1.2.0",
-      "System.Composition.AttributedModel >= 1.2.0",
-      "System.Composition.Convention >= 1.2.0",
-      "System.Composition.Hosting >= 1.2.0",
-      "System.Composition.Runtime >= 1.2.0",
-      "System.Composition.TypedParts >= 1.2.0",
+      "System.Collections.Immutable >= 1.6.0-preview.19073.11",
+      "System.Composition >= 1.3.0-preview.19073.11",
+      "System.Composition.AttributedModel >= 1.3.0-preview.19073.11",
+      "System.Composition.Convention >= 1.3.0-preview.19073.11",
+      "System.Composition.Hosting >= 1.3.0-preview.19073.11",
+      "System.Composition.Runtime >= 1.3.0-preview.19073.11",
+      "System.Composition.TypedParts >= 1.3.0-preview.19073.11",
       "System.Diagnostics.Debug >= 4.3.0",
       "System.Globalization >= 4.3.0",
       "System.IO >= 4.3.0",
-      "System.IO.Pipelines >= 4.5.3",
+      "System.IO.Pipelines >= 4.6.0-preview.19073.11",
       "System.Linq >= 4.3.0",
       "System.Memory >= 4.5.2",
       "System.Net.Http >= 4.3.4",
       "System.Net.WebSockets >= 4.3.0",
       "System.Reflection >= 4.3.0",
-      "System.Reflection.Emit >= 4.3.0",
+      "System.Reflection.Emit >= 4.6.0-preview.19073.11",
       "System.Reflection.Extensions >= 4.3.0",
-      "System.Reflection.Metadata >= 1.6.0",
+      "System.Reflection.Metadata >= 1.7.0-preview.19073.11",
       "System.Reflection.Primitives >= 4.3.0",
       "System.Resources.ResourceManager >= 4.3.0",
       "System.Runtime >= 4.3.0",
-      "System.Runtime.CompilerServices.Unsafe >= 4.5.2",
+      "System.Runtime.CompilerServices.Unsafe >= 4.6.0-preview.19073.11",
       "System.Runtime.Extensions >= 4.3.0",
       "System.Runtime.InteropServices >= 4.3.0",
       "System.Security.Cryptography.Algorithms >= 4.3.1",
@@ -5162,7 +5155,7 @@
       "System.Text.Encoding >= 4.3.0",
       "System.Text.Encoding.Extensions >= 4.3.0",
       "System.Threading >= 4.3.0",
-      "System.Threading.Tasks.Extensions >= 4.5.2",
+      "System.Threading.Tasks.Extensions >= 4.6.0-preview.18571.3",
       "System.ValueTuple >= 4.5.0"
     ]
   },
@@ -5225,15 +5218,15 @@
           },
           "Microsoft.VisualStudio.Threading": {
             "target": "Package",
-            "version": "[15.8.209, )"
+            "version": "[16.0.96-beta, )"
           },
           "Microsoft.VisualStudio.Threading.Analyzers": {
             "target": "Package",
-            "version": "[15.8.209, )"
+            "version": "[16.0.96-beta, )"
           },
           "Microsoft.VisualStudio.Utilities": {
             "target": "Package",
-            "version": "[15.9.28307, )"
+            "version": "[16.0.28528-pre, )"
           },
           "Microsoft.VisualStudio.Validation": {
             "target": "Package",
@@ -5261,31 +5254,31 @@
           },
           "System.Collections.Immutable": {
             "target": "Package",
-            "version": "[1.5.0, )"
+            "version": "[1.6.0-preview.19073.11, )"
           },
           "System.Composition": {
             "target": "Package",
-            "version": "[1.2.0, )"
+            "version": "[1.3.0-preview.19073.11, )"
           },
           "System.Composition.AttributedModel": {
             "target": "Package",
-            "version": "[1.2.0, )"
+            "version": "[1.3.0-preview.19073.11, )"
           },
           "System.Composition.Convention": {
             "target": "Package",
-            "version": "[1.2.0, )"
+            "version": "[1.3.0-preview.19073.11, )"
           },
           "System.Composition.Hosting": {
             "target": "Package",
-            "version": "[1.2.0, )"
+            "version": "[1.3.0-preview.19073.11, )"
           },
           "System.Composition.Runtime": {
             "target": "Package",
-            "version": "[1.2.0, )"
+            "version": "[1.3.0-preview.19073.11, )"
           },
           "System.Composition.TypedParts": {
             "target": "Package",
-            "version": "[1.2.0, )"
+            "version": "[1.3.0-preview.19073.11, )"
           },
           "System.Diagnostics.Debug": {
             "target": "Package",
@@ -5301,7 +5294,7 @@
           },
           "System.IO.Pipelines": {
             "target": "Package",
-            "version": "[4.5.3, )"
+            "version": "[4.6.0-preview.19073.11, )"
           },
           "System.Linq": {
             "target": "Package",
@@ -5325,7 +5318,7 @@
           },
           "System.Reflection.Emit": {
             "target": "Package",
-            "version": "[4.3.0, )"
+            "version": "[4.6.0-preview.19073.11, )"
           },
           "System.Reflection.Extensions": {
             "target": "Package",
@@ -5333,7 +5326,7 @@
           },
           "System.Reflection.Metadata": {
             "target": "Package",
-            "version": "[1.6.0, )"
+            "version": "[1.7.0-preview.19073.11, )"
           },
           "System.Reflection.Primitives": {
             "target": "Package",
@@ -5349,7 +5342,7 @@
           },
           "System.Runtime.CompilerServices.Unsafe": {
             "target": "Package",
-            "version": "[4.5.2, )"
+            "version": "[4.6.0-preview.19073.11, )"
           },
           "System.Runtime.Extensions": {
             "target": "Package",
@@ -5389,7 +5382,7 @@
           },
           "System.Threading.Tasks.Extensions": {
             "target": "Package",
-            "version": "[4.5.2, )"
+            "version": "[4.6.0-preview.18571.3, )"
           },
           "System.ValueTuple": {
             "target": "Package",

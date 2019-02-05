@@ -13,7 +13,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <param name="store">Store where new element is to be created.</param>
         /// <param name="propertyAssignments">List of domain property id/value pairs to set once the element is created.</param>
         public CQRSModel(DslModeling::Store store, params DslModeling::PropertyAssignment[] propertyAssignments)
-        	: this(store != null ? store.DefaultPartitionForClass(DomainClassId) : null, propertyAssignments)
+        	: this(store?.DefaultPartitionForClass(DomainClassId), propertyAssignments)
         {
         }
 
@@ -47,11 +47,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
             ModelCodegenerationOptionsBase.SupportedLanguages CodeLanguageIn = ModelCodegenerationOptionsBase.SupportedLanguages.VBNet ;
             ModelCodegenerationOptionsBase.ConstructorPreferenceSetting ConstructorPreferenceIn = ModelCodegenerationOptionsBase.ConstructorPreferenceSetting.GenerateBoth ;
             ModelCodegenerationOptionsBase.TypedCodeGenerationSetting TypeSettingIn = ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.StronglyTyped; 
-            System.IO.DirectoryInfo DirectoryRootIn = null;
             bool SeparateFolderPerModelIn = true ;
             bool SeparateFolderPerAggregateIn = true ;
             bool GenerateEntityFrameworkClassesIn = false;
             bool GenerateEventGridIn = false;
+            System.IO.DirectoryInfo DirectoryRootIn = null;
 
             // Read the model properties that affect code generation
             if (this.DefaultCodeGenerationLanguage == TargetLanguage.CSharp)
