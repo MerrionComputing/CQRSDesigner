@@ -14,11 +14,11 @@ that allow the user to interact with the model to generate code or documentation
 
 ## CodeGeneration project
 
-Project that uses DodDOM to generate code (C# or VB.Net) from the model to be integrated into a host project.
+Project that uses CodeDOM to generate code (C# or VB.Net) from the model to be integrated into a host project.  If you want to output to a different code language this is where that change would be needed.
 
 ## DocumentationGeneration project
 
-Project that is used to create HTML documentation of the CQRS / Event Sourcing model created by the designer
+Project that is used to create HTML documentation of the CQRS / Event Sourcing model created by the designer with each command, query, aggregate, event, projection, classifier and identifier group getting its own html page created.
 
 ## CQRSdslUnitTest project
 
