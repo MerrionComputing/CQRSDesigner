@@ -11,7 +11,7 @@
   <Extern href="stdidcmd.h"/>
   <Extern href="vsshlids.h"/>
   <Extern href="virtkeys.h"/>
-  <Extern href="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VSSDK\VisualStudioIntegration\Common\Inc\DSLToolsCmdID.h"/>
+  <Extern href="C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\VSSDK\VisualStudioIntegration\Common\Inc\DSLToolsCmdID.h"/>
   <Include href="GeneratedCode\GeneratedVsct.vsct"/>
   <Include href="MefExtension\CommandExtensionVSCT.vsct"/>
   <Symbols>

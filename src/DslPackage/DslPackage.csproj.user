@@ -6,9 +6,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartArguments>/rootsuffix Exp "D:\Source\CQRS on Event Grid\TheLongRun\TheLongRun.sln"</StartArguments>
     <StartProgram>C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Preview\Common7\IDE\devenv.exe</StartProgram>
+    <DeployTargetInstanceId>60d66bd7</DeployTargetInstanceId>
   </PropertyGroup>
   <PropertyGroup>
     <ReferencePath>
     </ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DeployTargetInstanceId>60d66bd7</DeployTargetInstanceId>
+    <StartProgram>C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Preview\Common7\IDE\devenv.exe</StartProgram>
   </PropertyGroup>
 </Project>

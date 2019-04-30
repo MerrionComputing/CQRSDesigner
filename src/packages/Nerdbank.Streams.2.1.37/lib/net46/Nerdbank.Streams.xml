@@ -1,0 +1,1903 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Nerdbank.Streams</name>
+    </assembly>
+    <members>
+        <member name="T:Nerdbank.Streams.BufferWriterStream">
+            <summary>
+            A stream that writes to a <see cref="T:System.Buffers.IBufferWriter`1"/> of <see cref="T:System.Byte"/>.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.#ctor(System.Buffers.IBufferWriter{System.Byte})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.BufferWriterStream"/> class.
+            </summary>
+            <param name="writer">The writer to write to.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.BufferWriterStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.BufferWriterStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.BufferWriterStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.BufferWriterStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.BufferWriterStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.BufferWriterStream.IsDisposed">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.WriteByte(System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.BufferWriterStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Nerdbank.Streams.FullDuplexStream">
+            <summary>
+            Provides a full duplex stream which may be shared by two parties to
+            exchange messages.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.FullDuplexStream.CreatePair(System.IO.Pipelines.PipeOptions)">
+            <summary>
+            Creates a pair of streams that can be passed to two parties
+            to allow for interaction with each other.
+            </summary>
+            <param name="pipeOptions">Pipe options to initialize the internal pipes with.</param>
+            <returns>A pair of streams.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.FullDuplexStream.CreatePipePair(System.IO.Pipelines.PipeOptions)">
+            <summary>
+            Creates a pair of duplex pipes that can be passed to two parties
+            to allow for interaction with each other.
+            </summary>
+            <param name="pipeOptions">Pipe options to initialize the internal pipes with.</param>
+            <returns>A pair of <see cref="T:System.IO.Pipelines.IDuplexPipe"/> objects.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.FullDuplexStream.Splice(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Combines a readable <see cref="T:System.IO.Stream"/> with a writable <see cref="T:System.IO.Stream"/> into a new full-duplex <see cref="T:System.IO.Stream"/>
+            that reads and writes to the specified streams.
+            </summary>
+            <param name="readableStream">A readable stream.</param>
+            <param name="writableStream">A writable stream.</param>
+            <returns>A new full-duplex stream.</returns>
+        </member>
+        <member name="T:Nerdbank.Streams.HalfDuplexStream">
+            <summary>
+            A <see cref="T:System.IO.Stream"/> that acts as a queue for bytes, in that what gets written to it
+            can then be read from it, in order.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.HalfDuplexStream.pipe">
+            <summary>
+            The pipe that does all the hard work.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.HalfDuplexStream"/> class.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.HalfDuplexStream"/> class.
+            </summary>
+            <param name="resumeWriterThreshold">The size the buffer must shrink to after hitting <paramref name="pauseWriterThreshold"/> before writing is allowed to resume.</param>
+            <param name="pauseWriterThreshold">The maximum size the buffer is allowed to grow before write calls are blocked (pending a read that will release buffer space.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.HalfDuplexStream.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.HalfDuplexStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.HalfDuplexStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.HalfDuplexStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.HalfDuplexStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.HalfDuplexStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.CompleteWriting">
+            <summary>
+            Signals that no more writing will take place, causing readers to receive 0 bytes when asking for any more data.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.System#Buffers#IBufferWriter{System#Byte}#Advance(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.System#Buffers#IBufferWriter{System#Byte}#GetMemory(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.System#Buffers#IBufferWriter{System#Byte}#GetSpan(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.HalfDuplexStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Nerdbank.Streams.MonitoringStream">
+            <summary>
+            A <see cref="T:System.IO.Stream"/> that wraps another and reports all I/O taking place by raising events.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MonitoringStream.inner">
+            <summary>
+            The underlying stream serving the I/O.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MonitoringStream"/> class.
+            </summary>
+            <param name="inner">The stream to wrap and monitor I/O for.</param>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.DidSeek">
+            <summary>
+            Occurs after <see cref="M:Nerdbank.Streams.MonitoringStream.Seek(System.Int64,System.IO.SeekOrigin)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.WillRead">
+            <summary>
+            Occurs before <see cref="M:Nerdbank.Streams.MonitoringStream.Read(System.Byte[],System.Int32,System.Int32)"/> or <see cref="M:Nerdbank.Streams.MonitoringStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)"/> is invoked.
+            </summary>
+            <remarks>
+            The <see cref="P:System.ArraySegment`1.Count"/> value is the maximum bytes that may be read.
+            </remarks>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.DidRead">
+            <summary>
+            Occurs after <see cref="M:Nerdbank.Streams.MonitoringStream.Read(System.Byte[],System.Int32,System.Int32)"/> or <see cref="M:Nerdbank.Streams.MonitoringStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)"/> is invoked.
+            </summary>
+            <remarks>
+            The <see cref="P:System.ArraySegment`1.Count"/> value is the actual bytes that were read.
+            </remarks>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.WillWrite">
+            <summary>
+            Occurs before <see cref="M:Nerdbank.Streams.MonitoringStream.Write(System.Byte[],System.Int32,System.Int32)"/> or <see cref="M:Nerdbank.Streams.MonitoringStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.DidWrite">
+            <summary>
+            Occurs after <see cref="M:Nerdbank.Streams.MonitoringStream.Write(System.Byte[],System.Int32,System.Int32)"/> or <see cref="M:Nerdbank.Streams.MonitoringStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.WillSetLength">
+            <summary>
+            Occurs before <see cref="M:Nerdbank.Streams.MonitoringStream.SetLength(System.Int64)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.DidSetLength">
+            <summary>
+            Occurs after <see cref="M:Nerdbank.Streams.MonitoringStream.SetLength(System.Int64)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.WillReadByte">
+            <summary>
+            Occurs before <see cref="M:Nerdbank.Streams.MonitoringStream.ReadByte"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.DidReadByte">
+            <summary>
+            Occurs after <see cref="M:Nerdbank.Streams.MonitoringStream.ReadByte"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.WillWriteByte">
+            <summary>
+            Occurs before <see cref="M:Nerdbank.Streams.MonitoringStream.WriteByte(System.Byte)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.DidWriteByte">
+            <summary>
+            Occurs after <see cref="M:Nerdbank.Streams.MonitoringStream.WriteByte(System.Byte)"/> is invoked.
+            </summary>
+        </member>
+        <member name="E:Nerdbank.Streams.MonitoringStream.Disposed">
+            <summary>
+            Occurs when <see cref="M:System.IO.Stream.Dispose"/> is invoked.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.ReadTimeout">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.WriteTimeout">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.MonitoringStream.CanTimeout">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.WriteByte(System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.MonitoringStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingProtocolException">
+            <summary>
+            An exception that is thrown when an error occurs on the remote side of a multiplexed connection.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingProtocolException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingProtocolException"/> class.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingProtocolException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingProtocolException"/> class.
+            </summary>
+            <param name="message">The message for the exception.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingProtocolException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingProtocolException"/> class.
+            </summary>
+            <param name="message">The message for the exception.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingProtocolException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingProtocolException"/> class
+            for use in deserialization.
+            </summary>
+            <param name="info">The serialization info.</param>
+            <param name="context">The serialization context.</param>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingStream">
+            <content>
+            Contains the <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/> nested type.
+            </content>
+            <content>
+            Contains the <see cref="T:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs"/> nested type.
+            </content>
+            <content>
+            Contains the <see cref="T:Nerdbank.Streams.MultiplexingStream.ChannelOptions"/> nested type.
+            </content>
+            <content>
+            Contains the <see cref="T:Nerdbank.Streams.MultiplexingStream.ControlCode"/> nested type.
+            </content>
+            <summary>
+            Encodes multiple channels over a single transport.
+            </summary>
+            <content>
+            Contains the <see cref="T:Nerdbank.Streams.MultiplexingStream.FrameHeader"/> nested type.
+            </content>
+            <content>
+            Contains the <see cref="T:Nerdbank.Streams.MultiplexingStream.Options"/> nested type.
+            </content>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingStream.Channel">
+            <summary>
+            An individual channel within a <see cref="T:Nerdbank.Streams.MultiplexingStream"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.acceptanceSource">
+            <summary>
+            This task source completes when the channel has been accepted, rejected, or the offer is canceled.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.completionSource">
+            <summary>
+            The source for the <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.Completion"/> property.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.receivingPipe">
+            <summary>
+            This pipe relays remote party's data to the local channel owner.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Channel.transmissionPipe">
+            <summary>
+            This pipe relays local transmissions to the remote party.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.Id">
+            <summary>
+            Gets the unique ID for this channel.
+            </summary>
+            <remarks>
+            This value is usually shared for an anonymous channel so the remote party
+            can accept it with <see cref="M:Nerdbank.Streams.MultiplexingStream.AcceptChannel(System.Int32,Nerdbank.Streams.MultiplexingStream.ChannelOptions)"/> or
+            reject it with <see cref="M:Nerdbank.Streams.MultiplexingStream.RejectChannel(System.Int32)"/>.
+            </remarks>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.TraceSource">
+            <summary>
+            Gets the mechanism used for tracing activity related to this channel.
+            </summary>
+            <value>A non-null value.</value>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.Input">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.Output">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.Acceptance">
+            <summary>
+            Gets a <see cref="T:System.Threading.Tasks.Task"/> that completes when the channel is accepted, rejected, or canceled.
+            </summary>
+            <remarks>
+            If the channel is accepted, this task transitions to <see cref="F:System.Threading.Tasks.TaskStatus.RanToCompletion"/> state.
+            If the channel offer is canceled, this task transitions to a <see cref="F:System.Threading.Tasks.TaskStatus.Canceled"/> state.
+            If the channel offer is rejected, this task transitions to a <see cref="F:System.Threading.Tasks.TaskStatus.Canceled"/> state.
+            </remarks>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.Completion">
+            <summary>
+            Gets a <see cref="T:System.Threading.Tasks.Task"/> that completes when the channel is disposed,
+            which occurs when <see cref="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose"/> is invoked or when both sides
+            have indicated they are done writing to the channel.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Channel.ReceivedMessagePipeWriter">
+            <summary>
+            Gets the pipe writer to use when a message is received for this channel, so that the channel owner will notice and read it.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.Dispose">
+            <summary>
+            Closes this channel and releases all resources associated with it.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.TryAcceptOffer(Nerdbank.Streams.MultiplexingStream.ChannelOptions)">
+            <summary>
+            Accepts an offer made by the remote party.
+            </summary>
+            <param name="options">The options to apply to the channel.</param>
+            <returns>A value indicating whether the offer was accepted. It may fail if the channel was already closed or the offer rescinded.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.OnAccepted">
+            <summary>
+            Occurs when the remote party has accepted our offer of this channel.
+            </summary>
+            <returns>A value indicating whether the acceptance went through; <c>false</c> if the channel is already accepted, rejected or offer rescinded.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Channel.ProcessOutboundTransmissionsAsync">
+            <summary>
+            Relays data that the local channel owner wants to send to the remote party.
+            </summary>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs">
+            <summary>
+            Describes an offer for a channel.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs.#ctor(System.Int32,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs"/> class.
+            </summary>
+            <param name="id">The unique ID of the channel.</param>
+            <param name="name">The name of the channel.</param>
+            <param name="isAccepted">A value indicating whether the channel has already been accepted.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs.Id">
+            <summary>
+            Gets the unique ID of the channel.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs.Name">
+            <summary>
+            Gets the name of the channel.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs.IsAccepted">
+            <summary>
+            Gets a value indicating whether the channel has already been accepted.
+            </summary>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingStream.ChannelOptions">
+            <summary>
+            Describes local treatment of a channel.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.ChannelOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingStream.ChannelOptions" /> class.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.ChannelOptions.TraceSource">
+            <summary>
+            Gets or sets the mechanism used for tracing activity related to this channel.
+            </summary>
+            <value>The trace source. May be null.</value>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingStream.ControlCode">
+            <summary>
+            Signals what kind of frame is being transmitted.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlCode.Offer">
+            <summary>
+            A channel is proposed to the remote party.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlCode.OfferAccepted">
+            <summary>
+            A channel proposal has been accepted.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlCode.Content">
+            <summary>
+            The payload of the frame is a payload intended for channel consumption.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlCode.ContentWritingCompleted">
+            <summary>
+            Sent after all bytes have been transmitted on a given channel. Either or both sides may send this.
+            A channel may be automatically closed when each side has both transmitted and received this message.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlCode.ChannelTerminated">
+            <summary>
+            Sent when a channel is closed, an incoming offer is rejected, or an outgoing offer is canceled.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlChannelId">
+            <summary>
+            The channel id reserved for control frames.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ProtocolMagicNumber">
+            <summary>
+            The magic number to send at the start of communication.
+            </summary>
+            <remarks>
+            If the protocol ever changes, change this random number. It serves both as a way to recognize the other end actually supports multiplexing and ensure compatibility.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.ControlFrameEncoding">
+            <summary>
+            The encoding used for characters in control frames.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.DefaultChannelOptions">
+            <summary>
+            The options to use for channels we create in response to incoming offers.
+            </summary>
+            <remarks>
+            Whatever these settings are, they can be replaced when the channel is accepted.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.framePayloadMaxLength">
+            <summary>
+            The maximum length of a frame's payload.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.isOdd">
+            <summary>
+            A value indicating whether this is the "odd" party in the conversation (where the other one would be "even").
+            </summary>
+            <remarks>
+            This value is only significant for parts of the protocol where it's useful to have the two parties behave slightly differently to avoid conflicts.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.stream">
+            <summary>
+            The underlying transport.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.syncObject">
+            <summary>
+            The object to lock when accessing internal fields.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.channelsOfferedByThemByName">
+            <summary>
+            A dictionary of channels being offered by the remote end but not yet accepted by us, keyed by name.
+            This does not include ephemeral channels (those without a name).
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.acceptingChannels">
+            <summary>
+            A dictionary of channels being accepted (but not yet offered).
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.openChannels">
+            <summary>
+            A dictionary of all channels, keyed by their ID.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.sendingSemaphore">
+            <summary>
+            A semaphore that must be entered to write to the underlying transport <see cref="F:Nerdbank.Streams.MultiplexingStream.stream"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.completionSource">
+            <summary>
+            The source for the <see cref="P:Nerdbank.Streams.MultiplexingStream.Completion"/> property.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.sendingHeaderBuffer">
+            <summary>
+            A buffer used only by <see cref="M:Nerdbank.Streams.MultiplexingStream.SendFrameAsync(Nerdbank.Streams.MultiplexingStream.FrameHeader,System.Buffers.ReadOnlySequence{System.Byte},System.Threading.CancellationToken)"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.disposalTokenSource">
+            <summary>
+            A token that is canceled when this instance is disposed.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.lastOfferedChannelId">
+            <summary>
+            The last number assigned to a channel.
+            Each use of this should increment by two.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.#ctor(System.IO.Stream,System.Boolean,Nerdbank.Streams.MultiplexingStream.Options)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingStream"/> class.
+            </summary>
+            <param name="stream">The stream to multiplex multiple channels over.</param>
+            <param name="isOdd">A value indicating whether this party is the "odd" one.</param>
+            <param name="options">The options for this instance.</param>
+        </member>
+        <member name="E:Nerdbank.Streams.MultiplexingStream.ChannelOffered">
+            <summary>
+            Occurs when the remote party offers to establish a channel.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Completion">
+            <summary>
+            Gets a task that completes when this instance is disposed, and may have captured a fault that led to its self-disposal.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.TraceSource">
+            <summary>
+            Gets the logger used by this instance.
+            </summary>
+            <value>Never null.</value>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Microsoft#IDisposableObservable#IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.DisposalToken">
+            <summary>
+            Gets a token that is canceled when this instance is disposed.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.CreateAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingStream"/> class.
+            </summary>
+            <param name="stream">The stream to multiplex multiple channels over. Use <see cref="M:Nerdbank.Streams.FullDuplexStream.Splice(System.IO.Stream,System.IO.Stream)"/> if you have distinct input/output streams.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The multiplexing stream, once the handshake is complete.</returns>
+            <exception cref="T:System.IO.EndOfStreamException">Thrown if the remote end disconnects before the handshake is complete.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.CreateAsync(System.IO.Stream,Nerdbank.Streams.MultiplexingStream.Options,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.MultiplexingStream"/> class.
+            </summary>
+            <param name="stream">The stream to multiplex multiple channels over. Use <see cref="M:Nerdbank.Streams.FullDuplexStream.Splice(System.IO.Stream,System.IO.Stream)"/> if you have distinct input/output streams.</param>
+            <param name="options">Options to define behavior for the multiplexing stream.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The multiplexing stream, once the handshake is complete.</returns>
+            <exception cref="T:System.IO.EndOfStreamException">Thrown if the remote end disconnects before the handshake is complete.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.CreateChannel(Nerdbank.Streams.MultiplexingStream.ChannelOptions)">
+            <summary>
+            Creates an anonymous channel that may be accepted by <see cref="M:Nerdbank.Streams.MultiplexingStream.AcceptChannel(System.Int32,Nerdbank.Streams.MultiplexingStream.ChannelOptions)"/>.
+            Its existance must be communicated by other means (typically another, existing channel) to encourage acceptance.
+            </summary>
+            <param name="options">A set of options that describe local treatment of this channel.</param>
+            <returns>The anonymous channel.</returns>
+            <remarks>
+            Note that while the channel is created immediately, any local write to that channel will be buffered locally
+            until the remote party accepts the channel.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.AcceptChannel(System.Int32,Nerdbank.Streams.MultiplexingStream.ChannelOptions)">
+            <summary>
+            Accepts a channel with a specific ID.
+            </summary>
+            <param name="id">The <see cref="P:Nerdbank.Streams.MultiplexingStream.Channel.Id"/> of the channel to accept.</param>
+            <param name="options">A set of options that describe local treatment of this channel.</param>
+            <returns>The accepted <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if the channel is already accepted or is no longer offered by the remote party.</exception>
+            <remarks>
+            This method can be used to accept anonymous channels created with <see cref="M:Nerdbank.Streams.MultiplexingStream.CreateChannel(Nerdbank.Streams.MultiplexingStream.ChannelOptions)"/>.
+            Unlike <see cref="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)"/> which will await
+            for a channel offer if a matching one has not been made yet, this method only accepts an offer
+            for a channel that has already been made.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.RejectChannel(System.Int32)">
+            <summary>
+            Rejects an offer for the channel with a specified ID.
+            </summary>
+            <param name="id">The ID of the channel whose offer should be rejected.</param>
+            <exception cref="T:System.InvalidOperationException">Thrown if the channel was already accepted.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.OfferChannelAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Offers a new, named channel to the remote party so they may accept it with <see cref="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)"/>.
+            </summary>
+            <param name="name">
+            A name for the channel, which must be accepted on the remote end to complete creation.
+            It need not be unique, and may be empty but must not be null.
+            Any characters are allowed, and max length is determined by the maximum frame payload (based on UTF-8 encoding).
+            </param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>
+            A task that completes with the <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/> if the offer is accepted on the remote end
+            or faults with <see cref="T:Nerdbank.Streams.MultiplexingProtocolException"/> if the remote end rejects the channel.
+            </returns>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before the channel is accepted by the remote end.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.OfferChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)">
+            <summary>
+            Offers a new, named channel to the remote party so they may accept it with <see cref="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)"/>.
+            </summary>
+            <param name="name">
+            A name for the channel, which must be accepted on the remote end to complete creation.
+            It need not be unique, and may be empty but must not be null.
+            Any characters are allowed, and max length is determined by the maximum frame payload (based on UTF-8 encoding).
+            </param>
+            <param name="options">A set of options that describe local treatment of this channel.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>
+            A task that completes with the <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/> if the offer is accepted on the remote end
+            or faults with <see cref="T:Nerdbank.Streams.MultiplexingProtocolException"/> if the remote end rejects the channel.
+            </returns>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before the channel is accepted by the remote end.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Accepts a channel that the remote end has attempted or may attempt to create.
+            </summary>
+            <param name="name">The name of the channel to accept.</param>
+            <param name="cancellationToken">A token to indicate lost interest in accepting the channel.</param>
+            <returns>The <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>, after its offer has been received from the remote party and accepted.</returns>
+            <remarks>
+            If multiple offers exist with the specified <paramref name="name"/>, the first one received will be accepted.
+            </remarks>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before a request to create the channel has been received.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.AcceptChannelAsync(System.String,Nerdbank.Streams.MultiplexingStream.ChannelOptions,System.Threading.CancellationToken)">
+            <summary>
+            Accepts a channel that the remote end has attempted or may attempt to create.
+            </summary>
+            <param name="name">The name of the channel to accept.</param>
+            <param name="options">A set of options that describe local treatment of this channel.</param>
+            <param name="cancellationToken">A token to indicate lost interest in accepting the channel.</param>
+            <returns>The <see cref="T:Nerdbank.Streams.MultiplexingStream.Channel"/>, after its offer has been received from the remote party and accepted.</returns>
+            <remarks>
+            If multiple offers exist with the specified <paramref name="name"/>, the first one received will be accepted.
+            </remarks>
+            <exception cref="T:System.InvalidOperationException">Thrown if the channel is already accepted or is no longer offered by the remote party.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before a request to create the channel has been received.</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Dispose">
+            <summary>
+            Immediately closes the underlying transport stream and releases all resources associated with this object and any open channels.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources.
+            </summary>
+            <param name="disposing"><c>true</c> if we should dispose managed resources.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelOffered(Nerdbank.Streams.MultiplexingStream.ChannelOfferEventArgs)">
+            <summary>
+            Raises the <see cref="E:Nerdbank.Streams.MultiplexingStream.ChannelOffered"/> event.
+            </summary>
+            <param name="args">The arguments to pass to the event handlers.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.ReadToFillAsync(System.IO.Stream,System.Memory{System.Byte},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Reads to fill a buffer.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+            <param name="buffer">The buffer to fill.</param>
+            <param name="throwOnEmpty"><c>true</c> to throw if 0 bytes are read before the stream before the end of stream is encountered; <c>false</c> to simply return <c>false</c> when that happens.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns><c>true</c> if the buffer was filled as required; <c>false</c> if the stream was empty and no bytes were read, if <paramref name="throwOnEmpty"/> is <c>false</c>.</returns>
+            <exception cref="T:System.IO.EndOfStreamException">Thrown if the end of the stream was reached before the buffer was filled (unless <paramref name="throwOnEmpty"/> is false and 0 bytes were read).</exception>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.OnChannelTerminated(System.Int32)">
+            <summary>
+            Occurs when the remote party has terminated a channel (including canceling an offer).
+            </summary>
+            <param name="channelId">The ID of the terminated channel.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.MultiplexingStream.GetUnusedChannelId">
+            <summary>
+            Gets a unique number that can be used to represent a channel.
+            </summary>
+            <returns>An unused channel number.</returns>
+            <remarks>
+            The channel numbers increase by two in order to maintain odd or even numbers, since each party is allowed to create only one or the other.
+            </remarks>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.FrameHeader.Code">
+            <summary>
+            Gets or sets the kind of frame this is.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.FrameHeader.ChannelId">
+            <summary>
+            Gets or sets the channel that this frame refers to or carries a payload for.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.FrameHeader.FramePayloadLength">
+            <summary>
+            Gets or sets the length of the frame content (excluding the header).
+            </summary>
+            <remarks>
+            Must be no greater than <see cref="F:System.UInt16.MaxValue"/>.
+            </remarks>
+        </member>
+        <member name="T:Nerdbank.Streams.MultiplexingStream.Options">
+            <summary>
+            Describes the options that a <see cref="T:Nerdbank.Streams.MultiplexingStream"/> may be created with.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.MultiplexingStream.Options.traceSource">
+            <summary>
+            Backing field for the <see cref="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource"/> property.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.MultiplexingStream.Options.TraceSource">
+            <summary>
+            Gets or sets the logger used by this instance.
+            </summary>
+            <value>Never null.</value>
+        </member>
+        <member name="T:Nerdbank.Streams.NestedStream">
+            <summary>
+            A stream that allows for reading from another stream up to a given number of bytes.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.NestedStream.underlyingStream">
+            <summary>
+            The stream to read from.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.NestedStream.length">
+            <summary>
+            The remaining bytes allowed to be read.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.#ctor(System.IO.Stream,System.Int64)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.NestedStream"/> class.
+            </summary>
+            <param name="underlyingStream">The stream to read from.</param>
+            <param name="length">The number of bytes to read from the parent stream.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.NestedStream.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.NestedStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.NestedStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.NestedStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.NestedStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.NestedStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.NestedStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Nerdbank.Streams.PipeExtensions">
+            <summary>
+            Stream extension methods.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PipeExtensions.DefaultReadBufferSize">
+            <summary>
+            The default buffer size to use for pipe readers.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.AsStream(System.IO.Pipelines.IDuplexPipe)">
+            <summary>
+            Exposes a full-duplex pipe as a <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="pipe">The pipe to wrap as a stream.</param>
+            <returns>The wrapping stream.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.AsStream(System.IO.Pipelines.PipeReader)">
+            <summary>
+            Exposes a pipe reader as a <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="pipeReader">The pipe to read from when <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)"/> is invoked.</param>
+            <returns>The wrapping stream.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.AsStream(System.IO.Pipelines.PipeWriter)">
+            <summary>
+            Exposes a pipe writer as a <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="pipeWriter">The pipe to write to when <see cref="M:System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)"/> is invoked.</param>
+            <returns>The wrapping stream.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UsePipeReader(System.IO.Stream,System.Int32,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)">
+            <summary>
+            Enables efficiently reading a stream using <see cref="T:System.IO.Pipelines.PipeReader"/>.
+            </summary>
+            <param name="stream">The stream to read from using a pipe.</param>
+            <param name="sizeHint">A hint at the size of messages that are commonly transferred. Use 0 for a commonly reasonable default.</param>
+            <param name="pipeOptions">Optional pipe options to use.</param>
+            <param name="cancellationToken">A cancellation token that aborts reading from the <paramref name="stream"/>.</param>
+            <returns>A <see cref="T:System.IO.Pipelines.PipeReader"/>.</returns>
+            <remarks>
+            When the caller invokes <see cref="M:System.IO.Pipelines.PipeReader.Complete(System.Exception)"/> on the result value,
+            this leads to the associated <see cref="M:System.IO.Pipelines.PipeWriter.Complete(System.Exception)"/> to be automatically called as well.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UseStrictPipeReader(System.IO.Stream,System.Int32)">
+            <summary>
+            Creates a <see cref="T:System.IO.Pipelines.PipeReader"/> that reads from the specified <see cref="T:System.IO.Stream"/> exactly as told to do so.
+            </summary>
+            <param name="stream">The stream to read from using a pipe.</param>
+            <param name="sizeHint">A hint at the size of messages that are commonly transferred. Use 0 for a commonly reasonable default.</param>
+            <returns>A <see cref="T:System.IO.Pipelines.PipeReader"/>.</returns>
+            <remarks>
+            This reader may not be as efficient as the <see cref="T:System.IO.Pipelines.Pipe"/>-based <see cref="T:System.IO.Pipelines.PipeReader"/> returned from <see cref="M:Nerdbank.Streams.PipeExtensions.UsePipeReader(System.IO.Stream,System.Int32,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)"/>,
+            but its interaction with the underlying <see cref="T:System.IO.Stream"/> is closer to how a <see cref="T:System.IO.Stream"/> would typically be used which can ease migration from streams to pipes.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UsePipeWriter(System.IO.Stream,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)">
+            <summary>
+            Enables writing to a stream using <see cref="T:System.IO.Pipelines.PipeWriter"/>.
+            </summary>
+            <param name="stream">The stream to write to using a pipe.</param>
+            <param name="pipeOptions">Optional pipe options to use.</param>
+            <param name="cancellationToken">A cancellation token that aborts writing to the <paramref name="stream"/>.</param>
+            <returns>A <see cref="T:System.IO.Pipelines.PipeWriter"/>.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UseStrictPipeWriter(System.IO.Stream)">
+            <summary>
+            Creates a <see cref="T:System.IO.Pipelines.PipeWriter"/> that writes to an underlying <see cref="T:System.IO.Stream"/>
+            when <see cref="M:System.IO.Pipelines.PipeWriter.FlushAsync(System.Threading.CancellationToken)"/> is called rather than asynchronously sometime later.
+            </summary>
+            <param name="stream">The stream to write to using a pipe.</param>
+            <returns>A <see cref="T:System.IO.Pipelines.PipeWriter"/>.</returns>
+            <remarks>
+            This writer may not be as efficient as the <see cref="T:System.IO.Pipelines.Pipe"/>-based <see cref="T:System.IO.Pipelines.PipeWriter"/> returned from <see cref="M:Nerdbank.Streams.PipeExtensions.UsePipeWriter(System.IO.Stream,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)"/>,
+            but its interaction with the underlying <see cref="T:System.IO.Stream"/> is closer to how a <see cref="T:System.IO.Stream"/> would typically be used which can ease migration from streams to pipes.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UsePipe(System.IO.Stream,System.Int32,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)">
+            <summary>
+            Enables reading and writing to a <see cref="T:System.IO.Stream"/> using <see cref="T:System.IO.Pipelines.PipeWriter"/> and <see cref="T:System.IO.Pipelines.PipeReader"/>.
+            </summary>
+            <param name="stream">The stream to access using a pipe.</param>
+            <param name="sizeHint">A hint at the size of messages that are commonly transferred. Use 0 for a commonly reasonable default.</param>
+            <param name="pipeOptions">Optional pipe options to use.</param>
+            <param name="cancellationToken">A token that may cancel async processes to read from and write to the <paramref name="stream"/>.</param>
+            <returns>An <see cref="T:System.IO.Pipelines.IDuplexPipe"/> instance.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UsePipeReader(System.Net.WebSockets.WebSocket,System.Int32,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)">
+            <summary>
+            Enables efficiently reading a <see cref="T:System.Net.WebSockets.WebSocket"/> using <see cref="T:System.IO.Pipelines.PipeReader"/>.
+            </summary>
+            <param name="webSocket">The web socket to read from using a pipe.</param>
+            <param name="sizeHint">A hint at the size of messages that are commonly transferred. Use 0 for a commonly reasonable default.</param>
+            <param name="pipeOptions">Optional pipe options to use.</param>
+            <param name="cancellationToken">A cancellation token that aborts reading from the <paramref name="webSocket"/>.</param>
+            <returns>A <see cref="T:System.IO.Pipelines.PipeReader"/>.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UsePipeWriter(System.Net.WebSockets.WebSocket,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)">
+            <summary>
+            Enables efficiently writing to a <see cref="T:System.Net.WebSockets.WebSocket"/> using a <see cref="T:System.IO.Pipelines.PipeWriter"/>.
+            </summary>
+            <param name="webSocket">The web socket to write to using a pipe.</param>
+            <param name="pipeOptions">Optional pipe options to use.</param>
+            <param name="cancellationToken">A cancellation token that aborts writing to the <paramref name="webSocket"/>.</param>
+            <returns>A <see cref="T:System.IO.Pipelines.PipeWriter"/>.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeExtensions.UsePipe(System.Net.WebSockets.WebSocket,System.Int32,System.IO.Pipelines.PipeOptions,System.Threading.CancellationToken)">
+            <summary>
+            Enables reading and writing to a <see cref="T:System.Net.WebSockets.WebSocket"/> using <see cref="T:System.IO.Pipelines.PipeWriter"/> and <see cref="T:System.IO.Pipelines.PipeReader"/>.
+            </summary>
+            <param name="webSocket">The <see cref="T:System.Net.WebSockets.WebSocket"/> to access using a pipe.</param>
+            <param name="sizeHint">A hint at the size of messages that may be transferred. Use 0 for a commonly reasonable default.</param>
+            <param name="pipeOptions">Optional pipe options to use.</param>
+            <param name="cancellationToken">A token that may cancel async processes to read from and write to the <paramref name="webSocket"/>.</param>
+            <returns>An <see cref="T:System.IO.Pipelines.IDuplexPipe"/> instance.</returns>
+        </member>
+        <member name="T:Nerdbank.Streams.PipeStream">
+            <summary>
+            Wraps a <see cref="T:System.IO.Pipelines.PipeReader"/> and/or <see cref="T:System.IO.Pipelines.PipeWriter"/> as a <see cref="T:System.IO.Stream"/> for
+            easier interop with existing APIs.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PipeStream.writer">
+            <summary>
+            The <see cref="T:System.IO.Pipelines.PipeWriter"/> to use when writing to this stream. May be null.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PipeStream.reader">
+            <summary>
+            The <see cref="T:System.IO.Pipelines.PipeReader"/> to use when reading from this stream. May be null.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PipeStream.readingCompleted">
+            <summary>
+            Indicates whether reading was completed.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.#ctor(System.IO.Pipelines.PipeWriter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.PipeStream"/> class.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.Pipelines.PipeWriter"/> to use when writing to this stream. May be null.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.#ctor(System.IO.Pipelines.PipeReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.PipeStream"/> class.
+            </summary>
+            <param name="reader">The <see cref="T:System.IO.Pipelines.PipeReader"/> to use when reading from this stream. May be null.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.#ctor(System.IO.Pipelines.IDuplexPipe)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.PipeStream"/> class.
+            </summary>
+            <param name="pipe">A full duplex pipe that will serve as the transport for this stream.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.PipeStream.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.PipeStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.PipeStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.PipeStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.PipeStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.PipeStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PipeStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="T:Nerdbank.Streams.PrefixingBufferWriter`1">
+            <summary>
+            An <see cref="T:System.Buffers.IBufferWriter`1"/> that reserves some fixed size for a header.
+            </summary>
+            <typeparam name="T">The type of element written by this writer.</typeparam>
+            <remarks>
+            This type is used for inserting the length of list in the header when the length is not known beforehand.
+            It is optimized to minimize or avoid copying.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.PayloadSizeGuess">
+            <summary>
+            The value to use in place of <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.payloadSizeHint"/> when it is 0.
+            </summary>
+            <remarks>
+            We choose ~4K, since 4K is the default size for buffers in a lot of corefx libraries.
+            We choose 4K - 4 specifically because length prefixing is so often for an <see cref="T:System.Int32"/> value,
+            and if we ask for 1 byte more than 4K, memory pools tend to give us 8K.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter">
+            <summary>
+            The underlying buffer writer.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.expectedPrefixSize">
+            <summary>
+            The length of the prefix to reserve space for.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.payloadSizeHint">
+            <summary>
+            The minimum space to reserve for the payload when first asked for a buffer.
+            </summary>
+            <remarks>
+            This, added to <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.expectedPrefixSize"/>, makes up the minimum size to request from <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter"/>
+            to minimize the chance that we'll need to copy buffers from <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.excessSequence"/> to <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter"/>.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.memoryPool">
+            <summary>
+            The pool to use when initializing <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.excessSequence"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.excessSequence">
+            <summary>
+            The buffer writer to use for all buffers after the original one obtained from <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.prefixMemory">
+            <summary>
+            The buffer from <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter"/> reserved for the fixed-length prefix.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.realMemory">
+            <summary>
+            The memory being actively written to, which may have come from <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter"/> or <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.excessSequence"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.advanced">
+            <summary>
+            The number of elements written to the original buffer obtained from <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.innerWriter"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.PrefixingBufferWriter`1.usingExcessMemory">
+            <summary>
+            A value indicating whether we're using <see cref="F:Nerdbank.Streams.PrefixingBufferWriter`1.excessSequence"/> in the current state.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.PrefixingBufferWriter`1.#ctor(System.Buffers.IBufferWriter{`0},System.Int32,System.Int32,System.Buffers.MemoryPool{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.PrefixingBufferWriter`1"/> class.
+            </summary>
+            <param name="innerWriter">The underlying writer that should ultimately receive the prefix and payload.</param>
+            <param name="prefixSize">The length of the header to reserve space for. Must be a positive number.</param>
+            <param name="payloadSizeHint">A hint at the expected max size of the payload. The real size may be more or less than this, but additional copying is avoided if it does not exceed this amount. If 0, a reasonable guess is made.</param>
+            <param name="memoryPool">The memory pool to use for allocating additional memory when the payload exceeds <paramref name="payloadSizeHint"/>.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.PrefixingBufferWriter`1.Length">
+            <summary>
+            Gets the sum of all values passed to <see cref="M:Nerdbank.Streams.PrefixingBufferWriter`1.Advance(System.Int32)"/> since
+            the last call to <see cref="M:Nerdbank.Streams.PrefixingBufferWriter`1.Commit"/>.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.PrefixingBufferWriter`1.Prefix">
+            <summary>
+            Gets the memory reserved for the prefix.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.PrefixingBufferWriter`1.Advance(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PrefixingBufferWriter`1.GetMemory(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PrefixingBufferWriter`1.GetSpan(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.PrefixingBufferWriter`1.Commit">
+            <summary>
+            Commits all the elements written and the prefix to the underlying writer
+            and advances the underlying writer past the prefix and payload.
+            </summary>
+            <remarks>
+            This instance is safe to reuse after this call.
+            </remarks>
+        </member>
+        <member name="F:Nerdbank.Streams.ReadOnlySequenceStream.lastReadTask">
+            <summary>
+            A reusable task if two consecutive reads return the same number of bytes.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.ReadOnlySequenceStream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.ReadOnlySequenceStream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.ReadOnlySequenceStream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.ReadOnlySequenceStream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.ReadOnlySequenceStream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.ReadOnlySequenceStream.IsDisposed">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.ReadByte">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.WriteByte(System.Byte)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.ReadOnlySequenceStream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Nerdbank.Streams.Sequence`1">
+            <summary>
+            Manages a sequence of elements, readily castable as a <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+            <typeparam name="T">The type of element stored by the sequence.</typeparam>
+            <remarks>
+            Instance members are not thread-safe.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.Sequence`1"/> class
+            that uses a private <see cref="T:System.Buffers.ArrayPool`1"/> for recycling arrays.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.#ctor(System.Buffers.MemoryPool{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.Sequence`1"/> class.
+            </summary>
+            <param name="memoryPool">The pool to use for recycling backing arrays.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.#ctor(System.Buffers.ArrayPool{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.Sequence`1"/> class.
+            </summary>
+            <param name="arrayPool">The pool to use for recycling backing arrays.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.MinimumSpanLength">
+            <summary>
+            Gets or sets the minimum length for any array allocated as a segment in the sequence.
+            Any non-positive value allows the pool to determine the length of the array.
+            </summary>
+            <value>The default value is 0.</value>
+            <remarks>
+            <para>
+            Each time <see cref="M:Nerdbank.Streams.Sequence`1.GetSpan(System.Int32)"/> or <see cref="M:Nerdbank.Streams.Sequence`1.GetMemory(System.Int32)"/> is called,
+            previously allocated memory is used if it is large enough to satisfy the length demand.
+            If new memory must be allocated, the argument to one of these methods typically dictate
+            the length of array to allocate. When the caller uses very small values (just enough for its immediate need)
+            but the high level scenario can predict that a large amount of memory will be ultimately required,
+            it can be advisable to set this property to a value such that just a few larger arrays are allocated
+            instead of many small ones.
+            </para>
+            <para>
+            The <see cref="T:System.Buffers.MemoryPool`1"/> in use may itself have a minimum array length as well,
+            in which case the higher of the two minimums dictate the minimum array size that will be allocated.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.AsReadOnlySequence">
+            <summary>
+            Gets this sequence expressed as a <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+            <returns>A read only sequence representing the data in this object.</returns>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.Length">
+            <summary>
+            Gets the length of the sequence.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.DebuggerDisplay">
+            <summary>
+            Gets the value to display in a debugger datatip.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.op_Implicit(Nerdbank.Streams.Sequence{`0})~System.Buffers.ReadOnlySequence{`0}">
+            <summary>
+            Expresses this sequence as a <see cref="T:System.Buffers.ReadOnlySequence`1"/>.
+            </summary>
+            <param name="sequence">The sequence to convert.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.AdvanceTo(System.SequencePosition)">
+            <summary>
+            Removes all elements from the sequence from its beginning to the specified position,
+            considering that data to have been fully processed.
+            </summary>
+            <param name="position">
+            The position of the first element that has not yet been processed.
+            This is typically <see cref="P:System.Buffers.ReadOnlySequence`1.End"/> after reading all elements from that instance.
+            </param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.Advance(System.Int32)">
+            <summary>
+            Advances the sequence to include the specified number of elements initialized into memory
+            returned by a prior call to <see cref="M:Nerdbank.Streams.Sequence`1.GetMemory(System.Int32)"/>.
+            </summary>
+            <param name="count">The number of elements written into memory.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.GetMemory(System.Int32)">
+            <summary>
+            Gets writable memory that can be initialized and added to the sequence via a subsequent call to <see cref="M:Nerdbank.Streams.Sequence`1.Advance(System.Int32)"/>.
+            </summary>
+            <param name="sizeHint">The size of the memory required, or 0 to just get a convenient (non-empty) buffer.</param>
+            <returns>The requested memory.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.GetSpan(System.Int32)">
+            <summary>
+            Gets writable memory that can be initialized and added to the sequence via a subsequent call to <see cref="M:Nerdbank.Streams.Sequence`1.Advance(System.Int32)"/>.
+            </summary>
+            <param name="sizeHint">The size of the memory required, or 0 to just get a convenient (non-empty) buffer.</param>
+            <returns>The requested memory.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.Dispose">
+            <summary>
+            Clears the entire sequence, recycles associated memory into pools,
+            and resets this instance for reuse.
+            This invalidates any <see cref="T:System.Buffers.ReadOnlySequence`1"/> previously produced by this instance.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.Reset">
+            <summary>
+            Clears the entire sequence and recycles associated memory into pools.
+            This invalidates any <see cref="T:System.Buffers.ReadOnlySequence`1"/> previously produced by this instance.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.Sequence`1.SequenceSegment.IsValueTypeElement">
+            <summary>
+            A value indicating whether the element is a value type.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.Sequence`1.SequenceSegment.array">
+            <summary>
+            Gets the backing array, when using an <see cref="T:System.Buffers.ArrayPool`1"/> instead of a <see cref="T:System.Buffers.MemoryPool`1"/>.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.Start">
+            <summary>
+            Gets the position within <see cref="P:System.Buffers.ReadOnlySequenceSegment`1.Memory"/> where the data starts.
+            </summary>
+            <remarks>This may be nonzero as a result of calling <see cref="M:Nerdbank.Streams.Sequence`1.AdvanceTo(System.SequencePosition)"/>.</remarks>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.End">
+            <summary>
+            Gets the position within <see cref="P:System.Buffers.ReadOnlySequenceSegment`1.Memory"/> where the data ends.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.RemainingMemory">
+            <summary>
+            Gets the tail of memory that has not yet been committed.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.RemainingSpan">
+            <summary>
+            Gets the tail of memory that has not yet been committed.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.MemoryOwner">
+            <summary>
+            Gets the tracker for the underlying array for this segment, which can be used to recycle the array when we're disposed of.
+            Will be <c>null</c> if using an array pool, in which case the memory is held by <see cref="F:Nerdbank.Streams.Sequence`1.SequenceSegment.array"/>.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.AvailableMemory">
+            <summary>
+            Gets the full memory owned by the <see cref="P:Nerdbank.Streams.Sequence`1.SequenceSegment.MemoryOwner"/>.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.Length">
+            <summary>
+            Gets the number of elements that are committed in this segment.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.WritableBytes">
+            <summary>
+            Gets the amount of writable bytes in this segment.
+            It is the amount of bytes between <see cref="P:Nerdbank.Streams.Sequence`1.SequenceSegment.Length"/> and <see cref="P:Nerdbank.Streams.Sequence`1.SequenceSegment.End"/>.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Sequence`1.SequenceSegment.Next">
+            <summary>
+            Gets or sets the next segment in the singly linked list of segments.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.SequenceSegment.Assign(System.Buffers.IMemoryOwner{`0})">
+            <summary>
+            Assigns this (recyclable) segment a new area in memory.
+            </summary>
+            <param name="memoryOwner">The memory and a means to recycle it.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.SequenceSegment.Assign(`0[])">
+            <summary>
+            Assigns this (recyclable) segment a new area in memory.
+            </summary>
+            <param name="array">An array drawn from an <see cref="T:System.Buffers.ArrayPool`1"/>.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.SequenceSegment.ResetMemory(System.Buffers.ArrayPool{`0})">
+            <summary>
+            Clears all fields in preparation to recycle this instance.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.SequenceSegment.SetNext(Nerdbank.Streams.Sequence{`0}.SequenceSegment)">
+            <summary>
+            Adds a new segment after this one.
+            </summary>
+            <param name="segment">The next segment in the linked list.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.SequenceSegment.Advance(System.Int32)">
+            <summary>
+            Commits more elements as written in this segment.
+            </summary>
+            <param name="count">The number of elements written.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Sequence`1.SequenceSegment.AdvanceTo(System.Int32)">
+            <summary>
+            Removes some elements from the start of this segment.
+            </summary>
+            <param name="offset">The number of elements to ignore from the start of the underlying array.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.SpanPolyfillExtensions.ReadAsync(System.IO.Stream,System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Reads from the stream into a memory buffer.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+            <param name="buffer">The buffer to read directly into.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The number of bytes actually read.</returns>
+            <devremarks>
+            This method shamelessly copied from the .NET Core 2.1 Stream class: https://github.com/dotnet/coreclr/blob/a113b1c803783c9d64f1f0e946ff9a853e3bc140/src/System.Private.CoreLib/shared/System/IO/Stream.cs#L366-L391.
+            </devremarks>
+        </member>
+        <member name="M:Nerdbank.Streams.SpanPolyfillExtensions.WriteAsync(System.IO.Stream,System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Writes to a stream from a memory buffer.
+            </summary>
+            <param name="stream">The stream to write to.</param>
+            <param name="buffer">The buffer to read from.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>A task that indicates when the write operation is complete.</returns>
+            <devremarks>
+            This method shamelessly copied from the .NET Core 2.1 Stream class: https://github.com/dotnet/coreclr/blob/a113b1c803783c9d64f1f0e946ff9a853e3bc140/src/System.Private.CoreLib/shared/System/IO/Stream.cs#L672-L696.
+            </devremarks>
+        </member>
+        <member name="M:Nerdbank.Streams.SpanPolyfillExtensions.ReceiveAsync(System.Net.WebSockets.WebSocket,System.Memory{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Reads from the stream into a memory buffer.
+            </summary>
+            <param name="webSocket">The stream to read from.</param>
+            <param name="buffer">The buffer to read directly into.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The number of bytes actually read.</returns>
+            <devremarks>
+            This method shamelessly copied from the .NET Core 2.1 Stream class: https://github.com/dotnet/coreclr/blob/a113b1c803783c9d64f1f0e946ff9a853e3bc140/src/System.Private.CoreLib/shared/System/IO/Stream.cs#L366-L391.
+            </devremarks>
+        </member>
+        <member name="M:Nerdbank.Streams.SpanPolyfillExtensions.SendAsync(System.Net.WebSockets.WebSocket,System.ReadOnlyMemory{System.Byte},System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Writes to a stream from a memory buffer.
+            </summary>
+            <param name="webSocket">The stream to write to.</param>
+            <param name="buffer">The buffer to read from.</param>
+            <param name="messageType">The type of WebSocket message.</param>
+            <param name="endOfMessage">Whether to signify that this write operation concludes a "message" in the semantic of whatever protocol is being used.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>A task that indicates when the write operation is complete.</returns>
+            <devremarks>
+            This method shamelessly copied from the .NET Core 2.1 Stream class: https://github.com/dotnet/coreclr/blob/a113b1c803783c9d64f1f0e946ff9a853e3bc140/src/System.Private.CoreLib/shared/System/IO/Stream.cs#L672-L696.
+            </devremarks>
+        </member>
+        <member name="T:Nerdbank.Streams.StreamExtensions">
+            <summary>
+            Stream extension methods.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamExtensions.ReadSlice(System.IO.Stream,System.Int64)">
+            <summary>
+            Creates a <see cref="T:System.IO.Stream"/> that can read no more than a given number of bytes from an underlying stream.
+            </summary>
+            <param name="stream">The stream to read from.</param>
+            <param name="length">The number of bytes to read from the parent stream.</param>
+            <returns>A stream that ends after <paramref name="length"/> bytes are read.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamExtensions.AsStream(System.Net.WebSockets.WebSocket)">
+            <summary>
+            Exposes a <see cref="T:System.Net.WebSockets.WebSocket"/> as a <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="webSocket">The <see cref="T:System.Net.WebSockets.WebSocket"/> to use as a transport for the returned <see cref="T:System.IO.Stream"/>.</param>
+            <returns>A bidirectional <see cref="T:System.IO.Stream"/>.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamExtensions.AsStream(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Exposes a <see cref="T:System.Buffers.ReadOnlySequence`1"/> of <see cref="T:System.Byte"/> as a <see cref="T:System.IO.Stream"/>.
+            </summary>
+            <param name="readOnlySequence">The sequence of bytes to expose as a stream.</param>
+            <returns>The readable stream.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamExtensions.AsStream(System.Buffers.IBufferWriter{System.Byte})">
+            <summary>
+            Creates a writable <see cref="T:System.IO.Stream"/> that can be used to add to a <see cref="T:System.Buffers.IBufferWriter`1"/> of <see cref="T:System.Byte"/>.
+            </summary>
+            <param name="writer">The buffer writer the stream should write to.</param>
+            <returns>A <see cref="T:System.IO.Stream"/>.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamExtensions.WriteSubstream(System.IO.Stream,System.Int32)">
+            <summary>
+            Create a new <see cref="T:System.IO.StreamWriter"/> that can be used to write a byte sequence of undetermined length to some underlying <see cref="T:System.IO.Stream"/>,
+            such that it can later be read back as if it were a <see cref="T:System.IO.Stream"/> of its own that ends at the end of this particular sequence.
+            </summary>
+            <param name="stream">The underlying stream to write to.</param>
+            <param name="minimumBufferSize">The buffer size to use.</param>
+            <returns>The new <see cref="T:System.IO.Stream"/>.</returns>
+            <remarks>
+            Write to the returned <see cref="T:System.IO.Stream"/> until the sub-stream is complete. Call <see cref="M:Nerdbank.Streams.Substream.DisposeAsync(System.Threading.CancellationToken)"/>
+            when done and resume writing to the parent stream as needed.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamExtensions.ReadSubstream(System.IO.Stream)">
+            <summary>
+            Create a new <see cref="T:System.IO.StreamReader"/> that will read a sequence previously written to this stream using <see cref="M:Nerdbank.Streams.StreamExtensions.WriteSubstream(System.IO.Stream,System.Int32)"/>.
+            </summary>
+            <param name="stream">The underlying stream to read from.</param>
+            <returns>A stream that will read just to the end of the substream and then end.</returns>
+        </member>
+        <member name="T:Nerdbank.Streams.StreamPipeReader">
+            <summary>
+            A <see cref="T:System.IO.Pipelines.PipeReader"/> that reads from an underlying <see cref="T:System.IO.Stream"/> exactly when told to do so
+            rather than constantly reading from the stream and buffering up the results.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.AdvanceTo(System.SequencePosition)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.AdvanceTo(System.SequencePosition,System.SequencePosition)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.CancelPendingRead">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.Complete(System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.OnWriterCompleted(System.Action{System.Exception,System.Object},System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.ReadAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeReader.TryRead(System.IO.Pipelines.ReadResult@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Nerdbank.Streams.StreamPipeWriter">
+            <summary>
+            A <see cref="T:System.IO.Pipelines.PipeWriter"/> that writes to an underlying <see cref="T:System.IO.Stream"/>
+            when <see cref="M:Nerdbank.Streams.StreamPipeWriter.FlushAsync(System.Threading.CancellationToken)"/> is called rather than asynchronously sometime later.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.StreamPipeWriter"/> class.
+            </summary>
+            <param name="stream">The stream to write to.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.Advance(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.CancelPendingFlush">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.Complete(System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.GetMemory(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.GetSpan(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.StreamPipeWriter.OnReaderCompleted(System.Action{System.Exception,System.Object},System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Nerdbank.Streams.Substream">
+            <summary>
+            A stream that writes substreams of arbitrary length.
+            Created with <see cref="M:Nerdbank.Streams.StreamExtensions.WriteSubstream(System.IO.Stream,System.Int32)"/>
+            and later read with <see cref="M:Nerdbank.Streams.StreamExtensions.ReadSubstream(System.IO.Stream)"/>.
+            </summary>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.IsDisposed">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.CanTimeout">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.Substream.Position">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.DisposeAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.DisposeAsync(System.Threading.CancellationToken)">
+            <summary>
+            Flushes any buffers, and writes the bytes required to indicate that this substream is at its end.
+            </summary>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>A task to represent the async operation.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.Substream.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Nerdbank.Streams.SubstreamReader">
+            <summary>
+            A stream that reads substreams of arbitrary length.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.SubstreamReader"/> class.
+            </summary>
+            <param name="underlyingStream">The stream to read from.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.CanSeek">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.CanTimeout">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.Length">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.Position">
+            <inheritdoc/>
+        </member>
+        <member name="P:Nerdbank.Streams.SubstreamReader.IsDisposed">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.Flush">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.SetLength(System.Int64)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Nerdbank.Streams.SubstreamReader.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Nerdbank.Streams.Utilities">
+            <summary>
+            Internal utilities.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.Utilities.CompletedTask">
+            <summary>
+            A completed task.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.Utilities.RemoveMidQueue``1(System.Collections.Generic.Queue{``0},``0)">
+            <summary>
+            Removes an element from the middle of a queue without disrupting the other elements.
+            </summary>
+            <typeparam name="T">The element to remove.</typeparam>
+            <param name="queue">The queue to modify.</param>
+            <param name="valueToRemove">The value to remove.</param>
+            <returns><c>true</c> if the value was found and removed; <c>false</c> if no match was found.</returns>
+            <remarks>
+            If a value appears multiple times in the queue, only its first entry is removed.
+            </remarks>
+        </member>
+        <member name="M:Nerdbank.Streams.Utilities.ReadInt(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Reads an <see cref="T:System.Int32"/> value from a buffer using big endian.
+            </summary>
+            <param name="buffer">The buffer to read from. Must be at most 4 bytes long.</param>
+            <returns>The read value.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.Utilities.Write(System.Span{System.Byte},System.Int32)">
+            <summary>
+            Writes an <see cref="T:System.Int32"/> value to a buffer using big endian.
+            </summary>
+            <param name="buffer">The buffer to write to. Must be at least 4 bytes long.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="M:Nerdbank.Streams.Utilities.Write(System.Span{System.Byte},System.UInt16)">
+            <summary>
+            Writes an <see cref="T:System.UInt16"/> value to a buffer using big endian.
+            </summary>
+            <param name="buffer">The buffer to write to. Must be at least 2 bytes long.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="T:Nerdbank.Streams.WebSocketStream">
+            <summary>
+            Exposes a <see cref="T:System.Net.WebSockets.WebSocket"/> as a <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.WebSocketStream.CompletedTask">
+            <summary>
+            A completed task.
+            </summary>
+        </member>
+        <member name="F:Nerdbank.Streams.WebSocketStream.webSocket">
+            <summary>
+            The socket wrapped by this stream.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.#ctor(System.Net.WebSockets.WebSocket)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Nerdbank.Streams.WebSocketStream"/> class.
+            </summary>
+            <param name="webSocket">The web socket to wrap in a stream.</param>
+        </member>
+        <member name="P:Nerdbank.Streams.WebSocketStream.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.WebSocketStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.WebSocketStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.WebSocketStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.WebSocketStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Nerdbank.Streams.WebSocketStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.Flush">
+            <summary>
+            Does nothing, since web sockets do not need to be flushed.
+            </summary>
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Does nothing, since web sockets do not need to be flushed.
+            </summary>
+            <param name="cancellationToken">An ignored cancellation token.</param>
+            <returns>A completed task.</returns>
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Nerdbank.Streams.WebSocketStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

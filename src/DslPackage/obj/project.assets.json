@@ -17,7 +17,7 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading/16.0.102": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Validation": "15.3.15",
@@ -74,17 +74,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.102": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
+      "Microsoft.VisualStudio.Utilities/16.0.28729": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
-          "StreamJsonRpc": "1.5.38-beta"
+          "Microsoft.VisualStudio.Threading": "16.0.102",
+          "StreamJsonRpc": "1.5.43"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -143,17 +143,7 @@
           }
         }
       },
-      "Microsoft.VSSDK.BuildTools/15.9.3039": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.VisualStudio.SDK.Analyzers": "15.8.33"
-        },
-        "build": {
-          "build/Microsoft.VSSDK.BuildTools.props": {},
-          "build/Microsoft.VSSDK.BuildTools.targets": {}
-        }
-      },
-      "Nerdbank.Streams/2.0.214": {
+      "Nerdbank.Streams/2.1.37": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.192",
@@ -162,14 +152,17 @@
           "System.Net.WebSockets": "4.3.0",
           "System.ValueTuple": "4.5.0"
         },
+        "frameworkAssemblies": [
+          "System.Net.WebSockets"
+        ],
         "compile": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         },
         "runtime": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -178,11 +171,11 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "StreamJsonRpc/2.0.140": {
+      "StreamJsonRpc/2.0.167": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.209",
-          "Nerdbank.Streams": "2.0.206",
+          "Nerdbank.Streams": "2.1.37",
           "Newtonsoft.Json": "9.0.1",
           "System.IO.Pipelines": "4.5.3",
           "System.Memory": "4.5.2",
@@ -191,50 +184,60 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.2"
         },
+        "frameworkAssemblies": [
+          "System.IO",
+          "System.Net.Http",
+          "System.Net.WebSockets",
+          "System.Runtime",
+          "System.Security.Cryptography.Algorithms",
+          "System.Security.Cryptography.Encoding",
+          "System.Security.Cryptography.Primitives",
+          "System.Security.Cryptography.X509Certificates"
+        ],
         "compile": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "runtime": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "resource": {
-          "lib/net46/cs/StreamJsonRpc.resources.dll": {
+          "lib/net472/cs/StreamJsonRpc.resources.dll": {
             "locale": "cs"
           },
-          "lib/net46/de/StreamJsonRpc.resources.dll": {
+          "lib/net472/de/StreamJsonRpc.resources.dll": {
             "locale": "de"
           },
-          "lib/net46/es/StreamJsonRpc.resources.dll": {
+          "lib/net472/es/StreamJsonRpc.resources.dll": {
             "locale": "es"
           },
-          "lib/net46/fr/StreamJsonRpc.resources.dll": {
+          "lib/net472/fr/StreamJsonRpc.resources.dll": {
             "locale": "fr"
           },
-          "lib/net46/it/StreamJsonRpc.resources.dll": {
+          "lib/net472/it/StreamJsonRpc.resources.dll": {
             "locale": "it"
           },
-          "lib/net46/ja/StreamJsonRpc.resources.dll": {
+          "lib/net472/ja/StreamJsonRpc.resources.dll": {
             "locale": "ja"
           },
-          "lib/net46/ko/StreamJsonRpc.resources.dll": {
+          "lib/net472/ko/StreamJsonRpc.resources.dll": {
             "locale": "ko"
           },
-          "lib/net46/pl/StreamJsonRpc.resources.dll": {
+          "lib/net472/pl/StreamJsonRpc.resources.dll": {
             "locale": "pl"
           },
-          "lib/net46/pt-BR/StreamJsonRpc.resources.dll": {
+          "lib/net472/pt-BR/StreamJsonRpc.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net46/ru/StreamJsonRpc.resources.dll": {
+          "lib/net472/ru/StreamJsonRpc.resources.dll": {
             "locale": "ru"
           },
-          "lib/net46/tr/StreamJsonRpc.resources.dll": {
+          "lib/net472/tr/StreamJsonRpc.resources.dll": {
             "locale": "tr"
           },
-          "lib/net46/zh-Hans/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hans/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net46/zh-Hant/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hant/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hant"
           }
         }
@@ -527,7 +530,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Runtime/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -551,7 +554,7 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "System.Runtime.Extensions/4.3.0": {
+      "System.Runtime.Extensions/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -782,7 +785,7 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading/16.0.102": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Validation": "15.3.15",
@@ -839,17 +842,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.102": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
+      "Microsoft.VisualStudio.Utilities/16.0.28729": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
-          "StreamJsonRpc": "1.5.38-beta"
+          "Microsoft.VisualStudio.Threading": "16.0.102",
+          "StreamJsonRpc": "1.5.43"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -908,17 +911,7 @@
           }
         }
       },
-      "Microsoft.VSSDK.BuildTools/15.9.3039": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.VisualStudio.SDK.Analyzers": "15.8.33"
-        },
-        "build": {
-          "build/Microsoft.VSSDK.BuildTools.props": {},
-          "build/Microsoft.VSSDK.BuildTools.targets": {}
-        }
-      },
-      "Nerdbank.Streams/2.0.214": {
+      "Nerdbank.Streams/2.1.37": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.192",
@@ -927,14 +920,17 @@
           "System.Net.WebSockets": "4.3.0",
           "System.ValueTuple": "4.5.0"
         },
+        "frameworkAssemblies": [
+          "System.Net.WebSockets"
+        ],
         "compile": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         },
         "runtime": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -943,11 +939,11 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "StreamJsonRpc/2.0.140": {
+      "StreamJsonRpc/2.0.167": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.209",
-          "Nerdbank.Streams": "2.0.206",
+          "Nerdbank.Streams": "2.1.37",
           "Newtonsoft.Json": "9.0.1",
           "System.IO.Pipelines": "4.5.3",
           "System.Memory": "4.5.2",
@@ -956,50 +952,60 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.2"
         },
+        "frameworkAssemblies": [
+          "System.IO",
+          "System.Net.Http",
+          "System.Net.WebSockets",
+          "System.Runtime",
+          "System.Security.Cryptography.Algorithms",
+          "System.Security.Cryptography.Encoding",
+          "System.Security.Cryptography.Primitives",
+          "System.Security.Cryptography.X509Certificates"
+        ],
         "compile": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "runtime": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "resource": {
-          "lib/net46/cs/StreamJsonRpc.resources.dll": {
+          "lib/net472/cs/StreamJsonRpc.resources.dll": {
             "locale": "cs"
           },
-          "lib/net46/de/StreamJsonRpc.resources.dll": {
+          "lib/net472/de/StreamJsonRpc.resources.dll": {
             "locale": "de"
           },
-          "lib/net46/es/StreamJsonRpc.resources.dll": {
+          "lib/net472/es/StreamJsonRpc.resources.dll": {
             "locale": "es"
           },
-          "lib/net46/fr/StreamJsonRpc.resources.dll": {
+          "lib/net472/fr/StreamJsonRpc.resources.dll": {
             "locale": "fr"
           },
-          "lib/net46/it/StreamJsonRpc.resources.dll": {
+          "lib/net472/it/StreamJsonRpc.resources.dll": {
             "locale": "it"
           },
-          "lib/net46/ja/StreamJsonRpc.resources.dll": {
+          "lib/net472/ja/StreamJsonRpc.resources.dll": {
             "locale": "ja"
           },
-          "lib/net46/ko/StreamJsonRpc.resources.dll": {
+          "lib/net472/ko/StreamJsonRpc.resources.dll": {
             "locale": "ko"
           },
-          "lib/net46/pl/StreamJsonRpc.resources.dll": {
+          "lib/net472/pl/StreamJsonRpc.resources.dll": {
             "locale": "pl"
           },
-          "lib/net46/pt-BR/StreamJsonRpc.resources.dll": {
+          "lib/net472/pt-BR/StreamJsonRpc.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net46/ru/StreamJsonRpc.resources.dll": {
+          "lib/net472/ru/StreamJsonRpc.resources.dll": {
             "locale": "ru"
           },
-          "lib/net46/tr/StreamJsonRpc.resources.dll": {
+          "lib/net472/tr/StreamJsonRpc.resources.dll": {
             "locale": "tr"
           },
-          "lib/net46/zh-Hans/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hans/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net46/zh-Hant/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hant/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hant"
           }
         }
@@ -1282,7 +1288,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Runtime/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -1306,7 +1312,7 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "System.Runtime.Extensions/4.3.0": {
+      "System.Runtime.Extensions/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -1503,7 +1509,7 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading/16.0.102": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Validation": "15.3.15",
@@ -1560,17 +1566,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.102": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
+      "Microsoft.VisualStudio.Utilities/16.0.28729": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
-          "StreamJsonRpc": "1.5.38-beta"
+          "Microsoft.VisualStudio.Threading": "16.0.102",
+          "StreamJsonRpc": "1.5.43"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -1629,17 +1635,7 @@
           }
         }
       },
-      "Microsoft.VSSDK.BuildTools/15.9.3039": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.VisualStudio.SDK.Analyzers": "15.8.33"
-        },
-        "build": {
-          "build/Microsoft.VSSDK.BuildTools.props": {},
-          "build/Microsoft.VSSDK.BuildTools.targets": {}
-        }
-      },
-      "Nerdbank.Streams/2.0.214": {
+      "Nerdbank.Streams/2.1.37": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.192",
@@ -1648,14 +1644,17 @@
           "System.Net.WebSockets": "4.3.0",
           "System.ValueTuple": "4.5.0"
         },
+        "frameworkAssemblies": [
+          "System.Net.WebSockets"
+        ],
         "compile": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         },
         "runtime": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -1664,11 +1663,11 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "StreamJsonRpc/2.0.140": {
+      "StreamJsonRpc/2.0.167": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.209",
-          "Nerdbank.Streams": "2.0.206",
+          "Nerdbank.Streams": "2.1.37",
           "Newtonsoft.Json": "9.0.1",
           "System.IO.Pipelines": "4.5.3",
           "System.Memory": "4.5.2",
@@ -1677,50 +1676,60 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.2"
         },
+        "frameworkAssemblies": [
+          "System.IO",
+          "System.Net.Http",
+          "System.Net.WebSockets",
+          "System.Runtime",
+          "System.Security.Cryptography.Algorithms",
+          "System.Security.Cryptography.Encoding",
+          "System.Security.Cryptography.Primitives",
+          "System.Security.Cryptography.X509Certificates"
+        ],
         "compile": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "runtime": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "resource": {
-          "lib/net46/cs/StreamJsonRpc.resources.dll": {
+          "lib/net472/cs/StreamJsonRpc.resources.dll": {
             "locale": "cs"
           },
-          "lib/net46/de/StreamJsonRpc.resources.dll": {
+          "lib/net472/de/StreamJsonRpc.resources.dll": {
             "locale": "de"
           },
-          "lib/net46/es/StreamJsonRpc.resources.dll": {
+          "lib/net472/es/StreamJsonRpc.resources.dll": {
             "locale": "es"
           },
-          "lib/net46/fr/StreamJsonRpc.resources.dll": {
+          "lib/net472/fr/StreamJsonRpc.resources.dll": {
             "locale": "fr"
           },
-          "lib/net46/it/StreamJsonRpc.resources.dll": {
+          "lib/net472/it/StreamJsonRpc.resources.dll": {
             "locale": "it"
           },
-          "lib/net46/ja/StreamJsonRpc.resources.dll": {
+          "lib/net472/ja/StreamJsonRpc.resources.dll": {
             "locale": "ja"
           },
-          "lib/net46/ko/StreamJsonRpc.resources.dll": {
+          "lib/net472/ko/StreamJsonRpc.resources.dll": {
             "locale": "ko"
           },
-          "lib/net46/pl/StreamJsonRpc.resources.dll": {
+          "lib/net472/pl/StreamJsonRpc.resources.dll": {
             "locale": "pl"
           },
-          "lib/net46/pt-BR/StreamJsonRpc.resources.dll": {
+          "lib/net472/pt-BR/StreamJsonRpc.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net46/ru/StreamJsonRpc.resources.dll": {
+          "lib/net472/ru/StreamJsonRpc.resources.dll": {
             "locale": "ru"
           },
-          "lib/net46/tr/StreamJsonRpc.resources.dll": {
+          "lib/net472/tr/StreamJsonRpc.resources.dll": {
             "locale": "tr"
           },
-          "lib/net46/zh-Hans/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hans/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net46/zh-Hant/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hant/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hant"
           }
         }
@@ -2003,7 +2012,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Runtime/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -2027,7 +2036,7 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "System.Runtime.Extensions/4.3.0": {
+      "System.Runtime.Extensions/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -2224,7 +2233,7 @@
           "build/Microsoft.VisualStudio.SDK.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Threading/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading/16.0.102": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Validation": "15.3.15",
@@ -2281,17 +2290,17 @@
           }
         }
       },
-      "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
+      "Microsoft.VisualStudio.Threading.Analyzers/16.0.102": {
         "type": "package",
         "build": {
           "build/Microsoft.VisualStudio.Threading.Analyzers.targets": {}
         }
       },
-      "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
+      "Microsoft.VisualStudio.Utilities/16.0.28729": {
         "type": "package",
         "dependencies": {
-          "Microsoft.VisualStudio.Threading": "16.0.82-beta",
-          "StreamJsonRpc": "1.5.38-beta"
+          "Microsoft.VisualStudio.Threading": "16.0.102",
+          "StreamJsonRpc": "1.5.43"
         },
         "compile": {
           "lib/net46/Microsoft.VisualStudio.Utilities.dll": {}
@@ -2350,17 +2359,7 @@
           }
         }
       },
-      "Microsoft.VSSDK.BuildTools/15.9.3039": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.VisualStudio.SDK.Analyzers": "15.8.33"
-        },
-        "build": {
-          "build/Microsoft.VSSDK.BuildTools.props": {},
-          "build/Microsoft.VSSDK.BuildTools.targets": {}
-        }
-      },
-      "Nerdbank.Streams/2.0.214": {
+      "Nerdbank.Streams/2.1.37": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.192",
@@ -2369,14 +2368,17 @@
           "System.Net.WebSockets": "4.3.0",
           "System.ValueTuple": "4.5.0"
         },
+        "frameworkAssemblies": [
+          "System.Net.WebSockets"
+        ],
         "compile": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         },
         "runtime": {
-          "lib/net46/Nerdbank.Streams.dll": {}
+          "lib/net472/Nerdbank.Streams.dll": {}
         }
       },
-      "Newtonsoft.Json/12.0.1": {
+      "Newtonsoft.Json/12.0.2": {
         "type": "package",
         "compile": {
           "lib/net45/Newtonsoft.Json.dll": {}
@@ -2385,11 +2387,11 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "StreamJsonRpc/2.0.140": {
+      "StreamJsonRpc/2.0.167": {
         "type": "package",
         "dependencies": {
           "Microsoft.VisualStudio.Threading": "15.8.209",
-          "Nerdbank.Streams": "2.0.206",
+          "Nerdbank.Streams": "2.1.37",
           "Newtonsoft.Json": "9.0.1",
           "System.IO.Pipelines": "4.5.3",
           "System.Memory": "4.5.2",
@@ -2398,50 +2400,60 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.2"
         },
+        "frameworkAssemblies": [
+          "System.IO",
+          "System.Net.Http",
+          "System.Net.WebSockets",
+          "System.Runtime",
+          "System.Security.Cryptography.Algorithms",
+          "System.Security.Cryptography.Encoding",
+          "System.Security.Cryptography.Primitives",
+          "System.Security.Cryptography.X509Certificates"
+        ],
         "compile": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "runtime": {
-          "lib/net46/StreamJsonRpc.dll": {}
+          "lib/net472/StreamJsonRpc.dll": {}
         },
         "resource": {
-          "lib/net46/cs/StreamJsonRpc.resources.dll": {
+          "lib/net472/cs/StreamJsonRpc.resources.dll": {
             "locale": "cs"
           },
-          "lib/net46/de/StreamJsonRpc.resources.dll": {
+          "lib/net472/de/StreamJsonRpc.resources.dll": {
             "locale": "de"
           },
-          "lib/net46/es/StreamJsonRpc.resources.dll": {
+          "lib/net472/es/StreamJsonRpc.resources.dll": {
             "locale": "es"
           },
-          "lib/net46/fr/StreamJsonRpc.resources.dll": {
+          "lib/net472/fr/StreamJsonRpc.resources.dll": {
             "locale": "fr"
           },
-          "lib/net46/it/StreamJsonRpc.resources.dll": {
+          "lib/net472/it/StreamJsonRpc.resources.dll": {
             "locale": "it"
           },
-          "lib/net46/ja/StreamJsonRpc.resources.dll": {
+          "lib/net472/ja/StreamJsonRpc.resources.dll": {
             "locale": "ja"
           },
-          "lib/net46/ko/StreamJsonRpc.resources.dll": {
+          "lib/net472/ko/StreamJsonRpc.resources.dll": {
             "locale": "ko"
           },
-          "lib/net46/pl/StreamJsonRpc.resources.dll": {
+          "lib/net472/pl/StreamJsonRpc.resources.dll": {
             "locale": "pl"
           },
-          "lib/net46/pt-BR/StreamJsonRpc.resources.dll": {
+          "lib/net472/pt-BR/StreamJsonRpc.resources.dll": {
             "locale": "pt-BR"
           },
-          "lib/net46/ru/StreamJsonRpc.resources.dll": {
+          "lib/net472/ru/StreamJsonRpc.resources.dll": {
             "locale": "ru"
           },
-          "lib/net46/tr/StreamJsonRpc.resources.dll": {
+          "lib/net472/tr/StreamJsonRpc.resources.dll": {
             "locale": "tr"
           },
-          "lib/net46/zh-Hans/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hans/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hans"
           },
-          "lib/net46/zh-Hant/StreamJsonRpc.resources.dll": {
+          "lib/net472/zh-Hant/StreamJsonRpc.resources.dll": {
             "locale": "zh-Hant"
           }
         }
@@ -2724,7 +2736,7 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Runtime/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -2748,7 +2760,7 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "System.Runtime.Extensions/4.3.0": {
+      "System.Runtime.Extensions/4.3.1": {
         "type": "package",
         "frameworkAssemblies": [
           "System",
@@ -2961,10 +2973,10 @@
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.VisualStudio.Threading/16.0.96-beta": {
-      "sha512": "gE+co6o7Hs1PE1/1QXik2d3tnGVWsl2HG+5FJ+oU88FlMfPBW1LRS2CpEAVv+DQuO8NhSlf1g5Q37gAnhq/E4Q==",
+    "Microsoft.VisualStudio.Threading/16.0.102": {
+      "sha512": "hSwUYNrEioCu/kJHQHtpkakWEryzOFgFsgfhdTFnBvTxg5i5AJ/YB79c9jryovsPaXyWHLJz9GR/94o47yucAA==",
       "type": "package",
-      "path": "microsoft.visualstudio.threading/16.0.96-beta",
+      "path": "microsoft.visualstudio.threading/16.0.102",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3032,14 +3044,14 @@
         "lib/netstandard2.0/tr/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/netstandard2.0/zh-Hans/Microsoft.VisualStudio.Threading.resources.dll",
         "lib/netstandard2.0/zh-Hant/Microsoft.VisualStudio.Threading.resources.dll",
-        "microsoft.visualstudio.threading.16.0.96-beta.nupkg.sha512",
+        "microsoft.visualstudio.threading.16.0.102.nupkg.sha512",
         "microsoft.visualstudio.threading.nuspec"
       ]
     },
-    "Microsoft.VisualStudio.Threading.Analyzers/16.0.96-beta": {
-      "sha512": "O3ZELOovwOoqkDTDfhsbAOSgBgOzewoEIvR1Q7igNYhcfcgnujYzUNc2Ltz++HXeciZRIA0Il2tevOEG6QoWEQ==",
+    "Microsoft.VisualStudio.Threading.Analyzers/16.0.102": {
+      "sha512": "84LjaPupgRCopp/iDEAK3dzuUOXaM278fbgcPPs6CsAwoLHue1RLwpErVNFIAsL1LXPloSE4gvov7CNw7uqqYg==",
       "type": "package",
-      "path": "microsoft.visualstudio.threading.analyzers/16.0.96-beta",
+      "path": "microsoft.visualstudio.threading.analyzers/16.0.102",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -3064,22 +3076,22 @@
         "build/AdditionalFiles/vs-threading.MainThreadSwitchingMethods.txt",
         "build/AdditionalFiles/vs-threading.MembersRequiringMainThread.txt",
         "build/Microsoft.VisualStudio.Threading.Analyzers.targets",
-        "microsoft.visualstudio.threading.analyzers.16.0.96-beta.nupkg.sha512",
+        "microsoft.visualstudio.threading.analyzers.16.0.102.nupkg.sha512",
         "microsoft.visualstudio.threading.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
     },
-    "Microsoft.VisualStudio.Utilities/16.0.28528-pre": {
-      "sha512": "wYFHQlb0yaKBqrpVadIakZ67TjGv5zfFjll9O50JLk0jZRnEUq+EJ0tdxKiMqMuB/eooI57hEf17i6w3PGBbAg==",
+    "Microsoft.VisualStudio.Utilities/16.0.28729": {
+      "sha512": "ZDIIFxXx+UfW+GDfNcxiFA3JY1XnCui3Vo4cCfvcrN92/K9czENvkM62GLe5FfZG0XNndKMLnFAQJM06giLNbw==",
       "type": "package",
-      "path": "microsoft.visualstudio.utilities/16.0.28528-pre",
+      "path": "microsoft.visualstudio.utilities/16.0.28729",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net46/Microsoft.VisualStudio.Utilities.dll",
         "lib/net46/Microsoft.VisualStudio.Utilities.xml",
-        "microsoft.visualstudio.utilities.16.0.28528-pre.nupkg.sha512",
+        "microsoft.visualstudio.utilities.16.0.28729.nupkg.sha512",
         "microsoft.visualstudio.utilities.nuspec"
       ]
     },
@@ -3139,114 +3151,19 @@
         "microsoft.visualstudio.validation.nuspec"
       ]
     },
-    "Microsoft.VSSDK.BuildTools/15.9.3039": {
-      "sha512": "ItlD0AYOBOWrMuM5EVybZM6WQSu4AbrP/GlhVPaIym0ZflpgeCM9dDX4zfm0CMXkSu5y4OHBg5eoNvbQ3cRw+Q==",
+    "Nerdbank.Streams/2.1.37": {
+      "sha512": "NS8kGbY2evaYZFWLjaIE8TZU+oSCJoU8bIe4gMb10Q+Lta0GRvwBqdXrKMjXv5U9LmNztExKC6EJqTrNyvV6Sw==",
       "type": "package",
-      "path": "microsoft.vssdk.buildtools/15.9.3039",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/Microsoft.VSSDK.BuildTools.props",
-        "build/Microsoft.VSSDK.BuildTools.targets",
-        "microsoft.vssdk.buildtools.15.9.3039.nupkg.sha512",
-        "microsoft.vssdk.buildtools.nuspec",
-        "tools/vssdk/Microsoft.VisualStudio.ExtensionEngine.dll",
-        "tools/vssdk/Microsoft.VisualStudio.Sdk.BuildTasks.15.0.dll",
-        "tools/vssdk/Microsoft.VisualStudio.Sdk.BuildTasks.dll",
-        "tools/vssdk/Microsoft.VisualStudio.Sdk.Common.targets",
-        "tools/vssdk/Microsoft.VisualStudio.Setup.Common.dll",
-        "tools/vssdk/Microsoft.VisualStudio.Threading.dll",
-        "tools/vssdk/Microsoft.VisualStudio.Validation.dll",
-        "tools/vssdk/Microsoft.VsSDK.Cpp.Overrides.targets",
-        "tools/vssdk/Microsoft.VsSDK.Cpp.targets",
-        "tools/vssdk/Microsoft.VsSDK.targets",
-        "tools/vssdk/Newtonsoft.Json.dll",
-        "tools/vssdk/PkgDefMgmt.dll",
-        "tools/vssdk/ProjectItemsSchema.xml",
-        "tools/vssdk/bin/ConvertCTCToVSCT.pl",
-        "tools/vssdk/bin/CreatePkgDef.exe",
-        "tools/vssdk/bin/CreatePkgDef.exe.config",
-        "tools/vssdk/bin/DebugSamples.dll",
-        "tools/vssdk/bin/Microsoft.VSDebugger.Native.targets",
-        "tools/vssdk/bin/Microsoft.VSDebugger.targets",
-        "tools/vssdk/bin/Microsoft.VisualStudio.Setup.Common.dll",
-        "tools/vssdk/bin/Newtonsoft.Json.dll",
-        "tools/vssdk/bin/RegPkg.exe",
-        "tools/vssdk/bin/RegPkg.exe.config",
-        "tools/vssdk/bin/RegRiched20.exe",
-        "tools/vssdk/bin/SetEngineLogMode.cmd",
-        "tools/vssdk/bin/System.ValueTuple.dll",
-        "tools/vssdk/bin/VSCT.exe",
-        "tools/vssdk/bin/VSCTCompress.dll",
-        "tools/vssdk/bin/VSCTLibrary.dll",
-        "tools/vssdk/bin/VsixCommandLine.dll",
-        "tools/vssdk/bin/VsixPublisher.exe",
-        "tools/vssdk/bin/VsixPublisher.exe.config",
-        "tools/vssdk/bin/VsixUtil.exe",
-        "tools/vssdk/bin/lib/Microsoft.Diagnostics.Tracing.EventSource.dll",
-        "tools/vssdk/bin/lib/Microsoft.TeamFoundation.Common.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.RemoteControl.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Services.Common.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Services.WebApi.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Setup.Common.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Shell.Framework.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Shell.Immutable.10.0.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Telemetry.dll",
-        "tools/vssdk/bin/lib/Microsoft.VisualStudio.Utilities.Internal.dll",
-        "tools/vssdk/bin/lib/Newtonsoft.Json.dll",
-        "tools/vssdk/bin/lib/System.Net.Http.Formatting.dll",
-        "tools/vssdk/bin/lib/System.ValueTuple.dll",
-        "tools/vssdk/bin/lib/VsixCommandLine.dll",
-        "tools/vssdk/bin/vsdconfigtool.exe",
-        "tools/vssdk/inc/AppIDCmdUsed.vsct",
-        "tools/vssdk/inc/EmulatorCmdUsed.vsct",
-        "tools/vssdk/inc/KnownImageIds.vsct",
-        "tools/vssdk/inc/Menus.vsct",
-        "tools/vssdk/inc/MnuHelpIds.h",
-        "tools/vssdk/inc/RazorCmdId.h",
-        "tools/vssdk/inc/RazorCmdUsed.vsct",
-        "tools/vssdk/inc/RazorGuids.h",
-        "tools/vssdk/inc/SharedCmdDef.vsct",
-        "tools/vssdk/inc/SharedCmdPlace.vsct",
-        "tools/vssdk/inc/ShellCmdDef.vsct",
-        "tools/vssdk/inc/ShellCmdPlace.vsct",
-        "tools/vssdk/inc/VsDbgCmd.h",
-        "tools/vssdk/inc/VsDbgCmdPlace.vsct",
-        "tools/vssdk/inc/VsDbgCmdUsed.vsct",
-        "tools/vssdk/inc/editids.h",
-        "tools/vssdk/inc/sccmnid.h",
-        "tools/vssdk/inc/sharedids.h",
-        "tools/vssdk/inc/stdidcmd.h",
-        "tools/vssdk/inc/venusids.h",
-        "tools/vssdk/inc/venusmenu.vsct",
-        "tools/vssdk/inc/virtkeys.h",
-        "tools/vssdk/inc/vsdebugguids.h",
-        "tools/vssdk/inc/vsshlids.h",
-        "tools/vssdk/inc/wbids.h",
-        "tools/vssdk/offreg.dll",
-        "tools/vssdk/schemas/PackageLanguagePackManifestSchema.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.Assets.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.Dependencies.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.Installation.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.Installer.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.Metadata.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.Prerequisites.xsd",
-        "tools/vssdk/schemas/PackageManifestSchema.xsd",
-        "tools/vssdk/schemas/VSIXLanguagePackSchema.xsd",
-        "tools/vssdk/schemas/VSIXManifestSchema.xsd"
-      ]
-    },
-    "Nerdbank.Streams/2.0.214": {
-      "sha512": "ouo/vQXStEL3OneASyZ3lX2y5d7/wc/+ZEkpoDVuMw6T60+QiiMlkOqpGE/QXB3gD+aTOjpwPOEfzFWzkfWH4w==",
-      "type": "package",
-      "path": "nerdbank.streams/2.0.214",
+      "path": "nerdbank.streams/2.1.37",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net46/Nerdbank.Streams.dll",
         "lib/net46/Nerdbank.Streams.pdb",
         "lib/net46/Nerdbank.Streams.xml",
+        "lib/net472/Nerdbank.Streams.dll",
+        "lib/net472/Nerdbank.Streams.pdb",
+        "lib/net472/Nerdbank.Streams.xml",
         "lib/netcoreapp2.1/Nerdbank.Streams.dll",
         "lib/netcoreapp2.1/Nerdbank.Streams.pdb",
         "lib/netcoreapp2.1/Nerdbank.Streams.xml",
@@ -3256,53 +3173,44 @@
         "lib/netstandard2.0/Nerdbank.Streams.dll",
         "lib/netstandard2.0/Nerdbank.Streams.pdb",
         "lib/netstandard2.0/Nerdbank.Streams.xml",
-        "nerdbank.streams.2.0.214.nupkg.sha512",
+        "nerdbank.streams.2.1.37.nupkg.sha512",
         "nerdbank.streams.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.1": {
-      "sha512": "jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+    "Newtonsoft.Json/12.0.2": {
+      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.1",
+      "path": "newtonsoft.json/12.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.pdb",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.pdb",
         "lib/net35/Newtonsoft.Json.xml",
         "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.pdb",
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.pdb",
         "lib/net45/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
-        "lib/netstandard1.0/Newtonsoft.Json.pdb",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
-        "lib/netstandard1.3/Newtonsoft.Json.pdb",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
-        "lib/netstandard2.0/Newtonsoft.Json.pdb",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.1.nupkg.sha512",
+        "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
     },
-    "StreamJsonRpc/2.0.140": {
-      "sha512": "B1Loni142PPmjAyeObDoaVvutcVHOAGI9pttwUH+s1doJM+f1oI0qpBtrnY5f7E7RrkPPg++j1OyFFHULcI1hQ==",
+    "StreamJsonRpc/2.0.167": {
+      "sha512": "Mx6vWcJKHRxWJsnpXAwxtpHcR+i0uQUcF9ZHiPywEjHEyYfE6UvhOwHSBuHiYsl6eXVuSyGRfoeZyAl0gqXRDQ==",
       "type": "package",
-      "path": "streamjsonrpc/2.0.140",
+      "path": "streamjsonrpc/2.0.167",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3322,6 +3230,22 @@
         "lib/net46/tr/StreamJsonRpc.resources.dll",
         "lib/net46/zh-Hans/StreamJsonRpc.resources.dll",
         "lib/net46/zh-Hant/StreamJsonRpc.resources.dll",
+        "lib/net472/StreamJsonRpc.dll",
+        "lib/net472/StreamJsonRpc.pdb",
+        "lib/net472/StreamJsonRpc.xml",
+        "lib/net472/cs/StreamJsonRpc.resources.dll",
+        "lib/net472/de/StreamJsonRpc.resources.dll",
+        "lib/net472/es/StreamJsonRpc.resources.dll",
+        "lib/net472/fr/StreamJsonRpc.resources.dll",
+        "lib/net472/it/StreamJsonRpc.resources.dll",
+        "lib/net472/ja/StreamJsonRpc.resources.dll",
+        "lib/net472/ko/StreamJsonRpc.resources.dll",
+        "lib/net472/pl/StreamJsonRpc.resources.dll",
+        "lib/net472/pt-BR/StreamJsonRpc.resources.dll",
+        "lib/net472/ru/StreamJsonRpc.resources.dll",
+        "lib/net472/tr/StreamJsonRpc.resources.dll",
+        "lib/net472/zh-Hans/StreamJsonRpc.resources.dll",
+        "lib/net472/zh-Hant/StreamJsonRpc.resources.dll",
         "lib/netcoreapp2.1/StreamJsonRpc.dll",
         "lib/netcoreapp2.1/StreamJsonRpc.pdb",
         "lib/netcoreapp2.1/StreamJsonRpc.xml",
@@ -3370,7 +3294,7 @@
         "lib/netstandard2.0/tr/StreamJsonRpc.resources.dll",
         "lib/netstandard2.0/zh-Hans/StreamJsonRpc.resources.dll",
         "lib/netstandard2.0/zh-Hant/StreamJsonRpc.resources.dll",
-        "streamjsonrpc.2.0.140.nupkg.sha512",
+        "streamjsonrpc.2.0.167.nupkg.sha512",
         "streamjsonrpc.nuspec"
       ]
     },
@@ -4372,12 +4296,13 @@
         "system.resources.resourcemanager.nuspec"
       ]
     },
-    "System.Runtime/4.3.0": {
-      "sha512": "JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+    "System.Runtime/4.3.1": {
+      "sha512": "abhfv1dTK6NXOmu4bgHIONxHyEqFjW8HwXPmpY9gmll+ix9UNo4XDcmzJn6oLooftxNssVHdJC1pGT9jkSynQg==",
       "type": "package",
-      "path": "system.runtime/4.3.0",
+      "path": "system.runtime/4.3.1",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4459,7 +4384,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.runtime.4.3.0.nupkg.sha512",
+        "system.runtime.4.3.1.nupkg.sha512",
         "system.runtime.nuspec"
       ]
     },
@@ -4490,12 +4415,13 @@
         "version.txt"
       ]
     },
-    "System.Runtime.Extensions/4.3.0": {
-      "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
+    "System.Runtime.Extensions/4.3.1": {
+      "sha512": "qAtKMcHOAq9/zKkl0dwvF0T0pmgCQxX1rC49rJXoU8jq+lw6MC3uXy7nLFmjEI20T3Aq069eWz4LcYR64vEmJw==",
       "type": "package",
-      "path": "system.runtime.extensions/4.3.0",
+      "path": "system.runtime.extensions/4.3.1",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4566,7 +4492,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.runtime.extensions.4.3.0.nupkg.sha512",
+        "system.runtime.extensions.4.3.1.nupkg.sha512",
         "system.runtime.extensions.nuspec"
       ]
     },
@@ -5112,15 +5038,14 @@
       "DocumentationGeneration >= 1.0.0",
       "Dsl >= 1.0.0",
       "Microsoft.Composition >= 1.0.31",
-      "Microsoft.VSSDK.BuildTools >= 15.9.3039",
       "Microsoft.VisualStudio.SDK.Analyzers >= 15.8.36",
-      "Microsoft.VisualStudio.Threading >= 16.0.96-beta",
-      "Microsoft.VisualStudio.Threading.Analyzers >= 16.0.96-beta",
-      "Microsoft.VisualStudio.Utilities >= 16.0.28528-pre",
+      "Microsoft.VisualStudio.Threading >= 16.0.102",
+      "Microsoft.VisualStudio.Threading.Analyzers >= 16.0.102",
+      "Microsoft.VisualStudio.Utilities >= 16.0.28729",
       "Microsoft.VisualStudio.Validation >= 15.3.58",
-      "Nerdbank.Streams >= 2.0.214",
-      "Newtonsoft.Json >= 12.0.1",
-      "StreamJsonRpc >= 2.0.140",
+      "Nerdbank.Streams >= 2.1.37",
+      "Newtonsoft.Json >= 12.0.2",
+      "StreamJsonRpc >= 2.0.167",
       "System.Buffers >= 4.5.0",
       "System.Collections >= 4.3.0",
       "System.Collections.Immutable >= 1.6.0-preview.19073.11",
@@ -5144,9 +5069,9 @@
       "System.Reflection.Metadata >= 1.7.0-preview.19073.11",
       "System.Reflection.Primitives >= 4.3.0",
       "System.Resources.ResourceManager >= 4.3.0",
-      "System.Runtime >= 4.3.0",
+      "System.Runtime >= 4.3.1",
       "System.Runtime.CompilerServices.Unsafe >= 4.6.0-preview.19073.11",
-      "System.Runtime.Extensions >= 4.3.0",
+      "System.Runtime.Extensions >= 4.3.1",
       "System.Runtime.InteropServices >= 4.3.0",
       "System.Security.Cryptography.Algorithms >= 4.3.1",
       "System.Security.Cryptography.Encoding >= 4.3.0",
@@ -5206,27 +5131,21 @@
             "target": "Package",
             "version": "[1.0.31, )"
           },
-          "Microsoft.VSSDK.BuildTools": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[15.9.3039, )"
-          },
           "Microsoft.VisualStudio.SDK.Analyzers": {
             "target": "Package",
             "version": "[15.8.36, )"
           },
           "Microsoft.VisualStudio.Threading": {
             "target": "Package",
-            "version": "[16.0.96-beta, )"
+            "version": "[16.0.102, )"
           },
           "Microsoft.VisualStudio.Threading.Analyzers": {
             "target": "Package",
-            "version": "[16.0.96-beta, )"
+            "version": "[16.0.102, )"
           },
           "Microsoft.VisualStudio.Utilities": {
             "target": "Package",
-            "version": "[16.0.28528-pre, )"
+            "version": "[16.0.28729, )"
           },
           "Microsoft.VisualStudio.Validation": {
             "target": "Package",
@@ -5234,15 +5153,15 @@
           },
           "Nerdbank.Streams": {
             "target": "Package",
-            "version": "[2.0.214, )"
+            "version": "[2.1.37, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[12.0.1, )"
+            "version": "[12.0.2, )"
           },
           "StreamJsonRpc": {
             "target": "Package",
-            "version": "[2.0.140, )"
+            "version": "[2.0.167, )"
           },
           "System.Buffers": {
             "target": "Package",
@@ -5338,7 +5257,7 @@
           },
           "System.Runtime": {
             "target": "Package",
-            "version": "[4.3.0, )"
+            "version": "[4.3.1, )"
           },
           "System.Runtime.CompilerServices.Unsafe": {
             "target": "Package",
@@ -5346,7 +5265,7 @@
           },
           "System.Runtime.Extensions": {
             "target": "Package",
-            "version": "[4.3.0, )"
+            "version": "[4.3.1, )"
           },
           "System.Runtime.InteropServices": {
             "target": "Package",

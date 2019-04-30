@@ -17,7 +17,7 @@ using System.Runtime.ConstrainedExecution;
 [assembly: AssemblyDescription("CQRS on Azure - Domain Specific Language - Designer")]
 [assembly: AssemblyCompany("@Merrion")]
 [assembly: AssemblyProduct("CQRSAzure")]
-[assembly: AssemblyCopyright("Duncan Jones - 2015-2017")]
+[assembly: AssemblyCopyright("Duncan Jones - 2015-2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: System.Resources.NeutralResourcesLanguage("en")]

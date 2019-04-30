@@ -10,10 +10,7 @@ D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.C
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.pdb
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CopyComplete
 D:\Source\Workspaces\CQRS on Azure\Designer\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.Resources.resources
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.GenerateResource.cache
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CoreCompileInputs.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Reflection.Metadata.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.dll.config
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.CodeGeneration.pdb
@@ -49,7 +46,6 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.IO.FileSyst
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.IO.FileSystem.Primitives.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Net.Http.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Net.Sockets.dll
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Reflection.Metadata.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Security.Cryptography.Algorithms.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\System.Security.Cryptography.Encoding.dll
@@ -67,6 +63,10 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\vbc.exe.config
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\vbc.rsp
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\VBCSCompiler.exe
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\roslyn\VBCSCompiler.exe.config
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbprojAssemblyReference.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.Resources.resources
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.GenerateResource.cache
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CoreCompileInputs.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CodeGeneration.vbproj.CopyComplete
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CodeGeneration\obj\Debug\CQRSAzure.CQRSdsl.CodeGeneration.xml

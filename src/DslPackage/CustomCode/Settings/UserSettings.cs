@@ -17,6 +17,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Settings
         
         public void LoadSettings(object TargetSettingsClass)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             if (null != TargetSettingsClass)
             {
                 SettingsManager settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
@@ -37,6 +38,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Settings
 
         public void SaveSettings(object TargetSettingsClass)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             if (null != TargetSettingsClass)
             {
                 SettingsManager settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);

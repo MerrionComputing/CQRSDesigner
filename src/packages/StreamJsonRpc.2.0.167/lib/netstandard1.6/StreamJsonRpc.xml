@@ -1,0 +1,2398 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StreamJsonRpc</name>
+    </assembly>
+    <members>
+        <member name="T:StreamJsonRpc.AwaitExtensions">
+            <summary>
+            A collection of extension methods to support special awaiters.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.AwaitExtensions.GetAwaiter(System.Threading.SynchronizationContext)">
+            <summary>
+            Gets an awaiter that switches the caller to execute on the specified <see cref="T:System.Threading.SynchronizationContext"/>.
+            </summary>
+            <param name="synchronizationContext">The <see cref="T:System.Threading.SynchronizationContext"/> to switch to.</param>
+            <returns>The value to await on.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter">
+            <summary>
+            The awaiter for <see cref="T:System.Threading.SynchronizationContext"/>.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter.synchronizationContext">
+            <summary>
+            The <see cref="T:System.Threading.SynchronizationContext"/> to switch the caller's context to.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter.#ctor(System.Threading.SynchronizationContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter"/> struct.
+            </summary>
+            <param name="synchronizationContext">The <see cref="T:System.Threading.SynchronizationContext"/> to switch the caller's context to.</param>
+        </member>
+        <member name="P:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter.IsCompleted">
+            <summary>
+            Gets a value indicating whether the caller is already on the desired context.
+            </summary>
+            <remarks>
+            We always return <c>false</c> because we use this to invoke server methods and we *always* want to
+            yield before invoking them, even if this is the default SynchronizationContext that the caller is on.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter.GetResult">
+            <summary>
+            Does nothing.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.AwaitExtensions.SynchronizationContextAwaiter.OnCompleted(System.Action)">
+            <summary>
+            Schedules a continuation on the <see cref="T:System.Threading.SynchronizationContext"/> specified in the constructor.
+            </summary>
+            <param name="continuation">The delegate to execute on the <see cref="T:System.Threading.SynchronizationContext"/>.</param>
+        </member>
+        <member name="T:StreamJsonRpc.CommonMethodNameTransforms">
+            <summary>
+            Common RPC method transform functions that may be supplied to <see cref="M:StreamJsonRpc.JsonRpc.AddLocalRpcTarget(System.Object,StreamJsonRpc.JsonRpcTargetOptions)"/>
+            by way of <see cref="P:StreamJsonRpc.JsonRpcTargetOptions.MethodNameTransform"/>.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.CommonMethodNameTransforms.CamelCaseStrategy">
+            <summary>
+            The Newtonsoft.Json camel casing converter.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.CommonMethodNameTransforms.CamelCase">
+            <summary>
+            Gets a function that converts a given string from PascalCase to camelCase.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.CommonMethodNameTransforms.Prepend(System.String)">
+            <summary>
+            Gets a function that prepends a particular string in front of any RPC method name.
+            </summary>
+            <param name="prefix">
+            The prefix to prepend to any method name.
+            This value must not be null.
+            When this value is the empty string, no transformation is performed by the returned function.
+            </param>
+            <returns>The transform function.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.DisconnectedReason">
+            <summary>
+            Identifies a reason for a stream disconnection.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.DisconnectedReason.StreamError">
+            <summary>
+            An error occurred while accessing the stream.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.DisconnectedReason.ParseError">
+            <summary>
+            A syntax or schema error while reading a JSON-RPC packet occurred.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.DisconnectedReason.LocallyDisposed">
+            <summary>
+            The <see cref="T:StreamJsonRpc.JsonRpc"/> instance was disposed.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.DisconnectedReason.RemotePartyTerminated">
+            <summary>
+            The underlying transport was closed by the remote party.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.DisconnectedReason.FatalException">
+            <summary>
+            A fatal exception was thrown in a local method that was requested by the remote party.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.DisconnectedReason.LocalContractViolation">
+            <summary>
+            An extensibility point was leveraged locally and broke the contract.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.JsonRpcDisconnectedEventArgs">
+            <summary>
+            Describes the reason behind a disconnection with the remote party.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpcDisconnectedEventArgs.#ctor(System.String,StreamJsonRpc.DisconnectedReason)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpcDisconnectedEventArgs"/> class.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="reason">The reason for disconnection.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpcDisconnectedEventArgs.#ctor(System.String,StreamJsonRpc.DisconnectedReason,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpcDisconnectedEventArgs"/> class.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="reason">The reason for disconnection.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpcDisconnectedEventArgs.#ctor(System.String,StreamJsonRpc.DisconnectedReason,Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpcDisconnectedEventArgs"/> class.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="reason">The reason for disconnection.</param>
+            <param name="lastMessage">The last message.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpcDisconnectedEventArgs.#ctor(System.String,StreamJsonRpc.DisconnectedReason,Newtonsoft.Json.Linq.JToken,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpcDisconnectedEventArgs"/> class.
+            </summary>
+            <param name="description">The description.</param>
+            <param name="reason">The reason for disconnection.</param>
+            <param name="lastMessage">The last message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcDisconnectedEventArgs.Description">
+            <summary>
+            Gets the description.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcDisconnectedEventArgs.Reason">
+            <summary>
+            Gets the reason.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcDisconnectedEventArgs.LastMessage">
+            <summary>
+            Gets the last message.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcDisconnectedEventArgs.Exception">
+            <summary>
+            Gets the exception.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.BadRpcHeaderException">
+            <summary>
+            An exception thrown when a deserialized message has a bad header.
+            </summary>
+            <seealso cref="T:StreamJsonRpc.RemoteRpcException" />
+        </member>
+        <member name="M:StreamJsonRpc.BadRpcHeaderException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.BadRpcHeaderException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:StreamJsonRpc.BadRpcHeaderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.BadRpcHeaderException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:StreamJsonRpc.ConnectionLostException">
+            <summary>
+            An exception used to fault a <see cref="T:System.Threading.Tasks.Task"/> returned from a <see cref="T:StreamJsonRpc.JsonRpc"/> request
+            when the request could not be completed or the response cannot be received because the connection dropped.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.ConnectionLostException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.ConnectionLostException"/> class.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.ConnectionLostException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.ConnectionLostException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:StreamJsonRpc.ConnectionLostException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.ConnectionLostException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:StreamJsonRpc.LocalRpcException">
+            <summary>
+            An exception that may be thrown within a locally invoked server method, and carries with it data that influences the JSON-RPC error message's error object.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.LocalRpcException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.LocalRpcException"/> class.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.LocalRpcException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.LocalRpcException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:StreamJsonRpc.LocalRpcException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.LocalRpcException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="P:StreamJsonRpc.LocalRpcException.ErrorData">
+            <summary>
+            Gets or sets the value for the error.data property.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.LocalRpcException.ErrorCode">
+            <summary>
+            Gets or sets the value for the error.code property.
+            </summary>
+            <remarks>
+            The default value is set to a special general error code: <see cref="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.InvocationError"/>.
+            This may be set to a more meaningful error code for the application that allows the client to programatically respond to the error condition.
+            Application-defined values should avoid the [-32768, -32000] range, which is reserved for the JSON-RPC protocol itself.
+            </remarks>
+        </member>
+        <member name="T:StreamJsonRpc.RemoteInvocationException">
+            <summary>
+            Remote RPC exception that indicates that the server target method threw an exception.
+            </summary>
+            <remarks>
+            The details of the target method exception can be found on the <see cref="P:StreamJsonRpc.RemoteInvocationException.ErrorCode"/> and <see cref="P:StreamJsonRpc.RemoteInvocationException.ErrorData"/> properties.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.RemoteInvocationException.#ctor(System.String,System.Int32,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.RemoteInvocationException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="errorCode">The value of the error.code field in the response.</param>
+            <param name="errorData">The value of the error.data field in the response.</param>
+        </member>
+        <member name="P:StreamJsonRpc.RemoteInvocationException.ErrorCode">
+            <summary>
+            Gets the value of the <c>error.code</c> field in the response.
+            </summary>
+            <value>
+            The value may be any integer.
+            The value may be <see cref="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.InvocationError"/>, which is a general value used for exceptions thrown on the server when the server does not give an app-specific error code.
+            </value>
+        </member>
+        <member name="P:StreamJsonRpc.RemoteInvocationException.ErrorData">
+            <summary>
+            Gets the <c>error.data</c> value in the error response, if one was provided.
+            </summary>
+            <remarks>
+            Depending on the <see cref="T:StreamJsonRpc.IJsonRpcMessageFormatter"/> used, the value of this property, if any,
+            may be a <see cref="T:Newtonsoft.Json.Linq.JToken"/> or a deserialized object.
+            Deserializing this or casting this object to <see cref="T:StreamJsonRpc.Protocol.CommonErrorData"/> <em>may</em> succeed, and be a means to extract useful error information.
+            </remarks>
+        </member>
+        <member name="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            <summary>
+            Remote RPC exception that indicates that the requested target method was not found on the server.
+            </summary>
+            <remarks>
+            Check the exception message for the reasons why the method was not found. It's possible that
+            there was a method with the matching name, but it was not public, had ref or out params, or
+            its arguments were incompatible with the arguments supplied by the client.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.RemoteMethodNotFoundException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.RemoteMethodNotFoundException"/> class
+            with supplied message and target method.
+            </summary>
+            <param name="message">Exception message describing why the method was not found.</param>
+            <param name="targetMethod">Target method that was not found.</param>
+        </member>
+        <member name="P:StreamJsonRpc.RemoteMethodNotFoundException.TargetMethod">
+            <summary>
+            Gets the name of the target method that was not found.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.RemoteRpcException">
+            <summary>
+            Base exception class for any exception that happens while receiving an JSON RPC communication.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.RemoteRpcException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.RemoteRpcException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:StreamJsonRpc.RemoteRpcException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.RemoteRpcException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:StreamJsonRpc.HeaderDelimitedMessageHandler">
+            <summary>
+            Adds headers before each text message transmitted over a stream.
+            </summary>
+            <remarks>
+            This is based on the language server protocol spec:
+            https://github.com/Microsoft/language-server-protocol/blob/master/protocol.md#base-protocol.
+            </remarks>
+        </member>
+        <member name="F:StreamJsonRpc.HeaderDelimitedMessageHandler.DefaultContentEncoding">
+            <summary>
+            The default encoding to use when writing content,
+            and to assume as the encoding when reading content
+            that doesn't have a header identifying its encoding.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.HeaderDelimitedMessageHandler.HeaderEncoding">
+            <summary>
+            The encoding to use when writing/reading headers.
+            </summary>
+            <remarks>
+            Although the spec dictates using ASCII encoding, that's equivalent to UTF8
+            for the characters we expect to be sending and receiving,
+            and portable profiles don't have ASCII available.
+            Also note that when writing we use the encoding set by this field,
+            but when reading, we have highly optimized code that hard-codes the assumption
+            that each character is one byte.
+            </remarks>
+        </member>
+        <member name="F:StreamJsonRpc.HeaderDelimitedMessageHandler.subType">
+            <summary>
+            Backing field for <see cref="P:StreamJsonRpc.HeaderDelimitedMessageHandler.SubType"/>.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.#ctor(System.IO.Pipelines.PipeWriter,System.IO.Pipelines.PipeReader,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> class.
+            </summary>
+            <param name="writer">The writer to use for transmitting messages.</param>
+            <param name="reader">The reader to use for receiving messages.</param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.#ctor(System.IO.Pipelines.IDuplexPipe,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> class.
+            </summary>
+            <param name="pipe">The duplex pipe to use for exchanging messages.</param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.#ctor(System.IO.Stream,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> class.
+            </summary>
+            <param name="duplexStream">The stream to use for exchanging messages.</param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> class.
+            </summary>
+            <param name="duplexStream">The stream to use for transmitting and receiving messages.</param>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.#ctor(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> class.
+            </summary>
+            <param name="sendingStream">The stream to use for transmitting messages.</param>
+            <param name="receivingStream">The stream to use for receiving messages.</param>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.#ctor(System.IO.Stream,System.IO.Stream,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> class.
+            </summary>
+            <param name="sendingStream">The stream to use for transmitting messages.</param>
+            <param name="receivingStream">The stream to use for receiving messages.</param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+        </member>
+        <member name="P:StreamJsonRpc.HeaderDelimitedMessageHandler.SubType">
+            <summary>
+            Gets or sets the value to use as the subtype in the Content-Type header (e.g. "application/SUBTYPE").
+            </summary>
+            <value>The default value is "jsonrpc".</value>
+        </member>
+        <member name="P:StreamJsonRpc.HeaderDelimitedMessageHandler.Encoding">
+            <summary>
+            Gets or sets the encoding to use for transmitted messages.
+            </summary>
+            <exception cref="T:System.NotSupportedException">Thrown if the <see cref="P:StreamJsonRpc.MessageHandlerBase.Formatter"/> in use does not implement <see cref="T:StreamJsonRpc.IJsonRpcMessageTextFormatter"/>.</exception>
+        </member>
+        <member name="P:StreamJsonRpc.HeaderDelimitedMessageHandler.TextFormatter">
+            <summary>
+            Gets the formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances as text.
+            Throws if the formatter is not a text-based formatter.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.ReadCoreAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.Write(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.HeaderDelimitedMessageHandler.ParseEncodingFromContentTypeHeader(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Extracts the content encoding from a Content-Type header.
+            </summary>
+            <param name="contentTypeValue">The value of the Content-Type header.</param>
+            <returns>The Encoding, if the header specified one; otherwise <c>null</c>.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.IJsonRpcMessageFormatter">
+            <summary>
+            An interface that offers <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> serialization to and from a sequence of bytes.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.IJsonRpcMessageFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Deserializes a <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/>.
+            </summary>
+            <param name="contentBuffer">A sequence of bytes to deserialize.</param>
+            <returns>The deserialized <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/>.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.IJsonRpcMessageFormatter.Serialize(System.Buffers.IBufferWriter{System.Byte},StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <summary>
+            Serializes a <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/>.
+            </summary>
+            <param name="contentBuffer">The receiver of the serialized bytes.</param>
+            <param name="message">The message to serialize.</param>
+        </member>
+        <member name="M:StreamJsonRpc.IJsonRpcMessageFormatter.GetJsonText(StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <summary>
+            Gets a JSON representation for a given message for tracing purposes.
+            </summary>
+            <param name="message">The message to be traced.</param>
+            <returns>Any object whose <see cref="M:System.Object.ToString"/> method will produce a human-readable JSON string, suitable for tracing.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.IJsonRpcMessageHandler">
+            <summary>
+            The contract for sending and receiving JSON-RPC messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.IJsonRpcMessageHandler.CanRead">
+            <summary>
+            Gets a value indicating whether this message handler can receive messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.IJsonRpcMessageHandler.CanWrite">
+            <summary>
+            Gets a value indicating whether this message handler can send messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.IJsonRpcMessageHandler.Formatter">
+            <summary>
+            Gets the formatter used for message serialization.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.IJsonRpcMessageHandler.ReadAsync(System.Threading.CancellationToken)">
+            <summary>
+            Reads a distinct and complete message from the transport, waiting for one if necessary.
+            </summary>
+            <param name="cancellationToken">A token to cancel the read request.</param>
+            <returns>The received message, or <c>null</c> if the underlying transport ends before beginning another message.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.IJsonRpcMessageHandler.CanRead"/> returns <c>false</c>.</exception>
+            <exception cref="T:System.IO.EndOfStreamException">Thrown if the transport ends while reading a message.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before a new message is received.</exception>
+            <remarks>
+            Implementations may assume this method is never called before any async result
+            from a prior call to this method has completed.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.IJsonRpcMessageHandler.WriteAsync(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <summary>
+            Writes a JSON-RPC message to the transport and flushes.
+            </summary>
+            <param name="jsonRpcMessage">The message to write.</param>
+            <param name="cancellationToken">A token to cancel the write request.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.IJsonRpcMessageHandler.CanWrite"/> returns <c>false</c>.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before message transmission begins.</exception>
+            <remarks>
+            Implementations should expect this method to be invoked concurrently
+            and use a queue to preserve message order as they are transmitted one at a time.
+            </remarks>
+        </member>
+        <member name="T:StreamJsonRpc.IJsonRpcMessageTextFormatter">
+            <summary>
+            An <see cref="T:StreamJsonRpc.IJsonRpcMessageFormatter"/> that formats messages as JSON (text).
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.IJsonRpcMessageTextFormatter.Encoding">
+            <summary>
+            Gets or sets the encoding used for serialization for methods that do not take an explicit <see cref="T:System.Text.Encoding"/>.
+            </summary>
+            <value>Never null.</value>
+            <exception cref="T:System.ArgumentNullException">Thrown at an attempt to set the value to null.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.IJsonRpcMessageTextFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte},System.Text.Encoding)">
+            <summary>
+            Deserializes a sequence of bytes to a <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/>.
+            </summary>
+            <param name="contentBuffer">The bytes to deserialize.</param>
+            <param name="encoding">The encoding to read the bytes in <paramref name="contentBuffer"/> with. Must not be null.</param>
+            <returns>The deserialized message.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.JsonMessageFormatter">
+            <summary>
+            Uses Newtonsoft.Json serialization to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> as JSON (text).
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonMessageFormatter.ExceptionDataKey">
+            <summary>
+            The key into an <see cref="P:System.Exception.Data"/> dictionary whose value may be a <see cref="T:Newtonsoft.Json.Linq.JToken"/> that failed deserialization.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonMessageFormatter.SupportedProtocolVersions">
+            <summary>
+            A collection of supported protocol versions.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonMessageFormatter.DefaultEncoding">
+            <summary>
+            UTF-8 encoding without a preamble.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonMessageFormatter.protocolVersion">
+            <summary>
+            The version of the JSON-RPC protocol being emulated by this instance.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonMessageFormatter.encoding">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonMessageFormatter.Encoding"/> property.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonMessageFormatter"/> class
+            that uses <see cref="P:System.Text.Encoding.UTF8"/> (without the preamble) for its text encoding.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.#ctor(System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonMessageFormatter"/> class.
+            </summary>
+            <param name="encoding">The encoding to use for the JSON text.</param>
+        </member>
+        <member name="P:StreamJsonRpc.JsonMessageFormatter.Encoding">
+            <summary>
+            Gets or sets the encoding to use for transmitted messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonMessageFormatter.ProtocolVersion">
+            <summary>
+            Gets or sets the version of the JSON-RPC protocol emulated by this instance.
+            </summary>
+            <value>The default value is 2.0.</value>
+        </member>
+        <member name="P:StreamJsonRpc.JsonMessageFormatter.JsonSerializer">
+            <summary>
+            Gets the <see cref="T:Newtonsoft.Json.JsonSerializer"/> used when serializing and deserializing method arguments and return values.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte})">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.Deserialize(System.Buffers.ReadOnlySequence{System.Byte},System.Text.Encoding)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.Serialize(System.Buffers.IBufferWriter{System.Byte},StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.Deserialize(Newtonsoft.Json.Linq.JToken)">
+            <summary>
+            Deserializes a <see cref="T:Newtonsoft.Json.Linq.JToken"/> to a <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/>.
+            </summary>
+            <param name="json">The JSON to deserialize.</param>
+            <returns>The deserialized message.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.Serialize(StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <summary>
+            Serializes a <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> to a <see cref="T:Newtonsoft.Json.Linq.JToken"/>.
+            </summary>
+            <param name="message">The message to serialize.</param>
+            <returns>The JSON of the message.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.GetJsonText(StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.TokenizeUserData(StreamJsonRpc.Protocol.JsonRpcMessage)">
+            <summary>
+            Converts user data to <see cref="T:Newtonsoft.Json.Linq.JToken"/> objects using all applicable user-provided <see cref="T:Newtonsoft.Json.JsonConverter"/> instances.
+            </summary>
+            <param name="jsonRpcMessage">A JSON-RPC message.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonMessageFormatter.TokenizeUserData(System.Object)">
+            <summary>
+            Converts a single user data value to a <see cref="T:Newtonsoft.Json.Linq.JToken"/>, using all applicable user-provided <see cref="T:Newtonsoft.Json.JsonConverter"/> instances.
+            </summary>
+            <param name="value">The value to tokenize.</param>
+            <returns>The <see cref="T:Newtonsoft.Json.Linq.JToken"/> instance.</returns>
+        </member>
+        <member name="T:StreamJsonRpc.JsonRpc">
+            <summary>
+            Manages a JSON-RPC connection with another entity over a <see cref="T:System.IO.Stream"/>.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.DefaultSynchronizationContext">
+            <summary>
+            The <see cref="T:System.Threading.SynchronizationContext"/> to use to schedule work on the threadpool.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.dispatcherMapLock">
+            <summary>
+            The object to lock when accessing the <see cref="F:StreamJsonRpc.JsonRpc.resultDispatcherMap"/> or <see cref="F:StreamJsonRpc.JsonRpc.inboundCancellationSources"/> objects.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.disconnectedEventLock">
+            <summary>
+            The object to lock when accessing the <see cref="E:StreamJsonRpc.JsonRpc.DisconnectedPrivate"/> member.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.resultDispatcherMap">
+            <summary>
+            A map of outbound calls awaiting responses.
+            Lock the <see cref="F:StreamJsonRpc.JsonRpc.dispatcherMapLock"/> object for all access to this member.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.inboundCancellationSources">
+            <summary>
+            A map of id's from inbound calls that have not yet completed and may be canceled,
+            to their <see cref="T:System.Threading.CancellationTokenSource"/> instances.
+            Lock the <see cref="F:StreamJsonRpc.JsonRpc.dispatcherMapLock"/> object for all access to this member.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.cancelPendingOutboundRequestAction">
+            <summary>
+            A delegate for the <see cref="M:StreamJsonRpc.JsonRpc.CancelPendingOutboundRequest(System.Object)"/> method.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.handleInvocationTaskResultDelegate">
+            <summary>
+            A delegate for the <see cref="M:StreamJsonRpc.JsonRpc.HandleInvocationTaskResult(StreamJsonRpc.Protocol.JsonRpcRequest,System.Threading.Tasks.Task)"/> method.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.targetRequestMethodToClrMethodMap">
+            <summary>
+            A collection of target objects and their map of clr method to <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute"/> values.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.disconnectedSource">
+            <summary>
+            The source for the <see cref="P:StreamJsonRpc.JsonRpc.DisconnectedToken"/> property.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.completionSource">
+            <summary>
+            The completion source behind <see cref="P:StreamJsonRpc.JsonRpc.Completion"/>.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.eventReceivers">
+            <summary>
+            A list of event handlers we've registered on target objects that define events. May be <c>null</c> if there are no handlers.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.traceSource">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonRpc.TraceSource"/> property.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.cancelLocallyInvokedMethodsWhenConnectionIsClosed">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonRpc.CancelLocallyInvokedMethodsWhenConnectionIsClosed"/> property.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.synchronizationContext">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonRpc.SynchronizationContext"/> property.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpc"/> class that uses
+            <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> around messages serialized using the
+            <see cref="T:StreamJsonRpc.JsonMessageFormatter"/>.
+            </summary>
+            <param name="stream">The full duplex stream used to transmit and receive messages.</param>
+            <remarks>
+            It is important to call <see cref="M:StreamJsonRpc.JsonRpc.StartListening"/> to begin receiving messages.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.#ctor(System.IO.Stream,System.IO.Stream,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpc"/> class that uses
+            <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> around messages serialized using the
+            <see cref="T:StreamJsonRpc.JsonMessageFormatter"/>.
+            </summary>
+            <param name="sendingStream">The stream used to transmit messages. May be null.</param>
+            <param name="receivingStream">The stream used to receive messages. May be null.</param>
+            <param name="target">An optional target object to invoke when incoming RPC requests arrive.</param>
+            <remarks>
+            It is important to call <see cref="M:StreamJsonRpc.JsonRpc.StartListening"/> to begin receiving messages.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.#ctor(StreamJsonRpc.IJsonRpcMessageHandler,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpc"/> class.
+            </summary>
+            <param name="messageHandler">The message handler to use to transmit and receive RPC messages.</param>
+            <param name="target">An optional target object to invoke when incoming RPC requests arrive.</param>
+            <remarks>
+            It is important to call <see cref="M:StreamJsonRpc.JsonRpc.StartListening"/> to begin receiving messages.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.#ctor(StreamJsonRpc.IJsonRpcMessageHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpc"/> class.
+            </summary>
+            <param name="messageHandler">The message handler to use to transmit and receive RPC messages.</param>
+            <remarks>
+            It is important to call <see cref="M:StreamJsonRpc.JsonRpc.StartListening"/> to begin receiving messages.
+            </remarks>
+        </member>
+        <member name="E:StreamJsonRpc.JsonRpc.Disconnected">
+            <summary>
+            Raised when the underlying stream is disconnected.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.JsonRpc.TraceEvents">
+            <summary>
+            Event IDs raised to our <see cref="P:StreamJsonRpc.JsonRpc.TraceSource"/>.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.LocalMethodAdded">
+            <summary>
+            Occurs when a local RPC method is added to our mapping table.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.LocalMethodNotAdded">
+            <summary>
+            Occurs when a candidate local RPC method is NOT added to our mapping table.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.LocalEventListenerAdded">
+            <summary>
+            Occurs when an event handler subscribes to an event on an added target object.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.ListeningStarted">
+            <summary>
+            Occurs when this instance starts listening for incoming RPC messages.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.ReceivedCancellation">
+            <summary>
+            Occurs when a notification arrives that is attempting to cancel a prior request.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.RequestWithoutMatchingTarget">
+            <summary>
+            Occurs when a JSON-RPC request or notification was received, but no local method is found to invoke for it.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.RequestReceived">
+            <summary>
+            Occurs when a <see cref="T:StreamJsonRpc.Protocol.JsonRpcRequest"/> is received.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.MessageReceived">
+            <summary>
+            Occurs when any <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> is received.
+            At <see cref="F:System.Diagnostics.TraceLevel.Info"/>, <see cref="M:System.Diagnostics.TraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)"/>
+            is invoked with the <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> that is received.
+            At <see cref="F:System.Diagnostics.TraceLevel.Verbose"/>, <see cref="M:System.Diagnostics.TraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])"/>
+            is invoked with the JSON representation of the message.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.MessageSent">
+            <summary>
+            Occurs when any <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> is transmitted.
+            At <see cref="F:System.Diagnostics.TraceLevel.Info"/>, <see cref="M:System.Diagnostics.TraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)"/>
+            is invoked with the <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> that is transmitted.
+            At <see cref="F:System.Diagnostics.TraceLevel.Verbose"/>, <see cref="M:System.Diagnostics.TraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])"/>
+            is invoked with the JSON representation of the message.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.LocalInvocation">
+            <summary>
+            Occurs when a <see cref="T:StreamJsonRpc.Protocol.JsonRpcRequest"/> is received and successfully mapped to a local method to be invoked.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.LocalInvocationError">
+            <summary>
+            Occurs when a locally invoked method from a <see cref="T:StreamJsonRpc.Protocol.JsonRpcRequest"/> throws an exception (or returns a faulted <see cref="T:System.Threading.Tasks.Task"/>).
+            <see cref="M:System.Diagnostics.TraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object[])"/> is invoked with the thrown <see cref="T:System.Exception"/>, request method name, request ID, and the argument object/array.
+            <see cref="M:System.Diagnostics.TraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])"/> is invoked with a text message formatted with exception information.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.ReceivedResult">
+            <summary>
+            Occurs when a successful result message for a prior invocation is received.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.ReceivedError">
+            <summary>
+            Occurs when an error message for a prior invocation is received.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.Closed">
+            <summary>
+            Occurs when the connection is closed.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.RequestAbandonedByRemote">
+            <summary>
+            A local request is canceled because the remote party terminated the connection.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpc.TraceEvents.LocalContractViolation">
+            <summary>
+            An extensibility point was leveraged locally and broke the contract.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.SynchronizationContext">
+            <summary>
+            Gets or sets the <see cref="T:System.Threading.SynchronizationContext"/> to use when invoking methods requested by the remote party.
+            </summary>
+            <value>Defaults to null.</value>
+            <remarks>
+            When not specified, methods are invoked on the threadpool.
+            </remarks>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.Completion">
+            <summary>
+            Gets a <see cref="T:System.Threading.Tasks.Task"/> that completes when this instance is disposed or when listening has stopped
+            whether by error, disposal or the stream closing.
+            </summary>
+            <remarks>
+            The returned <see cref="T:System.Threading.Tasks.Task"/> may transition to a faulted state
+            for exceptions fatal to the protocol or this instance.
+            </remarks>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening">
+            <summary>
+            Gets or sets a value indicating whether configuration of this instance
+            can be changed after <see cref="M:StreamJsonRpc.JsonRpc.StartListening"/> or <see cref="M:StreamJsonRpc.JsonRpc.Attach(System.IO.Stream,System.Object)"/>
+            has been called.
+            </summary>
+            <value>The default is <c>false</c>.</value>
+            <remarks>
+            By default, all configuration such as target objects and target methods must be set
+            before listening starts to avoid a race condition whereby we receive a method invocation
+            message before we have wired up a handler for it and must reject the call.
+            But in some advanced scenarios, it may be necessary to add target methods after listening
+            has started (e.g. in response to an invocation that enables additional functionality),
+            in which case setting this property to <c>true</c> is appropriate.
+            </remarks>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.CancelLocallyInvokedMethodsWhenConnectionIsClosed">
+            <summary>
+            Gets or sets a value indicating whether to cancel all methods dispatched locally
+            that accept a <see cref="T:System.Threading.CancellationToken"/> when the connection with the remote party is closed.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.TraceSource">
+            <summary>
+            Gets or sets the <see cref="T:System.Diagnostics.TraceSource"/> used to trace JSON-RPC messages and events.
+            </summary>
+            <value>The value can never be null.</value>
+            <exception cref="T:System.ArgumentNullException">Thrown by the setter if a null value is provided.</exception>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.MessageHandler">
+            <summary>
+            Gets the message handler used to send and receive messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.DisconnectedToken">
+            <summary>
+            Gets a token that is cancelled when the connection is lost.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpc.SynchronizationContextOrDefault">
+            <summary>
+            Gets the user-specified <see cref="P:StreamJsonRpc.JsonRpc.SynchronizationContext"/> or a default instance that will execute work on the threadpool.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach(System.IO.Stream,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpc"/> class that uses
+            <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> around messages serialized using the
+            <see cref="T:StreamJsonRpc.JsonMessageFormatter"/>, and immediately starts listening.
+            </summary>
+            <param name="stream">A bidirectional stream to send and receive RPC messages on.</param>
+            <param name="target">An optional target object to invoke when incoming RPC requests arrive.</param>
+            <returns>The initialized and listening <see cref="T:StreamJsonRpc.JsonRpc"/> object.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach(System.IO.Stream,System.IO.Stream,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpc"/> class that uses
+            <see cref="T:StreamJsonRpc.HeaderDelimitedMessageHandler"/> around messages serialized using the
+            <see cref="T:StreamJsonRpc.JsonMessageFormatter"/>, and immediately starts listening.
+            </summary>
+            <param name="sendingStream">The stream used to transmit messages. May be null.</param>
+            <param name="receivingStream">The stream used to receive messages. May be null.</param>
+            <param name="target">An optional target object to invoke when incoming RPC requests arrive.</param>
+            <returns>The initialized and listening <see cref="T:StreamJsonRpc.JsonRpc"/> object.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach``1(System.IO.Stream)">
+            <summary>
+            Creates a JSON-RPC client proxy that conforms to the specified server interface.
+            </summary>
+            <typeparam name="T">The interface that describes the functions available on the remote end.</typeparam>
+            <param name="stream">The bidirectional stream used to send and receive JSON-RPC messages.</param>
+            <returns>
+            An instance of the generated proxy.
+            In addition to implementing <typeparamref name="T"/>, it also implements <see cref="T:System.IDisposable"/>
+            and should be disposed of to close the connection.
+            </returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach``1(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Creates a JSON-RPC client proxy that conforms to the specified server interface.
+            </summary>
+            <typeparam name="T">The interface that describes the functions available on the remote end.</typeparam>
+            <param name="sendingStream">The stream used to transmit messages. May be null.</param>
+            <param name="receivingStream">The stream used to receive messages. May be null.</param>
+            <returns>
+            An instance of the generated proxy.
+            In addition to implementing <typeparamref name="T"/>, it also implements <see cref="T:System.IDisposable"/>
+            and should be disposed of to close the connection.
+            </returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach``1">
+            <summary>
+            Creates a JSON-RPC client proxy that conforms to the specified server interface.
+            </summary>
+            <typeparam name="T">The interface that describes the functions available on the remote end.</typeparam>
+            <returns>An instance of the generated proxy.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Attach``1(StreamJsonRpc.JsonRpcProxyOptions)">
+            <summary>
+            Creates a JSON-RPC client proxy that conforms to the specified server interface.
+            </summary>
+            <typeparam name="T">The interface that describes the functions available on the remote end.</typeparam>
+            <param name="options">A set of customizations for how the client proxy is wired up. If <c>null</c>, default options will be used.</param>
+            <returns>An instance of the generated proxy.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcTarget(System.Object)">
+            <summary>
+            Adds the specified target as possible object to invoke when incoming messages are received.  The target object
+            should not inherit from each other and are invoked in the order which they are added.
+            </summary>
+            <param name="target">Target to invoke when incoming messages are received.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcTarget(System.Object,StreamJsonRpc.JsonRpcTargetOptions)">
+            <summary>
+            Adds the specified target as possible object to invoke when incoming messages are received.  The target object
+            should not inherit from each other and are invoked in the order which they are added.
+            </summary>
+            <param name="target">Target to invoke when incoming messages are received.</param>
+            <param name="options">A set of customizations for how the target object is registered. If <c>null</c>, default options will be used.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcMethod(System.String,System.Delegate)">
+            <summary>
+            Adds a handler for an RPC method with a given name.
+            </summary>
+            <param name="rpcMethodName">
+            The name of the method as it is identified by the incoming JSON-RPC message.
+            It need not match the name of the CLR method/delegate given here.
+            </param>
+            <param name="handler">
+            The method or delegate to invoke when a matching RPC message arrives.
+            This method may accept parameters from the incoming JSON-RPC message.
+            </param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.AddLocalRpcMethod(System.String,System.Reflection.MethodInfo,System.Object)">
+            <summary>
+            Adds a handler for an RPC method with a given name.
+            </summary>
+            <param name="rpcMethodName">
+            The name of the method as it is identified by the incoming JSON-RPC message.
+            It need not match the name of the CLR method/delegate given here.
+            </param>
+            <param name="handler">
+            The method or delegate to invoke when a matching RPC message arrives.
+            This method may accept parameters from the incoming JSON-RPC message.
+            </param>
+            <param name="target">An instance of the type that defines <paramref name="handler"/> which should handle the invocation.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.StartListening">
+            <summary>
+            Starts listening to incoming messages.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeAsync(System.String,System.Object)">
+            <summary>
+            Invoke a method on the server.
+            </summary>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="argument">Method argument, must be serializable to JSON.</param>
+            <returns>A task that completes when the server method executes.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the server indicates completion of the method.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeAsync(System.String,System.Object[])">
+            <summary>
+            Invoke a method on the server.
+            </summary>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="arguments">Method arguments, must be serializable to JSON.</param>
+            <returns>A task that completes when the server method executes.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the server indicates completion of the method.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeAsync``1(System.String,System.Object)">
+            <summary>
+            Invoke a method on the server and get back the result.
+            </summary>
+            <typeparam name="TResult">Type of the method result.</typeparam>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="argument">Method argument, must be serializable to JSON.</param>
+            <returns>A task that completes when the server method executes and returns the result.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the result gets back from the server.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeAsync``1(System.String,System.Object[])">
+            <summary>
+            Invoke a method on the server and get back the result.
+            </summary>
+            <typeparam name="TResult">Type of the method result.</typeparam>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="arguments">Method arguments, must be serializable to JSON.</param>
+            <returns>A task that completes when the server method executes and returns the result.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the result gets back from the server.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeWithParameterObjectAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Invoke a method on the server.  The parameter is passed as an object.
+            </summary>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="argument">Method argument, must be serializable to JSON.</param>
+            <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
+            <returns>A task that completes when the server method executes and returns the result.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the result gets back from the server.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeWithParameterObjectAsync``1(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Invoke a method on the server and get back the result.  The parameter is passed as an object.
+            </summary>
+            <typeparam name="TResult">Type of the method result.</typeparam>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="argument">Method argument, must be serializable to JSON.</param>
+            <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
+            <returns>A task that completes when the server method executes and returns the result.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the result gets back from the server.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeWithCancellationAsync(System.String,System.Collections.Generic.IReadOnlyList{System.Object},System.Threading.CancellationToken)">
+            <summary>
+            Invoke a method on the server.
+            </summary>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="arguments">Method arguments, must be serializable to JSON.</param>
+            <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
+            <returns>A task that completes when the server method executes.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the result gets back from the server
+            or in response to the <paramref name="cancellationToken"/> being canceled.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception,
+            which may occur in response to the <paramref name="cancellationToken"/> being canceled.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeWithCancellationAsync``1(System.String,System.Collections.Generic.IReadOnlyList{System.Object},System.Threading.CancellationToken)">
+            <summary>
+            Invoke a method on the server and get back the result.
+            </summary>
+            <typeparam name="TResult">Type of the method result.</typeparam>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="arguments">Method arguments, must be serializable to JSON.</param>
+            <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
+            <returns>A task that completes when the server method executes and returns the result.</returns>
+            <exception cref="T:System.OperationCanceledException">
+            Result task fails with this exception if the communication channel ends before the result gets back from the server
+            or in response to the <paramref name="cancellationToken"/> being canceled.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteInvocationException">
+            Result task fails with this exception if the server method throws an exception,
+            which may occur in response to the <paramref name="cancellationToken"/> being canceled.
+            </exception>
+            <exception cref="T:StreamJsonRpc.RemoteMethodNotFoundException">
+            Result task fails with this exception if the <paramref name="targetName"/> method has not been registered on the server.
+            </exception>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.NotifyAsync(System.String,System.Object)">
+            <summary>
+            Invoke a method on the server and don't wait for its completion, fire-and-forget style.
+            </summary>
+            <remarks>
+            Any error that happens on the server side is ignored.
+            </remarks>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="argument">Method argument, must be serializable to JSON.</param>
+            <returns>A task that completes when the notify request is sent to the channel to the server.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.NotifyAsync(System.String,System.Object[])">
+            <summary>
+            Invoke a method on the server and don't wait for its completion, fire-and-forget style.
+            </summary>
+            <remarks>
+            Any error that happens on the server side is ignored.
+            </remarks>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="arguments">Method arguments, must be serializable to JSON.</param>
+            <returns>A task that completes when the notify request is sent to the channel to the server.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.NotifyWithParameterObjectAsync(System.String,System.Object)">
+            <summary>
+            Invoke a method on the server and don't wait for its completion, fire-and-forget style.  The parameter is passed as an object.
+            </summary>
+            <remarks>
+            Any error that happens on the server side is ignored.
+            </remarks>
+            <param name="targetName">The name of the method to invoke on the server. Must not be null or empty string.</param>
+            <param name="argument">Method argument, must be serializable to JSON.</param>
+            <returns>A task that completes when the notify request is sent to the channel to the server.</returns>
+            <exception cref="T:System.ArgumentNullException">If <paramref name="targetName"/> is null.</exception>
+            <exception cref="T:System.ObjectDisposedException">If this instance of <see cref="T:StreamJsonRpc.JsonRpc"/> has been disposed.</exception>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.Dispose(System.Boolean)">
+            <summary>
+            Disposes managed and native resources held by this instance.
+            </summary>
+            <param name="disposing"><c>true</c> if being disposed; <c>false</c> if being finalized.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.IsFatalException(System.Exception)">
+            <summary>
+            Indicates whether the connection should be closed when the server throws an exception.
+            </summary>
+            <param name="ex">The <see cref="T:System.Exception"/> thrown from server that is potentially fatal.</param>
+            <returns>A <see cref="T:System.Boolean"/> indicating if the streams should be closed.</returns>
+            <remarks>
+            This method is invoked within the context of an exception filter or when a task fails to complete and simply returns false by default.
+            If the process should crash on an exception,
+            calling <see cref="M:System.Environment.FailFast(System.String,System.Exception)"/> will produce such behavior.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.CreateErrorDetails(StreamJsonRpc.Protocol.JsonRpcRequest,System.Exception)">
+            <summary>
+            Creates the <see cref="T:StreamJsonRpc.Protocol.JsonRpcError.ErrorDetail"/> to be used as the value for the error property to be sent back to the client in response to an exception being thrown from an RPC method invoked locally.
+            </summary>
+            <param name="request">The request that led to the invocation that ended up failing.</param>
+            <param name="exception">The exception thrown from the RPC method.</param>
+            <returns>The error details to return to the client. Must not be <c>null</c>.</returns>
+            <remarks>
+            This method may be overridden in a derived class to change the way error details are expressed.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeCoreAsync``1(System.Nullable{System.Int64},System.String,System.Collections.Generic.IReadOnlyList{System.Object},System.Threading.CancellationToken)">
+            <summary>
+            Invokes the specified RPC method.
+            </summary>
+            <typeparam name="TResult">RPC method return type.</typeparam>
+            <param name="id">An identifier established by the Client that MUST contain a String, Number, or NULL value if included.
+            If it is not included it is assumed to be a notification.</param>
+            <param name="targetName">Name of the method to invoke.</param>
+            <param name="arguments">Arguments to pass to the invoked method. If null, no arguments are passed.</param>
+            <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
+            <returns>A task whose result is the deserialized response from the JSON-RPC server.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.InvokeCoreAsync``1(System.Nullable{System.Int64},System.String,System.Collections.Generic.IReadOnlyList{System.Object},System.Threading.CancellationToken,System.Boolean)">
+            <summary>
+            Invokes the specified RPC method.
+            </summary>
+            <typeparam name="TResult">RPC method return type.</typeparam>
+            <param name="id">An identifier established by the Client that MUST contain a String, Number, or NULL value if included.
+            If it is not included it is assumed to be a notification.</param>
+            <param name="targetName">Name of the method to invoke.</param>
+            <param name="arguments">Arguments to pass to the invoked method. If null, no arguments are passed.</param>
+            <param name="cancellationToken">The token whose cancellation should signal the server to stop processing this request.</param>
+            <param name="isParameterObject">Value which indicates if parameter should be passed as an object.</param>
+            <returns>A task whose result is the deserialized response from the JSON-RPC server.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.GetRequestMethodToClrMethodMap(System.Object,StreamJsonRpc.JsonRpcTargetOptions)">
+            <summary>
+            Creates a dictionary which maps a request method name to its clr method name via <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute" /> value.
+            </summary>
+            <param name="target">Object to reflect over and analyze its methods.</param>
+            <param name="options">The options that apply for this target object.</param>
+            <returns>Dictionary which maps a request method name to its clr method name.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.TryGetTaskOfTType(System.Reflection.TypeInfo,System.Reflection.TypeInfo@)">
+            <summary>
+            Extracts the literal <see cref="T:System.Threading.Tasks.Task`1"/> type from the type hierarchy of a given type.
+            </summary>
+            <param name="taskTypeInfo">The original type of the value returned from an RPC-invoked method.</param>
+            <param name="taskOfTTypeInfo">Receives the <see cref="T:System.Threading.Tasks.Task`1"/> type that is a base type of <paramref name="taskTypeInfo"/>, if found.</param>
+            <returns><c>true</c> if <see cref="T:System.Threading.Tasks.Task`1"/> could be found in the type hierarchy; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.CancelPendingOutboundRequest(System.Object)">
+            <summary>
+            Cancels an individual outbound pending request.
+            </summary>
+            <param name="state">The ID associated with the request to be canceled.</param>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpc.ThrowIfConfigurationLocked">
+            <summary>
+            Throws an exception if we have already started listening,
+            unless <see cref="P:StreamJsonRpc.JsonRpc.AllowModificationWhileListening"/> is <c>true</c>.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.JsonRpcProxyOptions">
+            <summary>
+            Options that may customize how a dynamically generated client proxy object calls into a <see cref="T:StreamJsonRpc.JsonRpc"/> instance.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpcProxyOptions.methodNameTransform">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonRpcProxyOptions.MethodNameTransform"/> property.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.JsonRpcProxyOptions.eventNameTransform">
+            <summary>
+            Backing field for the <see cref="P:StreamJsonRpc.JsonRpcProxyOptions.EventNameTransform"/> property.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcProxyOptions.MethodNameTransform">
+            <summary>
+            Gets or sets a function that takes the CLR method name and returns the RPC method name.
+            This method is useful for adding prefixes to all methods, or making them camelCased.
+            </summary>
+            <value>A function, defaulting to a straight pass-through. Never null.</value>
+            <exception cref="T:System.ArgumentNullException">Thrown if set to a null value.</exception>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcProxyOptions.EventNameTransform">
+            <summary>
+            Gets or sets a function that takes the CLR event name and returns the RPC event name used in notifications.
+            This method is useful for adding prefixes to all events, or making them camelCased.
+            </summary>
+            <value>A function, defaulting to a straight pass-through. Never null.</value>
+            <exception cref="T:System.ArgumentNullException">Thrown if set to a null value.</exception>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcProxyOptions.ServerRequiresNamedArguments">
+            <summary>
+            Gets or sets a value indicating whether the client proxy will pass named arguments (i.e. an args object)
+            instead of the default positional arguments (i.e. an args array).
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcProxyOptions.Default">
+            <summary>
+            Gets an instance with default properties.
+            </summary>
+            <remarks>
+            Callers should *not* mutate properties on this instance since it is shared.
+            </remarks>
+        </member>
+        <member name="T:StreamJsonRpc.JsonRpcTargetOptions">
+            <summary>
+            Options that may customize how a target object is added to a <see cref="T:StreamJsonRpc.JsonRpc"/> instance.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcTargetOptions.MethodNameTransform">
+            <summary>
+            Gets or sets a function that takes the CLR method name and returns the RPC method name.
+            This method is useful for adding prefixes to all methods, or making them camelCased.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcTargetOptions.EventNameTransform">
+            <summary>
+            Gets or sets a function that takes the CLR event name and returns the RPC event name used in notification messages.
+            This method is useful for adding prefixes to all events, or making them camelCased.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcTargetOptions.NotifyClientOfEvents">
+            <summary>
+            Gets or sets a value indicating whether events raised on the target object
+            should be relayed to the client via a JSON-RPC notify message.
+            </summary>
+            <value>The default is <c>true</c>.</value>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcTargetOptions.AllowNonPublicInvocation">
+            <summary>
+            Gets or sets a value indicating whether non-public methods/events on target objects can be invoked
+            by remote clients.
+            </summary>
+            <value>The default value is <c>false</c>.</value>
+            <remarks>
+            The default for this property was <c>true</c> in the 1.x versions.
+            </remarks>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcTargetOptions.Default">
+            <summary>
+            Gets an instance with default properties.
+            </summary>
+            <remarks>
+            Callers should *not* mutate properties on this instance since it is shared.
+            </remarks>
+        </member>
+        <member name="T:StreamJsonRpc.LengthHeaderMessageHandler">
+            <summary>
+            A minimal header for each message that simply declares content length.
+            </summary>
+            <remarks>
+            The length is expressed as a big endian, 4 byte integer.
+            </remarks>
+        </member>
+        <member name="F:StreamJsonRpc.LengthHeaderMessageHandler.formatter">
+            <summary>
+            The formatter to use for message serialization.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.LengthHeaderMessageHandler.prefixingWriter">
+            <summary>
+            A wrapper to use for the <see cref="P:StreamJsonRpc.PipeMessageHandler.Writer"/> when we need to count bytes written.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.LengthHeaderMessageHandler.#ctor(System.IO.Pipelines.IDuplexPipe,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.LengthHeaderMessageHandler"/> class.
+            </summary>
+            <param name="pipe">The reader and writer to use for receiving/transmitting messages.</param>
+            <param name="formatter">The formatter to use for message serialization.</param>
+        </member>
+        <member name="M:StreamJsonRpc.LengthHeaderMessageHandler.#ctor(System.IO.Pipelines.PipeWriter,System.IO.Pipelines.PipeReader,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.LengthHeaderMessageHandler"/> class.
+            </summary>
+            <param name="writer">The writer to use for transmitting messages.</param>
+            <param name="reader">The reader to use for receiving messages.</param>
+            <param name="formatter">The formatter to use for message serialization.</param>
+        </member>
+        <member name="M:StreamJsonRpc.LengthHeaderMessageHandler.#ctor(System.IO.Stream,System.IO.Stream,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.LengthHeaderMessageHandler"/> class.
+            </summary>
+            <param name="sendingStream">The stream to use for transmitting messages.</param>
+            <param name="receivingStream">The stream to use for receiving messages.</param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+        </member>
+        <member name="M:StreamJsonRpc.LengthHeaderMessageHandler.ReadCoreAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.LengthHeaderMessageHandler.Write(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:StreamJsonRpc.MessageHandlerBase">
+            <summary>
+            An abstract base class for for sending and receiving messages.
+            </summary>
+            <remarks>
+            This class and its derivatives are safe to call from any thread.
+            Calls to <see cref="M:StreamJsonRpc.MessageHandlerBase.WriteAsync(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)"/>
+            are protected by a semaphore to guarantee message integrity
+            and may be made from any thread.
+            The caller must take care to call <see cref="M:StreamJsonRpc.MessageHandlerBase.ReadAsync(System.Threading.CancellationToken)"/> sequentially.
+            </remarks>
+        </member>
+        <member name="F:StreamJsonRpc.MessageHandlerBase.disposalTokenSource">
+            <summary>
+            The source of a token that is canceled when this instance is disposed.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.MessageHandlerBase.sendingSemaphore">
+            <summary>
+            A semaphore acquired while sending a message.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.#ctor(StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.MessageHandlerBase"/> class.
+            </summary>
+            <param name="formatter">The formatter used to serialize messages.</param>
+        </member>
+        <member name="P:StreamJsonRpc.MessageHandlerBase.CanRead">
+            <summary>
+            Gets a value indicating whether this message handler can receive messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.MessageHandlerBase.CanWrite">
+            <summary>
+            Gets a value indicating whether this message handler can send messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.MessageHandlerBase.Formatter">
+            <inheritdoc/>
+        </member>
+        <member name="P:StreamJsonRpc.MessageHandlerBase.Microsoft#IDisposableObservable#IsDisposed">
+            <summary>
+            Gets a value indicating whether this instance has been disposed.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.MessageHandlerBase.DisposalToken">
+            <summary>
+            Gets a token that is canceled when this instance is disposed.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.ReadAsync(System.Threading.CancellationToken)">
+            <summary>
+            Reads a distinct and complete message from the transport, waiting for one if necessary.
+            </summary>
+            <param name="cancellationToken">A token to cancel the read request.</param>
+            <returns>The received message, or <c>null</c> if the underlying transport ends before beginning another message.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.MessageHandlerBase.CanRead"/> returns <c>false</c>.</exception>
+            <exception cref="T:System.IO.EndOfStreamException">Thrown if the transport ends while reading a message.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before a new message is received.</exception>
+            <remarks>
+            Implementations may assume this method is never called before any async result
+            from a prior call to this method has completed.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.WriteAsync(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <summary>
+            Writes a message to the transport and flushes.
+            </summary>
+            <param name="content">The message to write.</param>
+            <param name="cancellationToken">A token to cancel the write request.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when <see cref="P:StreamJsonRpc.MessageHandlerBase.CanWrite"/> returns <c>false</c>.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown if <paramref name="cancellationToken"/> is canceled before message transmission begins.</exception>
+            <remarks>
+            Implementations should expect this method to be invoked concurrently
+            and use a queue to preserve message order as they are transmitted one at a time.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.Dispose">
+            <summary>
+            Disposes this instance, and cancels any pending read or write operations.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources allocated by this instance.
+            </summary>
+            <param name="disposing"><c>true</c> when being disposed; <c>false</c> when being finalized.</param>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.ReadCoreAsync(System.Threading.CancellationToken)">
+            <summary>
+            Reads a distinct and complete message, waiting for one if necessary.
+            </summary>
+            <param name="cancellationToken">A token to cancel the read request.</param>
+            <returns>
+            A task whose result is the received message.
+            A null string indicates the stream has ended.
+            An empty string should never be returned.
+            </returns>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.WriteCoreAsync(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <summary>
+            Writes a message.
+            </summary>
+            <param name="content">The message to write.</param>
+            <param name="cancellationToken">A token to cancel the transmission.</param>
+            <returns>A task that represents the asynchronous write operation.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.MessageHandlerBase.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Ensures that all messages transmitted up to this point are en route to their destination,
+            rather than sitting in some local buffer.
+            </summary>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>
+            A <see cref="T:System.Threading.Tasks.Task"/> that completes when the write buffer has been transmitted,
+            or at least that the operation is in progress, if final transmission cannot be tracked.
+            </returns>
+        </member>
+        <member name="T:StreamJsonRpc.PipeMessageHandler">
+            <summary>
+            An abstract base class for for sending and receiving messages
+            using <see cref="T:System.IO.Pipelines.PipeReader"/> and <see cref="T:System.IO.Pipelines.PipeWriter"/>.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.PipeMessageHandler.disposables">
+            <summary>
+            Objects that we should dispose when we are disposed. May be null.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.#ctor(System.IO.Pipelines.IDuplexPipe,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.PipeMessageHandler"/> class.
+            </summary>
+            <param name="pipe">The reader and writer to use for receiving/transmitting messages.</param>
+            <param name="formatter">The formatter used to serialize messages.</param>
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.#ctor(System.IO.Pipelines.PipeWriter,System.IO.Pipelines.PipeReader,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.PipeMessageHandler"/> class.
+            </summary>
+            <param name="writer">The writer to use for transmitting messages.</param>
+            <param name="reader">The reader to use for receiving messages.</param>
+            <param name="formatter">The formatter used to serialize messages.</param>
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.#ctor(System.IO.Stream,System.IO.Stream,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.PipeMessageHandler"/> class.
+            </summary>
+            <param name="writer">The stream to use for transmitting messages.</param>
+            <param name="reader">The stream to use for receiving messages.</param>
+            <param name="formatter">The formatter used to serialize messages.</param>
+        </member>
+        <member name="P:StreamJsonRpc.PipeMessageHandler.CanRead">
+            <inheritdoc/>
+        </member>
+        <member name="P:StreamJsonRpc.PipeMessageHandler.CanWrite">
+            <inheritdoc/>
+        </member>
+        <member name="P:StreamJsonRpc.PipeMessageHandler.Reader">
+            <summary>
+            Gets the reader to use for receiving messages.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.PipeMessageHandler.Writer">
+            <summary>
+            Gets the writer to use for transmitting messages.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.WriteCoreAsync(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.Write(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <summary>
+            Writes a message to the pipe.
+            </summary>
+            <param name="content">The message to write.</param>
+            <param name="cancellationToken">A token to cancel the transmission.</param>
+            <remarks>
+            Implementations may assume the method is never called before the previous call has completed.
+            They can assume their caller will invoke <see cref="M:System.IO.Pipelines.PipeWriter.FlushAsync(System.Threading.CancellationToken)"/> on their behalf
+            after writing is completed.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.PipeMessageHandler.ReadAtLeastAsync(System.Int32,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Reads from the <see cref="P:StreamJsonRpc.PipeMessageHandler.Reader"/> until at least a specified number of bytes are available.
+            </summary>
+            <param name="requiredBytes">The number of bytes that must be available.</param>
+            <param name="allowEmpty"><c>true</c> to allow returning 0 bytes if the end of the stream is encountered before any bytes are read.</param>
+            <param name="cancellationToken">A cancellation token.</param>
+            <returns>The <see cref="T:System.IO.Pipelines.ReadResult"/> containing at least <paramref name="requiredBytes"/> bytes.</returns>
+            <exception cref="T:System.OperationCanceledException">Thrown if <see cref="P:System.IO.Pipelines.ReadResult.IsCanceled"/>.</exception>
+            <exception cref="T:System.IO.EndOfStreamException">
+            Thrown if <see cref="P:System.IO.Pipelines.ReadResult.IsCompleted"/> before we have <paramref name="requiredBytes"/> bytes.
+            Not thrown if 0 bytes were read and <paramref name="allowEmpty"/> is <c>true</c>.
+            </exception>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.CommonErrorData">
+            <summary>
+            A class that describes useful data that may be found in the JSON-RPC error message's error.data property.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.CommonErrorData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.Protocol.CommonErrorData"/> class.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.CommonErrorData.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.Protocol.CommonErrorData"/> class.
+            </summary>
+            <param name="copyFrom">The exception to copy error details from.</param>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.CommonErrorData.TypeName">
+            <summary>
+            Gets or sets the type of error (e.g. the full type name of the exception thrown).
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.CommonErrorData.Message">
+            <summary>
+            Gets or sets the message associated with this error.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.CommonErrorData.StackTrace">
+            <summary>
+            Gets or sets the stack trace associated with the error.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.CommonErrorData.HResult">
+            <summary>
+            Gets or sets the application error code or HRESULT of the failure.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.CommonErrorData.Inner">
+            <summary>
+            Gets or sets the inner error information, if any.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.IJsonRpcMessageWithId.Id">
+            <summary>
+            Gets the ID from a message.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcError">
+            <summary>
+            Describes the error resulting from a <see cref="T:StreamJsonRpc.Protocol.JsonRpcRequest"/> that failed on the server.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcError.Error">
+            <summary>
+            Gets or sets the detail about the error.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcError.Id">
+            <summary>
+            Gets or sets an identifier established by the client if a response to the request is expected.
+            </summary>
+            <value>A <see cref="T:System.String"/>, an <see cref="T:System.Int32"/>, a <see cref="T:System.Int64"/>, or <c>null</c>.</value>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcError.DebuggerDisplay">
+            <summary>
+            Gets the string to display in the debugger for this instance.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.JsonRpcError.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcError.ErrorDetail">
+            <summary>
+            Describes the error.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcError.ErrorDetail.Code">
+            <summary>
+            Gets or sets a number that indicates the error type that occurred.
+            </summary>
+            <value>
+            The error codes from and including -32768 to -32000 are reserved for errors defined by the spec or this library.
+            Codes outside that range are available for app-specific error codes.
+            </value>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcError.ErrorDetail.Message">
+            <summary>
+            Gets or sets a short description of the error.
+            </summary>
+            <remarks>
+            The message SHOULD be limited to a concise single sentence.
+            </remarks>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcError.ErrorDetail.Data">
+            <summary>
+            Gets or sets additional data about the error.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcErrorCode">
+            <summary>
+            Error codes laid out in the JSON-RPC spec or this library.
+            </summary>
+            <remarks>
+            The error codes from and including -32768 to -32000 are reserved for pre-defined errors.
+            </remarks>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.InvocationError">
+            <summary>
+            Indicates the RPC call was made but the target threw an exception.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.ParseError">
+            <summary>
+            Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.InvalidRequest">
+            <summary>
+            The JSON sent is not a valid Request object.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.MethodNotFound">
+            <summary>
+            The method does not exist / is not available.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.InvalidParams">
+            <summary>
+            Invalid method parameter(s).
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.InternalError">
+            <summary>
+            Internal JSON-RPC error.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcErrorCode.RequestCanceled">
+            <summary>
+            Execution of the server method was aborted due to a cancellation request from the client.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcMessage">
+            <summary>
+            The base class for a JSON-RPC request or response.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcMessage.Version">
+            <summary>
+            Gets or sets the version of the JSON-RPC protocol that this message conforms to.
+            </summary>
+            <value>Defaults to "2.0".</value>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcRequest">
+            <summary>
+            Describes a method to be invoked on the server.
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentMatchResult">
+            <summary>
+            The result of an attempt to match request arguments with a candidate method's parameters.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentMatchResult.Success">
+            <summary>
+            All arguments matched up with all method parameters.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentMatchResult.ParameterArgumentCountMismatch">
+            <summary>
+            The number of arguments did not match the number of parameters.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentMatchResult.ParameterArgumentTypeMismatch">
+            <summary>
+            At least one argument could not be made to match its corresponding parameter.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentMatchResult.MissingArgument">
+            <summary>
+            An argument could not be found for a required parameter.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.Method">
+            <summary>
+            Gets or sets the name of the method to be invoked.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.Arguments">
+            <summary>
+            Gets or sets the arguments to use when invoking the specified <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.Method"/>.
+            Either an array of arguments or an object whose properties are used in a named arguments object.
+            </summary>
+            <value>
+            An array of arguments OR map of named arguments.
+            Preferably either an instance of <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> where the key is a string representing the name of the parameter
+            and the value is the argument, or an array of <see cref="T:System.Object"/>.
+            If neither of these, <see cref="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentCount"/> and <see cref="M:StreamJsonRpc.Protocol.JsonRpcRequest.TryGetArgumentByNameOrIndex(System.String,System.Int32,System.Type,System.Object@)"/> should be overridden.
+            </value>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.Id">
+            <summary>
+            Gets or sets an identifier established by the client if a response to the request is expected.
+            </summary>
+            <value>A <see cref="T:System.String"/>, an <see cref="T:System.Int32"/>, a <see cref="T:System.Int64"/>, or <c>null</c>.</value>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.IsResponseExpected">
+            <summary>
+            Gets a value indicating whether a response to this request is expected.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.IsNotification">
+            <summary>
+            Gets a value indicating whether this is a notification, and no response is expected.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentCount">
+            <summary>
+            Gets the number of arguments supplied in the request.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.NamedArguments">
+            <summary>
+            Gets or sets the dictionary of named arguments, if applicable.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.ArgumentsArray">
+            <summary>
+            Gets or sets an array of arguments, if applicable.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcRequest.DebuggerDisplay">
+            <summary>
+            Gets the string to display in the debugger for this instance.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.JsonRpcRequest.TryGetTypedArguments(System.ReadOnlySpan{System.Reflection.ParameterInfo},System.Span{System.Object})">
+            <summary>
+            Gets the arguments to supply to the method invocation, coerced to types that will satisfy the given list of parameters.
+            </summary>
+            <param name="parameters">The list of parameters that the arguments must satisfy.</param>
+            <param name="typedArguments">
+            An array to initialize with arguments that can satisfy CLR type requirements for each of the <paramref name="parameters"/>.
+            The length of this span must equal the length of <paramref name="parameters"/>.
+            </param>
+            <returns><c>true</c> if all the arguments can conform to the types of the <paramref name="parameters"/> and <paramref name="typedArguments"/> is initialized; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.JsonRpcRequest.TryGetArgumentByNameOrIndex(System.String,System.Int32,System.Type,System.Object@)">
+            <summary>
+            Retrieves an argument for the RPC request.
+            </summary>
+            <param name="name">The name of the parameter that requires an argument. May be null if the caller knows they want a positional argument.</param>
+            <param name="position">The index of the parameter that requires an argument. May be -1 for an argument with no position.</param>
+            <param name="typeHint">The type of the parameter that requires an argument. May be null if the type need not be coerced.</param>
+            <param name="value">Receives the value of the argument, if it exists. It MAY be returned even if it does not conform to <paramref name="typeHint"/>.</param>
+            <returns><c>true</c> if an argument is available for a parameter with the given name or position; <c>false</c> otherwise.</returns>
+            <remarks>
+            A derived-type may override this method in order to consider the <paramref name="typeHint"/>
+            and deserialize the required argument on-demand such that it can satisfy the type requirement.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.JsonRpcRequest.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:StreamJsonRpc.Protocol.JsonRpcResult">
+            <summary>
+            Describes the result of a successful method invocation.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcResult.Result">
+            <summary>
+            Gets or sets the value of the result of an invocation, if any.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcResult.Id">
+            <summary>
+            Gets or sets an identifier established by the client if a response to the request is expected.
+            </summary>
+            <value>A <see cref="T:System.String"/>, an <see cref="T:System.Int32"/>, a <see cref="T:System.Int64"/>, or <c>null</c>.</value>
+        </member>
+        <member name="P:StreamJsonRpc.Protocol.JsonRpcResult.DebuggerDisplay">
+            <summary>
+            Gets the string to display in the debugger for this instance.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.JsonRpcResult.GetResult``1">
+            <summary>
+            Gets the value of the <see cref="P:StreamJsonRpc.Protocol.JsonRpcResult.Result"/>, taking into account any possible type coercion.
+            </summary>
+            <typeparam name="T">The <see cref="T:System.Type"/> to coerce the <see cref="P:StreamJsonRpc.Protocol.JsonRpcResult.Result"/> to.</typeparam>
+            <returns>The result.</returns>
+            <remarks>
+            Derived types may override this method in order to deserialize the <see cref="P:StreamJsonRpc.Protocol.JsonRpcResult.Result"/>
+            such that it can be assignable to <typeparamref name="T"/>.
+            </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.Protocol.JsonRpcResult.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:StreamJsonRpc.JsonRpcMethodAttribute">
+             <summary>
+             Attribute which changes the name by which this method can be invoked over JSON-RPC.
+             If applied on a method, the method's CLR name can no longer be used for remote invocation.
+             </summary>
+             <remarks>
+             This attribute should be used when rpc message method names can be different from the actual CLR method names.
+             Useful in cases where rpc message method names contain illegal characters for CLR method names, i.e. "text/OnDocumentChanged".
+            
+             If methods are overloaded, each overload must define its own <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute"/>  with all the same values.
+             Conflicts will result in error being thrown during <see cref="T:StreamJsonRpc.JsonRpc"/> construction.
+            
+             If methods are overridden, the base class can define a <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute"/> and derived classes will inherit the attribute.
+             If derived class and base class have conflicting <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute"/> values for a method, an error will be thrown during <see cref="T:StreamJsonRpc.JsonRpc"/> construction.
+             </remarks>
+        </member>
+        <member name="M:StreamJsonRpc.JsonRpcMethodAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.JsonRpcMethodAttribute" /> class.
+            </summary>
+            <param name="name">Replacement name of a method.</param>
+        </member>
+        <member name="P:StreamJsonRpc.JsonRpcMethodAttribute.Name">
+            <summary>
+            Gets the replacement name of a method.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.MethodSignature.parameters">
+            <summary>
+            Backing field for the lazily initialized <see cref="P:StreamJsonRpc.MethodSignature.Parameters"/> property.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignature.System#IEquatable{StreamJsonRpc#MethodSignature}#Equals(StreamJsonRpc.MethodSignature)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignature.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignature.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignature.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignatureAndTarget.Equals(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignatureAndTarget.Equals(StreamJsonRpc.MethodSignatureAndTarget)">
+            <inheritdoc/>
+        </member>
+        <member name="M:StreamJsonRpc.MethodSignatureAndTarget.GetHashCode">
+            <inheritdoc/>
+        </member>
+        <member name="F:StreamJsonRpc.TargetMethod.errorMessages">
+            <summary>
+            A collection of error messages. May be null until the first message is added.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.TargetMethod.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:StreamJsonRpc.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.BothReadableWritableAreNull">
+            <summary>
+              Looks up a localized string similar to Both readable and writable are null..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.CancellationTokenMustBeLastParameter">
+            <summary>
+              Looks up a localized string similar to A CancellationToken is only allowed as the last parameter..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ClientProxyTypeArgumentMustBeAnInterface">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; is not an interface..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ConflictingMethodAttributeValue">
+            <summary>
+              Looks up a localized string similar to .NET methods &apos;{0}&apos; and &apos;{1}&apos; cannot both map to the same request method name: &apos;{2}&apos;..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ConflictingMethodNameAttribute">
+            <summary>
+              Looks up a localized string similar to All overloads and overrides of the &apos;{0}&apos; method must share a common value for {1}.{2}..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ConflictMethodSignatureAlreadyRegistered">
+            <summary>
+              Looks up a localized string similar to A method with the same name and equivalent parameters has already been registered..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ConnectionDropped">
+            <summary>
+              Looks up a localized string similar to The JSON-RPC connection with the remote party was lost before the request could complete..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.DroppingRequestDueToNoTargetObject">
+            <summary>
+              Looks up a localized string similar to Got a request to execute &apos;{0}&apos; but have no callback object. Dropping the request..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ErrorWritingJsonRpcResult">
+            <summary>
+              Looks up a localized string similar to Error writing JSON RPC Result: {0}: {1}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.FailureDeserializingJsonRpc">
+            <summary>
+              Looks up a localized string similar to Failure deserializing incoming JSON RPC &apos;{0}&apos;: {1}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.FatalExceptionWasThrown">
+            <summary>
+              Looks up a localized string similar to A fatal exception was thrown from the server method {0}: {1}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.FillBufferFirst">
+            <summary>
+              Looks up a localized string similar to The buffer is empty. Call the async method to fill it first..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.HeaderContentLengthNotParseable">
+            <summary>
+              Looks up a localized string similar to Failed parsing Content-Length header into a positive integer..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.HeaderValueTooLarge">
+            <summary>
+              Looks up a localized string similar to The size of the message header exceeds the maximum supported size..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.InvalidAfterListenHasStarted">
+            <summary>
+              Looks up a localized string similar to This operation is not allowed after listening for messages has started..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.InvalidBeforeListenHasStarted">
+            <summary>
+              Looks up a localized string similar to This operation is not allowed before listening for messages has started..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.JsonRpcCannotBeNull">
+            <summary>
+              Looks up a localized string similar to JSON RPC must not be null..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.MethodHasRefOrOutParameters">
+            <summary>
+              Looks up a localized string similar to {0} has ref or out parameter(s), which is not supported.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.MethodParameterCountDoesNotMatch">
+            <summary>
+              Looks up a localized string similar to {0} parameter(s) (excluding any CancellationToken): {1}, but the request supplies {2}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.MethodParametersNotCompatible">
+            <summary>
+              Looks up a localized string similar to {0} parameters are not compatible with the arguments provided in the request..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.MustBeListening">
+            <summary>
+              Looks up a localized string similar to Listening must be started first..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.MustNotBeListening">
+            <summary>
+              Looks up a localized string similar to This cannot be done after listening has started..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.NonNegativeIntegerRequired">
+            <summary>
+              Looks up a localized string similar to A non-negative integer is required..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ParameterNotObject">
+            <summary>
+              Looks up a localized string similar to Parameter is not in the form of a single object.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ParameterObjectsNotSupportedInJsonRpc10">
+            <summary>
+              Looks up a localized string similar to JSON-RPC 1.0 does not support named arguments (parameters passed within an object). Use positional arguments (parameter arrays) or set protocol version to 2.0..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.PositiveIntegerRequired">
+            <summary>
+              Looks up a localized string similar to A positive integer is required..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ReachedEndOfStream">
+            <summary>
+              Looks up a localized string similar to Reached end of stream..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ReadingJsonRpcStreamFailed">
+            <summary>
+              Looks up a localized string similar to Reading JSON RPC from the stream failed with {0}: {1}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.RequiredArgumentMissing">
+            <summary>
+              Looks up a localized string similar to An argument was not supplied for a required parameter..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.ResponseIsNotError">
+            <summary>
+              Looks up a localized string similar to Response is not error..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.RpcMethodNameNotFound">
+            <summary>
+              Looks up a localized string similar to No method by the name &apos;{0}&apos; is found..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.StreamDisposed">
+            <summary>
+              Looks up a localized string similar to Stream has been disposed.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.StreamMustBeReadable">
+            <summary>
+              Looks up a localized string similar to The stream must be readable..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.StreamMustBeWriteable">
+            <summary>
+              Looks up a localized string similar to The stream must be writeable..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.SumOfTwoParametersExceedsArrayLength">
+            <summary>
+              Looks up a localized string similar to The {0} and {1} parameters exceed length of array..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.TargetObjectAndMethodStaticFlagMismatch">
+            <summary>
+              Looks up a localized string similar to A target object should be supplied if and only if the method is not static..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.TaskNotCompleted">
+            <summary>
+              Looks up a localized string similar to The task is not completed..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.TaskWasCancelled">
+            <summary>
+              Looks up a localized string similar to The task was cancelled..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.TextEncoderNotApplicable">
+            <summary>
+              Looks up a localized string similar to Text encoding is not supported because the formatter &quot;{0}&quot; does not implement &quot;{1}&quot;..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnableToFindMethod">
+            <summary>
+              Looks up a localized string similar to Unable to find method &apos;{0}/{1}&apos; on {2} for the following reasons: {3}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnexpectedErrorProcessingJsonRpc">
+            <summary>
+              Looks up a localized string similar to Unexpected error processing JSON-RPC message: {0}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnexpectedTokenReadingHeader">
+            <summary>
+              Looks up a localized string similar to Unexpected token &apos;{0}&apos; while parsing header..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnrecognizedIncomingJsonRpc">
+            <summary>
+              Looks up a localized string similar to Incoming JSON-RPC message did not conform to a recognized pattern..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnsupportedEventHandlerTypeOnClientProxyInterface">
+            <summary>
+              Looks up a localized string similar to Unsupported event handler type on &quot;{0}&quot;. Only EventHandler and EventHandler&lt;T&gt; are supported..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnsupportedGenericMethodsOnClientProxyInterface">
+            <summary>
+              Looks up a localized string similar to Generic methods are not supported..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnsupportedJsonRpcProtocolVersion">
+            <summary>
+              Looks up a localized string similar to Unsupported JSON-RPC protocol version {0}. The supported protocol versions are: {1}.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnsupportedMethodReturnTypeOnClientProxyInterface">
+            <summary>
+              Looks up a localized string similar to Method &quot;{0}&quot; has unsupported return type &quot;{1}&quot;. Only Task-returning methods are supported..
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.Resources.UnsupportedPropertiesOnClientProxyInterface">
+            <summary>
+              Looks up a localized string similar to Properties are not supported for service interfaces..
+            </summary>
+        </member>
+        <member name="T:StreamJsonRpc.StreamMessageHandler">
+            <summary>
+            An abstract base class for for sending and receiving messages over a
+            reading and writing pair of <see cref="T:System.IO.Stream"/> objects.
+            </summary>
+        </member>
+        <member name="F:StreamJsonRpc.StreamMessageHandler.disposalTokenSource">
+            <summary>
+            The source of a token that is canceled when this instance is disposed.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.StreamMessageHandler.#ctor(System.IO.Stream,System.IO.Stream,StreamJsonRpc.IJsonRpcMessageFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.StreamMessageHandler"/> class.
+            </summary>
+            <param name="sendingStream">The stream used to transmit messages. May be null.</param>
+            <param name="receivingStream">The stream used to receive messages. May be null.</param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+        </member>
+        <member name="P:StreamJsonRpc.StreamMessageHandler.CanRead">
+            <summary>
+            Gets a value indicating whether this message handler has a receiving stream.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.StreamMessageHandler.CanWrite">
+            <summary>
+            Gets a value indicating whether this message handler has a sending stream.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.StreamMessageHandler.SendingStream">
+            <summary>
+            Gets the stream used to transmit messages. May be null.
+            </summary>
+        </member>
+        <member name="P:StreamJsonRpc.StreamMessageHandler.ReceivingStream">
+            <summary>
+            Gets the stream used to receive messages. May be null.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.StreamMessageHandler.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources allocated by this instance.
+            </summary>
+            <param name="disposing"><c>true</c> when being disposed; <c>false</c> when being finalized.</param>
+        </member>
+        <member name="M:StreamJsonRpc.StreamMessageHandler.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+            Calls <see cref="M:System.IO.Stream.FlushAsync"/> on the <see cref="P:StreamJsonRpc.StreamMessageHandler.SendingStream"/>,
+            or equivalent sending stream if using an alternate transport.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes when the write buffer has been transmitted.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Utilities.ReadInt32BE(System.Buffers.ReadOnlySequence{System.Byte})">
+            <summary>
+            Reads an <see cref="T:System.Int32"/> value from a buffer using big endian.
+            </summary>
+            <param name="sequence">The sequence of bytes to read from. Must be at least 4 bytes long.</param>
+            <returns>The read value.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Utilities.ReadIntBE(System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Reads an <see cref="T:System.Int32"/> value to a buffer using big endian.
+            </summary>
+            <param name="buffer">The buffer to read from. Must be at most 4 bytes long.</param>
+            <returns>The read value.</returns>
+        </member>
+        <member name="M:StreamJsonRpc.Utilities.Write(System.Span{System.Byte},System.Int32)">
+            <summary>
+            Writes an <see cref="T:System.Int32"/> value to a buffer using big endian.
+            </summary>
+            <param name="buffer">The buffer to write to. Must be at least 4 bytes long.</param>
+            <param name="value">The value to write.</param>
+        </member>
+        <member name="T:StreamJsonRpc.WebSocketMessageHandler">
+            <summary>
+            A message handler for the <see cref="T:StreamJsonRpc.JsonRpc"/> class
+            that uses <see cref="T:System.Net.WebSockets.WebSocket"/> as the transport.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.WebSocketMessageHandler.#ctor(System.Net.WebSockets.WebSocket)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.WebSocketMessageHandler"/> class
+            that uses the <see cref="T:StreamJsonRpc.JsonMessageFormatter"/> to serialize messages as textual JSON.
+            </summary>
+            <param name="webSocket">
+            The <see cref="T:System.Net.WebSockets.WebSocket"/> used to communicate.
+            This will <em>not</em> be automatically disposed of with this <see cref="T:StreamJsonRpc.WebSocketMessageHandler"/>.
+            </param>
+        </member>
+        <member name="M:StreamJsonRpc.WebSocketMessageHandler.#ctor(System.Net.WebSockets.WebSocket,StreamJsonRpc.IJsonRpcMessageFormatter,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StreamJsonRpc.WebSocketMessageHandler"/> class.
+            </summary>
+            <param name="webSocket">
+            The <see cref="T:System.Net.WebSockets.WebSocket"/> used to communicate.
+            This will <em>not</em> be automatically disposed of with this <see cref="T:StreamJsonRpc.WebSocketMessageHandler"/>.
+            </param>
+            <param name="formatter">The formatter to use to serialize <see cref="T:StreamJsonRpc.Protocol.JsonRpcMessage"/> instances.</param>
+            <param name="sizeHint">
+            The size of the buffer to use for reading JSON-RPC messages.
+            Messages which exceed this size will be handled properly but may require multiple I/O operations.
+            </param>
+        </member>
+        <member name="P:StreamJsonRpc.WebSocketMessageHandler.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.WebSocketMessageHandler.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:StreamJsonRpc.WebSocketMessageHandler.WebSocket">
+            <summary>
+            Gets the <see cref="T:System.Net.WebSockets.WebSocket"/> used to communicate.
+            </summary>
+        </member>
+        <member name="M:StreamJsonRpc.WebSocketMessageHandler.ReadCoreAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.WebSocketMessageHandler.WriteCoreAsync(StreamJsonRpc.Protocol.JsonRpcMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:StreamJsonRpc.WebSocketMessageHandler.FlushAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute">
+            <summary>
+            Specifies that the attributed code should be excluded from code coverage information.
+            </summary>
+        </member>
+    </members>
+</doc>

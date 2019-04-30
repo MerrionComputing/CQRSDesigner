@@ -665,7 +665,7 @@ CQRSAzure.CQRSdsl.CodeGeneration
  Whether to make this a static method or not
  </param>
 </member>
-<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.MethodCodeGenerator.PublicParameterisedFunction(System.String,System.Collections.Generic.IList{System.CodeDom.CodeParameterDeclarationExpression},System.CodeDom.CodeTypeReference,System.Boolean,System.CodeDom.CodeTypeParameterCollection)">
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.MethodCodeGenerator.PublicParameterisedFunction(System.String,System.Collections.Generic.IList{System.CodeDom.CodeParameterDeclarationExpression},System.CodeDom.CodeTypeReference,System.Boolean,System.Boolean,System.CodeDom.CodeTypeParameterCollection)">
  <summary>
  Create a public function with the given name and properties
  </summary>
@@ -749,8 +749,7 @@ CQRSAzure.CQRSdsl.CodeGeneration
  The classifier and identity groups logic
  </summary>
  <remarks>
- These are kept separate from event sourcing but that is not
- mandatory
+ These are kept separate from event sourcing but that is not mandatory
  </remarks>
 </member>
 <member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectName">
@@ -791,13 +790,34 @@ CQRSAzure.CQRSdsl.CodeGeneration
  Code generation for a projection
  </summary>
 </member>
+<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.BasePropertyPublicMember(CQRSAzure.CQRSdsl.CustomCode.Interfaces.IPropertyEntity)">
+ <summary>
+ Generate a public property backed by the projection base base.GetPropertyValue(Of T)()
+ </summary>
+ <param name="projProp">
+ The projection property for which to get the value
+ </param>
+</member>
 <member name="T:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.ProjectionEventPropertyOperationCodeGenerator">
  <summary>
  Generate the actual implementation of an event property operation
  </summary>
  <remarks>
  This is not an entity code generation in its own right - we just separate this into a class of its own for unit testing
+ It needs to allow for an implementation that uses base class properties
+ ( return base.GetPropertyValue &lt; DateTime &gt; (nameof(  Start_Date_and_Time)) )
  </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.ProjectionEventPropertyOperationCodeGenerator.Implementation">
+ <summary>
+ Implementation based on the simple projection with its own private members
+ </summary>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ProjectionCodeGenerator.ProjectionEventPropertyOperationCodeGenerator.ProjectionBaseImplementation">
+ <summary>
+ Generate an implementation that uses the underlying properties on
+ base.GetPropertyValue and base.SetPropertyValue
+ </summary>
 </member>
 <member name="T:CQRSAzure.CQRSdsl.CodeGeneration.QueryDefinitionCodeGenerator">
  <summary>
@@ -820,6 +840,21 @@ CQRSAzure.CQRSdsl.CodeGeneration
  </remarks>
 </member>
 <member name="P:CQRSAzure.CQRSdsl.CodeGeneration.EventSerialisationCodeGenerator.NamespaceHierarchy">
+ <summary>
+ Get the namespace of the aggregate that owns this event
+ (This will be the same as the event definition namespace as this is a partial class of same)
+ </summary>
+</member>
+<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EventSerializerCodeGenerator">
+ <summary>
+ Generate a class that derives from EventSerializer(Of TEvent As {New, IEvent}) to speed up
+ the serialisation of this event type not reliant on reflection
+ </summary>
+ <remarks>
+ 
+ </remarks>
+</member>
+<member name="P:CQRSAzure.CQRSdsl.CodeGeneration.EventSerializerCodeGenerator.NamespaceHierarchy">
  <summary>
  Get the namespace of the aggregate that owns this event
  (This will be the same as the event definition namespace as this is a partial class of same)
