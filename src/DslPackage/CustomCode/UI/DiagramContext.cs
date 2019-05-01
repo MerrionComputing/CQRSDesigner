@@ -51,7 +51,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             if (serviceType == typeof(IMenuCommandService))
             {
                 if (m_diagramMenuService == null)
-                    m_diagramMenuService = ((IServiceProvider) DiagramDocView).GetService(serviceType) as IMenuCommandService;
+                    m_diagramMenuService = ((IServiceProvider)DiagramDocView).GetService(serviceType) as IMenuCommandService;
 
                 Debug.Assert(m_diagramMenuService != null);
                 if (m_diagramMenuService != null)

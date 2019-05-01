@@ -1,8 +1,5 @@
-﻿using System.Linq;
-
-using Microsoft.VisualStudio.Modeling.Validation;
-using Microsoft.CSharp;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+﻿using Microsoft.VisualStudio.Modeling.Validation;
+using System.Linq;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -43,9 +40,9 @@ namespace CQRSAzure.CQRSdsl.Dsl
         private void ValidateAttributeSourceEventPropertyName(ValidationContext context)
         {
             if (SourceFieldRequired())
-            { 
+            {
                 // Either the source field or the source constant is required
-                if (string.IsNullOrWhiteSpace(this.SourceEventPropertyName ) && string.IsNullOrWhiteSpace(this.SourceConstant) )
+                if (string.IsNullOrWhiteSpace(this.SourceEventPropertyName) && string.IsNullOrWhiteSpace(this.SourceConstant))
                 {
                     context.LogError(Dsl.CustomCode.Validation.ValidationMessages.ProjectionEventPropertyOperationSourceBlank, nameof(ProjectionEventPropertyOperation) + " 03", this);
                 }
@@ -73,7 +70,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         [ValidationMethod(ValidationCategories.Open | ValidationCategories.Save | ValidationCategories.Menu)]
         private void ValidateAttributeTargetPropertyName(ValidationContext context)
         {
-            if (string.IsNullOrWhiteSpace(TargetPropertyName ) )
+            if (string.IsNullOrWhiteSpace(TargetPropertyName))
             {
                 context.LogError(Dsl.CustomCode.Validation.ValidationMessages.ProjectionEventPropertyOperationTargetBlank, nameof(ProjectionEventPropertyOperation) + " 05", this);
             }
@@ -82,11 +79,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 var qryTargets = from prop in this.ProjectionDefinition.ProjectionProperties
                                  where prop.Name == TargetPropertyName
                                  select prop.Name;
-                
+
                 if (qryTargets.Count() <= 0)
                 {
                     context.LogError(Dsl.CustomCode.Validation.ValidationMessages.ProjectionEventPropertyOperationTargetInvalid, nameof(ProjectionEventPropertyOperation) + " 06", this);
-                } 
+                }
             }
         }
 
@@ -121,7 +118,8 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// </summary>
         public EventDefinition SelectedEvent
         {
-            get {
+            get
+            {
                 if (string.IsNullOrWhiteSpace(this.EventName))
                 {
                     return null;
@@ -132,10 +130,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
                                  where evt.Name == this.EventName
                                  select evt;
 
-                    return qryEvt.FirstOrDefault();  
+                    return qryEvt.FirstOrDefault();
                 }
             }
-            set {
+            set
+            {
                 this.EventName = value.Name;
             }
         }

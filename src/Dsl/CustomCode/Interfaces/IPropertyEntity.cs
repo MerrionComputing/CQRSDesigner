@@ -6,7 +6,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
     /// Interface for an entity that describes a property (having a name and data type)
     /// </summary>
     public interface IPropertyEntity
-        : INamedEntity , IDocumentedEntity 
+        : INamedEntity, IDocumentedEntity
     {
 
         /// <summary>

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -55,9 +53,9 @@ namespace CQRSAzure.CQRSdsl.Dsl.CustomCode.UI
                     if (null != clev.SelectedEvent)
                     {
                         foreach (var prop in clev.SelectedEvent.EventProperties)
-                      {
+                        {
                             lb.Items.Add(prop.Name);
-                      }
+                        }
                     }
 
                     _editorService.DropDownControl(lb);

@@ -57,12 +57,6 @@
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
         </DomainProperty>
-        <DomainProperty Id="70abc4bb-a679-46ba-adf1-c34e8a412b78" Description="Should the model build the Entity Framework classes for storing the model in an SQL database" Name="GenerateEntityFrameworkClasses" DisplayName="Generate Entity Framework Classes" DefaultValue="False" Category="Code Generation">
-          <Notes>Not implemented yet</Notes>
-          <Type>
-            <ExternalTypeMoniker Name="/System/Boolean" />
-          </Type>
-        </DomainProperty>
         <DomainProperty Id="8a186666-f7d7-4e8f-88fb-cd91f7aedc84" Description="The framework to use for the generated code" Name="Framework" DisplayName="Framework" DefaultValue="CQRSonAzure">
           <Notes>This affects how the code generation is performed</Notes>
           <Type>
@@ -285,10 +279,16 @@
             <ExternalTypeMoniker Name="/System/String" />
           </Type>
         </DomainProperty>
-        <DomainProperty Id="70b7f601-70ac-4415-8c6b-ae0cab68f9ad" Description="A tag /category that can be applied to an entity" Name="Category" DisplayName="Category">
+        <DomainProperty Id="70b7f601-70ac-4415-8c6b-ae0cab68f9ad" Description="A tag /category that can be applied to an entity" Name="Category" DisplayName="Category" Category="Documemtation">
           <Notes>This allows showing/hiding things by category (also known as onion-skinning)</Notes>
           <Type>
             <ExternalTypeMoniker Name="/System/String" />
+          </Type>
+        </DomainProperty>
+        <DomainProperty Id="ad606da3-79c1-47e4-8998-bf1e3bf940e0" Description="Does this command need a validation step" Name="IncludeValidationStep" DisplayName="Include Validation Step" DefaultValue="true">
+          <Notes>If set this will cause a separate validation function action to be created</Notes>
+          <Type>
+            <ExternalTypeMoniker Name="/System/Boolean" />
           </Type>
         </DomainProperty>
       </Properties>
@@ -418,6 +418,12 @@
           <Notes>This allows showing/hiding things by category (also known as onion-skinning)</Notes>
           <Type>
             <ExternalTypeMoniker Name="/System/String" />
+          </Type>
+        </DomainProperty>
+        <DomainProperty Id="de1eefe9-4218-453b-ad59-7f4d02b7536e" Description="Does this query need a validation step" Name="IncludeValidationStep" DisplayName="Include Validation Step" DefaultValue="true">
+          <Notes>If true then a validation category will be generated for the query handler</Notes>
+          <Type>
+            <ExternalTypeMoniker Name="/System/Boolean" />
           </Type>
         </DomainProperty>
       </Properties>
@@ -1640,9 +1646,6 @@
           <XmlPropertyData XmlName="documentationRootFolder">
             <DomainPropertyMoniker Name="CQRSModel/DocumentationRootFolder" />
           </XmlPropertyData>
-          <XmlPropertyData XmlName="generateEntityFrameworkClasses">
-            <DomainPropertyMoniker Name="CQRSModel/GenerateEntityFrameworkClasses" />
-          </XmlPropertyData>
           <XmlPropertyData XmlName="framework">
             <DomainPropertyMoniker Name="CQRSModel/Framework" />
           </XmlPropertyData>
@@ -1838,6 +1841,9 @@
           <XmlPropertyData XmlName="category">
             <DomainPropertyMoniker Name="CommandDefinition/Category" />
           </XmlPropertyData>
+          <XmlPropertyData XmlName="includeValidationStep">
+            <DomainPropertyMoniker Name="CommandDefinition/IncludeValidationStep" />
+          </XmlPropertyData>
         </ElementData>
       </XmlClassData>
       <XmlClassData TypeName="AggregateIdentifierHasCommandDefinitions" MonikerAttributeName="" SerializeId="true" MonikerElementName="aggregateIdentifierHasCommandDefinitionsMoniker" ElementName="aggregateIdentifierHasCommandDefinitions" MonikerTypeName="AggregateIdentifierHasCommandDefinitionsMoniker">
@@ -1967,6 +1973,9 @@
           </XmlRelationshipData>
           <XmlPropertyData XmlName="category">
             <DomainPropertyMoniker Name="QueryDefinition/Category" />
+          </XmlPropertyData>
+          <XmlPropertyData XmlName="includeValidationStep">
+            <DomainPropertyMoniker Name="QueryDefinition/IncludeValidationStep" />
           </XmlPropertyData>
         </ElementData>
       </XmlClassData>

@@ -1,6 +1,4 @@
 ﻿using System;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell.Interop;
 using System.Runtime.InteropServices;
 
 namespace CQRSAzure.CQRSdsl.BuildTool

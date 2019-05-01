@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 
 
 namespace CQRSAzure.CQRSdsl.Dsl

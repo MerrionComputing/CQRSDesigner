@@ -40,10 +40,6 @@
         /// </summary>
         bool SeparateFolderPerAggregate { get; }
 
-        /// <summary>
-        /// For database backed CQRS classes, should we generate entity framework classes?
-        /// </summary>
-        bool GenerateEntityFrameworkClasses { get;  }
 
         /// <summary>
         /// Generate additional files for hosting the application up on Azure using Event Grid as the underlying

@@ -21,7 +21,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             // Todo: Get the description of the identity group definition
             //TODO - If we are over the body of the shape, display the identity group description
-            return BaseClass.Description; 
+            return BaseClass.Description;
         }
     }
 }

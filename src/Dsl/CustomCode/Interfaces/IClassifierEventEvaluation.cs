@@ -1,9 +1,7 @@
-﻿using CQRSAzure.CQRSdsl.Dsl;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     public interface IClassifierEventEvaluationEntity
-        : IDocumentedEntity, IClassifierPropertyEvaluationEntity 
+        : IDocumentedEntity, IClassifierPropertyEvaluationEntity
     {
 
         /// <summary>

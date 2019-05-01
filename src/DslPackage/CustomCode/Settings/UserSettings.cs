@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.Settings;
-using Microsoft.VisualStudio.Shell.Settings;
+﻿using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Settings;
 
 namespace CQRSAzure.CQRSdsl.CustomCode.Settings
 {
@@ -14,7 +13,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Settings
     /// </remarks>
     public class UserSettings
     {
-        
+
         public void LoadSettings(object TargetSettingsClass)
         {
             ThreadHelper.ThrowIfNotOnUIThread();

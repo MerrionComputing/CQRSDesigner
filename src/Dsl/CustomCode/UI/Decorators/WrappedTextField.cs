@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-using Microsoft.VisualStudio.Modeling;
-using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace CQRSAzure.CQRSdsl.UI.Decorators
 {
@@ -12,12 +9,12 @@ namespace CQRSAzure.CQRSdsl.UI.Decorators
     /// <remarks>
     /// This is used for comments or notes fields
     /// </remarks>
-    public class WrappedTextField: TextField
+    public class WrappedTextField : TextField
     {
 
 
         public WrappedTextField(TextField prototype)
-            : base(prototype.Name )
+            : base(prototype.Name)
         {
             // Copy the starting properties form the prototype
             DefaultText = prototype.DefaultText;
@@ -25,10 +22,10 @@ namespace CQRSAzure.CQRSdsl.UI.Decorators
             DefaultAutoSize = false;
             DefaultMultipleLine = true;
             AnchoringBehavior.Clear();
-            AnchoringBehavior.CenterHorizontally(  );
-            AnchoringBehavior.CenterVertically(  ); 
+            AnchoringBehavior.CenterHorizontally();
+            AnchoringBehavior.CenterVertically();
             DefaultAccessibleState = prototype.DefaultAccessibleState;
-            
+
         }
 
     }

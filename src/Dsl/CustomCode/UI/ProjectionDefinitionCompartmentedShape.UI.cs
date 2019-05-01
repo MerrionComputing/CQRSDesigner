@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.Modeling;
-using System;
 using System.Collections;
 
 namespace CQRSAzure.CQRSdsl.Dsl
@@ -10,17 +9,17 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
     }
 
-        /// <summary>
-        /// Additional UI functionality to perform for the projection definition UI
-        /// </summary>
-        public partial class ProjectionDefinitionCompartmentShapeBase
+    /// <summary>
+    /// Additional UI functionality to perform for the projection definition UI
+    /// </summary>
+    public partial class ProjectionDefinitionCompartmentShapeBase
     {
 
 
         static System.Collections.IList FilterElementsFromProjectionDefinitionForPropertyOperations(global::System.Collections.IEnumerable elements)
         {
             // Todo - return a custom filtered list of property 
-            return new ArrayList() { elements } ;
+            return new ArrayList() { elements };
         }
 
         /// <summary>

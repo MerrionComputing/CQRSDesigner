@@ -365,30 +365,6 @@ Public Class ModelCodeGenerator
 
         Next
 
-        'Do we need to create the .SQL code as well?
-        If (m_options.GenerateEntityFrameworkClasses) Then
-            'make the model-level DBSet<> DBContect container class
-            Dim modelSQLGen As New SQLCodeGenerator(m_model)
-            If (modelSQLGen IsNot Nothing) Then
-                modelSQLGen.SetCodeGenerationOptions(m_options)
-                CreateSourceCodeFile(MakeImplementationClassName(modelSQLGen.FilenameBase), modelSQLGen.GenerateImplementation(), m_options, m_model.Name)
-
-                'Then make the aggregate instance classes
-                For Each aggregate As AggregateIdentifier In m_model.AggregateIdentifiers
-                    Dim aggSQLGen As New AggregateInstanceSQLCodeGenerator(aggregate)
-                    If (aggSQLGen IsNot Nothing) Then
-                        aggSQLGen.SetCodeGenerationOptions(m_options)
-                        CreateSourceCodeFile(MakeImplementationClassName(aggSQLGen.FilenameBase), aggSQLGen.GenerateImplementation(), m_options, m_model.Name)
-
-                        'And make the event details classes
-                        For Each eventDef As EventDefinition In aggregate.EventDefinitions
-
-
-                        Next
-                    End If
-                Next
-            End If
-        End If
 
     End Sub
 

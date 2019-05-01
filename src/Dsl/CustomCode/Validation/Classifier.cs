@@ -1,12 +1,12 @@
-﻿using System.Linq;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using Microsoft.VisualStudio.Modeling.Validation;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+using System.Linq;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
     [ValidationState(ValidationState.Enabled)]
     public partial class Classifier
-        : IClassifierEntity 
+        : IClassifierEntity
     {
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
-                context.LogError(Dsl.CustomCode.Validation.ValidationMessages.ClassifierNameNotBlank , nameof(Classifier) + " 01", this);
+                context.LogError(Dsl.CustomCode.Validation.ValidationMessages.ClassifierNameNotBlank, nameof(Classifier) + " 01", this);
             }
             else
             {

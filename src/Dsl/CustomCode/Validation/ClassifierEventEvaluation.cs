@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using System.Linq;
-
-using Microsoft.VisualStudio.Modeling.Validation;
-using Microsoft.CSharp;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
 
     public partial class ClassifierEventEvaluation
-        :IClassifierEventEvaluationEntity
+        : IClassifierEventEvaluationEntity
     {
 
 

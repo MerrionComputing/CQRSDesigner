@@ -184,7 +184,6 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Micros
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Text.Data.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.ImageCatalog.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Validation.xml
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Shell.Design.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.CoreUtility.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Designer.Interfaces.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\obj\Release\CQRSdslUnitTest.vbproj.CopyComplete
@@ -200,9 +199,7 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\System
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\System.Buffers.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Threading.pdb
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Shell.Interop.12.0.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\StreamJsonRpc.pdb
-D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Shell.Interop.11.0.xml
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Nerdbank.Streams.pdb
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\cs\Microsoft.VisualStudio.Threading.resources.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\de\Microsoft.VisualStudio.Threading.resources.dll
@@ -243,3 +240,7 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\ru\Str
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\tr\StreamJsonRpc.resources.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\zh-Hans\StreamJsonRpc.resources.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\zh-Hant\StreamJsonRpc.resources.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.TextTemplating.Modeling.15.0.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Modeling.Sdk.Integration.15.0.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\Microsoft.VisualStudio.Modeling.Sdk.Integration.Shell.15.0.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\CQRSdslUnitTest\bin\Release\en\Microsoft.VisualStudio.Modeling.Sdk.Integration.Shell.15.0.resources.dll

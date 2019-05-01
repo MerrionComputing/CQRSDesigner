@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
-using Microsoft.VisualStudio.Modeling.Validation;
-using Microsoft.CSharp;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -21,7 +16,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
 
             var qryName = from f in this.EventDefinitions
-                    select f.Name;
+                          select f.Name;
 
             return qryName.ToList();
 
@@ -35,7 +30,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         public IList<string> GetEventFieldNames(string eventName)
         {
 
-            EventDefinition  evt = this.EventDefinitions.Find(f => f.Name == eventName);
+            EventDefinition evt = this.EventDefinitions.Find(f => f.Name == eventName);
             if (null != evt)
             {
                 var qryEvtName = from ep in evt.EventProperties
@@ -57,7 +52,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         public IList<string> GetIdentityGroupNames()
         {
 
-            var qryName = from f in this.IdentityGrouped 
+            var qryName = from f in this.IdentityGrouped
                           select f.Name;
 
             return qryName.ToList();
@@ -67,14 +62,14 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <summary>
         /// Gets the lsit of projection names for this aggregate identifier
         /// </summary>
-        public IList<string > GetProjectionNames()
+        public IList<string> GetProjectionNames()
         {
-            var qryName = from f in this.ProjectionDefinitions 
+            var qryName = from f in this.ProjectionDefinitions
                           select f.Name;
 
             return qryName.ToList();
         }
-            
+
         /// <summary>
         /// Gets the list of names of query definition on this aggregate identifier
         /// </summary>
@@ -89,9 +84,9 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <summary>
         /// Gets the list of commands on this aggregate identifier
         /// </summary>
-        public IList<string > GetCommandNames()
+        public IList<string> GetCommandNames()
         {
-            var qryName = from f in this.CommandDefinitions 
+            var qryName = from f in this.CommandDefinitions
                           select f.Name;
 
             return qryName.ToList();

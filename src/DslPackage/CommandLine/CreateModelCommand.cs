@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -40,7 +36,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         /// </param>
         public override bool IsValidCommand(string commandLine)
         {
-            return CreateModelCommand.IsValidCreateModelCommand(commandLine); 
+            return CreateModelCommand.IsValidCreateModelCommand(commandLine);
         }
 
 
@@ -90,11 +86,11 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         /// </param>
         public static bool IsValidModelName(string modelName)
         {
-            if (string.IsNullOrWhiteSpace(modelName) )
+            if (string.IsNullOrWhiteSpace(modelName))
             {
                 return false;
             }
-            if (modelName.IndexOfAny("'@{}[];:/?,<.>!£$%^&*()-=+".ToCharArray()  ) >= 0)
+            if (modelName.IndexOfAny("'@{}[];:/?,<.>!£$%^&*()-=+".ToCharArray()) >= 0)
             {
                 // Illegal characters in the model name
                 return false;

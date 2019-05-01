@@ -72,6 +72,7 @@
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.15.0, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.Modeling.15.0, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -244,6 +245,7 @@
     <Compile Include="CustomCode\Interfaces\IQueryReturnParameter.cs" />
     <Compile Include="CustomCode\Interfaces\ISnapshotSupport.cs" />
     <Compile Include="CustomCode\Interfaces\ITargetttedEntity.cs" />
+    <Compile Include="CustomCode\Interfaces\IValidationStepSupport.cs" />
     <Compile Include="CustomCode\ToolTips\AggregateGeometryShape.ToolTip.cs" />
     <Compile Include="CustomCode\ToolTips\AggregateParenthoodConnector.ToolTip.cs" />
     <Compile Include="CustomCode\ToolTips\ClassifierCompartmentShape.ToolTip.cs" />

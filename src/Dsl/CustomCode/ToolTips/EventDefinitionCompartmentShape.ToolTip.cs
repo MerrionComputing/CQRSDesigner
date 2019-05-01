@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -17,7 +16,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         private string GetVariableTooltipText(DiagramItem item)
         {
             // Todo: Get the description of the event definition
-            return BaseClass.Name + "(" + BaseClass.Version.ToString() + ")";  
+            return BaseClass.Name + "(" + BaseClass.Version.ToString() + ")";
         }
 
     }

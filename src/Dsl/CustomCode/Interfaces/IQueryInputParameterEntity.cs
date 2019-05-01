@@ -1,10 +1,8 @@
-﻿using CQRSAzure.CQRSdsl.Dsl;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     public interface IQueryInputParameterEntity
-        : INamedEntity, 
-        IDocumentedEntity, 
+        : INamedEntity,
+        IDocumentedEntity,
         IPropertyEntity,
         ITargettedParameterEntity
     {

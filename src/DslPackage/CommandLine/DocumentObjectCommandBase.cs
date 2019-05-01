@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -35,7 +31,8 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         }
 
         private readonly string m_description;
-        public string Description {
+        public string Description
+        {
             get
             {
                 return m_description;
@@ -43,7 +40,8 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         }
 
         private readonly string m_notes;
-        public string Notes {
+        public string Notes
+        {
             get
             {
                 return m_notes;
@@ -59,12 +57,12 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             }
         }
 
-        public DocumentObjectCommandBase(string modelName, 
-            CommandTargetType target, 
+        public DocumentObjectCommandBase(string modelName,
+            CommandTargetType target,
             string objectName,
             string description,
             string notes)
-            : base(modelName )
+            : base(modelName)
         {
             m_description = description;
             m_notes = notes;
@@ -80,9 +78,9 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             string objectName,
             string description,
             string notes)
-            : base(modelName , 
-                  CommandTargetType.Aggregate ,
-                  objectName ,
+            : base(modelName,
+                  CommandTargetType.Aggregate,
+                  objectName,
                   description,
                   notes)
         {
@@ -94,7 +92,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             get
             {
                 // TODO : Return the document example specific to aggregate?
-                return CommandLineParser.EXAMPLE_DOCUMENT; 
+                return CommandLineParser.EXAMPLE_DOCUMENT;
             }
         }
 
@@ -121,9 +119,9 @@ namespace CQRSAzure.CQRSdsl.CommandLine
                                             string objectName,
                                             string description,
                                             string notes)
-            : base(modelName , 
-                  CommandTargetType.QueryDefinition  ,
-                  objectName ,
+            : base(modelName,
+                  CommandTargetType.QueryDefinition,
+                  objectName,
                   description,
                   notes)
         {
@@ -154,7 +152,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
     }
 
     public class DocumentCommandDefinitionCommand
-        : DocumentObjectCommandBase 
+        : DocumentObjectCommandBase
     {
 
 
@@ -162,9 +160,9 @@ namespace CQRSAzure.CQRSdsl.CommandLine
                                     string objectName,
                                     string description,
                                     string notes)
-            : base(modelName , 
-                  CommandTargetType.CommandDefinition   ,
-                  objectName ,
+            : base(modelName,
+                  CommandTargetType.CommandDefinition,
+                  objectName,
                   description,
                   notes)
         {
@@ -195,16 +193,16 @@ namespace CQRSAzure.CQRSdsl.CommandLine
     }
 
     public class DocumentEventDefinitionCommand
-        : DocumentObjectCommandBase 
+        : DocumentObjectCommandBase
     {
 
         public DocumentEventDefinitionCommand(string modelName,
                             string objectName,
                             string description,
                             string notes)
-            : base(modelName , 
-                  CommandTargetType.Event    ,
-                  objectName ,
+            : base(modelName,
+                  CommandTargetType.Event,
+                  objectName,
                   description,
                   notes)
         {
@@ -242,9 +240,9 @@ namespace CQRSAzure.CQRSdsl.CommandLine
                     string objectName,
                     string description,
                     string notes)
-            : base(modelName , 
-                  CommandTargetType.Projection     ,
-                  objectName ,
+            : base(modelName,
+                  CommandTargetType.Projection,
+                  objectName,
                   description,
                   notes)
         {

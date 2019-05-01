@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -13,7 +9,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
     /// If a command does not include this then the current (last selected) model is assumed
     /// </remarks>
     public class UsingModelCommand
-        : ModelCommandPartBase 
+        : ModelCommandPartBase
     {
 
         private readonly string m_modelName;
@@ -29,13 +25,13 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         {
             get
             {
-                return CommandLineParser.EXAMPLE_USING_MODEL; 
+                return CommandLineParser.EXAMPLE_USING_MODEL;
             }
         }
 
         public UsingModelCommand(string modelname)
         {
-            if (! CreateModelCommand.IsValidModelName(modelname) )
+            if (!CreateModelCommand.IsValidModelName(modelname))
             {
                 throw new ArgumentException(modelname + " is not a valid model name ", nameof(modelname));
             }

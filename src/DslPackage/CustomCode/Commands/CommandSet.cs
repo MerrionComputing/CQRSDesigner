@@ -17,7 +17,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         private int cmdidExpandCollapseAggregateContextMenuCommand = 0x00003;
         private int cmdidModelSettings = 0x00004;
 
-        private int cmdidGenerateCQRSModelCode =  0x00011;
+        private int cmdidGenerateCQRSModelCode = 0x00011;
 
         private int cmdidGenerateCQRSModelDocumentation = 0x00021;
 
@@ -52,8 +52,8 @@ namespace CQRSAzure.CQRSdsl.Dsl
             commands.Add(menuCommand);
 
             // Add handler for "Increment event version" menu command 
-            menuCommand = new DynamicStatusMenuCommand(new EventHandler(OnStatusIncrementEventVersion ),
-                new EventHandler(OnMenuIncrementEventVersion ),
+            menuCommand = new DynamicStatusMenuCommand(new EventHandler(OnStatusIncrementEventVersion),
+                new EventHandler(OnMenuIncrementEventVersion),
                 new CommandID(guidCustomDiagramMenuCmdSet, cmdidIncrementEventVersionContextMenuCommand));
             commands.Add(menuCommand);
 
@@ -66,7 +66,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             // Add handler for the "Model properties" menu command
             menuCommand = new DynamicStatusMenuCommand(new EventHandler(OnStatusModelProperties),
                 new EventHandler(OnMenuModelProperties),
-                new CommandID(guidCustomDiagramMenuCmdSet, cmdidModelSettings)) ;
+                new CommandID(guidCustomDiagramMenuCmdSet, cmdidModelSettings));
             commands.Add(menuCommand);
 
             // Add handler for "Generate code" menu command
@@ -82,7 +82,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             commands.Add(menuCommand);
 
             // Add handler for the "Data" top level menu
-            menuCommand = new MenuCommand (
+            menuCommand = new MenuCommand(
                 new EventHandler(OnMenuDataTopLevelMenuCommand),
                 new CommandID(guidCustomDiagramMenuCmdSet, cmdidDataTopLevelMenuCommand));
             commands.Add(menuCommand);
@@ -103,7 +103,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
             // add handler for the "DataImport" menu command
             menuCommand = new MenuCommand(new EventHandler(OnDataImportMenuCommand),
-                new CommandID(guidCustomDiagramMenuCmdSet, cmdidDataImportpMenuCommand ));
+                new CommandID(guidCustomDiagramMenuCmdSet, cmdidDataImportpMenuCommand));
             commands.Add(menuCommand);
 
             // add handler for the DataExport command
@@ -130,7 +130,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             global::System.ComponentModel.Design.MenuCommand cmd = sender as global::System.ComponentModel.Design.MenuCommand;
             cmd.Visible = cmd.Enabled = false;
 
-            if( this.CurrentSelection.OfType<EventDefinitionCompartmentShape>().Count() ==1)
+            if (this.CurrentSelection.OfType<EventDefinitionCompartmentShape>().Count() == 1)
             {
                 // One and only one "Event" selected so show the Increment version command
                 cmd.Visible = cmd.Enabled = true;
@@ -147,7 +147,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 Microsoft.VisualStudio.Modeling.Transaction tVersion = evt.Store.TransactionManager.BeginTransaction("Version increment");
                 evt.IncrementVersionNumber();
                 tVersion.Commit();
-            } 
+            }
         }
 
         // 1.2 cmdidExpandCollapseAggregateContextMenuCommand
@@ -175,14 +175,14 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
                 Microsoft.VisualStudio.Modeling.Transaction tShowHide = agg.Store.TransactionManager.BeginTransaction("Show or hide children");
                 // Show/hide all the child links and shapes
-                foreach (BinaryLinkShape linkedChild in agg.FromRoleLinkShapes.OfType<BinaryLinkShape >() )
+                foreach (BinaryLinkShape linkedChild in agg.FromRoleLinkShapes.OfType<BinaryLinkShape>())
                 {
                     linkedChild.SetShowHideState(!agg.ChildrenHidden);
                     if (linkedChild.ToShape != null)
-                    { 
+                    {
                         linkedChild.ToShape.SetShowHideState(!agg.ChildrenHidden);
                     }
-                }       
+                }
                 tShowHide.Commit();
             }
         }
@@ -243,7 +243,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 cmd.Visible = true;
                 if (this.IsCurrentDiagramEmpty())
                 {
-                    cmd.Enabled = false ;
+                    cmd.Enabled = false;
                 }
                 else
                 {
@@ -265,7 +265,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
 
                 // Code generation for the specified model...
-                CodeGeneration.ModelCodeGenerator codeGen = new CodeGeneration.ModelCodeGenerator(GetCurrentCQRSModel(), options );
+                CodeGeneration.ModelCodeGenerator codeGen = new CodeGeneration.ModelCodeGenerator(GetCurrentCQRSModel(), options);
                 if (null != codeGen)
                 {
                     codeGen.GenerateCode();
@@ -298,11 +298,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 CQRSAzure.CQRSdsl.CustomCode.Interfaces.IDocumentationGenerationOptions options = GetCurrentCQRSModel().GetDocumentationGenerationOptions();
                 if (null == options)
                 {
-                    options = DocumentationGenerationOptions.Create(new System.IO.DirectoryInfo ( GetCurrentCQRSModel().DocumentationRootFolder ));
+                    options = DocumentationGenerationOptions.Create(new System.IO.DirectoryInfo(GetCurrentCQRSModel().DocumentationRootFolder));
                 }
 
                 // Document the specified model...
-                DocumentationGeneration.ModelDocumentationGenerator modelDoc = new DocumentationGeneration.ModelDocumentationGenerator(GetCurrentCQRSModel(), options );
+                DocumentationGeneration.ModelDocumentationGenerator modelDoc = new DocumentationGeneration.ModelDocumentationGenerator(GetCurrentCQRSModel(), options);
                 if (null != modelDoc)
                 {
                     modelDoc.GenerateDocumentation();
@@ -326,7 +326,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         private void OnStatusAddAggregateInstanceMenuCommand(object sender, EventArgs e)
         {
             global::System.ComponentModel.Design.MenuCommand cmd = sender as global::System.ComponentModel.Design.MenuCommand;
-            cmd.Visible = false   ;
+            cmd.Visible = false;
             cmd.Enabled = false;
             if (this.CurrentSelection.OfType<AggregateGeometryShape>().Count() == 1)
             {

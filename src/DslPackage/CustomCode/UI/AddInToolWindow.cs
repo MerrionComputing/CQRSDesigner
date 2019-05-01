@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Modeling.Shell;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using Microsoft.VisualStudio;
 using VsShell = Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.Modeling.Shell;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -50,7 +50,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 VsShell.IVsWindowFrame frame;
                 Guid emptyGuid = Guid.Empty;
                 int hr = vsUIShell.CreateToolWindow(
-                    (int) VsShell.__VSCREATETOOLWIN.CTW_fInitNew,
+                    (int)VsShell.__VSCREATETOOLWIN.CTW_fInitNew,
                     0,
                     this,
                     ref emptyGuid,
@@ -67,7 +67,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 if (ErrorHandler.Failed(hr))
                 {
                     ErrorHandler.ThrowOnFailure(vsUIShell.CreateToolWindow(
-                        (int) VsShell.__VSCREATETOOLWIN.CTW_fInitNew,
+                        (int)VsShell.__VSCREATETOOLWIN.CTW_fInitNew,
                         0,
                         this,
                         ref emptyGuid,
@@ -93,7 +93,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                         VsShell.IVsWindowFrame frame = this.Frame;
                         if (frame != null)
                         {
-                            ErrorHandler.ThrowOnFailure(frame.CloseFrame((uint) VsShell.__FRAMECLOSE.FRAMECLOSE_NoSave));
+                            ErrorHandler.ThrowOnFailure(frame.CloseFrame((uint)VsShell.__FRAMECLOSE.FRAMECLOSE_NoSave));
                         }
 
                         if (m_control != null)
@@ -179,7 +179,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
             Debug.Assert(!m_disposed);
 
-            base.OnToolWindowCreate();  
+            base.OnToolWindowCreate();
 
             if (!m_disposed && this.IsTabbedDocument)
             {
@@ -188,7 +188,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 if (this.Frame != null)
                 {
                     ErrorHandler.ThrowOnFailure(this.Frame.SetProperty(
-                        (int) VsShell.__VSFPROPID.VSFPROPID_FrameMode,
+                        (int)VsShell.__VSFPROPID.VSFPROPID_FrameMode,
                         VsShell.VSFRAMEMODE.VSFM_MdiChild));
                 }
             }

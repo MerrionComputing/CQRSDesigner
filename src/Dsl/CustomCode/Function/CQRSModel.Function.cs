@@ -13,7 +13,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <param name="store">Store where new element is to be created.</param>
         /// <param name="propertyAssignments">List of domain property id/value pairs to set once the element is created.</param>
         public CQRSModel(DslModeling::Store store, params DslModeling::PropertyAssignment[] propertyAssignments)
-        	: this(store?.DefaultPartitionForClass(DomainClassId), propertyAssignments)
+            : this(store?.DefaultPartitionForClass(DomainClassId), propertyAssignments)
         {
         }
 
@@ -29,7 +29,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// This allows the default of mandatory properties for the ModelSettings
         /// </remarks>
         public CQRSModel(DslModeling::Partition partition, params DslModeling::PropertyAssignment[] propertyAssignments)
-        	: base(partition, propertyAssignments)
+            : base(partition, propertyAssignments)
         {
 
             // If the default language is not set, set it to VB.Net
@@ -44,11 +44,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// </remarks>
         public IModelCodeGenerationOptions GetCodeGenerationOptions()
         {
-            ModelCodegenerationOptionsBase.SupportedLanguages CodeLanguageIn = ModelCodegenerationOptionsBase.SupportedLanguages.VBNet ;
-            ModelCodegenerationOptionsBase.ConstructorPreferenceSetting ConstructorPreferenceIn = ModelCodegenerationOptionsBase.ConstructorPreferenceSetting.GenerateBoth ;
-            ModelCodegenerationOptionsBase.TypedCodeGenerationSetting TypeSettingIn = ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.StronglyTyped; 
-            bool SeparateFolderPerModelIn = true ;
-            bool SeparateFolderPerAggregateIn = true ;
+            ModelCodegenerationOptionsBase.SupportedLanguages CodeLanguageIn = ModelCodegenerationOptionsBase.SupportedLanguages.VBNet;
+            ModelCodegenerationOptionsBase.ConstructorPreferenceSetting ConstructorPreferenceIn = ModelCodegenerationOptionsBase.ConstructorPreferenceSetting.GenerateBoth;
+            ModelCodegenerationOptionsBase.TypedCodeGenerationSetting TypeSettingIn = ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.StronglyTyped;
+            bool SeparateFolderPerModelIn = true;
+            bool SeparateFolderPerAggregateIn = true;
             bool GenerateEntityFrameworkClassesIn = false;
             bool GenerateEventGridIn = false;
             System.IO.DirectoryInfo DirectoryRootIn = null;
@@ -58,11 +58,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
             {
                 CodeLanguageIn = ModelCodegenerationOptionsBase.SupportedLanguages.CSharp;
             }
-            if (this.TypedCodeGeneration == TypedGenerationSetting.UntypedJSON )
+            if (this.TypedCodeGeneration == TypedGenerationSetting.UntypedJSON)
             {
                 TypeSettingIn = ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.UntypedJSON;
             }
-            if (! this.SubfolderPerDomain )
+            if (!this.SubfolderPerDomain)
             {
                 SeparateFolderPerModelIn = false;
             }
@@ -71,7 +71,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 SeparateFolderPerAggregateIn = false;
             }
 
-            if (! string.IsNullOrWhiteSpace (this.CodeRootFolder ))
+            if (!string.IsNullOrWhiteSpace(this.CodeRootFolder))
             {
                 if (System.IO.Directory.Exists(this.CodeRootFolder))
                 {
@@ -101,12 +101,8 @@ namespace CQRSAzure.CQRSdsl.Dsl
                     "Code"));
             }
 
-            if (this.GenerateEntityFrameworkClasses )
-            {
-                GenerateEntityFrameworkClassesIn = true;
-            }
 
-            if (this.GenerateEventGridSupportingCode )
+            if (this.GenerateEventGridSupportingCode)
             {
                 GenerateEventGridIn = true;
             }
@@ -115,12 +111,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
             return ModelCodeGenerationOptions.Create(CodeLanguageIn,
                 ConstructorPreferenceIn,
-                TypeSettingIn ,
+                TypeSettingIn,
                 DirectoryRootIn,
                 SeparateFolderPerModelIn,
                 SeparateFolderPerAggregateIn,
-                GenerateEntityFrameworkClassesIn,
-                GenerateEventGridIn );
+                GenerateEventGridIn);
         }
 
         /// <summary>
@@ -139,7 +134,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 else
                 {
                     // Can you make this into a relative path??
-                    if (! System.IO.Path.IsPathRooted(this.DocumentationRootFolder) )
+                    if (!System.IO.Path.IsPathRooted(this.DocumentationRootFolder))
                     {
                         DirectoryRootIn = new System.IO.DirectoryInfo(
                             System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory

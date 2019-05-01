@@ -47,7 +47,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDesignerService2.OpenAppxManifestDocument(System.Object,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsDocumentLockHolder@,Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2@)">
       <summary>Opens the .appxmanifest file in the specified file.</summary>
       <param name="Project">The project.</param>
-      <param name="forceSaveAndClose">true if an open copy of the file should be saved, otherwise false.</param>
+      <param name="forceSaveAndClose">
+            <see langword="true" /> if an open copy of the file should be saved, otherwise <see langword="false" />.</param>
       <param name="documentHandle">The document lock.</param>
       <param name="appxManifestDocument">The document.</param>
       <returns>The HRESULT.</returns>
@@ -63,7 +64,8 @@
       <param name="runtimeType">[out] The runtimeType field of the app manifest.</param>
       <param name="startPage">[out] The startPage field of the app manifest.</param>
       <param name="fileOpenPickerExtensionData">[out] An <see cref="T:Microsoft.VisualStudio.Shell.Interop.IAppxFileOpenPickerExtension" /> object that allows mutation of the manifest's File Open Picker extension.</param>
-      <returns>true if there is a File Open Picker extension associated with the manifest.</returns>
+      <returns>
+          <see langword="true" /> if there is a File Open Picker extension associated with the manifest.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.GetSearchExtension(System.String@,System.String@,System.String@,System.String@)">
       <summary>Gets the Search extension.</summary>
@@ -71,7 +73,8 @@
       <param name="entryPoint">[out] The entryPoint field of the app manifest.</param>
       <param name="runtimeType">[out] The runtimeType field of the app manifest.</param>
       <param name="startPage">[out] The startPage field of the app manifest.</param>
-      <returns>true if there is a Search extension associated with the manifest.</returns>
+      <returns>
+          <see langword="true" /> if there is a Search extension associated with the manifest.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.GetShareExtension(System.String@,System.String@,System.String@,System.String@,Microsoft.VisualStudio.Shell.Interop.IAppxShareExtension@)">
       <summary>Gets the Share extension.</summary>
@@ -80,12 +83,14 @@
       <param name="runtimeType">[out] ] The runtimeType field of the app manifest.</param>
       <param name="startPage">[out] The startPage field of the app manifest.</param>
       <param name="shareExtensionData">[out] An <see cref="T:Microsoft.VisualStudio.Shell.Interop.IAppxShareExtension" /> object that allows mutation of the manifest's File Open Picker extension.</param>
-      <returns>true if there is a Share extension associated with the manifest.</returns>
+      <returns>
+          <see langword="true" /> if there is a Share extension associated with the manifest.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.HasCapability(System.String)">
       <summary>Detects if the specified capability is currently declared in the manifest.</summary>
       <param name="capabilityId">[in] The identifier of the capability.</param>
-      <returns>true if the given capability is currently declared in the manifest.</returns>
+      <returns>
+          <see langword="true" /> if the given capability is currently declared in the manifest.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.MapCapabilitySid(System.String,System.String@,System.String@)">
       <summary>Produces a capability identifier and a localized name from the specified capability security identifier (SID), such as "S-1-15-3-1" or "S-1-15-3-BFA794E4-F964-4FDB-90F6-51056BFE4B44".</summary>
@@ -144,7 +149,6 @@
       <param name="cItems" />
       <param name="packagesToDownload" />
       <param name="logger" />
-      <returns />
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapper.BootstrapForDebuggingAsync(System.String,System.String,System.String,Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperLogger)">
       <summary>Asynchronously bootstraps given target and established    // debugger host for debugging the app represented by recipe.    // bootstrapperOperation: </summary>
@@ -205,7 +209,7 @@
       <summary>Acquires the design-time build resource and/or the UI thread for a build, if they are available.</summary>
       <param name="fResources">[in] The type of resource to acquire.</param>
       <param name="phCookie">[out] A cookie that identifies the resource, and can be used to release the resource(s).</param>
-      <returns>If the method succeeds, it returns S_OK. If it fails, it returns an error code.</returns>
+      <returns>If the method succeeds, it returns <see langword="S_OK" />. If it fails, it returns an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.BeginDesignTimeBuild">
       <summary>Signals that a modal, design-time build, such as reference resolution, is about to take place.</summary>
@@ -402,7 +406,9 @@
       <returns>The cookie.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetDocumentData(System.UInt32)">
-      <summary>This is functionally identical to calling <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable.GetDocumentInfo(System.UInt32,System.UInt32@,System.UInt32@,System.UInt32@,System.String@,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy@,System.UInt32@,System.IntPtr@)" /> and requesting only the document data, but this method easier to consume from managed code.There are two pending states for a document:<see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingHierarchyInitialization" />: The project that owns the document hasn’t yet been loaded. This can happen only during asynchronous solution load (ASL). As individual projects are loaded, the documents owned by the projects are updated to remove the RDT_PendingHierarchyInitialization flag. By the time the solution is fully loaded, no documents are in this state.<see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingInitialization" />: The document data hasn’t been loaded, and the view hasn’t been created. A document in this state may or may not also have RDT_PendingHierarchyInitialization, but a document with RDT_PendingHierarchyInitialization always has RDT_PendingInitialization. Documents in this state are referred to as lazy or stub documents. This method causes a lazy document to be loaded immediately, so by the time it returns, the document no longer has the RDT_PendingInitialization flag. You should first call <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetDocumentFlags(System.UInt32)" /> and call GetDocumentData only if the document doesn’t have RDT_PendingInitialization among its flags. You can be notified that the document has been loaded by subscribing to running document table events and looking for the <see cref="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3.RDTA_DocumentInitialized" /> flag in <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents2.OnAfterAttributeChange(System.UInt32,System.UInt32)" /> or <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents3.OnAfterAttributeChangeEx(System.UInt32,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String)" />.</summary>
+      <summary>This is functionally identical to calling <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable.GetDocumentInfo(System.UInt32,System.UInt32@,System.UInt32@,System.UInt32@,System.String@,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy@,System.UInt32@,System.IntPtr@)" /> and requesting only the document data, but this method easier to consume from managed code.There are two pending states for a document:
+          <see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingHierarchyInitialization" />: The project that owns the document hasn’t yet been loaded. This can happen only during asynchronous solution load (ASL). As individual projects are loaded, the documents owned by the projects are updated to remove the RDT_PendingHierarchyInitialization flag. By the time the solution is fully loaded, no documents are in this state.
+          <see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingInitialization" />: The document data hasn’t been loaded, and the view hasn’t been created. A document in this state may or may not also have RDT_PendingHierarchyInitialization, but a document with RDT_PendingHierarchyInitialization always has RDT_PendingInitialization. Documents in this state are referred to as lazy or stub documents. This method causes a lazy document to be loaded immediately, so by the time it returns, the document no longer has the RDT_PendingInitialization flag. You should first call <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetDocumentFlags(System.UInt32)" /> and call GetDocumentData only if the document doesn’t have RDT_PendingInitialization among its flags. You can be notified that the document has been loaded by subscribing to running document table events and looking for the <see cref="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3.RDTA_DocumentInitialized" /> flag in <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents2.OnAfterAttributeChange(System.UInt32,System.UInt32)" /> or <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents3.OnAfterAttributeChangeEx(System.UInt32,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String)" />.</summary>
       <param name="cookie">The document cookie.</param>
       <returns>The document data.</returns>
     </member>
@@ -417,7 +423,9 @@
       <returns>The flags.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetDocumentHierarchyItem(System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy@,System.UInt32@)">
-      <summary>This is functionally identical to calling <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable.GetDocumentInfo(System.UInt32,System.UInt32@,System.UInt32@,System.UInt32@,System.String@,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy@,System.UInt32@,System.IntPtr@)" /> and requesting only the document data, but this method easier to consume from managed code.There are two pending states for a document:<see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingHierarchyInitialization" />: The project that owns the document hasn’t yet been loaded. This can happen only during asynchronous solution load (ASL). As individual projects are loaded, the documents owned by the projects are updated to remove the RDT_PendingHierarchyInitialization flag. By the time the solution is fully loaded, no documents are in this state.<see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingInitialization" />: The document data hasn’t been loaded, and the view hasn’t been created. A document in this state may or may not also have RDT_PendingHierarchyInitialization, but a document with RDT_PendingHierarchyInitialization always has RDT_PendingInitialization. Documents in this state are referred to as lazy or stub documents. This method causes the project that owns a lazy document to be loaded immediately, rather than waiting for it to be loaded normally, so by the time the method returns, the document no longer has RDT_PendingHierarchyInitialization. It doesn’t cause the document itself to be loaded.You should first call <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetDocumentFlags(System.UInt32)" /> and call GetDocumentHierarchyItem only if the document doesn’t have RDT_PendingInitialization among its flags. You can be notified that the document has been loaded by subscribing to running document table events and looking for the <see cref="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3.RDTA_DocumentInitialized" /> flag in <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents2.OnAfterAttributeChange(System.UInt32,System.UInt32)" /> or <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents3.OnAfterAttributeChangeEx(System.UInt32,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String)" />.</summary>
+      <summary>This is functionally identical to calling <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable.GetDocumentInfo(System.UInt32,System.UInt32@,System.UInt32@,System.UInt32@,System.String@,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy@,System.UInt32@,System.IntPtr@)" /> and requesting only the document data, but this method easier to consume from managed code.There are two pending states for a document:
+          <see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingHierarchyInitialization" />: The project that owns the document hasn’t yet been loaded. This can happen only during asynchronous solution load (ASL). As individual projects are loaded, the documents owned by the projects are updated to remove the RDT_PendingHierarchyInitialization flag. By the time the solution is fully loaded, no documents are in this state.
+          <see cref="F:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS4.RDT_PendingInitialization" />: The document data hasn’t been loaded, and the view hasn’t been created. A document in this state may or may not also have RDT_PendingHierarchyInitialization, but a document with RDT_PendingHierarchyInitialization always has RDT_PendingInitialization. Documents in this state are referred to as lazy or stub documents. This method causes the project that owns a lazy document to be loaded immediately, rather than waiting for it to be loaded normally, so by the time the method returns, the document no longer has RDT_PendingHierarchyInitialization. It doesn’t cause the document itself to be loaded.You should first call <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetDocumentFlags(System.UInt32)" /> and call GetDocumentHierarchyItem only if the document doesn’t have RDT_PendingInitialization among its flags. You can be notified that the document has been loaded by subscribing to running document table events and looking for the <see cref="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3.RDTA_DocumentInitialized" /> flag in <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents2.OnAfterAttributeChange(System.UInt32,System.UInt32)" /> or <see cref="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocTableEvents3.OnAfterAttributeChangeEx(System.UInt32,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String)" />.</summary>
       <param name="cookie">The document cookie.</param>
       <param name="hierarchy">[out] The project hierarchy.</param>
       <param name="itemID">[out] The item ID.</param>
@@ -453,12 +461,14 @@
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.IsDocumentDirty(System.UInt32)">
       <summary>Indicates whether the document has changed since the last save.</summary>
       <param name="cookie">[in] The document to check.</param>
-      <returns>true if the document has changed, or false if the document has not changed since the last save.</returns>
+      <returns>
+          <see langword="true" /> if the document has changed, or <see langword="false" /> if the document has not changed since the last save.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.IsDocumentReadOnly(System.UInt32)">
       <summary>Indicates whether the document is a read-only document.</summary>
       <param name="cookie">[in] The document to check.</param>
-      <returns>true if the document can only be read, or false if information can be written to the document.</returns>
+      <returns>
+          <see langword="true" /> if the document can only be read, or <see langword="false" /> if information can be written to the document.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.IsMonikerValid(System.String)">
       <summary>Determines whether the given moniker exists in the RDT</summary>
@@ -589,7 +599,8 @@
       <summary>Performs a batch retargeting of the specified project.</summary>
       <param name="pHier">The project hierarchy.</param>
       <param name="newTargetFramework">The new target framework.</param>
-      <param name="unloadProjectIfErrorOrCancel">true to unload the project if there is an error, otherwise false.</param>
+      <param name="unloadProjectIfErrorOrCancel">
+            <see langword="true" /> to unload the project if there is an error, otherwise <see langword="false" />.</param>
       <returns>The HRESULT.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.BeginRetargetingBatch">
@@ -634,7 +645,8 @@
       <param name="currentTargetFramework">The current target framework.</param>
       <param name="newTargetFramework">The new target framework.</param>
       <param name="pWorkerCallback">The callback.</param>
-      <param name="ReloadProject">true to reload the project after retargeting, otherwise false.</param>
+      <param name="ReloadProject">
+            <see langword="true" /> to reload the project after retargeting, otherwise <see langword="false" />.</param>
       <returns>The HRESULT.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.PromptForProjectRetarget(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange,System.String)">
@@ -677,7 +689,8 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchyNativeWindow.SetTreeRedraw(System.Boolean)">
       <summary>Sets whether the tree view should enable or disable redraw.</summary>
-      <param name="fEnabled">true if enabled, otherwise false.</param>
+      <param name="fEnabled">
+            <see langword="true" /> if enabled, otherwise <see langword="false" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.CreateThemedImageList(System.IntPtr,System.UInt32)">
       <summary>Creates a themed image list.  Themed image lists attempt to transform the images to target a given background. The caller is responsible for calling ImageList_Destroy to delete the imagelist. HANDLE represents an HIMAGELIST, but including commctrl.h can produce build issues for projects that would not otherwise support common controls.</summary>
@@ -740,9 +753,10 @@
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShellOpenDocument4.IsDocumentInAProject2(System.String,System.Boolean,Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy@,System.UInt32@,Microsoft.VisualStudio.OLE.Interop.IServiceProvider@)">
       <summary>Determines whether the specified document is in a project.</summary>
       <param name="pszMkDocument">[in] String form of the unique moniker identifier of the document in the project system, for example, the full path to the file. In non-file cases, this identifier is often in the form of a URL.</param>
-      <param name="fSupportExternalItems">true if the project supports external items, otherwise false.</param>
-      <param name="ppUIH">out] If the document is open, this is a pointer to the <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy" /> interface implementation of the project that contains the document. If the document is not open, the value of this parameter is null. You can call Query Interface From <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy" /> to obtain a pointer to the <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the project.</param>
-      <param name="pitemid">[out] Pointer to the hierarchy item identifier of the document in the project system. For more information see VSITEMID.</param>
+      <param name="fSupportExternalItems">
+            <see langword="true" /> if the project supports external items, otherwise <see langword="false" />.</param>
+      <param name="ppUIH">out] If the document is open, this is a pointer to the <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy" /> interface implementation of the project that contains the document. If the document is not open, the value of this parameter is <see langword="null" />. You can call <see langword="Query Interface" /> From <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy" /> to obtain a pointer to the <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the project.</param>
+      <param name="pitemid">[out] Pointer to the hierarchy item identifier of the document in the project system. For more information see <see langword="VSITEMID" />.</param>
       <param name="ppSP">[out] Pointer to the <see cref="T:Microsoft.VisualStudio.OLE.Interop.IServiceProvider" /> interface for the project</param>
       <returns>Specifies whether the document is in a project.</returns>
     </member>
@@ -753,7 +767,7 @@
       <param name="fSupportExternalItems">True if the project supports external items, otherwise false.</param>
       <param name="ppSP">[out] Pointer to the IServiceProvideroledbinterfaces_implemented_by_the_provider interface.</param>
       <param name="ppHier">[out] Pointer to the <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy" /> interface of the project that can open the document.</param>
-      <param name="pitemid">[out] Pointer to the hierarchy item identifier of the document in the project. For more information see VSITEMID.</param>
+      <param name="pitemid">[out] Pointer to the hierarchy item identifier of the document in the project. For more information see <see langword="VSITEMID" />.</param>
       <returns>The HRESULT.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUserSettings2.ExportSettings(System.Guid@,Microsoft.VisualStudio.Shell.Interop.IVsSettingsWriter,Microsoft.VisualStudio.Shell.Interop.IVsSettingsStorageContainer)">
@@ -872,7 +886,6 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.Capabilities">
       <summary>Gets a list of all capabilities currently declared in the manifest, which may include both standard capabilities and device capabilities.</summary>
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.OSMaxVersionTested">
       <summary>Gets or sets the highest operating system tested, for example 6.3.</summary>
@@ -888,7 +901,6 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.StandardCapabilities">
       <summary>Gets the fixed list of standard capabilities.</summary>
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult.Address">
       <summary>Gets the IP address or machine name of the bootstapped target.</summary>
@@ -980,7 +992,6 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectAcquisitionSetupDriver.SetupDriverGuid">
       <summary>The GUID of the setup driver.</summary>
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange.CurrentTargetId">
       <summary>Gets the target ID.</summary>
@@ -1020,15 +1031,12 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsScriptJmcProjectControl.EvalDefaultCodeType">
       <summary />
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsScriptJmcProjectControl.FunctionDefaultCodeType">
       <summary />
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsScriptJmcProjectControl.ScriptBlockDefaultCodeType">
       <summary />
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberDataDeprecation.Description">
       <summary>Gets the description.</summary>
@@ -1150,7 +1158,7 @@
       <summary>VT_UNKNOWN [optional] Returns the implementation of IVsRetargetProject for a project.</summary>
     </member>
     <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_ShowAllProjectFilesInProjectView">
-      <summary>VT_BOOL [optional] Indicates that all the project files should be visible in solution explorer by default. This property is added to give Visual Basic flavored project systems the power to change the default visibility of special files in Solution Explorer. For example, by default all the dependent files in Visual Basic projects aren’t shown in Solution Explorer, and a flavored project could return true for this property to show those files.</summary>
+      <summary>VT_BOOL [optional] Indicates that all the project files should be visible in solution explorer by default. This property is added to give Visual Basic flavored project systems the power to change the default visibility of special files in Solution Explorer. For example, by default all the dependent files in Visual Basic projects aren’t shown in Solution Explorer, and a flavored project could return <see langword="true" /> for this property to show those files.</summary>
     </member>
     <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_Subcaption">
       <summary>VT_BSTR [optional] Returns an optional string that is shown in Solution Explorer. The current implementation honors this property only for hierarchy root nodes. For example, with Windows Store projects targeting Windows 8.1, the sub-caption is "Windows 8.1" for the project node, and the final text in the Solution Explorer is "&lt;Project caption&gt; (Windows 8.1)".</summary>
@@ -1363,7 +1371,7 @@
       <summary>Provides programmatic access to a project's .appxmanifext file. You can use it to open a DocData object provided by the Manifest Designer, ensure that it is registered in the running document table (RDT), and return a document handle object that implements two interfaces: IVsDocumentLockHolder and IVsInvisibleEditor. This forces any existing document window to close, and causes the returned document handle to hold a RDT_EditLock. When you need to keep the document handle for longer periods of time, cast it to IVsInvisibleEditor and use GetDocData to get a pointer to a fresh object model. When finished with the document handle, always call IVsDocumentLockHolder.CloseDocumentHolder(), usually passing (uint)__FRAMECLOSE.FRAMECLOSE_SaveIfDirty as the save option. </summary>
     </member>
     <member name="T:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2">
-      <summary>Provides an object model for the app manifest of the current project. It is implemented by the DocData object of the app manifest designer.</summary>
+      <summary>Provides an object model for the app manifest of the current project. It is implemented by the <see langword="DocData" /> object of the app manifest designer.</summary>
     </member>
     <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsAggregatableProject2">
       <summary>Represents an aggregatable project.</summary>

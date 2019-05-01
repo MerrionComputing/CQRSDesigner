@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -16,14 +12,14 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             get
             {
-                if (string.IsNullOrEmpty(this.TargetPropertyName ) )
+                if (string.IsNullOrEmpty(this.TargetPropertyName))
                 {
                     // The target property has not yet been set
                     return null;
                 }
                 else
                 {
-                    return this.ProjectionDefinition.ProjectionProperties.FirstOrDefault(f => f.Name == this.TargetPropertyName);   
+                    return this.ProjectionDefinition.ProjectionProperties.FirstOrDefault(f => f.Name == this.TargetPropertyName);
                 }
             }
         }

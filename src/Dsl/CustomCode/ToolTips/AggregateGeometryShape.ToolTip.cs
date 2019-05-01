@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 
-namespace  CQRSAzure.CQRSdsl.Dsl
+namespace CQRSAzure.CQRSdsl.Dsl
 {
     public partial class AggregateGeometryShapeBase
     {

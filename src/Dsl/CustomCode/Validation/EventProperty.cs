@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.Modeling.Validation;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 
 
 namespace CQRSAzure.CQRSdsl.Dsl
@@ -14,7 +13,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             get
             {
-                return EventDefinition.FullyQualifiedName + @"." + Name; 
+                return EventDefinition.FullyQualifiedName + @"." + Name;
             }
         }
     }

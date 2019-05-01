@@ -32,3 +32,6 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\CQRSAzure.CQR
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\DslPackage.csproj.GenerateResource.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\DslPackage.csproj.CoreCompileInputs.cache
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\DslPackage.csproj.CopyComplete
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Binaries\CQRSAzure.CQRSdsl.DslPackage.pdb
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\CQRSAzure.CQRSdsl.DslPackage.dll
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\DslPackage\obj\Debug\CQRSAzure.CQRSdsl.DslPackage.pdb

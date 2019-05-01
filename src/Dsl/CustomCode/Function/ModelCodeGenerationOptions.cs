@@ -1,6 +1,5 @@
-﻿using System;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using System.IO;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 namespace CQRSAzure.CQRSdsl.Dsl
 {
     /// <summary>
@@ -64,14 +63,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             }
         }
 
-        private readonly bool _generateEntityFrameworkClasses;
-        public bool GenerateEntityFrameworkClasses
-        {
-            get
-            {
-                return _generateEntityFrameworkClasses;
-            }
-        }
+
 
         private bool _generateEventGridSupportingCode;
         public bool GenerateEventGridSupportingCode
@@ -89,8 +81,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                     System.IO.DirectoryInfo DirectoryRootIn,
                     bool SeparateFolderPerModelIn,
                     bool SeparateFolderPerAggregateIn,
-                    bool GenerateEntityFrameworkClassesIn = false ,
-                    bool GenerateEventGridSupportingCodeIn = false )
+                    bool GenerateEventGridSupportingCodeIn = false)
         {
 
             _codelanguage = CodeLanguageIn;
@@ -100,7 +91,6 @@ namespace CQRSAzure.CQRSdsl.Dsl
             _separateFolderPerModel = SeparateFolderPerModelIn;
             _separateFolderPerAggregate = SeparateFolderPerAggregateIn;
 
-            _generateEntityFrameworkClasses = GenerateEntityFrameworkClassesIn;
             _generateEventGridSupportingCode = GenerateEventGridSupportingCodeIn;
 
         }
@@ -108,12 +98,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
         public static IModelCodeGenerationOptions Create(ModelCodegenerationOptionsBase.SupportedLanguages CodeLanguageIn,
                     ModelCodegenerationOptionsBase.ConstructorPreferenceSetting ConstructorPreferenceIn,
-                    ModelCodegenerationOptionsBase.TypedCodeGenerationSetting TypeSettingIn, 
+                    ModelCodegenerationOptionsBase.TypedCodeGenerationSetting TypeSettingIn,
                     System.IO.DirectoryInfo DirectoryRootIn,
                     bool SeparateFolderPerModelIn,
                     bool SeparateFolderPerAggregateIn,
-                    bool GenerateEntityFrameworkClassesIn = false,
-                    bool GenerateEventGridSupportingCodeIn = false )
+                    bool GenerateEventGridSupportingCodeIn = false)
         {
 
             return new ModelCodeGenerationOptions(CodeLanguageIn,
@@ -122,7 +111,6 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 DirectoryRootIn,
                 SeparateFolderPerModelIn,
                 SeparateFolderPerAggregateIn,
-                GenerateEntityFrameworkClassesIn,
                 GenerateEventGridSupportingCodeIn);
 
         }
@@ -131,12 +119,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             return new ModelCodeGenerationOptions(ModelCodegenerationOptionsBase.SupportedLanguages.CSharp,
                 ModelCodegenerationOptionsBase.ConstructorPreferenceSetting.GenerateBoth,
-                ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.StronglyTyped, 
+                ModelCodegenerationOptionsBase.TypedCodeGenerationSetting.StronglyTyped,
                new System.IO.DirectoryInfo(System.IO.Path.GetTempPath()),
                true,
-               true, 
-               false,
-               false 
+               true,
+               false
                );
 
         }

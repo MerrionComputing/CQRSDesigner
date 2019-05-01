@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CommandLine
+﻿namespace CQRSAzure.CQRSdsl.CommandLine
 {
     /// <summary>
     /// A class to make sense of a CQRS model manipulation command line passed in to the command line interface
@@ -36,7 +30,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
 
         public const string EXAMPLE_CREATE_MODEL = @"CREATE MODEL modelname";
 
-        public const string EXAMPLE_CREATE_AGGREGATE = 
+        public const string EXAMPLE_CREATE_AGGREGATE =
             @"   [USING modelname]
    ADD AGGREGATE aggregatename
    IDENTIFIED BY keyname
@@ -107,7 +101,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             @"     [USING modelname]
     GENERATE DOCUMENTATION";
 
-        public const string EXAMPLE_USING_MODEL =   @" USING modelname";
+        public const string EXAMPLE_USING_MODEL = @" USING modelname";
 
         public const string EXAMPLE_FOR_AGGREGATE = @" FOR AGGREGATE aggregatename";
 
@@ -164,7 +158,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         public IModelModificationCommand ParseCommand(string commandLine)
         {
             // If we get here we didn't know what to make of the command
-            return new NullModelModificationCommand(commandLine ); 
+            return new NullModelModificationCommand(commandLine);
         }
     }
 }

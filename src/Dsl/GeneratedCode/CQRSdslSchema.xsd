@@ -98,12 +98,6 @@
             <xsd:documentation>The root folder to store the documentation generated for this domain in</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
-        <!-- Property: GenerateEntityFrameworkClasses -->
-        <xsd:attribute name="generateEntityFrameworkClasses" type="xsd:boolean" >
-          <xsd:annotation>
-            <xsd:documentation>Should the model build the Entity Framework classes for storing the model in an SQL database</xsd:documentation>
-          </xsd:annotation>
-        </xsd:attribute>
         <!-- Property: Framework -->
         <xsd:attribute name="framework" type="SupportingFramework" >
           <xsd:annotation>
@@ -581,6 +575,12 @@
             <xsd:documentation>A tag /category that can be applied to an entity</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
+        <!-- Property: IncludeValidationStep -->
+        <xsd:attribute name="includeValidationStep" type="xsd:boolean" >
+          <xsd:annotation>
+            <xsd:documentation>Does this command need a validation step</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -889,6 +889,12 @@
         <xsd:attribute name="category" type="xsd:string" >
           <xsd:annotation>
             <xsd:documentation>A tag /category that can be applied to an entity</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+        <!-- Property: IncludeValidationStep -->
+        <xsd:attribute name="includeValidationStep" type="xsd:boolean" >
+          <xsd:annotation>
+            <xsd:documentation>Does this query need a validation step</xsd:documentation>
           </xsd:annotation>
         </xsd:attribute>
       </xsd:extension>

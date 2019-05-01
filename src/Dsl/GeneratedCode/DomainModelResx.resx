@@ -249,18 +249,6 @@
     <value>Documentation</value>
     <comment>Category for DomainProperty &apos;DocumentationRootFolder&apos; on DomainClass &apos;CQRSModel&apos;</comment>
   </data>
-  <data name="CQRSAzure.CQRSdsl.Dsl.CQRSModel/GenerateEntityFrameworkClasses.Description" xml:space="preserve">
-    <value>Should the model build the Entity Framework classes for storing the model in an SQL database</value>
-    <comment>Description for DomainProperty &apos;GenerateEntityFrameworkClasses&apos; on DomainClass &apos;CQRSModel&apos;</comment>
-  </data>
-  <data name="CQRSAzure.CQRSdsl.Dsl.CQRSModel/GenerateEntityFrameworkClasses.DisplayName" xml:space="preserve">
-    <value>Generate Entity Framework Classes</value>
-    <comment>DisplayName for DomainProperty &apos;GenerateEntityFrameworkClasses&apos; on DomainClass &apos;CQRSModel&apos;</comment>
-  </data>
-  <data name="CQRSAzure.CQRSdsl.Dsl.CQRSModel/GenerateEntityFrameworkClasses.Category" xml:space="preserve">
-    <value>Code Generation</value>
-    <comment>Category for DomainProperty &apos;GenerateEntityFrameworkClasses&apos; on DomainClass &apos;CQRSModel&apos;</comment>
-  </data>
   <data name="CQRSAzure.CQRSdsl.Dsl.CQRSModel/Framework.Description" xml:space="preserve">
     <value>The framework to use for the generated code</value>
     <comment>Description for DomainProperty &apos;Framework&apos; on DomainClass &apos;CQRSModel&apos;</comment>
@@ -501,6 +489,18 @@
     <value>Category</value>
     <comment>DisplayName for DomainProperty &apos;Category&apos; on DomainClass &apos;CommandDefinition&apos;</comment>
   </data>
+  <data name="CQRSAzure.CQRSdsl.Dsl.CommandDefinition/Category.Category" xml:space="preserve">
+    <value>Documemtation</value>
+    <comment>Category for DomainProperty &apos;Category&apos; on DomainClass &apos;CommandDefinition&apos;</comment>
+  </data>
+  <data name="CQRSAzure.CQRSdsl.Dsl.CommandDefinition/IncludeValidationStep.Description" xml:space="preserve">
+    <value>Does this command need a validation step</value>
+    <comment>Description for DomainProperty &apos;IncludeValidationStep&apos; on DomainClass &apos;CommandDefinition&apos;</comment>
+  </data>
+  <data name="CQRSAzure.CQRSdsl.Dsl.CommandDefinition/IncludeValidationStep.DisplayName" xml:space="preserve">
+    <value>Include Validation Step</value>
+    <comment>DisplayName for DomainProperty &apos;IncludeValidationStep&apos; on DomainClass &apos;CommandDefinition&apos;</comment>
+  </data>
   <data name="CQRSAzure.CQRSdsl.Dsl.EventProperty.Description" xml:space="preserve">
     <value>A property providing extra information about an event that has occured</value>
     <comment>Description for DomainClass &apos;EventProperty&apos;</comment>
@@ -728,6 +728,14 @@
   <data name="CQRSAzure.CQRSdsl.Dsl.QueryDefinition/Category.DisplayName" xml:space="preserve">
     <value>Category</value>
     <comment>DisplayName for DomainProperty &apos;Category&apos; on DomainClass &apos;QueryDefinition&apos;</comment>
+  </data>
+  <data name="CQRSAzure.CQRSdsl.Dsl.QueryDefinition/IncludeValidationStep.Description" xml:space="preserve">
+    <value>Does this query need a validation step</value>
+    <comment>Description for DomainProperty &apos;IncludeValidationStep&apos; on DomainClass &apos;QueryDefinition&apos;</comment>
+  </data>
+  <data name="CQRSAzure.CQRSdsl.Dsl.QueryDefinition/IncludeValidationStep.DisplayName" xml:space="preserve">
+    <value>Include Validation Step</value>
+    <comment>DisplayName for DomainProperty &apos;IncludeValidationStep&apos; on DomainClass &apos;QueryDefinition&apos;</comment>
   </data>
   <data name="CQRSAzure.CQRSdsl.Dsl.QueryInputParameter.Description" xml:space="preserve">
     <value>A parameter to pass to a query</value>

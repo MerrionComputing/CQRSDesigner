@@ -1,9 +1,5 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing.Design;
-using System.Windows.Forms;
-using System.Globalization;
-using System.Windows.Forms.Design;
 
 namespace CQRSAzure.CQRSdsl.CustomCode.UI
 {

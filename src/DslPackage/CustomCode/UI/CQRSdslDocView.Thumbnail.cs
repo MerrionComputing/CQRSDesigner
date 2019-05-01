@@ -3,7 +3,6 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Resources;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -80,19 +79,19 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
             // Create the panels and set the event handlers
             m_panPanel = CreatePanel(
-                view, panelHeight, panelWidth, Properties.Resources.ThumbnailView ); //@"ThumbnailView.bmp"
+                view, panelHeight, panelWidth, Properties.Resources.ThumbnailView); //@"ThumbnailView.bmp"
             m_panPanel.MouseDown += new MouseEventHandler(PanlPanelMouseDownHandler);
 
             zoomInPanel = CreatePanel(
-                view, panelHeight, panelWidth, Properties.Resources.ZoomInButton  ); //@"ZoomInButton.bmp"
+                view, panelHeight, panelWidth, Properties.Resources.ZoomInButton); //@"ZoomInButton.bmp"
             zoomInPanel.Click += new EventHandler(ZoomInPanelClickHandler);
 
             zoom100Panel = CreatePanel(
-                view, panelHeight, panelWidth, Properties.Resources.Zoom100Button  ); // @"Zoom100Button.bmp"
+                view, panelHeight, panelWidth, Properties.Resources.Zoom100Button); // @"Zoom100Button.bmp"
             zoom100Panel.Click += new EventHandler(Zoom100PanelClickHandler);
 
             zoomOutPanel = CreatePanel(
-                view, panelHeight, panelWidth, Properties.Resources.ZoomOutButton  ); //@"ZoomOutButton.bmp"
+                view, panelHeight, panelWidth, Properties.Resources.ZoomOutButton); //@"ZoomOutButton.bmp"
             zoomOutPanel.Click += new EventHandler(ZoomOutPanelClickHandler);
 
 
@@ -218,7 +217,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             newPanel.Width = width;
             newPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             newPanel.BringToFront();
-            newPanel.BorderStyle = BorderStyle.FixedSingle; 
+            newPanel.BorderStyle = BorderStyle.FixedSingle;
 
             return newPanel;
         }

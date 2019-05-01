@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.Settings;
-using Microsoft.VisualStudio.Shell.Settings;
-using CQRSAzure.CQRSdsl.Dsl;
+﻿using CQRSAzure.CQRSdsl.Dsl;
 
 namespace CQRSAzure.CQRSdsl.CustomCode.Settings
 {
@@ -26,7 +23,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Settings
         /// <param name="modelWithSettings">
         /// The model (stored in xml) that contains the settings
         /// </param>
-        public void LoadSettings(object TargetSettingsClass, CQRSModel modelWithSettings )
+        public void LoadSettings(object TargetSettingsClass, CQRSModel modelWithSettings)
         {
             if (null != TargetSettingsClass)
             {

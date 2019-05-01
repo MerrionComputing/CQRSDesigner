@@ -3,7 +3,7 @@
 namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     public interface ICommandParameterEntity
-        : INamedEntity , IDocumentedEntity , ITargettedParameterEntity 
+        : INamedEntity, IDocumentedEntity, ITargettedParameterEntity
     {
 
         /// <summary>

@@ -203,7 +203,6 @@
     <Compile Include="EventCodeGeneratorUnitTest.vb" />
     <Compile Include="ProjectionCodeGenerationUnitTest.vb" />
     <Compile Include="HTMLDocumentationWriterUnitTest.vb" />
-    <Compile Include="EntityFrameworkCodeGenerationUnitTest.vb" />
     <Compile Include="ClassifierCodeGeneratorUnitTest.vb" />
   </ItemGroup>
   <ItemGroup>

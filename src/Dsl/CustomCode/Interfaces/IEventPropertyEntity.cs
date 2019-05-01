@@ -1,11 +1,9 @@
-﻿using CQRSAzure.CQRSdsl.Dsl;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     public interface IEventPropertyEntity
         : IDocumentedEntity, IPropertyEntity
     {
-        
+
         /// <summary>
         /// Does this property provide the effective date part of the event 
         /// </summary>

@@ -455,7 +455,7 @@
         </member>
         <member name="P:Microsoft.Strings.Argument_EmptyGuid">
             <summary>
-              Looks up a localized string similar to &apos;{0}&apos; cannot be an empty guid. .
+              Looks up a localized string similar to &apos;{0}&apos; cannot be an empty guid..
             </summary>
         </member>
         <member name="P:Microsoft.Strings.Argument_EmptyString">
@@ -475,7 +475,7 @@
         </member>
         <member name="P:Microsoft.Strings.InternalExceptionMessage">
             <summary>
-              Looks up a localized string similar to An internal error occurred. Please contact Microsoft Product Support Services..
+              Looks up a localized string similar to An internal error occurred. Please contact Microsoft Support..
             </summary>
         </member>
         <member name="P:Microsoft.Strings.ServiceMissing">

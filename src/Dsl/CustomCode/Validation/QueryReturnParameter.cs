@@ -1,12 +1,12 @@
-﻿using System.Linq;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using Microsoft.VisualStudio.Modeling.Validation;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+using System.Linq;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
     [ValidationState(ValidationState.Enabled)]
     public partial class QueryReturnParameter
-        : IQueryReturnParameter 
+        : IQueryReturnParameter
     {
 
         public string FullyQualifiedName

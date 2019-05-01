@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     /// <summary>
     /// An entity that has documentation properties added so that it can be turned into 
@@ -16,12 +10,12 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
         /// <summary>
         /// The displayed description of the entity
         /// </summary>
-         string Description { get; set; }
+        string Description { get; set; }
 
         /// <summary>
         /// Additional developer notes
         /// </summary>
-         string Notes { get; set; }
+        string Notes { get; set; }
 
     }
 }

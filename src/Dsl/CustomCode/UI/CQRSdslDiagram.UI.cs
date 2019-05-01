@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.Dsl
+﻿namespace CQRSAzure.CQRSdsl.Dsl
 {
     public partial class CQRSdslDiagram
     {
@@ -17,7 +11,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             get
             {
-                return Dsl.CustomCode.UI.UserInterfaceMessages.WatermarkText; 
+                return Dsl.CustomCode.UI.UserInterfaceMessages.WatermarkText;
             }
         }
 

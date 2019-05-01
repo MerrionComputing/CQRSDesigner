@@ -1,6 +1,5 @@
-﻿using System;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using System.IO;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 
 
 namespace CQRSAzure.CQRSdsl.Dsl
@@ -21,7 +20,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         private DocumentationGenerationOptions(
             System.IO.DirectoryInfo DirectoryRootIn)
         {
-            
+
             _directoryRoot = DirectoryRootIn;
 
         }

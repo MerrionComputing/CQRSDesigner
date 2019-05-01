@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-namespace CQRSAzure.CQRSdsl.Dsl
+﻿namespace CQRSAzure.CQRSdsl.Dsl
 {
     /// <summary>
     /// Operation performed during a projection when an event is encountered
@@ -33,7 +24,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 ||
                 (this.PropertyOperationToPerform == PropertyOperation.IncrementByValue)
                 ||
-                (this.PropertyOperationToPerform == PropertyOperation.SetToValue ))
+                (this.PropertyOperationToPerform == PropertyOperation.SetToValue))
             {
                 if (!string.IsNullOrWhiteSpace(this.SourceEventPropertyName))
                 {
@@ -57,7 +48,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// </param>
         public static string PropertyOperationToString(PropertyOperation operation)
         {
-            switch(operation )
+            switch (operation)
             {
                 case PropertyOperation.IncrementCount:
                     {
@@ -74,7 +65,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 case PropertyOperation.DecrementByValue:
                     {
                         return " decrement by value of ";
-                     }
+                    }
                 case PropertyOperation.SetFlag:
                     {
                         return " set the flag ";

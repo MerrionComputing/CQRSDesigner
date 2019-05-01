@@ -136,61 +136,6 @@ CQRSAzure.CQRSdsl.CodeGeneration
  then be linked to a details table for each event instance 
  </remarks>
 </member>
-<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration">
- <summary>
- Class for the utility functions pertaining to generating code to be use dby entity framework (code first) to
- create and use the data model 
- </summary>
-</member>
-<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration.CreateDBSetProperty(System.String,System.Boolean)">
- <summary>
- Creates a DBSet member to prepresent the event stream of this aggregate
- </summary>
- <param name="aggregateName">
- The name of the aggregate we are creatinmg a DBSet based event stream for 
- </param>
- <returns>
- Public Property AggregateInstances As DBSet(Of AggregateInstance)
- </returns>
-</member>
-<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration.MakeDBSetTypeReference(System.String)">
- <summary>
- Create a type reference  for DBSet(Of AggregateInstance)
- </summary>
- <param name="aggregatename">
- The name of the aggregate we are creatinmg a DBSet based event stream for 
- </param>
- <returns>
- DBSet(Of AggregateInstance)
- </returns>
-</member>
-<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.EntityFrameworkCodeGeneration.MakeAggregateInstanceName(System.String,System.Boolean,System.Boolean)">
- <summary>
- Add "Instance" to the aggregate name
- </summary>
- <param name="aggregateName">
- The name of the aggregate type
- </param>
-</member>
-<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.EventDefinitionSQLCodeGenerator">
- <summary>
- Code generator to create the entity framework classes that correspond to the events that can occur for any given aggregate identifier
- </summary>
-</member>
-<member name="T:CQRSAzure.CQRSdsl.CodeGeneration.SQLCodeGenerator">
- <summary>
- Code generator to create the DBContext derived classes required to implement the event streams for this CQRS model using Entity Framework
- code-first 
- </summary>
-</member>
-<member name="M:CQRSAzure.CQRSdsl.CodeGeneration.SQLCodeGenerator.#ctor(CQRSAzure.CQRSdsl.Dsl.CQRSModel)">
- <summary>
- Create a new SQL code generator to create the DBContext code for this model
- </summary>
- <param name="modelToGenerate">
- The CQRS model to generate the code for
- </param>
-</member>
 <member name="T:CQRSAzure.CQRSdsl.CodeGeneration.TableFieldPropertyEntity">
  <summary>
  Utility class for creating the fields that will be used to create the DB tables backing the event stream and it's events

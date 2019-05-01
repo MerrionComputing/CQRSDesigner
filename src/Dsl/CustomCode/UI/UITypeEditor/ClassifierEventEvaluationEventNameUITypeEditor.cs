@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -12,7 +10,7 @@ namespace CQRSAzure.CQRSdsl.Dsl.CustomCode.UI
     /// Make the available event names match the evenst that the classifier is linked to
     /// </summary>
     public sealed class ClassifierEventEvaluationEventNameUITypeEditor
-        : UITypeEditor 
+        : UITypeEditor
     {
 
         private IWindowsFormsEditorService _editorService;
@@ -38,7 +36,7 @@ namespace CQRSAzure.CQRSdsl.Dsl.CustomCode.UI
             {
                 _editorService = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
 
-                ClassifierEventEvaluation  clev = null;
+                ClassifierEventEvaluation clev = null;
                 // Note - context.Instance may be either a DSL shape or the underlying domain class
                 // so if we add a shape we need to look up the underlying domain class here
                 clev = context.Instance as ClassifierEventEvaluation;
@@ -49,7 +47,7 @@ namespace CQRSAzure.CQRSdsl.Dsl.CustomCode.UI
                     lb.SelectionMode = SelectionMode.One;
                     lb.SelectedValueChanged += OnListBoxSelectedValueChanged;
 
-                    foreach (var evt in clev.Classifier.EventDefinitions )
+                    foreach (var evt in clev.Classifier.EventDefinitions)
                     {
                         lb.Items.Add(evt.Name);
                     }

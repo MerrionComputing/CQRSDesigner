@@ -1,0 +1,41 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CQRSdslUnitTest
+</name>
+</assembly>
+<members>
+<member name="T:CQRSdslUnitTest.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:CQRSdslUnitTest.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:CQRSdslUnitTest.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:CQRSdslUnitTest.AggregateIdentifierMock">
+ <summary>
+ Function to generate mock AggregateIdentifier instances for testing
+ </summary>
+</member>
+<member name="T:CQRSdslUnitTest.EventDefinitionMock">
+ <summary>
+ Function to generate mock EventDefinition instances for testing
+ </summary>
+</member>
+<member name="T:CQRSdslUnitTest.Mocking.MockEventProperty">
+ <summary>
+ Mock event property that does not have all the System.Modelling baggage
+ </summary>
+</member>
+</members>
+</doc>

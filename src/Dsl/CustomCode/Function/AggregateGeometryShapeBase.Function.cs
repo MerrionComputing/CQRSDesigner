@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.Dsl
+﻿namespace CQRSAzure.CQRSdsl.Dsl
 {
     public partial class AggregateGeometryShapeBase
     {
@@ -21,7 +15,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             }
             set
             {
-                m_childrenHidden = value ;
+                m_childrenHidden = value;
             }
         }
 

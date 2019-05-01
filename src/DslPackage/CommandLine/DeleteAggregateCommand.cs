@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -52,7 +48,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         }
 
         public DeleteAggregateCommand(string modelName, string aggregateName)
-            : base(modelName )
+            : base(modelName)
         {
             m_aggregateName = aggregateName;
         }

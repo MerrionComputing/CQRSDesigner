@@ -1,11 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.Modeling;
-using Microsoft.VisualStudio.Modeling.Design;
-using Microsoft.VisualStudio.Modeling.Diagrams;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
-    public partial class ProjectionEventConnector 
+    public partial class ProjectionEventConnector
     {
 
         /// <summary>
@@ -19,7 +16,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             }
         }
 
- 
+
 
         public override string GetToolTipText(DiagramItem item)
         {

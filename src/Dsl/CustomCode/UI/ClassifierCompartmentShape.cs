@@ -1,9 +1,4 @@
 ﻿using Microsoft.VisualStudio.Modeling;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -28,11 +23,11 @@ namespace CQRSAzure.CQRSdsl.Dsl
         }
 
 
-        static string GetDisplayPropertyFromClassifierForProjectionEvaluationsCompartment(ModelElement element )
+        static string GetDisplayPropertyFromClassifierForProjectionEvaluationsCompartment(ModelElement element)
         {
             if (null != element)
             {
-                ClassifierProjectionPropertyEvaluation  op = element as ClassifierProjectionPropertyEvaluation;
+                ClassifierProjectionPropertyEvaluation op = element as ClassifierProjectionPropertyEvaluation;
                 if (null != op)
                 {
                     return op.ToString();

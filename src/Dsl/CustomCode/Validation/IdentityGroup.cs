@@ -1,6 +1,5 @@
 ﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using Microsoft.VisualStudio.Modeling.Validation;
-using Microsoft.CSharp;
 
 using System.Linq;
 
@@ -17,7 +16,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             get
             {
-                return  AggregateIdentifier.FullyQualifiedName + @"." + Name;
+                return AggregateIdentifier.FullyQualifiedName + @"." + Name;
             }
         }
 
@@ -29,7 +28,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
-                context.LogError(Dsl.CustomCode.Validation.ValidationMessages.IdentityGroupNameNotBlank, nameof(IdentityGroup ) + "  01", this);
+                context.LogError(Dsl.CustomCode.Validation.ValidationMessages.IdentityGroupNameNotBlank, nameof(IdentityGroup) + "  01", this);
             }
             else
             {
@@ -38,6 +37,6 @@ namespace CQRSAzure.CQRSdsl.Dsl
                     context.LogError(Dsl.CustomCode.Validation.ValidationMessages.IdentityGroupNameUnique, nameof(IdentityGroup) + "  02", this);
                 }
             }
-        } 
+        }
     }
 }

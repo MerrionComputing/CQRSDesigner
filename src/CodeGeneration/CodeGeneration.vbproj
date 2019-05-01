@@ -170,9 +170,6 @@
     <Compile Include="CodeProjectFile.vb" />
     <Compile Include="CommandCodeGenerator.vb" />
     <Compile Include="Database\AggregateInstanceSQLCodeGenerator.vb" />
-    <Compile Include="Database\EntityFrameworkCodeGeneration.vb" />
-    <Compile Include="Database\EventDefinitionSQLCodeGenerator.vb" />
-    <Compile Include="Database\SQLCodeGenerator.vb" />
     <Compile Include="Database\TableFieldPropertyEntity.vb" />
     <Compile Include="EventCodeGenerator.vb" />
     <Compile Include="IdentityGroupCodeGenerator.vb" />

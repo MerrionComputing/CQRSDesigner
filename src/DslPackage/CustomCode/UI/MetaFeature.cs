@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Globalization;
+using System.Reflection;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {

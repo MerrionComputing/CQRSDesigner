@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.Modeling;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
-
-namespace CQRSAzure.CQRSdsl.Dsl
+﻿namespace CQRSAzure.CQRSdsl.Dsl
 {
     /// <summary>
     /// Functionality for the CQRS Model diagram as a whole

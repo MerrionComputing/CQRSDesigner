@@ -17,7 +17,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             // Todo: Get the description of the classifier
             //TODO - If we are over the body of the shape, display the classifier description
-            return BaseClass.Description; 
+            return BaseClass.Description;
             // Otherwise if this is a classifier operation, display its full text
         }
     }

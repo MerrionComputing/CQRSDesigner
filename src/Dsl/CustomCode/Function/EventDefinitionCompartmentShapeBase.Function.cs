@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualStudio.Modeling.Extensibility;
-
-
-namespace CQRSAzure.CQRSdsl.Dsl
+﻿namespace CQRSAzure.CQRSdsl.Dsl
 {
     public partial class EventDefinitionCompartmentShapeBase
     {

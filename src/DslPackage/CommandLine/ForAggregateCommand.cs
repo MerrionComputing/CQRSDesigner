@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -32,9 +28,9 @@ namespace CQRSAzure.CQRSdsl.CommandLine
 
         public ForAggregateCommand(string aggregateName)
         {
-            if (! ForAggregateCommand.IsValidAggregateName(aggregateName ) )
+            if (!ForAggregateCommand.IsValidAggregateName(aggregateName))
             {
-                throw new ArgumentException(aggregateName + @" is not a valid aggregate name ", nameof(aggregateName)); 
+                throw new ArgumentException(aggregateName + @" is not a valid aggregate name ", nameof(aggregateName));
             }
             m_aggregateName = aggregateName;
         }

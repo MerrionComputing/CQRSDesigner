@@ -4,33 +4,33 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
+using Microsoft.VisualStudio.Modeling;
+using Microsoft.VisualStudio.Modeling.Diagrams;
+using Microsoft.VisualStudio.Modeling.Shell;
 using System;
-using System.Reflection;
+using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Reflection;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.ComponentModel.Design;
-using Microsoft.VisualStudio.Modeling.Diagrams;
-using Microsoft.VisualStudio.Modeling;
-using Microsoft.VisualStudio.Modeling.Shell;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
     #region Pan/Zoom Tool Window
 
     [Feature(Name = "Pan & Zoom", Container = typeof(DesignerContext),
-		Description = "Provides a pan/zoom tool window for faster navigation on the diagram.")]
-	internal sealed class PanZoomWindow : AddInToolWindow<PanZoomPanel>
+        Description = "Provides a pan/zoom tool window for faster navigation on the diagram.")]
+    internal sealed class PanZoomWindow : AddInToolWindow<PanZoomPanel>
     {
-		private bool m_needsRefresh;
-		private DiagramDocView m_currentDocView;
-		private TransactionCommitHandler m_transactionHandler;
+        private bool m_needsRefresh;
+        private DiagramDocView m_currentDocView;
+        private TransactionCommitHandler m_transactionHandler;
 
         public PanZoomWindow(IServiceProvider serviceProvider) : base(serviceProvider)
         {
             m_transactionHandler = new TransactionCommitHandler(OnTransactionCommited);
-			// updates to the thumbnail image happen on idle
+            // updates to the thumbnail image happen on idle
             Application.Idle += new EventHandler(OnApplicationIdle);
         }
 
@@ -39,33 +39,33 @@ namespace CQRSAzure.CQRSdsl.Dsl
             PanZoomPanel panel = this.Window as PanZoomPanel;
             if (panel != null)
             {
-				// detach from previous document view
-				if (m_currentDocView != null)
+                // detach from previous document view
+                if (m_currentDocView != null)
                 {
-					UnsubscribeFromEvents(m_currentDocView);
-					m_currentDocView = null;
+                    UnsubscribeFromEvents(m_currentDocView);
+                    m_currentDocView = null;
                 }
 
                 DiagramDocView docView = newView as DiagramDocView;
                 if (docView != null && docView.CurrentDesigner != null)
                 {
-					// attach to the new document view
-					SubscribeToEvents(docView);
-					m_currentDocView = docView;
+                    // attach to the new document view
+                    SubscribeToEvents(docView);
+                    m_currentDocView = docView;
 
-					// make sure thumbnail image is updated
+                    // make sure thumbnail image is updated
                     panel.InvalidateImage(docView.CurrentDesigner.DiagramClientView);
                 }
                 else
                 {
-					// document is not recognized - erase the image
+                    // document is not recognized - erase the image
                     panel.InvalidateImage(null);
                 }
             }
         }
 
-		protected override void Dispose(bool disposing)
-		{
+        protected override void Dispose(bool disposing)
+        {
             try
             {
                 if (disposing)
@@ -81,45 +81,45 @@ namespace CQRSAzure.CQRSdsl.Dsl
             {
                 base.Dispose(disposing);
             }
-		}
+        }
 
-		private void SubscribeToEvents(DiagramDocView docView)
-		{
-			Debug.Assert(docView != null);
-			if (docView != null)
-			{
-				if (docView.CurrentDesigner != null)
-				{
-					DiagramClientView diagramClientView = docView.CurrentDesigner.DiagramClientView;
-					Debug.Assert(diagramClientView != null);
-					if (diagramClientView != null)
-					{
-						// Watch scroll and zoom changes so that view bounds are updated
-						// when user scrolls/zooms the diagram via usual means.
-						diagramClientView.ScrollPositionChanged += OnScrollPositionChanged;
-						diagramClientView.ZoomChanged += OnZoomChanged;
+        private void SubscribeToEvents(DiagramDocView docView)
+        {
+            Debug.Assert(docView != null);
+            if (docView != null)
+            {
+                if (docView.CurrentDesigner != null)
+                {
+                    DiagramClientView diagramClientView = docView.CurrentDesigner.DiagramClientView;
+                    Debug.Assert(diagramClientView != null);
+                    if (diagramClientView != null)
+                    {
+                        // Watch scroll and zoom changes so that view bounds are updated
+                        // when user scrolls/zooms the diagram via usual means.
+                        diagramClientView.ScrollPositionChanged += OnScrollPositionChanged;
+                        diagramClientView.ZoomChanged += OnZoomChanged;
 
-						m_needsRefresh = true;
-					}
-				}
+                        m_needsRefresh = true;
+                    }
+                }
 
-				if (docView.CurrentDiagram != null)
-				{
-					Store store = docView.CurrentDiagram.Store;
-					Debug.Assert(store != null && IsValidModelStore(store) );
-					if (store != null && IsValidModelStore(store))
-					{
-						// Watch any transactions so that image itself is updated when changes
-						// are made to the diagram.
-						store.EventManagerDirectory.TransactionCommitted.Add(m_transactionHandler);
-					}
-				}
-			}
-		}
+                if (docView.CurrentDiagram != null)
+                {
+                    Store store = docView.CurrentDiagram.Store;
+                    Debug.Assert(store != null && IsValidModelStore(store));
+                    if (store != null && IsValidModelStore(store))
+                    {
+                        // Watch any transactions so that image itself is updated when changes
+                        // are made to the diagram.
+                        store.EventManagerDirectory.TransactionCommitted.Add(m_transactionHandler);
+                    }
+                }
+            }
+        }
 
         private bool IsValidModelStore(Store store)
         {
-            if (store.ShuttingDown )
+            if (store.ShuttingDown)
             {
                 return false;
             }
@@ -131,45 +131,45 @@ namespace CQRSAzure.CQRSdsl.Dsl
         }
 
         private void UnsubscribeFromEvents(DiagramDocView docView)
-		{
-			Debug.Assert(docView != null);
-			if (docView != null)
-			{
-				if (docView.CurrentDesigner != null)
-				{
-					DiagramClientView diagramClientView = docView.CurrentDesigner.DiagramClientView;
-					Debug.Assert(diagramClientView != null);
-					if (diagramClientView != null)
-					{
-						diagramClientView.ScrollPositionChanged -= OnScrollPositionChanged;
-						diagramClientView.ZoomChanged -= OnZoomChanged;
-					}
-				}
+        {
+            Debug.Assert(docView != null);
+            if (docView != null)
+            {
+                if (docView.CurrentDesigner != null)
+                {
+                    DiagramClientView diagramClientView = docView.CurrentDesigner.DiagramClientView;
+                    Debug.Assert(diagramClientView != null);
+                    if (diagramClientView != null)
+                    {
+                        diagramClientView.ScrollPositionChanged -= OnScrollPositionChanged;
+                        diagramClientView.ZoomChanged -= OnZoomChanged;
+                    }
+                }
 
-				if (docView.CurrentDiagram != null)
-				{
-					Store store = docView.CurrentDiagram.Store;
-					Debug.Assert(store != null && IsValidModelStore(store));
-					if (store != null && IsValidModelStore(store))
-					{
-						store.EventManagerDirectory.TransactionCommitted.Remove(m_transactionHandler);
-					}
-				}
-			}
-		}
+                if (docView.CurrentDiagram != null)
+                {
+                    Store store = docView.CurrentDiagram.Store;
+                    Debug.Assert(store != null && IsValidModelStore(store));
+                    if (store != null && IsValidModelStore(store))
+                    {
+                        store.EventManagerDirectory.TransactionCommitted.Remove(m_transactionHandler);
+                    }
+                }
+            }
+        }
 
         private void OnApplicationIdle(object sender, EventArgs e)
         {
             if (m_needsRefresh && m_currentDocView != null)
             {
                 m_needsRefresh = false;
-				PanZoomPanel panel = this.Window as PanZoomPanel;
-				Debug.Assert(panel != null);
-				if (panel != null)
-				{
-					// Invalidate the current image if there were changes during last idle period.
-					panel.InvalidateImage();
-				}
+                PanZoomPanel panel = this.Window as PanZoomPanel;
+                Debug.Assert(panel != null);
+                if (panel != null)
+                {
+                    // Invalidate the current image if there were changes during last idle period.
+                    panel.InvalidateImage();
+                }
             }
         }
 
@@ -190,9 +190,9 @@ namespace CQRSAzure.CQRSdsl.Dsl
     }
 
     [Command(Name = "Pan && &Zoom Window", Container = typeof(DesignerContext),
-		Description = "Adds a command to View | Other Windows main menu to display pan/zoom tool window.")]
+        Description = "Adds a command to View | Other Windows main menu to display pan/zoom tool window.")]
     [CommandPlacement(CommandBarId.ViewOtherWindowsMenu)]
-	internal sealed class ViewPanZoomWindowCommand : CustomCommand<Selection>
+    internal sealed class ViewPanZoomWindowCommand : CustomCommand<Selection>
     {
         public ViewPanZoomWindowCommand(CommandID commandId) : base(commandId) { }
 
@@ -217,7 +217,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
     #region Thumbnail View form and feature
 
     [Feature(Name = "Thumbnail View Feature", Container = typeof(DiagramContext),
-		Description = "Adds a thumbnail view control at the bottom-right corner of all designer windows.")]
+        Description = "Adds a thumbnail view control at the bottom-right corner of all designer windows.")]
     internal sealed class ThumbnailViewFeature : Feature
     {
         private Panel m_scrollPanel;
@@ -234,15 +234,15 @@ namespace CQRSAzure.CQRSdsl.Dsl
             {
                 DiagramContext diagramContext = serviceProvider.GetService<IFeatureContext>() as DiagramContext;
                 Debug.Assert(diagramContext != null && diagramContext.DiagramView != null);
-				if (diagramContext != null && diagramContext.DiagramView != null)
+                if (diagramContext != null && diagramContext.DiagramView != null)
                 {
-					// Create and show a thumbnail form.
+                    // Create and show a thumbnail form.
                     DiagramView diagramView = diagramContext.DiagramView;
                     m_scrollPanel = new Panel();
                     m_scrollPanel.BackgroundImage = new Bitmap(typeof(ThumbnailViewForm), @"ThumbnailView.bmp");
                     m_scrollPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
                     m_scrollPanel.BackgroundImageLayout = ImageLayout.Center;
-                    diagramView.Invoke(new EventHandler(delegate(object sender, EventArgs e)
+                    diagramView.Invoke(new EventHandler(delegate (object sender, EventArgs e)
                     {
                         diagramView.Controls.Add(m_scrollPanel);
                     }));
@@ -252,10 +252,10 @@ namespace CQRSAzure.CQRSdsl.Dsl
                     m_scrollPanel.Top = diagramView.Height - m_scrollPanel.Height;
                     m_scrollPanel.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
                     m_scrollPanel.BringToFront();
-                    m_scrollPanel.MouseDown += delegate(object sender, MouseEventArgs args)
+                    m_scrollPanel.MouseDown += delegate (object sender, MouseEventArgs args)
                     {
-						// Right-click on the thumbnail icon brings pan/zoom tool window.
-						Debug.Assert(args != null);
+                        // Right-click on the thumbnail icon brings pan/zoom tool window.
+                        Debug.Assert(args != null);
                         if (args != null && args.Button == MouseButtons.Right)
                         {
                             IFeatureContext featureContext = this.ServiceProvider.GetService<IFeatureContext>();
@@ -272,7 +272,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                         }
                         else
                         {
-							// Any other click on thumbnail icon displays the thumbnail form.
+                            // Any other click on thumbnail icon displays the thumbnail form.
                             new ThumbnailViewForm(m_scrollPanel, diagramView.DiagramClientView).ShowDialog();
                         }
                     };
@@ -301,87 +301,87 @@ namespace CQRSAzure.CQRSdsl.Dsl
         }
     }
 
-	/// <summary>
-	/// A thumbnail form class to host a pan/zoom control.
-	/// </summary>
-	internal sealed class ThumbnailViewForm : Form
-	{
-		// width/height of the window.
-		private const int ViewSize = 180;
-		// control itself
-		private PanZoomPanel m_panZoomPanel;
+    /// <summary>
+    /// A thumbnail form class to host a pan/zoom control.
+    /// </summary>
+    internal sealed class ThumbnailViewForm : Form
+    {
+        // width/height of the window.
+        private const int ViewSize = 180;
+        // control itself
+        private PanZoomPanel m_panZoomPanel;
 
-		internal ThumbnailViewForm(Control baseControl, DiagramClientView diagramClientView)
-		{
-			if (baseControl == null) throw new ArgumentNullException("baseControl");
-			if (diagramClientView == null) throw new ArgumentNullException("diagramClientView");
+        internal ThumbnailViewForm(Control baseControl, DiagramClientView diagramClientView)
+        {
+            if (baseControl == null) throw new ArgumentNullException("baseControl");
+            if (diagramClientView == null) throw new ArgumentNullException("diagramClientView");
 
-			// Initialize the form.
+            // Initialize the form.
             this.TopMost = true;
             this.ShowInTaskbar = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.Manual;
 
-			// Position form so that its center lines up with the center of thumbnail control
-			// at designer's bottom-right corner.
+            // Position form so that its center lines up with the center of thumbnail control
+            // at designer's bottom-right corner.
             Point location = baseControl.PointToScreen(new Point(baseControl.Width / 2, baseControl.Height / 2));
             location.Offset(-ViewSize / 2, -ViewSize / 2);
             this.Bounds = new Rectangle(location.X, location.Y, ViewSize, ViewSize);
 
-			// Make sure thumbnail form fits the screen and doesn't go below or off the right
-			// edge of the screen.
-			Rectangle screenBounds = Screen.FromControl(diagramClientView).WorkingArea;
-			if (this.Right > screenBounds.Right)
+            // Make sure thumbnail form fits the screen and doesn't go below or off the right
+            // edge of the screen.
+            Rectangle screenBounds = Screen.FromControl(diagramClientView).WorkingArea;
+            if (this.Right > screenBounds.Right)
                 this.Left = screenBounds.Right - this.Width;
             if (this.Bottom > screenBounds.Bottom)
                 this.Top = screenBounds.Bottom - this.Height;
 
-			// Initialize a panel to host pan/zoom control.
-			Panel panel1 = new Panel();
-			panel1.Dock = DockStyle.Fill;
-			panel1.BorderStyle = BorderStyle.FixedSingle;
-			this.Controls.Add(panel1);
+            // Initialize a panel to host pan/zoom control.
+            Panel panel1 = new Panel();
+            panel1.Dock = DockStyle.Fill;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            this.Controls.Add(panel1);
 
-			// Initialize and dock pan/zoom control on the panel.
-			m_panZoomPanel = new PanZoomPanel();
-			m_panZoomPanel.Dock = DockStyle.Fill;
-			panel1.Controls.Add(m_panZoomPanel);
-			m_panZoomPanel.InvalidateImage(diagramClientView);
+            // Initialize and dock pan/zoom control on the panel.
+            m_panZoomPanel = new PanZoomPanel();
+            m_panZoomPanel.Dock = DockStyle.Fill;
+            panel1.Controls.Add(m_panZoomPanel);
+            m_panZoomPanel.InvalidateImage(diagramClientView);
 
-			Cursor.Hide();
-		}
+            Cursor.Hide();
+        }
 
-		protected override CreateParams CreateParams
-		{
+        protected override CreateParams CreateParams
+        {
             [DebuggerStepThrough]
-			get
-			{
-				// Give this form a nice shadow.
-				CreateParams createParams = base.CreateParams;
-				Debug.Assert(createParams != null);
-				createParams.ClassStyle |= 0x00020000;
-				return createParams;
-			}
-		}
+            get
+            {
+                // Give this form a nice shadow.
+                CreateParams createParams = base.CreateParams;
+                Debug.Assert(createParams != null);
+                createParams.ClassStyle |= 0x00020000;
+                return createParams;
+            }
+        }
 
-		protected override void OnLoad(EventArgs e)
-		{
-			Debug.Assert(e != null);
-			Debug.Assert(m_panZoomPanel != null);
+        protected override void OnLoad(EventArgs e)
+        {
+            Debug.Assert(e != null);
+            Debug.Assert(m_panZoomPanel != null);
 
-			Point initialMousePos = Cursor.Position;
-			m_panZoomPanel.MouseUp += delegate(object sender, MouseEventArgs args)
-			{
-				// When mouse is released, the form should go away.
-				Cursor.Position = initialMousePos;
-				this.Close();
-				Cursor.Show();
-			};
+            Point initialMousePos = Cursor.Position;
+            m_panZoomPanel.MouseUp += delegate (object sender, MouseEventArgs args)
+            {
+                // When mouse is released, the form should go away.
+                Cursor.Position = initialMousePos;
+                this.Close();
+                Cursor.Show();
+            };
 
-			// We automatically start moving diagram view on load.
-			m_panZoomPanel.StartMove();
-		}
-	}
+            // We automatically start moving diagram view on load.
+            m_panZoomPanel.StartMove();
+        }
+    }
 
     #endregion
 
@@ -396,19 +396,19 @@ namespace CQRSAzure.CQRSdsl.Dsl
         private Bitmap m_diagramImage;
         private double m_imageScale;
 
-		private enum MouseMode
-		{
-			None,
-			Move,
-		}
+        private enum MouseMode
+        {
+            None,
+            Move,
+        }
 
-		private MouseMode m_mouseMode = MouseMode.None;
+        private MouseMode m_mouseMode = MouseMode.None;
 
         #endregion
 
         #region Properties
 
-		private DiagramClientView DiagramClientView
+        private DiagramClientView DiagramClientView
         {
             [DebuggerStepThrough]
             get { return m_diagramClientView; }
@@ -416,20 +416,20 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
         private Bitmap DiagramImage
         {
-			[DebuggerStepThrough]
-			get { return m_diagramImage; }
+            [DebuggerStepThrough]
+            get { return m_diagramImage; }
         }
 
-		private new bool Enabled
-		{
-			[DebuggerStepThrough]
-			get { return m_diagramClientView != null && m_diagramImage != null; }
-		}
+        private new bool Enabled
+        {
+            [DebuggerStepThrough]
+            get { return m_diagramClientView != null && m_diagramImage != null; }
+        }
 
         private Diagram Diagram
         {
-			[DebuggerStepThrough]
-			get { return m_diagramClientView != null ? m_diagramClientView.Diagram : null; }
+            [DebuggerStepThrough]
+            get { return m_diagramClientView != null ? m_diagramClientView.Diagram : null; }
         }
 
         private Size MaximumImageSize
@@ -463,23 +463,23 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             [DebuggerStepThrough]
             get
-			{
-				Debug.Assert(m_diagramImage != null);
-				return m_diagramImage != null ? m_diagramImage.Size : Size.Empty;
-			}
+            {
+                Debug.Assert(m_diagramImage != null);
+                return m_diagramImage != null ? m_diagramImage.Size : Size.Empty;
+            }
             set
             {
                 if (m_diagramImage != null)
                 {
-					if (m_diagramImage.Size != value)
-					{
-						m_diagramImage.Dispose();
-						m_diagramImage = null;
-					}
-					else
-					{
-						return;
-					}
+                    if (m_diagramImage.Size != value)
+                    {
+                        m_diagramImage.Dispose();
+                        m_diagramImage = null;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 if (m_diagramImage == null)
                 {
@@ -501,23 +501,23 @@ namespace CQRSAzure.CQRSdsl.Dsl
             }
         }
 
-		private Rectangle ImageViewBounds
+        private Rectangle ImageViewBounds
         {
             [DebuggerStepThrough]
             get
             {
-				Debug.Assert(this.Enabled);
-				if (this.Enabled)
-				{
-					RectangleD viewBounds = this.DiagramClientView.ViewBounds;
-					Rectangle imageViewBounds = new Rectangle(DiagramToImage(viewBounds.Location), DiagramToImage(viewBounds.Size));
-					imageViewBounds.Offset(this.ImageLocation);
-					return imageViewBounds;
-				}
-				else
-				{
-					return Rectangle.Empty;
-				}
+                Debug.Assert(this.Enabled);
+                if (this.Enabled)
+                {
+                    RectangleD viewBounds = this.DiagramClientView.ViewBounds;
+                    Rectangle imageViewBounds = new Rectangle(DiagramToImage(viewBounds.Location), DiagramToImage(viewBounds.Size));
+                    imageViewBounds.Offset(this.ImageLocation);
+                    return imageViewBounds;
+                }
+                else
+                {
+                    return Rectangle.Empty;
+                }
             }
         }
 
@@ -527,114 +527,114 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
         private Point DiagramToImage(PointD worldPoint)
         {
-			Debug.Assert(this.Enabled);
-			if (this.Enabled)
-			{
-				Size ds = this.DiagramClientView.WorldToDevice(new SizeD(worldPoint.X, worldPoint.Y));
-				return new Point((int)(ds.Width * m_imageScale), (int)(ds.Height * m_imageScale));
-			}
-			else
-			{
-				return Point.Empty;
-			}
+            Debug.Assert(this.Enabled);
+            if (this.Enabled)
+            {
+                Size ds = this.DiagramClientView.WorldToDevice(new SizeD(worldPoint.X, worldPoint.Y));
+                return new Point((int)(ds.Width * m_imageScale), (int)(ds.Height * m_imageScale));
+            }
+            else
+            {
+                return Point.Empty;
+            }
         }
 
         private Size DiagramToImage(SizeD worldSize)
         {
-			Debug.Assert(this.Enabled);
-			if (this.Enabled)
-			{
-				Debug.Assert(this.Enabled);
-				Size ds = this.DiagramClientView.WorldToDevice(worldSize);
-				return new Size((int)(ds.Width * m_imageScale), (int)(ds.Height * m_imageScale));
-			}
-			else
-			{
-				return Size.Empty;
-			}
+            Debug.Assert(this.Enabled);
+            if (this.Enabled)
+            {
+                Debug.Assert(this.Enabled);
+                Size ds = this.DiagramClientView.WorldToDevice(worldSize);
+                return new Size((int)(ds.Width * m_imageScale), (int)(ds.Height * m_imageScale));
+            }
+            else
+            {
+                return Size.Empty;
+            }
         }
 
         private PointD ImageToDiagram(Point imagePoint)
         {
-			Debug.Assert(this.Enabled);
-			if (this.Enabled)
-			{
-				SizeD s = this.DiagramClientView.DeviceToWorld(new Size(
-					(int)(imagePoint.X / m_imageScale),
-					(int)(imagePoint.Y / m_imageScale)));
-				return new PointD(s.Width, s.Height);
-			}
-			else
-			{
-				return PointD.Empty;
-			}
+            Debug.Assert(this.Enabled);
+            if (this.Enabled)
+            {
+                SizeD s = this.DiagramClientView.DeviceToWorld(new Size(
+                    (int)(imagePoint.X / m_imageScale),
+                    (int)(imagePoint.Y / m_imageScale)));
+                return new PointD(s.Width, s.Height);
+            }
+            else
+            {
+                return PointD.Empty;
+            }
         }
 
-		#endregion
+        #endregion
 
-		#region Diagram view control
+        #region Diagram view control
 
-		private void SetViewLocation(PointD viewLocation)
+        private void SetViewLocation(PointD viewLocation)
         {
-			Debug.Assert(this.Enabled);
-			if (this.Enabled)
-			{
-				this.Invalidate(Rectangle.Inflate(this.ImageViewBounds, 2, 2));
+            Debug.Assert(this.Enabled);
+            if (this.Enabled)
+            {
+                this.Invalidate(Rectangle.Inflate(this.ImageViewBounds, 2, 2));
 
-				double scrollUnitLength = (double)typeof(DiagramClientView).GetProperty("ScrollUnitLength", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(this.DiagramClientView, new object[0]);
+                double scrollUnitLength = (double)typeof(DiagramClientView).GetProperty("ScrollUnitLength", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(this.DiagramClientView, new object[0]);
 
-				this.DiagramClientView.HorizontalScrollPosition = (int)(viewLocation.X / scrollUnitLength);
-				this.DiagramClientView.VerticalScrollPosition = (int)(viewLocation.Y / scrollUnitLength);
+                this.DiagramClientView.HorizontalScrollPosition = (int)(viewLocation.X / scrollUnitLength);
+                this.DiagramClientView.VerticalScrollPosition = (int)(viewLocation.Y / scrollUnitLength);
 
-				this.DiagramClientView.Invalidate();
+                this.DiagramClientView.Invalidate();
 
-				this.Invalidate(Rectangle.Inflate(this.ImageViewBounds, 2, 2));
-			}
+                this.Invalidate(Rectangle.Inflate(this.ImageViewBounds, 2, 2));
+            }
         }
 
         #endregion
 
         #region Thumbnail image
 
-		internal void InvalidateImage()
-		{
-			this.InvalidateImage(this.DiagramClientView);
-		}
+        internal void InvalidateImage()
+        {
+            this.InvalidateImage(this.DiagramClientView);
+        }
 
-		internal void InvalidateImage(DiagramClientView diagramClientView)
-		{
-			m_diagramClientView = diagramClientView;
+        internal void InvalidateImage(DiagramClientView diagramClientView)
+        {
+            m_diagramClientView = diagramClientView;
 
-			if (m_diagramClientView != null && this.Size.Width > 0 && this.Size.Height > 0)
-			{
-				SizeD diagramSize = this.Diagram.Size;
-				Size deviceDiagramSize = this.DiagramClientView.WorldToDevice(diagramSize);
-				Size maxImageSize = this.MaximumImageSize;
+            if (m_diagramClientView != null && this.Size.Width > 0 && this.Size.Height > 0)
+            {
+                SizeD diagramSize = this.Diagram.Size;
+                Size deviceDiagramSize = this.DiagramClientView.WorldToDevice(diagramSize);
+                Size maxImageSize = this.MaximumImageSize;
 
-				m_imageScale = Math.Min(
-					(double)maxImageSize.Width / deviceDiagramSize.Width,
-					(double)maxImageSize.Height / deviceDiagramSize.Height);
+                m_imageScale = Math.Min(
+                    (double)maxImageSize.Width / deviceDiagramSize.Width,
+                    (double)maxImageSize.Height / deviceDiagramSize.Height);
 
-				this.ImageSize = new Size(
-					(int)(deviceDiagramSize.Width * m_imageScale),
-					(int)(deviceDiagramSize.Height * m_imageScale));
+                this.ImageSize = new Size(
+                    (int)(deviceDiagramSize.Width * m_imageScale),
+                    (int)(deviceDiagramSize.Height * m_imageScale));
 
-				using (Graphics g = Graphics.FromImage(this.DiagramImage))
-				{
-					g.Clear(Color.White);
+                using (Graphics g = Graphics.FromImage(this.DiagramImage))
+                {
+                    g.Clear(Color.White);
 
-					MethodInfo drawMethod = typeof(Diagram).GetMethod("DrawDiagram", BindingFlags.NonPublic | BindingFlags.Instance);
-					drawMethod.Invoke(Diagram, new object[] {
-						g,
-						new Rectangle(0, 0, ImageSize.Width, ImageSize.Height), // fit the image
+                    MethodInfo drawMethod = typeof(Diagram).GetMethod("DrawDiagram", BindingFlags.NonPublic | BindingFlags.Instance);
+                    drawMethod.Invoke(Diagram, new object[] {
+                        g,
+                        new Rectangle(0, 0, ImageSize.Width, ImageSize.Height), // fit the image
 						new PointD(0, 0), // from origin
 						(float)(m_imageScale * DiagramClientView.ZoomFactor), // fit the whole diagram
 						null // don't need selection etc
 					});
-				}
-			}
-			this.Invalidate();
-		}
+                }
+            }
+            this.Invalidate();
+        }
 
         #endregion
 
@@ -647,16 +647,16 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 m_diagramImage.Dispose();
                 m_diagramImage = null;
             }
-			m_diagramClientView = null;
-			base.OnHandleCreated(e);
+            m_diagramClientView = null;
+            base.OnHandleCreated(e);
         }
 
         protected override void OnResize(EventArgs e)
         {
-			if (this.Enabled)
-			{
-				InvalidateImage();
-			}
+            if (this.Enabled)
+            {
+                InvalidateImage();
+            }
         }
 
         protected override void OnPaintBackground(PaintEventArgs pevent)
@@ -670,9 +670,9 @@ namespace CQRSAzure.CQRSdsl.Dsl
                 Size imageSize = this.ImageSize;
 
                 graphics.SetClip(new Rectangle(imageLocation, imageSize), CombineMode.Exclude);
-				Brush diagramBackgroundBrush = Diagram.StyleSet.GetBrush(DiagramBrushes.DiagramBackground);
-				Debug.Assert(diagramBackgroundBrush != null);
-				graphics.FillRectangle(diagramBackgroundBrush, clientRect);
+                Brush diagramBackgroundBrush = Diagram.StyleSet.GetBrush(DiagramBrushes.DiagramBackground);
+                Debug.Assert(diagramBackgroundBrush != null);
+                graphics.FillRectangle(diagramBackgroundBrush, clientRect);
                 graphics.ResetClip();
 
                 graphics.DrawImage(this.DiagramImage, imageLocation.X, imageLocation.Y, imageSize.Width, imageSize.Height);
@@ -683,37 +683,37 @@ namespace CQRSAzure.CQRSdsl.Dsl
             }
             else
             {
-				pevent.Graphics.Clear(SystemColors.Control);
+                pevent.Graphics.Clear(SystemColors.Control);
             }
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
-			if (!this.Enabled) return;
+            if (!this.Enabled) return;
 
             switch (m_mouseMode)
             {
-				case MouseMode.None:
-				{
-					this.Cursor = Cursors.SizeAll;
-					break;
-				}
+                case MouseMode.None:
+                    {
+                        this.Cursor = Cursors.SizeAll;
+                        break;
+                    }
                 case MouseMode.Move:
-                {
-                    Point p = e.Location;
-					Point imageLocation = this.ImageLocation;
-					p.Offset(-imageLocation.X, -imageLocation.Y);
-					Rectangle imageBounds = this.ImageViewBounds;
-					p.Offset(-imageBounds.Width / 2, -imageBounds.Height / 2);
-                    SetViewLocation(ImageToDiagram(p));
-                    break;
-                }
+                    {
+                        Point p = e.Location;
+                        Point imageLocation = this.ImageLocation;
+                        p.Offset(-imageLocation.X, -imageLocation.Y);
+                        Rectangle imageBounds = this.ImageViewBounds;
+                        p.Offset(-imageBounds.Width / 2, -imageBounds.Height / 2);
+                        SetViewLocation(ImageToDiagram(p));
+                        break;
+                    }
             }
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-			if (!this.Enabled) return;
+            if (!this.Enabled) return;
 
             if (m_mouseMode == MouseMode.None)
             {
@@ -724,16 +724,16 @@ namespace CQRSAzure.CQRSdsl.Dsl
 
         protected override void OnMouseUp(MouseEventArgs e)
         {
-			if (!this.Enabled) return;
+            if (!this.Enabled) return;
 
             this.Capture = false;
             m_mouseMode = MouseMode.None;
-			base.OnMouseUp(e);
+            base.OnMouseUp(e);
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
-			if (!this.Enabled) return;
+            if (!this.Enabled) return;
 
             Point p = e.Location;
             p.Offset(-ImageLocation.X, -ImageLocation.Y);
@@ -741,21 +741,21 @@ namespace CQRSAzure.CQRSdsl.Dsl
             SetViewLocation(ImageToDiagram(p));
         }
 
-		internal void StartMove()
-		{
-			Debug.Assert(this.Enabled);
-			if (!this.Enabled) return;
+        internal void StartMove()
+        {
+            Debug.Assert(this.Enabled);
+            if (!this.Enabled) return;
 
-			Debug.Assert(m_mouseMode == MouseMode.None);
-			if (m_mouseMode == MouseMode.None)
-			{
-				this.Capture = true;
-				Rectangle viewRect = this.ImageViewBounds;
-				viewRect.Offset(this.Location);
-				Cursor.Position = PointToScreen(new Point(viewRect.Left + viewRect.Width / 2, viewRect.Top + viewRect.Height / 2));
-				m_mouseMode = MouseMode.Move;
-			}
-		}
+            Debug.Assert(m_mouseMode == MouseMode.None);
+            if (m_mouseMode == MouseMode.None)
+            {
+                this.Capture = true;
+                Rectangle viewRect = this.ImageViewBounds;
+                viewRect.Offset(this.Location);
+                Cursor.Position = PointToScreen(new Point(viewRect.Left + viewRect.Width / 2, viewRect.Top + viewRect.Height / 2));
+                m_mouseMode = MouseMode.Move;
+            }
+        }
 
         #endregion
     }

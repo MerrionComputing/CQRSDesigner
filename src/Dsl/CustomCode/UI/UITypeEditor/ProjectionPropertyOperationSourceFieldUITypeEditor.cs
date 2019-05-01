@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
-using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -10,7 +8,7 @@ using System.Windows.Forms.Design;
 namespace CQRSAzure.CQRSdsl.Dsl.CustomCode.UI
 {
     public sealed class ProjectionPropertyOperationSourceFieldUITypeEditor
-        : UITypeEditor 
+        : UITypeEditor
     {
 
         private IWindowsFormsEditorService _editorService;

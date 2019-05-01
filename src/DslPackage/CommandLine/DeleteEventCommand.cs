@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -34,7 +30,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         {
             get
             {
-                return CommandLineParser.COMMAND_DELETE; 
+                return CommandLineParser.COMMAND_DELETE;
             }
         }
 
@@ -53,7 +49,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         }
 
         public DeleteEventCommand(string modelName, string eventName)
-            :base(modelName )
+            : base(modelName)
         {
             if (!CreateModelCommand.IsValidModelName(modelName))
             {

@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CustomCode.Settings
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field , AllowMultiple=false ,Inherited =false) ]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false, Inherited = false)]
     public sealed class SettingStorageAttribute
-        : Attribute 
+        : Attribute
     {
 
         /// <summary>
@@ -50,12 +46,12 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Settings
 
         public static bool IsSettingStorageAttributeSet(System.Reflection.MemberInfo prop, StorageTarget targetIn)
         {
-            SettingStorageAttribute[] attr = (SettingStorageAttribute[])prop.GetCustomAttributes(typeof(SettingStorageAttribute),false ) ;
+            SettingStorageAttribute[] attr = (SettingStorageAttribute[])prop.GetCustomAttributes(typeof(SettingStorageAttribute), false);
             if (attr != null)
             {
                 if (attr.Length > 0)
                 {
-                    return (attr[0].Target == targetIn );
+                    return (attr[0].Target == targetIn);
                 }
             }
             return false;

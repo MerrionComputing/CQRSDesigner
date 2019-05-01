@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CommandLine
+﻿namespace CQRSAzure.CQRSdsl.CommandLine
 {
     /// <summary>
     /// Base class for all model modification commands
@@ -20,11 +14,12 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         /// </summary>
         public string ModelName
         {
-            get {
+            get
+            {
                 return m_modelName;
             }
         }
-        
+
 
         /// <summary>
         /// What is the level of thing being impacted by the command line

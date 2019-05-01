@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Settings
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Settings
 {
     /// <summary>
     /// Settings that control how the documentation is generated from the CQRS model

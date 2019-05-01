@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CommandLine
+﻿namespace CQRSAzure.CQRSdsl.CommandLine
 {
     /// <summary>
     /// A model modification command that does not do anything 
@@ -13,9 +7,9 @@ namespace CQRSAzure.CQRSdsl.CommandLine
     /// This is retruned if the command line parser does not understand the command
     /// </remarks>
     public class NullModelModificationCommand
-        :   IModelModificationCommand
+        : IModelModificationCommand
     {
-        public  ModelModificationCommandBase.CommandActionType ActionType
+        public ModelModificationCommandBase.CommandActionType ActionType
         {
             get
             {
@@ -23,7 +17,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             }
         }
 
-        public  string ModelName
+        public string ModelName
         {
             get
             {
@@ -31,7 +25,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             }
         }
 
-        public  ModelModificationCommandBase.CommandTargetType Target
+        public ModelModificationCommandBase.CommandTargetType Target
         {
             get
             {
@@ -50,7 +44,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
 
         public NullModelModificationCommand(string commandLine)
         {
-            m_commandLine = commandLine; 
-        } 
+            m_commandLine = commandLine;
+        }
     }
 }

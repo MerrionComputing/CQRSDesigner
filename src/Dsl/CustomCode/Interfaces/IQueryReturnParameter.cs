@@ -12,7 +12,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
         /// <summary>
         /// The data type of the parameter returned from a query
         /// </summary>
-         PropertyDataType DataType { get; set; }
+        PropertyDataType DataType { get; set; }
 
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
 using Microsoft.VisualStudio.Modeling.Validation;
-using Microsoft.CSharp;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+using System.Linq;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
-    [ValidationState(ValidationState.Enabled ) ]
+    [ValidationState(ValidationState.Enabled)]
     public partial class AggregateIdentifier
         : IAggregateIdentifierEntity
     {

@@ -324,23 +324,6 @@ namespace CQRSAzure.CQRSdsl.Dsl
 					}
 				}
 			}
-			// GenerateEntityFrameworkClasses
-			if (!serializationContext.Result.Failed)
-			{
-				string attribGenerateEntityFrameworkClasses = CQRSdslSerializationHelper.Instance.ReadAttribute(serializationContext, element, reader, "generateEntityFrameworkClasses");
-				if (attribGenerateEntityFrameworkClasses != null)
-				{
-					global::System.Boolean valueOfGenerateEntityFrameworkClasses;
-					if (DslModeling::SerializationUtilities.TryGetValue<global::System.Boolean>(serializationContext, attribGenerateEntityFrameworkClasses, out valueOfGenerateEntityFrameworkClasses))
-					{
-						instanceOfCQRSModel.GenerateEntityFrameworkClasses = valueOfGenerateEntityFrameworkClasses;
-					}
-					else
-					{	// Invalid property value, ignored.
-						CQRSdslSerializationBehaviorSerializationMessages.IgnoredPropertyValue(serializationContext, reader, "generateEntityFrameworkClasses", typeof(global::System.Boolean), attribGenerateEntityFrameworkClasses);
-					}
-				}
-			}
 			// Framework
 			if (!serializationContext.Result.Failed)
 			{
@@ -1016,19 +999,6 @@ namespace CQRSAzure.CQRSdsl.Dsl
 					if (!string.IsNullOrEmpty(propValue))
 						CQRSdslSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "documentationRootFolder", propValue);
 	
-				}
-			}
-			// GenerateEntityFrameworkClasses
-			if (!serializationContext.Result.Failed)
-			{
-				global::System.Boolean propValue = instanceOfCQRSModel.GenerateEntityFrameworkClasses;
-				string serializedPropValue = DslModeling::SerializationUtilities.GetString<global::System.Boolean>(serializationContext, propValue);
-				if (!serializationContext.Result.Failed)
-				{
-					if (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(serializedPropValue, "False") != 0)
-					{	// No need to write the value out if it's the same as default value.
-						CQRSdslSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "generateEntityFrameworkClasses", serializedPropValue);
-					}
 				}
 			}
 			// Framework
@@ -4775,6 +4745,23 @@ namespace CQRSAzure.CQRSdsl.Dsl
 					}
 				}
 			}
+			// IncludeValidationStep
+			if (!serializationContext.Result.Failed)
+			{
+				string attribIncludeValidationStep = CQRSdslSerializationHelper.Instance.ReadAttribute(serializationContext, element, reader, "includeValidationStep");
+				if (attribIncludeValidationStep != null)
+				{
+					global::System.Boolean valueOfIncludeValidationStep;
+					if (DslModeling::SerializationUtilities.TryGetValue<global::System.Boolean>(serializationContext, attribIncludeValidationStep, out valueOfIncludeValidationStep))
+					{
+						instanceOfCommandDefinition.IncludeValidationStep = valueOfIncludeValidationStep;
+					}
+					else
+					{	// Invalid property value, ignored.
+						CQRSdslSerializationBehaviorSerializationMessages.IgnoredPropertyValue(serializationContext, reader, "includeValidationStep", typeof(global::System.Boolean), attribIncludeValidationStep);
+					}
+				}
+			}
 		}
 	
 		/// <summary>
@@ -5384,6 +5371,19 @@ namespace CQRSAzure.CQRSdsl.Dsl
 					if (!string.IsNullOrEmpty(propValue))
 						CQRSdslSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "category", propValue);
 	
+				}
+			}
+			// IncludeValidationStep
+			if (!serializationContext.Result.Failed)
+			{
+				global::System.Boolean propValue = instanceOfCommandDefinition.IncludeValidationStep;
+				string serializedPropValue = DslModeling::SerializationUtilities.GetString<global::System.Boolean>(serializationContext, propValue);
+				if (!serializationContext.Result.Failed)
+				{
+					if (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(serializedPropValue, "true") != 0)
+					{	// No need to write the value out if it's the same as default value.
+						CQRSdslSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "includeValidationStep", serializedPropValue);
+					}
 				}
 			}
 		}
@@ -8153,6 +8153,23 @@ namespace CQRSAzure.CQRSdsl.Dsl
 					}
 				}
 			}
+			// IncludeValidationStep
+			if (!serializationContext.Result.Failed)
+			{
+				string attribIncludeValidationStep = CQRSdslSerializationHelper.Instance.ReadAttribute(serializationContext, element, reader, "includeValidationStep");
+				if (attribIncludeValidationStep != null)
+				{
+					global::System.Boolean valueOfIncludeValidationStep;
+					if (DslModeling::SerializationUtilities.TryGetValue<global::System.Boolean>(serializationContext, attribIncludeValidationStep, out valueOfIncludeValidationStep))
+					{
+						instanceOfQueryDefinition.IncludeValidationStep = valueOfIncludeValidationStep;
+					}
+					else
+					{	// Invalid property value, ignored.
+						CQRSdslSerializationBehaviorSerializationMessages.IgnoredPropertyValue(serializationContext, reader, "includeValidationStep", typeof(global::System.Boolean), attribIncludeValidationStep);
+					}
+				}
+			}
 		}
 	
 		/// <summary>
@@ -8899,6 +8916,19 @@ namespace CQRSAzure.CQRSdsl.Dsl
 					if (!string.IsNullOrEmpty(propValue))
 						CQRSdslSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "category", propValue);
 	
+				}
+			}
+			// IncludeValidationStep
+			if (!serializationContext.Result.Failed)
+			{
+				global::System.Boolean propValue = instanceOfQueryDefinition.IncludeValidationStep;
+				string serializedPropValue = DslModeling::SerializationUtilities.GetString<global::System.Boolean>(serializationContext, propValue);
+				if (!serializationContext.Result.Failed)
+				{
+					if (serializationContext.WriteOptionalPropertiesWithDefaultValue || string.CompareOrdinal(serializedPropValue, "true") != 0)
+					{	// No need to write the value out if it's the same as default value.
+						CQRSdslSerializationHelper.Instance.WriteAttributeString(serializationContext, element, writer, "includeValidationStep", serializedPropValue);
+					}
 				}
 			}
 		}

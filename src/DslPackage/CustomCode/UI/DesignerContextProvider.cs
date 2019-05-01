@@ -129,7 +129,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                     MetaFeature diagramMetaFeature = this.MetaFeature.Store.FindMetaFeature(diagramContext.GetType());
                     if (diagramMetaFeature != null)
                     {
-                        diagramContext.DiagramDocView = ((ModelingDocData) args.DocData).DocViews[0] as DiagramDocView;
+                        diagramContext.DiagramDocView = ((ModelingDocData)args.DocData).DocViews[0] as DiagramDocView;
                         diagramContext.Associate(diagramMetaFeature, this.ServiceProvider);
                         this.DiagramContexts[args.DocCookie] = diagramContext;
                     }

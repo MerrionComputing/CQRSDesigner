@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.Modeling.Validation;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+using Microsoft.VisualStudio.Modeling.Validation;
 using System.Linq;
 
 namespace CQRSAzure.CQRSdsl.Dsl

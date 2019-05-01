@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
+using Microsoft.VisualStudio.Modeling.Validation;
 using System.Linq;
 
-using Microsoft.VisualStudio.Modeling.Validation;
-using Microsoft.CSharp;
-using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
-
-namespace CQRSAzure.CQRSdsl.Dsl 
+namespace CQRSAzure.CQRSdsl.Dsl
 {
     [ValidationState(ValidationState.Enabled)]
     public partial class EventDefinition
@@ -17,7 +13,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         {
             get
             {
-                return AggregateIdentifier.FullyQualifiedName + @"." + Name ;
+                return AggregateIdentifier.FullyQualifiedName + @"." + Name;
             }
         }
 

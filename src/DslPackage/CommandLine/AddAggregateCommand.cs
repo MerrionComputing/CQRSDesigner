@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -62,7 +58,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
 
 
         public AddAggregateCommand(string modelName, string aggregateName)
-            : base(modelName )
+            : base(modelName)
         {
             m_aggregateName = aggregateName;
         }
@@ -93,7 +89,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             return false;
         }
 
-        public  static bool IsValidAggregateName(string aggregateName)
+        public static bool IsValidAggregateName(string aggregateName)
         {
             if (string.IsNullOrWhiteSpace(aggregateName))
             {

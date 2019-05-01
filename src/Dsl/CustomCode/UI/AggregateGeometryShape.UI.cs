@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Modeling.Diagrams;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.Modeling.Diagrams;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -18,7 +15,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
             // Find the Comments decorator and make it wrapped
             TextField commentField = FindShapeField(shapeFields, FIELDNAME_DESCRIPTION) as TextField;
             if (null != commentField)
-            {        
+            {
                 // Replace with wrapped text field
                 UI.Decorators.WrappedTextField wrappedCommentField = new UI.Decorators.WrappedTextField(commentField);
                 shapeFields.Remove(commentField);
@@ -29,7 +26,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <summary>
         /// The set of all the event definition shapes 
         /// </summary>
-        public IList<EventDefinitionCompartmentShape > EventDefinitionShapes
+        public IList<EventDefinitionCompartmentShape> EventDefinitionShapes
         {
             get
             {
@@ -40,7 +37,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <summary>
         /// The set of all command definition shapes linked to this aggregate
         /// </summary>
-        public IList<CommandDefinitionCompartmentShape > CommandDefinitionShapes
+        public IList<CommandDefinitionCompartmentShape> CommandDefinitionShapes
         {
             get
             {
@@ -51,7 +48,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <summary>
         /// The set of all query definitions linked to this aggregate
         /// </summary>
-        public IList<QueryDefinitionShape > QueryDefinitionShapes
+        public IList<QueryDefinitionShape> QueryDefinitionShapes
         {
             get
             {
@@ -65,7 +62,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         /// <remarks>
         /// This is to allow items to be shown/hidden by type (onion-skinning)
         /// </remarks>
-        public IList<ClassifierCompartmentShape > ClassifierShapes
+        public IList<ClassifierCompartmentShape> ClassifierShapes
         {
             get
             {

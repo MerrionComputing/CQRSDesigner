@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     /// <summary>
     /// A tag /category that can be applied to an entity

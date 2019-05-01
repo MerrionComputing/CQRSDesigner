@@ -1,8 +1,4 @@
-﻿using CQRSAzure.CQRSdsl.CustomCode.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 
 namespace CQRSAzure.CQRSdsl.Dsl
 {
@@ -20,7 +16,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
         public override string ToString()
         {
             StringBuilder sbret = new StringBuilder();
-            if (! string.IsNullOrWhiteSpace(EventName ) )
+            if (!string.IsNullOrWhiteSpace(EventName))
             {
                 sbret.Append("On " + EventName + ", ");
             }
@@ -51,7 +47,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
                     sbret.Append(this.OnTrue.ToString());
                 }
                 sbret.Append(", otherwise");
-                if (this.OnFalse  == IdentityGroupClassification.Unchanged)
+                if (this.OnFalse == IdentityGroupClassification.Unchanged)
                 {
                     sbret.Append(" leave unchanged");
                 }

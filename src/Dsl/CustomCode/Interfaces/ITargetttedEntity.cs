@@ -1,6 +1,4 @@
-﻿using CQRSAzure.CQRSdsl.Dsl;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     /// <summary>
     /// Indicates that a parameter is used to indicate the target for a command or query

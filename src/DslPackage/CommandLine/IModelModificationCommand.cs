@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CommandLine
+﻿namespace CQRSAzure.CQRSdsl.CommandLine
 {
     /// <summary>
     /// Interface defining a command that can be executed against a CQRS model
@@ -20,7 +14,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         /// <summary>
         /// The model object type / level that is the target of this command
         /// </summary>
-        ModelModificationCommandBase.CommandTargetType Target { get; } 
+        ModelModificationCommandBase.CommandTargetType Target { get; }
 
         /// <summary>
         /// The action type being performed by this command

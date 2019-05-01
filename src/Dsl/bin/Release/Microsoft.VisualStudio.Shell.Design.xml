@@ -47,27 +47,29 @@
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyDeletedEventArgs" /> class for the supplied assembly.</summary>
       <param name="assembly"> The assembly that has been deleted.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="assembly" /> is null.</exception>
+              <paramref name="assembly" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.AssemblyDeletedEventArgs.#ctor(System.Reflection.Assembly,System.Type[])">
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyDeletedEventArgs" /> class for the supplied assembly and types.</summary>
       <param name="assembly">The assembly that has been deleted.</param>
       <param name="types">An array of <see cref="T:System.Type" /> containing objects for all the types defined in this assembly.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="assembly" /> is null.-or-<paramref name="types" /> is null.</exception>
+              <paramref name="assembly" /> is <see langword="null" />.-or-
+              <paramref name="types" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs.#ctor(System.Reflection.Assembly)">
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs" /> class.</summary>
       <param name="assembly">A dynamic assembly that may have changed.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="assembly" /> is null.</exception>
+              <paramref name="assembly" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs.#ctor(System.Reflection.Assembly,System.Type[])">
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs" /> class.</summary>
       <param name="assembly">A dynamic assembly that may have changed.</param>
       <param name="types">An array of <see cref="T:System.Type" /> containing objects for all the types defined in this assembly.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="assembly" /> is null.-or-<paramref name="types" /> is null.</exception>
+              <paramref name="assembly" /> is <see langword="null" />.-or-
+              <paramref name="types" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.AssemblyRefreshedEventArgs.#ctor(System.Reflection.Assembly)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyRefreshedEventArgs" />.</summary>
@@ -86,17 +88,20 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.Equals(System.Object)">
       <summary>Determines whether this instance is the same as the specified object.</summary>
       <param name="obj">The object to compare.</param>
-      <returns>true if the objects are equal.</returns>
+      <returns>
+          <see langword="true" /> if the objects are equal.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.GetCustomAttributes(System.Boolean)">
       <summary>Gets all the custom attributes applied to this member.</summary>
-      <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. </param>
+      <param name="inherit">
+            <see langword="true" /> to search this member's inheritance chain to find the attributes; otherwise, <see langword="false" />. </param>
       <returns>Returns <see cref="T:System.Object" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.GetCustomAttributes(System.Type,System.Boolean)">
       <summary>Gets all the custom attributes applied to this member of the specified type.</summary>
       <param name="attributeType">The type of attribute</param>
-      <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false.</param>
+      <param name="inherit">
+            <see langword="true" /> to search this member's inheritance chain to find the attributes; otherwise, <see langword="false" />.</param>
       <returns>Returns <see cref="T:System.Object" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.GetCustomAttributesData">
@@ -128,14 +133,14 @@
       <param name="obj">The object on which to invoke the method or constructor. If a method is static, this argument is ignored. If a constructor is static, this argument must be null or an instance of the class that defines the constructor.</param>
       <param name="invokeAttr">A bitmask that is a combination of 0 or more bit flags from BindingFlags. If binder is null, this parameter is assigned the value Default; thus, whatever you pass in is ignored.</param>
       <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of MemberInfo objects via reflection. If binder is null, the default binder is used.</param>
-      <param name="parameters">An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, this should be null.</param>
-      <param name="culture">An instance of CultureInfo used to govern the coercion of types. If this is null, the CultureInfo for the current thread is used.  </param>
+      <param name="parameters">An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, this should be <see langword="null" />.</param>
+      <param name="culture">An instance of CultureInfo used to govern the coercion of types. If this is <see langword="null" />, the CultureInfo for the current thread is used.  </param>
       <returns>An Object containing the return value of the invoked method, or null in the case of a constructor, or null if the method's return type is void. Before calling the method or constructor, Invoke checks to see if the user has access permission and verifies that the parameters are valid.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.Invoke(System.Reflection.BindingFlags,System.Reflection.Binder,System.Object[],System.Globalization.CultureInfo)">
       <summary>Invokes the constructor with the specified parameters.</summary>
       <param name="invokeAttr">A bitmask that is a combination of 0 or more bit flags from BindingFlags. If binder is null, this parameter is assigned the value Default; thus, whatever you pass in is ignored.</param>
-      <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of MemberInfo objects via reflection. If binder is null, the default binder is used.</param>
+      <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of MemberInfo objects via reflection. If binder is <see langword="null" /><see langword="" />, the default binder is used.</param>
       <param name="parameters">An argument list for the invoked method or constructor. This is an array of objects with the same number, order, and type as the parameters of the method or constructor to be invoked. If there are no parameters, this should be null.</param>
       <param name="culture">An instance of CultureInfo used to govern the coercion of types. If this is null, the CultureInfo for the current thread is used.</param>
       <returns>Returns <see cref="T:System.Object" />.</returns>
@@ -143,7 +148,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.IsDefined(System.Type,System.Boolean)">
       <summary>Determines whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
       <param name="attributeType">The type of custom attribute to search for. The search includes derived types.</param>
-      <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false.</param>
+      <param name="inherit">
+            <see langword="true" /> to search this member's inheritance chain to find the attributes; otherwise, <see langword="false" />.</param>
       <returns>Returns <see cref="T:System.Boolean" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.ToString">
@@ -154,40 +160,43 @@
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane" /> class.</summary>
       <param name="surface">The design surface for which to create the window pane.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="surface" /> is null.</exception>
+              <paramref name="surface" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.AddDefaultServices">
       <summary>Adds the default services the window pane provides.</summary>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Dispose(System.Boolean)">
       <summary>Disposes the design surface.</summary>
-      <param name="disposing">true if <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane" /> is being disposed.</param>
+      <param name="disposing">
+            <see langword="true" /> if <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane" /> is being disposed.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.GetAutomationObject(System.String)">
       <summary>Gets the automation object for this window pane.</summary>
-      <param name="propName">The name of the automation object. This can be null or an empty string.</param>
-      <returns>The automation object, or null.</returns>
+      <param name="propName">The name of the automation object. This can be <see langword="null" /> or an empty string.</param>
+      <returns>The automation object, or <see langword="null" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.GetService(System.Type)">
       <summary>Gets the service of the specified type.</summary>
       <param name="serviceType">A <see cref="T:System.Type" /> that specifies the type of service object to get.</param>
-      <returns>A service object of type <paramref name="serviceType" />.-or-null if there is no service object of type <paramref name="serviceType" />.</returns>
+      <returns>A service object of type <paramref name="serviceType" />.-or-
+          <see langword="null" /> if there is no service object of type <paramref name="serviceType" />.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="serviceType" /> is null.</exception>
+              <paramref name="serviceType" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.GetToolboxItemSupported(Microsoft.VisualStudio.OLE.Interop.IDataObject)">
       <summary>Determines whether or not the given data object is supported by the designer.</summary>
       <param name="toolboxItem">
-        <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
-      <returns>true if the data object represents a supported toolbox item.</returns>
+            <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
+      <returns>
+          <see langword="true" /> if the data object represents a supported toolbox item.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="toolboxItem" /> is null.</exception>
+              <paramref name="toolboxItem" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsBatchUpdate#FlushPendingUpdates(System.UInt32)">
       <summary>Called when Visual Studio wants the window pane to flush its state to the underlying buffer.</summary>
       <param name="reserved">Reserved for the future use.</param>
       <returns>
-        <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if successful.</returns>
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if successful.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsDesignerInfo#get_DesignerTechnology(System.String@)">
       <summary>Returns the Windows form.</summary>
@@ -196,26 +205,27 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsExtensibleObject#GetAutomationObject(System.String,System.Object@)">
       <summary>Gets the automation object for this window pane.</summary>
-      <param name="propName">The name of the automation object. This can be null or an empty string.</param>
+      <param name="propName">The name of the automation object. This can be <see langword="null" /> or an empty string.</param>
       <param name="extObj">The automation object.</param>
       <returns>
-        <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if successful.</returns>
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if successful.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsToolboxUser#IsSupported(Microsoft.VisualStudio.OLE.Interop.IDataObject)">
       <summary>Determines whether the <see cref="F:System.ComponentModel.Design.StandardToolWindows.Toolbox" /> user supports the referenced data object.</summary>
       <param name="dataObject">
-        <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
+            <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsToolboxUser#ItemPicked(Microsoft.VisualStudio.OLE.Interop.IDataObject)">
       <summary>Sends notification that an item in the <see cref="F:System.ComponentModel.Design.StandardToolWindows.Toolbox" /> is selected through a click, or by pressing ENTER.</summary>
       <param name="dataObject">
-        <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
+            <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsWindowFrameNotify#OnDockableChange(System.Int32)">
       <summary>Notifies the <see cref="T:Microsoft.VisualStudio.Shell.Package" /> that a window's docked state is being altered.</summary>
-      <param name="fDockable">true if the window frame is being docked, otherwise false.</param>
+      <param name="fDockable">
+            <see langword="true" /> if the window frame is being docked, otherwise <see langword="false" />.</param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Microsoft#VisualStudio#Shell#Interop#IVsWindowFrameNotify#OnMove">
@@ -240,10 +250,11 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.OnToolboxItemPicked(Microsoft.VisualStudio.OLE.Interop.IDataObject)">
       <summary>Called when the user double clicks or presses enter on a toolbox item on the Visual Studio toolbox.</summary>
       <param name="toolboxItem">
-        <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
-      <returns>true if the toolbox item was used by a designer.</returns>
+            <see cref="T:Microsoft.VisualStudio.OLE.Interop.IDataObject" />.</param>
+      <returns>
+          <see langword="true" /> if the toolbox item was used by a designer.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="toolboxItem" /> is null.</exception>
+              <paramref name="toolboxItem" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension.#ctor">
       <summary>Create a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> class.</summary>
@@ -253,7 +264,8 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension.Dispose(System.Boolean)">
       <summary>Disposes this object and its resources.</summary>
-      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension.Finalize">
       <summary>Destroys the object.</summary>
@@ -262,7 +274,7 @@
       <summary>Initializes the design surface extension.</summary>
       <param name="surface">The design surface that is being created.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="surface" /> is null.</exception>
+              <paramref name="surface" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension.OnComponentCreated(System.ComponentModel.IComponent)">
       <summary>This method is called when a new component is created but before that component is added to the designer.</summary>
@@ -278,15 +290,15 @@
       <param name="designer">The designer that has been created.</param>
       <param name="rootDesigner">The root designer.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="designer" /> is null.</exception>
+              <paramref name="designer" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute.#ctor(System.Type)">
       <summary>Creates a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute" /> class specifying a given object as providing a VSPackage's implementation of <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" />.</summary>
       <param name="extensionType">The <see cref="T:System.Type" /> of the object providing an implementation of <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> to customize design surfaces.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="extensionType" /> is null.</exception>
+              <paramref name="extensionType" /> is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="extensionType " />does not derive from <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" />.</exception>
+              <paramref name="extensionType " />does not derive from <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute.Register(Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext)">
       <summary>Registers the design surface extension.</summary>
@@ -302,7 +314,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver.#ctor(System.ComponentModel.Design.ITypeResolutionService)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver" /> for the specified service.</summary>
       <param name="resolver">
-        <see cref="T:System.ComponentModel.Design.ITypeResolutionService" />.</param>
+            <see cref="T:System.ComponentModel.Design.ITypeResolutionService" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver.System#IDisposable#Dispose">
       <summary>Disposes the object and its resources.</summary>
@@ -311,51 +323,52 @@
       <summary>This method creates a new assembly whose contents are the given assembly file.</summary>
       <param name="fileName">The name of the assembly.</param>
       <returns>
-        <see cref="T:System.Reflection.Assembly" />.</returns>
+          <see cref="T:System.Reflection.Assembly" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.GetContextTypeResolver(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
       <summary>Gets a type resolver for the specified hierarchy node.</summary>
       <param name="hierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface for the node.</param>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.GetContextTypeResolver(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32)">
       <summary>Gets a type resolver for the specified hierarchy node and item ID.</summary>
       <param name="hierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the hierarchy node.</param>
       <param name="itemid">The item ID.</param>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.ContextTypeResolver" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.GetTypeDiscoveryService(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
       <summary>Gets a type discovery service for the specified hierarchy node.</summary>
       <param name="hierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the hierarchy node.</param>
       <returns>
-        <see cref="T:System.ComponentModel.Design.ITypeDiscoveryService" />.</returns>
+          <see cref="T:System.ComponentModel.Design.ITypeDiscoveryService" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.GetTypeDiscoveryService(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32)">
       <summary>Gets a type discovery service for the specified hierarchy node and item ID.</summary>
       <param name="hierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the <see cref="T:Microsoft.VisualStudio.Package.HierarchyNode" />.</param>
       <param name="itemid">The item ID.</param>
       <returns>
-        <see cref="T:System.ComponentModel.Design.ITypeDiscoveryService" />.</returns>
+          <see cref="T:System.ComponentModel.Design.ITypeDiscoveryService" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.GetTypeResolutionService(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)">
       <summary>Gets a type resolution service for a given hierarchy node.</summary>
       <param name="hierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the <see cref="T:Microsoft.VisualStudio.Package.HierarchyNode" />.</param>
       <returns>
-        <see cref="T:System.ComponentModel.Design.ITypeResolutionService" />.</returns>
+          <see cref="T:System.ComponentModel.Design.ITypeResolutionService" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.GetTypeResolutionService(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32)">
       <summary>Gets a type resolution service for a given hierarchy node and item ID.</summary>
       <param name="hierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the <see cref="T:Microsoft.VisualStudio.Package.HierarchyNode" />.</param>
       <param name="itemid">The item ID.</param>
       <returns>
-        <see cref="T:System.ComponentModel.Design.ITypeResolutionService" />.</returns>
+          <see cref="T:System.ComponentModel.Design.ITypeResolutionService" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.IsDynamicAssembly(System.Reflection.AssemblyName)">
       <summary>Determines whether or not the specified assembly has been dynamically created.</summary>
       <param name="name"> <see cref="T:System.Reflection.AssemblyName" />.</param>
-      <returns>true if the assembly was dynamically created, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the assembly was dynamically created, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.OnAssemblyDeleted(Microsoft.VisualStudio.Shell.Design.AssemblyDeletedEventArgs)">
       <summary>Raised when an assembly has been deleted.</summary>
@@ -364,24 +377,24 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.OnAssemblyObsolete(Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs)">
       <summary>Raised when an assembly has been made obsolete.</summary>
       <param name="e">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs" />.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.OnAssemblyRefreshed(Microsoft.VisualStudio.Shell.Design.AssemblyRefreshedEventArgs)">
       <summary>Raised when an assembly has been refreshed, for example when it has been rebuilt and the name or configuration has changed.</summary>
       <param name="e">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyRefreshedEventArgs" />.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyRefreshedEventArgs" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.DynamicTypeService.OnTypeObsolete(Microsoft.VisualStudio.Shell.Design.TypeObsoleteEventArgs)">
       <summary>Raised when a type has been made obsolete, that is, when it no longer resolves.</summary>
       <param name="e">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.TypeObsoleteEventArgs" />.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.TypeObsoleteEventArgs" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.#ctor(System.Type,System.String)">
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> class.</summary>
       <param name="objectType">The <see cref="T:System.Type" /> of the global object.</param>
       <param name="objectName">A <see cref="T:System.String" /> containing the name of the global object.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="objectType" /> is null.</exception>
+              <paramref name="objectType" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.ClearInstance">
       <summary>Clears the <see cref="P:Microsoft.VisualStudio.Shell.Design.GlobalObject.Instance" /> property.</summary>
@@ -393,7 +406,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.Equals(System.Object)">
       <summary>Checks if the specified object is equal to the current global object.</summary>
       <param name="o">The object to compare with this <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" />.</param>
-      <returns>true if the two objects are equal; otherwise, false.</returns>
+      <returns>
+          <see langword="true" /> if the two objects are equal; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.GetHashCode">
       <summary>Returns the hash code for the current global object.</summary>
@@ -402,15 +416,15 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.GetSerializer(System.Type)">
       <summary>Returns the checked serializer of the specified type for the global object.</summary>
       <param name="serializerType">The type of serializer to retrieve.</param>
-      <returns>A serializer of the specified type if supported; otherwise, null.</returns>
+      <returns>A serializer of the specified type if supported; otherwise, <see langword="null" />.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="serializerType" /> is null.</exception>
-      <exception cref="T:System.InvalidOperationException">The non-null serializer retrieved is itself not serializable.</exception>
+              <paramref name="serializerType" /> is <see langword="null" />.</exception>
+      <exception cref="T:System.InvalidOperationException">The non-<see langword="null" /> serializer retrieved is itself not serializable.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.GetSerializerCore(System.Type)">
       <summary>Returns a serializer of the specified type for the global object.</summary>
       <param name="serializerType">The type of serializer to retrieve.</param>
-      <returns>A serializer of the specified type if supported; otherwise, null.</returns>
+      <returns>A serializer of the specified type if supported; otherwise, <see langword="null" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObject.OnCreated(System.EventArgs)">
       <summary>Raises the <see cref="E:Microsoft.VisualStudio.Shell.Design.GlobalObject.Created" /> event. </summary>
@@ -432,7 +446,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.#ctor(Microsoft.VisualStudio.Shell.Design.GlobalObject[],System.Boolean)">
       <summary>Initializes a new instance of a strongly-typed collection of global objects initially populated by an array of global objects.</summary>
       <param name="items">An array of <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> objects to initially populate the collection.</param>
-      <param name="readOnly">If true, the collection cannot be modified. The default value for <paramref name="readOnly" /> if not passed is false.</param>
+      <param name="readOnly">If <see langword="true" />, the collection cannot be modified. The default value for <paramref name="readOnly" /> if not passed is <see langword="false" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.#ctor(Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection)">
       <summary>Initializes a new instance of a strongly-typed collection of global objects initially populated by the array <paramref name="items" />.</summary>
@@ -441,7 +455,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.#ctor(Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection,System.Boolean)">
       <summary>Initializes a new instance of global objects for the specified global object collection for the specified read/write access.</summary>
       <param name="items">A collection of objects to initially populate the collection.</param>
-      <param name="readOnly">If true, the collection cannot be modified. The default value for <paramref name="readOnly" /> if not passed is false.</param>
+      <param name="readOnly">If <see langword="true" />, the collection cannot be modified. The default value for <paramref name="readOnly" /> if not passed is <see langword="false" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.Add(Microsoft.VisualStudio.Shell.Design.GlobalObject)">
       <summary>Adds a new item to the collection.</summary>
@@ -461,7 +475,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.Contains(Microsoft.VisualStudio.Shell.Design.GlobalObject)">
       <summary>Determines whether this collection contains the given item.</summary>
       <param name="item">An object that will have its collection membership verified.</param>
-      <returns>true if the collection contains the object, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the collection contains the object, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.CopyTo(Microsoft.VisualStudio.Shell.Design.GlobalObject[],System.Int32)">
       <summary>Copies the contents of this collection to the given array starting at the given index.</summary>
@@ -471,7 +486,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.GetEnumerator">
       <summary>Returns an enumerator for this collection.</summary>
       <returns>
-        <see cref="T:System.Collections.IEnumerator" />.</returns>
+          <see cref="T:System.Collections.IEnumerator" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.IndexOf(Microsoft.VisualStudio.Shell.Design.GlobalObject)">
       <summary>Gets the position of an object in the collection.</summary>
@@ -500,12 +515,13 @@
       <summary>Adds an object to the collection.</summary>
       <param name="item">The object to be added.</param>
       <returns>
-        <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if the method succeeded, otherwise an error code.</returns>
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if the method succeeded, otherwise an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.System#Collections#IList#Contains(System.Object)">
       <summary>Determines whether an object is in the collection.</summary>
       <param name="item">An item to find.</param>
-      <returns>true if the object is in the collection, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the object is in the collection, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.System#Collections#IList#IndexOf(System.Object)">
       <summary>Gets the position of an object in the collection.</summary>
@@ -538,29 +554,30 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.Dispose(System.Boolean)">
       <summary>Disposes this object and its resources.</summary>
-      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjects(EnvDTE.Project)">
       <summary>Gets a collection of global objects for the specified project. </summary>
       <param name="project">The <see cref="T:EnvDTE.Project" /> to obtain global objects from.</param>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection" /> containing the global objects for the specified project.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="project" /> is null.</exception>
-      <exception cref="T:System.InvalidOperationException">The implementation of <see cref="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjectsCore(EnvDTE.Project,System.Type)" /> returned null.</exception>
+              <paramref name="project" /> is <see langword="null" />.</exception>
+      <exception cref="T:System.InvalidOperationException">The implementation of <see cref="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjectsCore(EnvDTE.Project,System.Type)" /> returned <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjects(EnvDTE.Project,System.Type)">
       <summary>Gets a collection of global objects for the specified project that match the specified type.</summary>
       <param name="project">The <see cref="T:EnvDTE.Project" /> to obtain global objects from. </param>
-      <param name="baseType">The <see cref="T:System.Type" /> of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> to filter on. Can be null to indicate no filtering.</param>
+      <param name="baseType">The <see cref="T:System.Type" /> of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> to filter on. Can be <see langword="null" /> to indicate no filtering.</param>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection" /> containing the global objects of the specified <see cref="T:System.Type" /> for the specified project.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="project" /> is null.</exception>
-      <exception cref="T:System.InvalidOperationException">The implementation of <see cref="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjectsCore(EnvDTE.Project,System.Type)" /> returned null.</exception>
+              <paramref name="project" /> is <see langword="null" />.</exception>
+      <exception cref="T:System.InvalidOperationException">The implementation of <see cref="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjectsCore(EnvDTE.Project,System.Type)" /> returned <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalObjectsCore(EnvDTE.Project,System.Type)">
       <summary>When overridden in a derived class, returns a collection of global objects for the specified project that match the specified type.</summary>
       <param name="project">The <see cref="T:EnvDTE.Project" /> to obtain global objects from. </param>
-      <param name="baseType">The <see cref="T:System.Type" /> of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> to filter on. Can be null to indicate no filtering.</param>
+      <param name="baseType">The <see cref="T:System.Type" /> of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> to filter on. Can be <see langword="null" /> to indicate no filtering.</param>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection" /> containing the global objects of the specified <see cref="T:System.Type" /> for the specified project.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalTypes(EnvDTE.Project)">
@@ -568,8 +585,8 @@
       <param name="project">The <see cref="T:EnvDTE.Project" />  to obtain global types from. </param>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection" /> containing the global types for the specified project.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="project" /> is null.</exception>
-      <exception cref="T:System.InvalidOperationException">The implementation of <see cref="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalTypesCore(EnvDTE.Project)" /> returned null.</exception>
+              <paramref name="project" /> is <see langword="null" />.</exception>
+      <exception cref="T:System.InvalidOperationException">The implementation of <see cref="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalTypesCore(EnvDTE.Project)" /> returned <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetGlobalTypesCore(EnvDTE.Project)">
       <summary>Gets a collection of global types for the specified project that match the specified type. </summary>
@@ -579,9 +596,9 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.GetService(System.Type)">
       <summary>Gets the requested service.</summary>
       <param name="serviceType">The <see cref="T:System.Type" /> of service to retrieve </param>
-      <returns>An <see cref="T:System.Object" /> that represents an instance of the requested service; otherwise, null if no such service exists.</returns>
+      <returns>An <see cref="T:System.Object" /> that represents an instance of the requested service; otherwise, <see langword="null" /> if no such service exists.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="serviceType" /> is null.</exception>
+              <paramref name="serviceType" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider.Microsoft#VisualStudio#OLE#Interop#IObjectWithSite#GetSite(System.Guid@,System.IntPtr@)">
       <summary>Gets the service provider.</summary>
@@ -609,23 +626,23 @@
       <param name="provider">The <see cref="T:System.IServiceProvider" /> that will be used to obtain other services.</param>
       <param name="project">The <see cref="T:EnvDTE.Project" /> associated with this global object service.</param>
       <param name="serializerType">The serializer <see cref="T:System.Type" /> supported by the current designer loader.</param>
-      <exception cref="T:System.ArgumentNullException">One or more of the parameters is null.</exception>
+      <exception cref="T:System.ArgumentNullException">One or more of the parameters is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectService.GetGlobalObjects">
       <summary>Returns a collection of all the currently available global objects.</summary>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection" /> containing the currently available global objects.</returns>
-      <exception cref="T:System.NotSupportedException">One of the queried global service provider factories returned null provider or provider collection.</exception>
+      <exception cref="T:System.NotSupportedException">One of the queried global service provider factories returned <see langword="null" /> provider or provider collection.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectService.GetGlobalObjects(System.Type)">
       <summary>Returns a collection of currently available global objects that are of the specified type.</summary>
       <param name="baseType">The <see cref="T:System.Type" /> of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" /> to filter on.</param>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection" /> containing the currently available global objects.</returns>
-      <exception cref="T:System.NotSupportedException">One of the queried global service provider factories returned null provider or provider collection.</exception>
+      <exception cref="T:System.NotSupportedException">One of the queried global service provider factories returned <see langword="null" /> provider or provider collection.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectService.GetGlobalTypes">
       <summary>Returns a collection of currently available global types.</summary>
       <returns>A <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection" /> containing the currently available global types.</returns>
-      <exception cref="T:System.NotSupportedException">One of the queried global service provider factories returned null provider or provider collection.</exception>
+      <exception cref="T:System.NotSupportedException">One of the queried global service provider factories returned <see langword="null" /> provider or provider collection.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalObjectService.System#IDisposable#Dispose">
       <summary>Disposes <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectService" />.</summary>
@@ -634,7 +651,7 @@
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalType" />.</summary>
       <param name="objectType">The <see cref="T:System.Type" /> of the global type.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="objectType" /> is null.</exception>
+              <paramref name="objectType" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalType.ClearObjectType">
       <summary>Clears the <see cref="P:Microsoft.VisualStudio.Shell.Design.GlobalType.ObjectType" /> property. </summary>
@@ -642,7 +659,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalType.Equals(System.Object)">
       <summary>Checks if the specified object is equal to the current global type.</summary>
       <param name="o">The object to compare with this <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalType" />.</param>
-      <returns>true if the two objects are equal; otherwise, false.</returns>
+      <returns>
+          <see langword="true" /> if the two objects are equal; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalType.GetHashCode">
       <summary>Returns the hash code for the current global type.</summary>
@@ -713,7 +731,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.Contains(Microsoft.VisualStudio.Shell.Design.GlobalType)">
       <summary>Determines whether the specified item is in the collection</summary>
       <param name="item">The item to find.</param>
-      <returns>true if this collection contains the given item, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if this collection contains the given item, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.CopyTo(Microsoft.VisualStudio.Shell.Design.GlobalType[],System.Int32)">
       <summary>Copies the contents of this collection to the given array starting at the given <paramref name="index" />.</summary>
@@ -723,7 +742,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.GetEnumerator">
       <summary>Returns an enumerator you can use to enumerate through this collection.</summary>
       <returns>
-        <see cref="T:System.Collections.IEnumerator" />.</returns>
+          <see cref="T:System.Collections.IEnumerator" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.IndexOf(Microsoft.VisualStudio.Shell.Design.GlobalType)">
       <summary>Get the position of the specified item.</summary>
@@ -756,7 +775,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.System#Collections#IList#Contains(System.Object)">
       <summary>Determines whether the specified item is in the collection.</summary>
       <param name="item">The item to find.</param>
-      <returns>true if the object can be found in the collection, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the object can be found in the collection, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.System#Collections#IList#IndexOf(System.Object)">
       <summary>Gets the position of an item in the collection.</summary>
@@ -780,22 +800,24 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.AddUndoUnit(System.ComponentModel.Design.UndoEngine.UndoUnit)">
       <summary>Adds the undo unit to the undo unit manager.</summary>
       <param name="unit">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.UndoUnit" />.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.UndoUnit" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.CreateUndoUnit(System.String,System.Boolean)">
       <summary>Creates a new undo unit.</summary>
       <param name="name">The name of the undo unit.</param>
-      <param name="primary">true if the undo unit is primary, otherwise false.</param>
+      <param name="primary">
+            <see langword="true" /> if the undo unit is primary, otherwise <see langword="false" />.</param>
       <returns>The created <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.DiscardUndoUnit(System.ComponentModel.Design.UndoEngine.UndoUnit)">
       <summary>Closes this unit if it is a parent undo unit.</summary>
       <param name="unit">
-        <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />.</param>
+            <see cref="T:System.ComponentModel.Design.UndoEngine.UndoUnit" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.Dispose(System.Boolean)">
       <summary>Disposes the resources of this object.</summary>
-      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.Microsoft#VisualStudio#TextManager#Interop#IVsLinkedUndoClient#OnInterveningUnitBlockingLinkedUndo">
       <summary>Indicates that the undo manager is blocking another undo manager from executing a linked action. </summary>
@@ -813,20 +835,23 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.UndoUnit.Microsoft#VisualStudio#OLE#Interop#IOleParentUndoUnit#Close(Microsoft.VisualStudio.OLE.Interop.IOleParentUndoUnit,System.Int32)">
       <summary>Closes the specified parent undo unit.</summary>
       <param name="parentUnit">The <see cref="T:Microsoft.VisualStudio.OLE.Interop.IOleParentUndoUnit" />  to close.</param>
-      <param name="fCommit">true if the unit should be kept in the collection, false if it should be discarded.</param>
+      <param name="fCommit">
+            <see langword="true" /> if the unit should be kept in the collection, <see langword="false" /> if it should be discarded.</param>
       <returns>
-        <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if the parent unit had open child units and it was successfully closed. <see cref="F:Microsoft.VisualStudio.VSConstants.S_FALSE" /> if the parent undo unit did not have an open child and it was successfully closed. <see cref="F:Microsoft.VisualStudio.VSConstants.E_INVALIDARG" /> if <paramref name="parentUnit" /> does not match the currently open parent undo unit. Do not change any internal state unless the parent unit is blocked. </returns>
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if the parent unit had open child units and it was successfully closed. 
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_FALSE" /> if the parent undo unit did not have an open child and it was successfully closed. 
+          <see cref="F:Microsoft.VisualStudio.VSConstants.E_INVALIDARG" /> if <paramref name="parentUnit" /> does not match the currently open parent undo unit. Do not change any internal state unless the parent unit is blocked. </returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.UndoUnit.Microsoft#VisualStudio#OLE#Interop#IOleParentUndoUnit#Do(Microsoft.VisualStudio.OLE.Interop.IOleUndoManager)">
       <summary>Performs the undo operation.</summary>
       <param name="pManager">
-        <see cref="T:Microsoft.VisualStudio.OLE.Interop.IOleUndoManager" />.</param>
+            <see cref="T:Microsoft.VisualStudio.OLE.Interop.IOleUndoManager" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.UndoUnit.Microsoft#VisualStudio#OLE#Interop#IOleParentUndoUnit#FindUnit(Microsoft.VisualStudio.OLE.Interop.IOleUndoUnit)">
       <summary>Searches for the specified unit in the child undo unit hierarchy.</summary>
       <param name="pUU">The <see cref="T:Microsoft.VisualStudio.OLE.Interop.IOleUndoUnit" /> to search for.</param>
       <returns>
-        <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if the undo unit was located, otherwise <see cref="F:Microsoft.VisualStudio.VSConstants.S_FALSE" />.</returns>
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> if the undo unit was located, otherwise <see cref="F:Microsoft.VisualStudio.VSConstants.S_FALSE" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.OleUndoEngine.UndoUnit.Microsoft#VisualStudio#OLE#Interop#IOleParentUndoUnit#GetDescription(System.String@)">
       <summary>Gets the description of the undo unit.</summary>
@@ -870,8 +895,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.ProjectTypeResolutionService.GetType(System.String,System.Boolean,System.Boolean,Microsoft.VisualStudio.Shell.Design.ReferenceType)">
       <summary>When implemented in a derived class, attempts to retrieve a reference type based on search criteria like the name of the type and its case-sensitivity.</summary>
       <param name="name">The name of the reference to be retrieved.</param>
-      <param name="throwOnError">If true, indicates that a type retrieval error should throw an exception of type <see cref="T:System.TypeLoadException" />.</param>
-      <param name="ignoreCase">If true, indicates that the name search should be case-sensitive.</param>
+      <param name="throwOnError">If <see langword="true" />, indicates that a type retrieval error should throw an exception of type <see cref="T:System.TypeLoadException" />.</param>
+      <param name="ignoreCase">If <see langword="true" />, indicates that the name search should be case-sensitive.</param>
       <param name="type">A value from the <see cref="T:Microsoft.VisualStudio.Shell.Design.ReferenceType" /> enumeration.</param>
       <returns>The retrieved type.</returns>
     </member>
@@ -904,7 +929,7 @@
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.ProvideGlobalObjectProviderAttribute" /> class.</summary>
       <param name="providerType">The <see cref="T:System.Type" /> of the provider. The provider must derive from the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObjectProvider" /> class </param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="providerType" /> is null.</exception>
+              <paramref name="providerType" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.ProvideGlobalObjectProviderAttribute.Register(Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext)">
       <summary>Registers this attribute using the specified registry context.</summary>
@@ -939,7 +964,7 @@
       <summary>Renames the element</summary>
       <param name="element">An instance of a <see cref="T:EnvDTE.CodeElement" />.</param>
       <param name="newName">The new proposed name.</param>
-      <returns>When implemented by derived classes, true if it was possible to rename the element, otherwise false.</returns>
+      <returns>When implemented by derived classes, <see langword="true" /> if it was possible to rename the element, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDesignerData.#ctor">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDesignerData" />.</summary>
@@ -947,16 +972,17 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.#ctor(System.IServiceProvider,Microsoft.VisualStudio.Shell.Design.Serialization.DocData)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter" /> for the specified <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> object.</summary>
       <param name="provider">
-        <see cref="T:System.IServiceProvider" />.</param>
+            <see cref="T:System.IServiceProvider" />.</param>
       <param name="docData">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.Dispose">
       <summary>Disposes this object.</summary>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.Dispose(System.Boolean)">
       <summary>Disposes the resources of this object.</summary>
-      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.Generate">
       <summary>Takes the current type declaration and generates it into the doc data.</summary>
@@ -964,64 +990,67 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.GetService(System.Type)">
       <summary>Gets the service of the specified type.</summary>
       <param name="serviceType">The type of the service to get.</param>
-      <returns>The object representing the specified service, or null if none is available.</returns>
+      <returns>The object representing the specified service, or <see langword="null" /> if none is available.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.OnCodeDomChanged(System.EventArgs)">
       <summary>Called when the code has changed externally.</summary>
       <param name="e">
-        <see cref="T:System.EventArgs" />.</param>
+            <see cref="T:System.EventArgs" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.#ctor(System.IServiceProvider)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService" />.  </summary>
       <param name="provider">
-        <see cref="T:System.IServiceProvider" />.</param>
+            <see cref="T:System.IServiceProvider" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.CreateUniqueMethodName(System.ComponentModel.IComponent,System.ComponentModel.EventDescriptor)">
       <summary>Creates a unique method name for the event. </summary>
       <param name="component">
-        <see cref="T:System.ComponentModel.IComponent" />.</param>
+            <see cref="T:System.ComponentModel.IComponent" />.</param>
       <param name="e">
-        <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
+            <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
       <returns>The unique name.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.FreeMethod(System.ComponentModel.IComponent,System.ComponentModel.EventDescriptor,System.String)">
       <summary>Removes the specified method from the code if no event handlers are using it and it is empty.</summary>
       <param name="component">
-        <see cref="T:System.ComponentModel.IComponent" />.</param>
+            <see cref="T:System.ComponentModel.IComponent" />.</param>
       <param name="e">
-        <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
+            <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
       <param name="methodName">The name of the method to remove.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.GetCompatibleMethods(System.ComponentModel.EventDescriptor)">
       <summary>Gets all the methods in the code DOM that are compatible with the specified event descriptor.</summary>
       <param name="e">
-        <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
+            <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
       <returns>A collection of all the names of compatible methods.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.ShowCode">
       <summary>Displays the code in the document data in the editor window.</summary>
-      <returns>true if it was possible to open the editor window, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if it was possible to open the editor window, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.ShowCode(System.ComponentModel.IComponent,System.ComponentModel.EventDescriptor,System.String)">
       <summary>Shows the body of the user code with the given method name and event descriptor. </summary>
       <param name="component">
-        <see cref="T:System.ComponentModel.IComponent" />.</param>
+            <see cref="T:System.ComponentModel.IComponent" />.</param>
       <param name="e">
-        <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
+            <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
       <param name="methodName">The name of the method.</param>
-      <returns>true if it was possible to open the editor window, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if it was possible to open the editor window, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.ShowCode(System.Int32)">
       <summary>Displays the code at the specified line.</summary>
       <param name="lineNumber">The line of the code to display.</param>
-      <returns>true if it was possible to open the editor window, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if it was possible to open the editor window, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.UseMethod(System.ComponentModel.IComponent,System.ComponentModel.EventDescriptor,System.String)">
       <summary>Creates the method declaration for the given method name and event descriptor.</summary>
       <param name="component">
-        <see cref="T:System.ComponentModel.IComponent" />.</param>
+            <see cref="T:System.ComponentModel.IComponent" />.</param>
       <param name="e">
-        <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
+            <see cref="T:System.ComponentModel.EventDescriptor" />.</param>
       <param name="methodName">The name of the method.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.ValidateMethodName(System.String)">
@@ -1049,14 +1078,15 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ConfigurationHelperService.GetUserConfigurationPath(System.IServiceProvider,EnvDTE.Project,System.Configuration.ConfigurationUserLevel,System.Boolean,EnvDTE.Configuration)">
       <summary>Gets the most likely path to user configuration files for the current project, based on the values of different project properties. </summary>
       <param name="provider">
-        <see cref="T:System.IServiceProvider" />.</param>
+            <see cref="T:System.IServiceProvider" />.</param>
       <param name="project">The current <see cref="T:EnvDTE.Project" />.</param>
       <param name="userLevel">
-        <see cref="T:System.Configuration.ConfigurationUserLevel" />.</param>
-      <param name="underHostingProcess">true if in a hosted process, otherwise false.</param>
+            <see cref="T:System.Configuration.ConfigurationUserLevel" />.</param>
+      <param name="underHostingProcess">
+            <see langword="true" /> if in a hosted process, otherwise <see langword="false" />.</param>
       <param name="buildConfiguration">
-        <see cref="T:EnvDTE.BuildConfiguration" />.</param>
-      <returns>The user configuration path, or null if a valid path could not be constructed from the information in the project.</returns>
+            <see cref="T:EnvDTE.BuildConfiguration" />.</param>
+      <returns>The user configuration path, or <see langword="null" /> if a valid path could not be constructed from the information in the project.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ConfigurationHelperService.ReadConnectionStrings(System.String,Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.String)">
       <summary>Returns all the connection strings in the specified configuration that start with the specified prefix.</summary>
@@ -1068,16 +1098,16 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ConfigurationHelperService.ReadSettings(System.Configuration.ExeConfigurationFileMap,System.Configuration.ConfigurationUserLevel,Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.String,System.Boolean,System.Configuration.SettingsPropertyCollection)">
       <summary>Reads settings from the appropriate section. </summary>
       <param name="fileMap">
-        <see cref="T:System.Configuration.ExeConfigurationFileMap" />.</param>
+            <see cref="T:System.Configuration.ExeConfigurationFileMap" />.</param>
       <param name="userLevel">
-        <see cref="T:System.Configuration.ConfigurationUserLevel" />.</param>
+            <see cref="T:System.Configuration.ConfigurationUserLevel" />.</param>
       <param name="appConfigDocData">The <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> for the configuration file.</param>
       <param name="sectionName">The name of the section of the configuration file.</param>
       <param name="isUserScoped">True if the section contains user-specific settings.</param>
       <param name="settings">
-        <see cref="T:System.Configuration.SettingsPropertyCollection" />.</param>
+            <see cref="T:System.Configuration.SettingsPropertyCollection" />.</param>
       <returns>
-        <see cref="T:System.Configuration.SettingsPropertyValueCollection" />.</returns>
+          <see cref="T:System.Configuration.SettingsPropertyValueCollection" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ConfigurationHelperService.WriteConnectionStrings(System.String,Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.String,System.Configuration.ConnectionStringSettingsCollection)">
       <summary>Writes the connection strings to the specified configuration file after deleting any existing connection strings with the specified prefix.</summary>
@@ -1085,23 +1115,24 @@
       <param name="configDocData">The working <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
       <param name="groupPrefix">The section of the file where the <paramref name="connectionStrings" /> should be written.</param>
       <param name="connectionStrings">
-        <see cref="T:System.Configuration.ConnectionStringSettingsCollection" />.</param>
+            <see cref="T:System.Configuration.ConnectionStringSettingsCollection" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ConfigurationHelperService.WriteSettings(System.Configuration.ExeConfigurationFileMap,System.Configuration.ConfigurationUserLevel,Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.String,System.Boolean,System.Configuration.SettingsPropertyValueCollection)">
       <summary>Writes settings to the appropriate section after clearing existing settings.</summary>
       <param name="fileMap">
-        <see cref="T:System.Configuration.ExeConfigurationFileMap" />.</param>
+            <see cref="T:System.Configuration.ExeConfigurationFileMap" />.</param>
       <param name="userLevel">
-        <see cref="T:System.Configuration.ConfigurationUserLevel" />.</param>
+            <see cref="T:System.Configuration.ConfigurationUserLevel" />.</param>
       <param name="appConfigDocData">The <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> for the configuration file.</param>
       <param name="sectionName">The name of the section to write to.</param>
-      <param name="isUserScoped">true if the settings are user-specific, otherwise false.</param>
+      <param name="isUserScoped">
+            <see langword="true" /> if the settings are user-specific, otherwise <see langword="false" />.</param>
       <param name="values">The <see cref="T:System.Configuration.SettingsPropertyValueCollection" /> from which to read the settings.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.#ctor(System.IServiceProvider,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,Microsoft.VisualStudio.Shell.Design.Serialization.DocData)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService" />. </summary>
       <param name="provider">
-        <see cref="T:System.IServiceProvider" />.</param>
+            <see cref="T:System.IServiceProvider" />.</param>
       <param name="primaryHierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface for the associated node in the project hierarchy.</param>
       <param name="primaryItemId">The item ID for the primary node.</param>
       <param name="primaryDocData">The primary <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> object.</param>
@@ -1109,7 +1140,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.#ctor(System.IServiceProvider,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.Object)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService" /> for the specified node and document data.</summary>
       <param name="provider">
-        <see cref="T:System.IServiceProvider" />.</param>
+            <see cref="T:System.IServiceProvider" />.</param>
       <param name="primaryHierarchy">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface for the associated node in the project hierarchy.</param>
       <param name="primaryItemId">The item ID for the primary node.</param>
       <param name="primaryDocData">The primary <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> object.</param>
@@ -1129,7 +1160,7 @@
       <param name="access">A <see cref="T:System.IO.FileAccess" /> value that describes the access level of the file.</param>
       <param name="createTemplate">The path of a template file to be used in case the named document cannot be retrieved.</param>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />, or null if the file does not exist and <paramref name="createTemplate" /> is null.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />, or <see langword="null" /> if the file does not exist and <paramref name="createTemplate" /> is <see langword="null" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.GetChildFileName(System.String)">
       <summary>Returns the absolute path of a child file from its name.</summary>
@@ -1142,16 +1173,17 @@
       <param name="access">A <see cref="T:System.IO.FileAccess" /> value that describes the access level of the file.</param>
       <param name="createTemplate">The path of a template file to be used in case the named document cannot be retrieved.</param>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />, or null if the file does not exist and <paramref name="createTemplate" /> is null.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />, or <see langword="null" /> if the file does not exist and <paramref name="createTemplate" /> is <see langword="null" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.GetFileDocData(System.String,System.IO.FileAccess,System.String,System.Boolean)">
       <summary>Gets a <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> with the given name.</summary>
       <param name="fileName">The name of the requested child document.</param>
       <param name="access">A <see cref="T:System.IO.FileAccess" /> value that describes the access level of the file.</param>
       <param name="createTemplate">The path of a template file to be used in case the named document cannot be retrieved.</param>
-      <param name="addToHostList">true to add to the host list, otherwise false.</param>
+      <param name="addToHostList">
+            <see langword="true" /> to add to the host list, otherwise <see langword="false" />.</param>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />, or null if the file does not exist and <paramref name="createTemplate" /> is null.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />, or <see langword="null" /> if the file does not exist and <paramref name="createTemplate" /> is <see langword="null" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.GetSiblingDocData(System.String,System.IO.FileAccess,System.String)">
       <summary>Gets a <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> with the given name.</summary>
@@ -1159,7 +1191,7 @@
       <param name="access">A <see cref="T:System.IO.FileAccess" /> value that describes the access level of the file.</param>
       <param name="createTemplate">The path of a template file to be used in case the named document cannot be retrieved.</param>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.EnterpriseTools.Shell.DocData" />, or null if the file does not exist and <paramref name="createTemplate" /> is null.</returns>
+          <see cref="T:Microsoft.VisualStudio.EnterpriseTools.Shell.DocData" />, or <see langword="null" /> if the file does not exist and <paramref name="createTemplate" /> is <see langword="null" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.GetSiblingFileName(System.String)">
       <summary>Gets the absolute path of the sibling file name from the file name.</summary>
@@ -1169,17 +1201,20 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.HasChild(System.String)">
       <summary>Determines whether or not there is a child <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> with a given <paramref name="name" />.</summary>
       <param name="name">The name of the requested child.</param>
-      <returns>true if the given child exists in the project, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the given child exists in the project, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.HasFile(System.String)">
       <summary>Determines whether or not there is a <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> with a given <paramref name="fileName" />.</summary>
       <param name="fileName">The filename of the requested <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
-      <returns>true if the given file exists in the project, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the given file exists in the project, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.HasSibling(System.String)">
       <summary>Determines whether or not there is a sibling <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> with the specified name.</summary>
       <param name="name">The filename of the requested sibling <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
-      <returns>true if the given file exists in the project, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the given file exists in the project, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.Microsoft#VisualStudio#Shell#Interop#IVsHasRelatedSaveItems#GetRelatedSaveTreeItems(Microsoft.VisualStudio.Shell.Interop.VSSAVETREEITEM,System.UInt32,Microsoft.VisualStudio.Shell.Interop.VSSAVETREEITEM[],System.UInt32@)">
       <summary>Coordinates save operations across the documents maintained by this service. </summary>
@@ -1193,7 +1228,7 @@
       <summary>Called after an attribute has changed on a document in the Running Document Table.</summary>
       <param name="docCookie">The identifier of the document data object in the Running Document Table.</param>
       <param name="attribs">
-        <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB" /> flags for the attributes that have changed. </param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB" /> flags for the attributes that have changed. </param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.Microsoft#VisualStudio#Shell#Interop#IVsRunningDocTableEvents#OnAfterDocumentWindowHide(System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame)">
@@ -1218,7 +1253,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.Microsoft#VisualStudio#Shell#Interop#IVsRunningDocTableEvents#OnBeforeDocumentWindowShow(System.UInt32,System.Int32,Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame)">
       <summary>Called before a document window is displayed.</summary>
       <param name="docCookie">The identifier of the document data object in the Running Document Table.</param>
-      <param name="firstShow">true if the window will be displayed for the first time, otherwise false.</param>
+      <param name="firstShow">
+            <see langword="true" /> if the window will be displayed for the first time, otherwise <see langword="false" />.</param>
       <param name="pFrame">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame" /> interface of the window that will be displayed. </param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
@@ -1226,7 +1262,7 @@
       <summary>Called before the last lock of the specified type is released on the specified document in the Running Document Table (RDT). </summary>
       <param name="docCookie">The identifier of the document data object in the Running Document Table.</param>
       <param name="lockType">
-        <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTFLAGS" /> values specifying the type of lock being released.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTFLAGS" /> values specifying the type of lock being released.</param>
       <param name="readLocksRemaining">The number of read locks remaining.</param>
       <param name="editLocksRemaining">The number of edit locks remaining.</param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
@@ -1235,14 +1271,14 @@
       <summary>Called after an attribute has changed on a document in the Running Document Table.</summary>
       <param name="docCookie">The identifier of the document data object in the Running Document Table.</param>
       <param name="grfAttribs">
-        <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB" /> flags for the attributes that have changed. </param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB" /> flags for the attributes that have changed. </param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.Microsoft#VisualStudio#Shell#Interop#IVsRunningDocTableEvents2#OnAfterAttributeChangeEx(System.UInt32,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.String)">
       <summary>Called after an attribute has changed on a document in the Running Document Table.</summary>
       <param name="docCookie">The identifier of the document in the Running Document Table.</param>
       <param name="attribs">
-        <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB" /> values corresponding to the attributes that have changed. </param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB" /> values corresponding to the attributes that have changed. </param>
       <param name="pHierOld">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsHierarchy" /> interface of the node that previously owned the document.</param>
       <param name="itemidOld">The previous item ID.</param>
       <param name="pszMkDocumentOld">The previous name of the document.</param>
@@ -1261,7 +1297,7 @@
       <summary>Called after the first lock of the specified type is applied to the specified document in the Running Document Table (RDT). </summary>
       <param name="docCookie">The identifier of the document data object in the Running Documents Table.</param>
       <param name="lockType">
-        <see cref="T:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS" /> values specifying the type of lock.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Interop._VSRDTFLAGS" /> values specifying the type of lock.</param>
       <param name="readLocksRemaining">The number of read locks remaining.</param>
       <param name="editLocksRemaining">The number of edit locks remaining.</param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
@@ -1274,7 +1310,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.Microsoft#VisualStudio#Shell#Interop#IVsRunningDocTableEvents2#OnBeforeDocumentWindowShow(System.UInt32,System.Int32,Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame)">
       <summary>Called before a document window is displayed.</summary>
       <param name="docCookie">The identifier of the document data object in the Running Document Table.</param>
-      <param name="firstShow">true if the window will be displayed for the first time, otherwise false.</param>
+      <param name="firstShow">
+            <see langword="true" /> if the window will be displayed for the first time, otherwise <see langword="false" />.</param>
       <param name="pFrame">The <see cref="T:Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame" /> interface of the window that will be displayed. </param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
     </member>
@@ -1282,7 +1319,7 @@
       <summary>Called before the last lock of the specified type is released on the specified document in the Running Document Table (RDT).</summary>
       <param name="docCookie">The identifier of the document data object in the Running Document Table.</param>
       <param name="lockType">
-        <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTFLAGS" /> values specifying the type of lock being released.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTFLAGS" /> values specifying the type of lock being released.</param>
       <param name="readLocksRemaining">The number of read locks remaining.</param>
       <param name="editLocksRemaining">The number of edit locks remaining.</param>
       <returns>If the method succeeds, it returns <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" />. If it fails, it returns an error code.</returns>
@@ -1294,7 +1331,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.#ctor(System.IServiceProvider,System.String)">
       <summary>Initializes a new instance of DocData from the specified file and sets the site from the specified site.</summary>
       <param name="provider">
-        <see cref="T:System.IServiceProvider" />.</param>
+            <see cref="T:System.IServiceProvider" />.</param>
       <param name="fileName">The source file.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.#ctor(System.Object)">
@@ -1314,7 +1351,8 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Dispose(System.Boolean)">
       <summary>Disposes the <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</summary>
-      <param name="disposing">trueto release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" />to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Finalize">
       <summary>Called automatically when this object is destroyed.</summary>
@@ -1323,7 +1361,7 @@
       <summary>Close the document based on a user request.</summary>
       <param name="saveOptions">Values from the <see cref="T:Microsoft.VisualStudio.Shell.Interop.__FRAMECLOSE" /> enumeration.</param>
       <returns>
-        <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> .</returns>
+          <see cref="F:Microsoft.VisualStudio.VSConstants.S_OK" /> .</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Microsoft#VisualStudio#Shell#Interop#IVsDocumentLockHolder#ShowDocumentHolder">
       <summary>Called by Visual Studio to show the window frame associated with this document.</summary>
@@ -1361,12 +1399,13 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextReader.#ctor(Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.Boolean)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextReader" /> for the specified doc data object and determines whether <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Dispose" /> will be called on the <paramref name="docData" /> when the DocDataTextReader is disposed.</summary>
-      <param name="docData">The <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> that the DocDataTextReader reads.</param>
-      <param name="disposeDocData">If true, <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Dispose" /> will be called on the underlying <paramref name="docData" />.</param>
+      <param name="docData">The <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> that the <see langword="DocDataTextReader" /> reads.</param>
+      <param name="disposeDocData">If <see langword="true" />, <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Dispose" /> will be called on the underlying <paramref name="docData" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextReader.Dispose(System.Boolean)">
       <summary>Overrides the base class implementation to call <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Dispose" /> on the underlying <paramref name="docData" /> if <paramref name="disposeDocData" /> was true in the overloaded constructor <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextReader.#ctor(Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.Boolean)" />.</summary>
-      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextReader.Peek">
       <summary>Gets the current position in the text.</summary>
@@ -1391,17 +1430,18 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.#ctor(Microsoft.VisualStudio.Shell.Design.Serialization.DocData)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter" /> for the given doc data.</summary>
       <param name="docData">
-        <see cref="T:Microsoft.VisualStudio.Modeling.Shell.DocData" />.</param>
+            <see cref="T:Microsoft.VisualStudio.Modeling.Shell.DocData" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.#ctor(Microsoft.VisualStudio.Shell.Design.Serialization.DocData,System.Boolean)">
       <summary>Initializes a new instance of <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter" /> for the specified doc data, and determines whether or not to dispose the doc data object when this instance is closed or disposed.</summary>
       <param name="docData">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
-      <param name="disposeDocData">If true, this instance should dispose the doc data when it is closed or disposed.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</param>
+      <param name="disposeDocData">If <see langword="true" />, this instance should dispose the doc data when it is closed or disposed.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.Dispose(System.Boolean)">
       <summary>Disposes the object and its resources.</summary>
-      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+      <param name="disposing">
+            <see langword="true" /> to release both managed and unmanaged resources; <see langword="false" /> to release only unmanaged resources.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.Flush">
       <summary>Replaces the contents of the text stream with the contents of the string builder.</summary>
@@ -1412,12 +1452,12 @@
       <returns>The service.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.Write(System.Char)">
-      <summary>Appends a char to the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
-      <param name="ch">The char that is appended to the underlying <see cref="T:System.Text.StringBuilder" />.</param>
+      <summary>Appends a <see langword="char" /> to the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
+      <param name="ch">The <see langword="char" /> that is appended to the underlying <see cref="T:System.Text.StringBuilder" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.Write(System.String)">
-      <summary>Appends a string to the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
-      <param name="s">The string that is appended to the underlying <see cref="T:System.Text.StringBuilder" />.</param>
+      <summary>Appends a <see langword="string" /> to the underlying <see cref="T:System.Text.StringBuilder" />.</summary>
+      <param name="s">The <see langword="string" /> that is appended to the underlying <see cref="T:System.Text.StringBuilder" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.LocalizationProviderService.#ctor">
       <summary>Creates a new instance of a LocalizationProviderService.</summary>
@@ -1426,12 +1466,12 @@
       <summary>Creates a provider for the given serialization manager.</summary>
       <param name="manager">A serialization manager.</param>
       <returns>
-        <see cref="T:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider" />.</returns>
+          <see cref="T:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideDesignerLoaderAttribute.#ctor(Microsoft.VisualStudio.Shell.Design.AttributeScope,System.Object)">
       <summary>Provides a new instance of ProvideDesignerLoaderAttribute.</summary>
-      <param name="scope">The values of the enumeration <see cref="T:Microsoft.VisualStudio.Shell.Design.AttributeScope" /> are Language and File.</param>
-      <param name="scopeData">The value of the <paramref name="scope" />. Logic internal to the method treats this as a string.</param>
+      <param name="scope">The values of the enumeration <see cref="T:Microsoft.VisualStudio.Shell.Design.AttributeScope" /> are <see langword="Language" /> and <see langword="File" />.</param>
+      <param name="scopeData">The value of the <paramref name="scope" />. Logic internal to the method treats this as a <see langword="string" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideDesignerLoaderAttribute.Register(Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext)">
       <summary>Called to register this attribute with the given context.</summary>
@@ -1447,14 +1487,15 @@
       <param name="name">The name of the associated code generator.</param>
       <param name="description">The description of the associated code generator.</param>
       <param name="packageGuid">The GUID of the package containing a project that supports invoking a code generator of <paramref name="generatorType" />.</param>
-      <param name="generateDesignTimeSource">true if the associated code generator generates source code for use at design time, otherwise false.</param>
+      <param name="generateDesignTimeSource">
+            <see langword="true" /> if the associated code generator generates source code for use at design time, otherwise <see langword="false" />.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideGeneratorAttribute.Register(Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext)">
       <summary>Registers this attribute with the given context.</summary>
       <param name="context">A <see cref="T:Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext" /> provided by an external registration tool. The context can be used to create registry keys, log registration activity, and obtain information about the component being registered.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideGeneratorAttribute.Unregister(Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext)">
-      <summary>Removes the registration information about a VSPackage when called by an external registration tool like regpkg.exe. For more information, see How to: Register Managed VSPackages.</summary>
+      <summary>Removes the registration information about a VSPackage when called by an external registration tool like regpkg.exe. For more information, see Registering VSPackages.</summary>
       <param name="context">A <see cref="T:Microsoft.VisualStudio.Shell.RegistrationAttribute.RegistrationContext" /> provided by an external registration tool. The context can be used to create registry keys, log registration activity, and obtain information about the component being registered.</param>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.RelatedDocDataCollection.#ctor">
@@ -1484,7 +1525,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.RelatedDocDataCollection.Contains(Microsoft.VisualStudio.Shell.Design.Serialization.DocData)">
       <summary>Determines whether the collection contains the specified document data object.</summary>
       <param name="value">The <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> object.</param>
-      <returns>true if the collection contains the specified document data object, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the collection contains the specified document data object, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.Serialization.RelatedDocDataCollection.CopyTo(Microsoft.VisualStudio.Shell.Design.Serialization.DocData[],System.Int32)">
       <summary>Copies the collection to an array of document data objects starting at the specified index.</summary>
@@ -1517,14 +1559,14 @@
       <param name="value">The <see cref="T:System.Attribute" /> to be added to the end of the collection.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="value" /> cannot be placed on a class.</exception>
-      <exception cref="T:System.ArgumentNullException">The attribute is null.</exception>
+              <paramref name="value" /> cannot be placed on a class.</exception>
+      <exception cref="T:System.ArgumentNullException">The attribute is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.AttributeCollection.Remove(System.Attribute)">
       <summary>Removes the first occurrence of a specific <see cref="T:System.Attribute" /> from the <see cref="T:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.AttributeCollection" />.</summary>
       <param name="value">The <see cref="T:System.Attribute" /> to remove from the collection.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="value" /> is null.</exception>
+              <paramref name="value" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection.Add(System.Reflection.ConstructorInfo)">
       <summary>Adds a <see cref="T:System.Reflection.ConstructorInfo" /> to the end of the collection.</summary>
@@ -1533,20 +1575,20 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection.Add(System.Type[])">
       <summary>Adds an array of <see cref="T:System.Reflection.ConstructorInfo" /> to the end of the collection. </summary>
-      <param name="argumentTypes">The types of arguments to be passed to the constructor. This can be null or an empty array to declare an empty constructor.</param>
+      <param name="argumentTypes">The types of arguments to be passed to the constructor. This can be <see langword="null" /> or an empty array to declare an empty constructor.</param>
       <returns>The <see cref="T:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection" /> index at which the value has been added.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection.Add(System.Type[],System.Attribute[])">
       <summary>Adds an array of <see cref="T:System.Reflection.ConstructorInfo" /> to the end of the collection.</summary>
-      <param name="argumentTypes">The types of arguments to be passed to the constructor. This can be null or an empty array to declare an empty constructor.</param>
-      <param name="attributes">An array of attributes to be attached to this constructor. This may be null or empty.</param>
+      <param name="argumentTypes">The types of arguments to be passed to the constructor. This can be <see langword="null" /> or an empty array to declare an empty constructor.</param>
+      <param name="attributes">An array of attributes to be attached to this constructor. This may be <see langword="null" /> or empty.</param>
       <returns>The index at which the value has been added.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection.Remove(System.Reflection.ConstructorInfo)">
       <summary>Removes the first occurrence of a specific <see cref="T:System.Reflection.ConstructorInfo" /> from the collection.</summary>
       <param name="value">The <see cref="T:System.Reflection.ConstructorInfo" /> to remove from the collection.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="value" /> is null.</exception>
+              <paramref name="value" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.CreateType">
       <summary>Creates a virtual type based on the configuration of this virtual type builder.</summary>
@@ -1564,9 +1606,9 @@
       <param name="handlerType">The type of delegate this event represents.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> or <paramref name="handlerType" /> is null.</exception>
+              <paramref name="name" /> or <paramref name="handlerType" /> is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="handlerType" /> is not a run-time type.</exception>
+              <paramref name="handlerType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.EventInfoCollection.Add(System.String,System.Type,System.Attribute[])">
       <summary>Adds an <see cref="T:System.Reflection.EventInfo" /> to the end of the collection. </summary>
@@ -1575,9 +1617,9 @@
       <param name="attributes">This value must be <see cref="F:System.Reflection.MethodAttributes.Public" />  and/or <see cref="F:System.Reflection.MethodAttributes.Static" />.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> or <paramref name="handlerType" /> or an element in <paramref name="attributes" /> is null. <paramref name="attributes" /> itself may be null.</exception>
+              <paramref name="name" /> or <paramref name="handlerType" /> or an element in <paramref name="attributes" /> is <see langword="null" />. <paramref name="attributes" /> itself may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="handlerType" /> is not a run-time type.</exception>
+              <paramref name="handlerType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.EventInfoCollection.Add(System.String,System.Type,System.Attribute[],System.Reflection.MethodAttributes)">
       <summary>Adds an <see cref="T:System.Reflection.EventInfo" /> to the end of the collection. </summary>
@@ -1587,15 +1629,16 @@
       <param name="methodAttributes">The only method attributes currently supported are <see cref="F:System.Reflection.MethodAttributes.Public" /> and/or <see cref="F:System.Reflection.MethodAttributes.Static" />.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> or <paramref name="handlerType" /> or an element in <paramref name="attributes" /> is null. <paramref name="attributes" /> itself may be null.</exception>
+              <paramref name="name" /> or <paramref name="handlerType" /> or an element in <paramref name="attributes" /> is <see langword="null" />. <paramref name="attributes" /> itself may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="handlerType" /> is not a run-time type-or-<paramref name="methodAttributes" /> does not contain <see cref="F:System.Reflection.MethodAttributes.Public" /> or contains set bits other than <see cref="F:System.Reflection.MethodAttributes.Public" /> and <see cref="F:System.Reflection.MethodAttributes.Static" />, or attributes passed in through the <paramref name="attributes" /> parameter cannot be applied to events.</exception>
+              <paramref name="handlerType" /> is not a run-time type-or-
+              <paramref name="methodAttributes" /> does not contain <see cref="F:System.Reflection.MethodAttributes.Public" /> or contains set bits other than <see cref="F:System.Reflection.MethodAttributes.Public" /> and <see cref="F:System.Reflection.MethodAttributes.Static" />, or attributes passed in through the <paramref name="attributes" /> parameter cannot be applied to events.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.EventInfoCollection.Remove(System.Reflection.EventInfo)">
       <summary>Removes the first occurrence of a specific <see cref="T:System.Reflection.EventInfo" /> from the collection. </summary>
       <param name="value">The <see cref="T:System.Reflection.EventInfo" /> to remove from the collection.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="value" /> is null.</exception>
+              <paramref name="value" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.FieldInfoCollection.Add(System.Reflection.FieldInfo)">
       <summary>Adds a <see cref="T:System.Reflection.FieldInfo" /> to the end of the collection.</summary>
@@ -1608,9 +1651,9 @@
       <param name="fieldType">The type of field.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> or <paramref name="fieldType" /> is null.</exception>
+              <paramref name="name" /> or <paramref name="fieldType" /> is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="fieldType" /> is not a run-time type.</exception>
+              <paramref name="fieldType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.FieldInfoCollection.Add(System.String,System.Type,System.Attribute[])">
       <summary>Adds a <see cref="T:System.Reflection.FieldInfo" /> to the end of the collection. </summary>
@@ -1619,9 +1662,9 @@
       <param name="attributes">An array of attributes that must be <see cref="F:System.Reflection.FieldAttributes.Public" /> and/or <see cref="F:System.Reflection.FieldAttributes.Static" />.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> or <paramref name="fieldType" /> or an element in <paramref name="attributes" /> is null. <paramref name="attributes" /> itself may be null.</exception>
+              <paramref name="name" /> or <paramref name="fieldType" /> or an element in <paramref name="attributes" /> is <see langword="null" />. <paramref name="attributes" /> itself may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="fieldType" /> is not a run-time type.</exception>
+              <paramref name="fieldType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.FieldInfoCollection.Add(System.String,System.Type,System.Attribute[],System.Reflection.FieldAttributes)">
       <summary>Adds a <see cref="T:System.Reflection.FieldInfo" /> to the end of the collection. </summary>
@@ -1631,28 +1674,29 @@
       <param name="fieldAttributes">This parameter specifies additional field attributes for this member. The default field attribute is <see cref="F:System.Reflection.FieldAttributes.Public" />. The only field attributes currently supported are <see cref="F:System.Reflection.FieldAttributes.Public" /> and <see cref="F:System.Reflection.FieldAttributes.Static" />.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> or <paramref name="fieldType" /> or an element in <paramref name="attributes" /> is null. <paramref name="attributes" /> itself may be null.</exception>
+              <paramref name="name" /> or <paramref name="fieldType" /> or an element in <paramref name="attributes" /> is <see langword="null" />. <paramref name="attributes" /> itself may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="fieldType" /> is not a run-time type-or-<paramref name="fieldAttributes" /> does not contain <see cref="F:System.Reflection.FieldAttributes.Public" /> or contains set bits other than <see cref="F:System.Reflection.FieldAttributes.Public" /> and <see cref="F:System.Reflection.FieldAttributes.Static" />, or attributes passed in through the <paramref name="attributes" /> parameter cannot be applied to fields.</exception>
+              <paramref name="fieldType" /> is not a run-time type-or-
+              <paramref name="fieldAttributes" /> does not contain <see cref="F:System.Reflection.FieldAttributes.Public" /> or contains set bits other than <see cref="F:System.Reflection.FieldAttributes.Public" /> and <see cref="F:System.Reflection.FieldAttributes.Static" />, or attributes passed in through the <paramref name="attributes" /> parameter cannot be applied to fields.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.FieldInfoCollection.Remove(System.Reflection.FieldInfo)">
       <summary>Removes the first occurrence of a specific <see cref="T:System.Reflection.FieldInfo" /> from the collection.</summary>
       <param name="value">The <see cref="T:System.Reflection.FieldInfo" /> to remove from the collection.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="value" /> is null.</exception>
+              <paramref name="value" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.InitializeFromType(System.ComponentModel.Design.ITypeResolutionService,System.CodeDom.CodeNamespace)">
       <summary>Initializes this virtual type builder with data obtained from the given type.</summary>
       <param name="typeResolutionService">The type resolution service to use when resolving types in the Code Document Object Model (CodeDOM) tree.</param>
       <param name="ns">The namespace that contains a type to create. This namespace must contain exactly one type.</param>
-      <exception cref="T:System.ArgumentNullException">If any of the parameters are null.</exception>
+      <exception cref="T:System.ArgumentNullException">If any of the parameters are <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">If <paramref name="ns" /> contains anything other than a single type declaration.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.InitializeFromType(System.ComponentModel.Design.ITypeResolutionService,System.CodeDom.CodeTypeDeclaration)">
       <summary>Initializes this virtual type builder with data obtained from the given type.</summary>
       <param name="typeResolutionService">The type resolution service to use when resolving types in the Code Document Object Model (CodeDOM) tree.</param>
       <param name="typeDecl">Used to initialize a type based on a type declaration.</param>
-      <exception cref="T:System.ArgumentNullException">If any of the parameters are null.</exception>
+      <exception cref="T:System.ArgumentNullException">If any of the parameters are <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.InitializeFromType(System.ComponentModel.Design.ITypeResolutionService,System.CodeDom.CodeTypeDeclaration,System.String)">
       <summary>Initializes this virtual type builder with data obtained from the given type.</summary>
@@ -1671,43 +1715,49 @@
       <summary>Adds a <see cref="T:System.Reflection.MethodInfo" /> to the end of the collection. </summary>
       <param name="name">The name of the method to add.</param>
       <param name="returnType">The return type of the method. This should be typeof(void) for void return types.</param>
-      <param name="paramTypes">The types of the parameters to this method. This can be null or an empty array to declare no parameters.</param>
+      <param name="paramTypes">The types of the parameters to this method. This can be <see langword="null" /> or an empty array to declare no parameters.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="returnType" /> is null.-or-An element in <paramref name="paramTypes" /> is null.<paramref name="paramTypes" /> property may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="returnType" /> is <see langword="null" />.-or-An element in <paramref name="paramTypes" /> is <see langword="null" />.
+              <paramref name="paramTypes" /> property may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="returnType" /> is not a run-time type.</exception>
+              <paramref name="returnType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.MethodInfoCollection.Add(System.String,System.Type,System.Type[],System.Attribute[])">
       <summary>Adds a <see cref="T:System.Reflection.MethodInfo" /> to the end of the collection.</summary>
       <param name="name">The name of the method to add.</param>
       <param name="returnType">The return type of the method. This should be typeof(void) for void return types.</param>
-      <param name="paramTypes">The types of the parameters to this method. This can be null or an empty array to declare no parameters.</param>
+      <param name="paramTypes">The types of the parameters to this method. This can be <see langword="null" /> or an empty array to declare no parameters.</param>
       <param name="attributes">This parameter is used to configure the class member appropriately. The <see cref="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.MethodInfoCollection.Add(System.String,System.Type,System.Type[],System.Attribute[])" /> method only accepts the values of <see cref="T:System.CodeDom.MemberAttributes" /> that fit into the <see cref="F:System.CodeDom.MemberAttributes.AccessMask" /> or <see cref="F:System.CodeDom.MemberAttributes.ScopeMask" /> categories.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="returnType" /> is null.-or-An element in <paramref name="paramTypes" /> is null.-or-An element in <paramref name="attributes" /> is null.<paramref name="attributes " />and<paramref name=" paramTypes" /> properties may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="returnType" /> is <see langword="null" />.-or-An element in <paramref name="paramTypes" /> is <see langword="null" />.-or-An element in <paramref name="attributes" /> is <see langword="null" />.
+              <paramref name="attributes " />and<paramref name=" paramTypes" /> properties may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="handlerType" /> is not a run-time type.</exception>
+              <paramref name="handlerType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.MethodInfoCollection.Add(System.String,System.Type,System.Type[],System.Attribute[],System.Reflection.MethodAttributes)">
       <summary>Adds a <see cref="T:System.Reflection.MethodInfo" /> to the end of the collection. </summary>
       <param name="name">The name of the method to add.</param>
       <param name="returnType">The return type of the method. This should be typeof(void) for void return types.</param>
-      <param name="paramTypes">The types of the parameters to this method. This can be null or an empty array to declare no parameters.</param>
+      <param name="paramTypes">The types of the parameters to this method. This can be <see langword="null" /> or an empty array to declare no parameters.</param>
       <param name="attributes">This parameter is used to configure the class member appropriately. The <see cref="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.MethodInfoCollection.Add(System.String,System.Type,System.Type[],System.Attribute[],System.Reflection.MethodAttributes)" /> method only accepts the values of <see cref="T:System.CodeDom.MemberAttributes" /> that fit into the <see cref="F:System.CodeDom.MemberAttributes.AccessMask" /> or <see cref="F:System.CodeDom.MemberAttributes.ScopeMask" /> categories.</param>
       <param name="methodAttributes">This parameter specifies additional event attributes for this member. The default method attribute is <see cref="F:System.Reflection.MethodAttributes.Public" />. The only method attributes supported today are <see cref="F:System.Reflection.MethodAttributes.Public" /> and <see cref="F:System.Reflection.MethodAttributes.Static" /> .</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="returnType" /> is null.-or-An element in <paramref name="paramTypes" /> is null.-or-An element in <paramref name="attributes" /> is null.<paramref name="attributes " />and<paramref name=" paramTypes" /> properties may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="returnType" /> is <see langword="null" />.-or-An element in <paramref name="paramTypes" /> is <see langword="null" />.-or-An element in <paramref name="attributes" /> is <see langword="null" />.
+              <paramref name="attributes " />and<paramref name=" paramTypes" /> properties may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="handlerType" /> is not a run-time type.</exception>
+              <paramref name="handlerType" /> is not a run-time type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.MethodInfoCollection.Remove(System.Reflection.MethodInfo)">
       <summary>Removes the first occurrence of a specific <see cref="T:System.Reflection.MethodInfo" /> from the collection. </summary>
       <param name="value">The <see cref="T:System.Reflection.MethodInfo" /> to remove from the collection.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="value" /> is null.</exception>
+              <paramref name="value" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Add(System.Reflection.PropertyInfo)">
       <summary>Adds a <see cref="T:System.Reflection.PropertyInfo" /> to the end of the collection. </summary>
@@ -1721,9 +1771,10 @@
       <param name="readOnly">Determines if this property is read only or read write.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="propertyType" /> is null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="propertyType" /> is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="propertyType" /> is not a runtime type.</exception>
+              <paramref name="propertyType" /> is not a runtime type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Add(System.String,System.Type,System.Boolean,System.Attribute[])">
       <summary>Adds a <see cref="T:System.Reflection.PropertyInfo" /> to the end of the collection. </summary>
@@ -1733,9 +1784,11 @@
       <param name="attributes">This parameter is used to configure the class member appropriately. Add only accepts the values of <see cref="T:System.CodeDom.MemberAttributes" /> that fit into the <see cref="F:System.CodeDom.MemberAttributes.AccessMask" /> or <see cref="F:System.CodeDom.MemberAttributes.ScopeMask" /> categories.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="propertyType" /> is null-or-An element in <paramref name="attributes" /> is null.<paramref name="attributes" /> may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="propertyType" /> is <see langword="null" />-or-An element in <paramref name="attributes" /> is <see langword="null" />.
+              <paramref name="attributes" /> may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="propertyType" /> is not a runtime type.</exception>
+              <paramref name="propertyType" /> is not a runtime type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Add(System.String,System.Type,System.Boolean,System.Attribute[],System.Reflection.MethodAttributes)">
       <summary>Adds a <see cref="T:System.Reflection.PropertyInfo" /> to the end of the collection. </summary>
@@ -1746,9 +1799,11 @@
       <param name="methodAttributes">Specifies additional event attributes for this member. The default method attribute is <see cref="F:System.Reflection.MethodAttributes.Public" />. The only method attributes supported today are <see cref="F:System.Reflection.MethodAttributes.Public" /> and <see cref="F:System.Reflection.MethodAttributes.Static" /> .</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="propertyType" /> is null-or-An element in <paramref name="attributes" /> is null.<paramref name="attributes" /> may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="propertyType" /> is <see langword="null" />-or-An element in <paramref name="attributes" /> is <see langword="null" />.
+              <paramref name="attributes" /> may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="propertyType" /> is not a runtime type.</exception>
+              <paramref name="propertyType" /> is not a runtime type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Add(System.String,System.Type,System.Boolean,System.Type[])">
       <summary>Adds a <see cref="T:System.Reflection.PropertyInfo" /> to the end of the collection. </summary>
@@ -1758,9 +1813,11 @@
       <param name="paramTypes">The types of parameters in a parameterized property.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="propertyType" /> is null-or-An element in <paramref name="paramTypes" /> is null.<paramref name="paramTypes" /> may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="propertyType" /> is <see langword="null" />-or-An element in <paramref name="paramTypes" /> is <see langword="null" />.
+              <paramref name="paramTypes" /> may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="propertyType" /> is not a runtime type.</exception>
+              <paramref name="propertyType" /> is not a runtime type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Add(System.String,System.Type,System.Boolean,System.Type[],System.Attribute[])">
       <summary>Adds a <see cref="T:System.Reflection.PropertyInfo" /> to the end of the collection. </summary>
@@ -1771,9 +1828,11 @@
       <param name="attributes">This parameter is used to configure the class member appropriately. Add only accepts the values of <see cref="T:System.CodeDom.MemberAttributes" /> that fit into the <see cref="F:System.CodeDom.MemberAttributes.AccessMask" /> or <see cref="F:System.CodeDom.MemberAttributes.ScopeMask" /> categories.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="propertyType" /> is null-or-An element in <paramref name="attributes" /> is null.-or-An element in <paramref name="paramTypes" /> is null.<paramref name="attributes" /> and <paramref name="paramTypes" /> may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="propertyType" /> is <see langword="null" />-or-An element in <paramref name="attributes" /> is <see langword="null" />.-or-An element in <paramref name="paramTypes" /> is <see langword="null" />.
+              <paramref name="attributes" /> and <paramref name="paramTypes" /> may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="propertyType" /> is not a runtime type.</exception>
+              <paramref name="propertyType" /> is not a runtime type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Add(System.String,System.Type,System.Boolean,System.Type[],System.Attribute[],System.Reflection.MethodAttributes)">
       <summary>Adds a <see cref="T:System.Reflection.PropertyInfo" /> to the end of the collection.</summary>
@@ -1785,15 +1844,17 @@
       <param name="methodAttributes">Specifies additional event attributes for this member. The default method attribute is <see cref="F:System.Reflection.MethodAttributes.Public" />. The only method attributes supported today are <see cref="F:System.Reflection.MethodAttributes.Public" /> and <see cref="F:System.Reflection.MethodAttributes.Static" />.</param>
       <returns>The index at which the value has been added.</returns>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="name" /> is null.-or-<paramref name="propertyType" /> is null-or-An element in <paramref name="attributes" /> is null.-or-An element in <paramref name="paramTypes" /> is null.<paramref name="attributes" /> and <paramref name="paramTypes" /> may be null.</exception>
+              <paramref name="name" /> is <see langword="null" />.-or-
+              <paramref name="propertyType" /> is <see langword="null" />-or-An element in <paramref name="attributes" /> is <see langword="null" />.-or-An element in <paramref name="paramTypes" /> is <see langword="null" />.
+              <paramref name="attributes" /> and <paramref name="paramTypes" /> may be <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">
-        <paramref name="propertyType" /> is not a runtime type.</exception>
+              <paramref name="propertyType" /> is not a runtime type.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.PropertyInfoCollection.Remove(System.Reflection.PropertyInfo)">
       <summary>Removes the first occurrence of a specific <see cref="T:System.Reflection.PropertyInfo" /> from the collection.</summary>
       <param name="value">The <see cref="T:System.Reflection.PropertyInfo" /> to remove from the collection.</param>
       <exception cref="T:System.ArgumentNullException">
-        <paramref name="value" /> is null.</exception>
+              <paramref name="value" /> is <see langword="null" />.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.#ctor">
       <summary>Initializes a new instance of the <see cref="T:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor" /> class.</summary>
@@ -1801,22 +1862,22 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
       <summary>Adds the given delegate to the given event.</summary>
       <param name="eventInfo">The event to add the handler to.</param>
-      <param name="instance">The instance on which to add the event handler. This may be null if the event is static.</param>
+      <param name="instance">The instance on which to add the event handler. This may be <see langword="null" /> if the event is static.</param>
       <param name="handler">The event handler to add.</param>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.GetField(System.Reflection.FieldInfo,System.Object)">
       <summary>Gets the value of the requested field.</summary>
       <param name="field">The field to get the value of.</param>
-      <param name="instance">The instance on which to retrieve the field. This may be null if the field is static.</param>
+      <param name="instance">The instance on which to retrieve the field. This may be <see langword="null" /> if the field is static.</param>
       <returns>An object that represents the requested field.</returns>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object[])">
       <summary>Gets the value of the requested property.</summary>
       <param name="property">The property for which to get the value.</param>
-      <param name="instance">The instance on which to retrieve the property. This may be null if the property is static.</param>
-      <param name="args">An optional array of arguments used for parameterized properties.  This will never be null, but may be an empty array.</param>
+      <param name="instance">The instance on which to retrieve the property. This may be <see langword="null" /> if the property is static.</param>
+      <param name="args">An optional array of arguments used for parameterized properties.  This will never be <see langword="null" />, but may be an empty array.</param>
       <returns>An object that represents the requested property.</returns>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
     </member>
@@ -1830,7 +1891,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.InvokeMethod(System.Reflection.MethodInfo,System.Object,System.Object[])">
       <summary>Invokes a method on the object.</summary>
       <param name="method">The method to invoke.</param>
-      <param name="instance">The instance on which to invoke the method. This may be null if the method is static.</param>
+      <param name="instance">The instance on which to invoke the method. This may be <see langword="null" /> if the method is static.</param>
       <param name="args">The arguments to the method.</param>
       <returns>An object that represents a return value of an invoked method.</returns>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
@@ -1838,22 +1899,22 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.RemoveEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
       <summary>Removes the given delegate from the given event.</summary>
       <param name="eventInfo">The event to remove the handler from.</param>
-      <param name="instance">The instance on which to remove the event handler.  This may be null if the event is static.</param>
+      <param name="instance">The instance on which to remove the event handler.  This may be <see langword="null" /> if the event is static.</param>
       <param name="handler">The event handler to remove.</param>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.SetField(System.Reflection.FieldInfo,System.Object,System.Object)">
       <summary>Sets the value of the requested field.</summary>
       <param name="field">The field for which to set the value.</param>
-      <param name="instance">The instance on which to set the field. This may be null if the field is static.</param>
+      <param name="instance">The instance on which to set the field. This may be <see langword="null" /> if the field is static.</param>
       <param name="value">The new value of the field.</param>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VirtualTypeImplementor.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Object[])">
       <summary>Sets the value of the requested property.</summary>
       <param name="property">The property for which to set the value.</param>
-      <param name="instance">The instance on which to set the property. This may be null if the property is static.</param>
-      <param name="value">An optional array of arguments used for parameterized properties.  This will never be null, but may be an empty array.</param>
+      <param name="instance">The instance on which to set the property. This may be <see langword="null" /> if the property is static.</param>
+      <param name="value">An optional array of arguments used for parameterized properties.  This will never be <see langword="null" />, but may be an empty array.</param>
       <param name="args">The new value of the property.</param>
       <exception cref="T:System.NotImplementedException">If non-abstract derived class did not provide an implementation by overriding this method.</exception>
     </member>
@@ -1928,7 +1989,8 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.VsTargetFrameworkProvider.IsSupportedType(System.Type)">
       <summary>Determines whether or not the specified type is supported.</summary>
       <param name="type">The type.</param>
-      <returns>true if the type is supported, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the type is supported, otherwise <see langword="false" />.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.VsTargetFrameworkProvider.Refresh(System.Reflection.AssemblyName)">
       <summary>Refreshes the information for the specified assembly.</summary>
@@ -1952,7 +2014,6 @@
       <param name="typeName" />
       <param name="fileName" />
       <param name="ignoreCase" />
-      <returns />
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.#ctor(System.IServiceProvider)">
       <summary>Creates a new WindowPaneProviderService.</summary>
@@ -1982,7 +2043,7 @@
     <member name="M:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.GetService(System.Type)">
       <summary>Gets an instance of the requested service.</summary>
       <param name="serviceType">The type of the requested service.</param>
-      <returns>The requested service, or null if it is not available.</returns>
+      <returns>The requested service, or <see langword="null" /> if it is not available.</returns>
     </member>
     <member name="M:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.RegisteredWindowPane.#ctor(System.Type,System.String)">
       <summary>Creates a new RegisteredWindowPane instance.</summary>
@@ -2023,7 +2084,8 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.ContainsGenericParameters">
       <summary>Determines whether this method has generic parameters.</summary>
-      <returns>true if the method has generic parameters, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the method has generic parameters, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.DeclaringType">
       <summary>Gets the type that declares this method.</summary>
@@ -2031,7 +2093,8 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.IsGenericMethodDefinition">
       <summary>Determines whether this is a generic method definition.</summary>
-      <returns>true if this is a generic method definition.</returns>
+      <returns>
+          <see langword="true" /> if this is a generic method definition.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ConstructorInfoWrapper.MemberType">
       <summary>Gets a MemberTypes value indicating that this is a constructor.</summary>
@@ -2072,11 +2135,11 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.DesignerWindowPane.Surface">
       <summary>Gets the design surface.</summary>
       <returns>
-        <see cref="T:System.ComponentModel.Design.DesignSurface" />.</returns>
+          <see cref="T:System.ComponentModel.Design.DesignSurface" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension.Surface">
       <summary>Gets the design surface this extension was initialized with.</summary>
-      <returns>The <see cref="T:System.ComponentModel.Design.DesignSurface" /> this extension was initialized with, or null of the extension has been disposed.</returns>
+      <returns>The <see cref="T:System.ComponentModel.Design.DesignSurface" /> this extension was initialized with, or <see langword="null" /> of the extension has been disposed.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute.ExtensionType">
       <summary>The <see cref="T:System.Type" /> of the object registered as providing a VSPackage with an implementation of <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> to customize design surfaces.</summary>
@@ -2084,7 +2147,11 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute.LoadAtIdle">
       <summary>Controls when, relative to the loading of a designer used by a VSPackage, the extensions provided by the implementation of the <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute" /> registered by <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtensionAttribute" /> are installed.</summary>
-      <returns>A Boolean value is returned:trueThe object providing design surface modifications by implementing <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> will be instantiated and initialized only during the idle period after the designer used by the VSPackage has finished loading.falseThe object providing design surface modifications by implementing <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> will be instantiated and initialized when a designer starts up.</returns>
+      <returns>A <see langword="Boolean" /> value is returned:
+                  <see langword="true" />
+                The object providing design surface modifications by implementing <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> will be instantiated and initialized only during the idle period after the designer used by the VSPackage has finished loading.
+                  <see langword="false" />
+                The object providing design surface modifications by implementing <see cref="T:Microsoft.VisualStudio.Shell.Design.DesignSurfaceExtension" /> will be instantiated and initialized when a designer starts up.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObject.Instance">
       <summary>Gets an on-demand created instance of the global object.</summary>
@@ -2101,15 +2168,18 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.IsFixedSize">
       <summary>Determines whether this collection's size can be changed.</summary>
-      <returns>true if the size cannot be changed, false if it can.</returns>
+      <returns>
+          <see langword="true" /> if the size cannot be changed, <see langword="false" /> if it can.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.IsReadOnly">
       <summary>Determines whether this collection is read-only.</summary>
-      <returns>true if the collection is read-only, false if it is read-write.</returns>
+      <returns>
+          <see langword="true" /> if the collection is read-only, <see langword="false" /> if it is read-write.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.IsSynchronized">
       <summary>Determines whether this collection is synchronized for multi-threaded access.</summary>
-      <returns>true if the collection is synchronized, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the collection is synchronized, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.Item(System.Int32)">
       <summary>Gets or sets the item at the given index.</summary>
@@ -2123,7 +2193,6 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectCollection.System#Collections#IList#Item(System.Int32)">
       <summary />
       <param name="index" />
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectDescriptionAttribute.CustomData">
       <summary>Gets the custom data.</summary>
@@ -2132,12 +2201,12 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalObjectDescriptionAttribute.GlobalObject">
       <summary>Gets the global object to which the custom data should apply.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalObject" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalType.ObjectType">
       <summary>Gets the checked type of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalType" />.</summary>
       <returns>The <see cref="T:System.Type" /> of the <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalType" />.</returns>
-      <exception cref="T:System.InvalidOperationException">The global object's type resolved to null.</exception>
+      <exception cref="T:System.InvalidOperationException">The global object's type resolved to <see langword="null" />.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.Count">
       <summary>Gets the number of items in this collection.</summary>
@@ -2149,15 +2218,17 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.IsFixedSize">
       <summary>Gets whether or not this collection's size can be changed.</summary>
-      <returns>true if this collection's size cannot be changed, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if this collection's size cannot be changed, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.IsReadOnly">
       <summary>Gets whether the collection is read-only.</summary>
-      <returns>true if this collection is read-only, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if this collection is read-only, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.IsSynchronized">
       <summary>Determines whether this collection is synchronized for multi-threaded access.</summary>
-      <returns>Always returns false. Instances of <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection" /> are never synchronized.</returns>
+      <returns>Always returns <see langword="false" />. Instances of <see cref="T:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection" /> are never synchronized.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.Item(System.Int32)">
       <summary>Gets an item at the specified position.</summary>
@@ -2171,11 +2242,10 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.GlobalTypeCollection.System#Collections#IList#Item(System.Int32)">
       <summary />
       <param name="index" />
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute.IsGlobal">
       <summary>Gets or sets the scope of the metadata modifications provided by an instance <see cref="T:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute" /></summary>
-      <returns>If the value is true, the scope is global: the modification is applied to all instances of the run time type specified in the <see cref="T:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute" /> constructor.If the value is false, the scope is local: the modification is applied to all instances of the run time type specified in the <see cref="T:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute" /> constructor created on the design surface provided by the current VSPackage.</returns>
+      <returns>If the value is <see langword="true" />, the scope is global: the modification is applied to all instances of the run time type specified in the <see cref="T:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute" /> constructor.If the value is <see langword="false" />, the scope is local: the modification is applied to all instances of the run time type specified in the <see cref="T:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute" /> constructor created on the design surface provided by the current VSPackage.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ProvideDesignerMetadataAttribute.MetadataType">
       <summary>Gets the type of the metadata.</summary>
@@ -2204,7 +2274,7 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.ProvideViewAdapterAttribute.Scope">
       <summary>Gets the attribute scope of the view adapter.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.AttributeScope" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.AttributeScope" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.ProvideViewAdapterAttribute.ScopeData">
       <summary>Gets the scope data associated with the scope of the view adapter.</summary>
@@ -2225,27 +2295,27 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.CompileUnit">
       <summary>Gets the entire compile unit in which the document data exists.</summary>
       <returns>
-        <see cref="T:System.CodeDom.CodeCompileUnit" />, or null if the document data has not been set.</returns>
+          <see cref="T:System.CodeDom.CodeCompileUnit" />, or <see langword="null " />if the document data has not been set.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.DocData">
       <summary>Gets the associated document data.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.Generator">
       <summary>Gets a cached code generator that may be used to validate identifiers and generate code.</summary>
       <returns>
-        <see cref="T:System.CodeDom.Compiler.ICodeGenerator" />.</returns>
+          <see cref="T:System.CodeDom.Compiler.ICodeGenerator" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.Parser">
       <summary>Gets the code parser.</summary>
       <returns>
-        <see cref="T:System.CodeDom.Compiler.ICodeParser" />.</returns>
+          <see cref="T:System.CodeDom.Compiler.ICodeParser" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.Provider">
       <summary>Gets the code DOM provider for the file.</summary>
       <returns>
-        <see cref="T:System.CodeDom.Compiler.CodeDomProvider" />.</returns>
+          <see cref="T:System.CodeDom.Compiler.CodeDomProvider" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter.TypeDeclaration">
       <summary>Gets the code type declaration for this document.</summary>
@@ -2258,7 +2328,7 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomEventBindingService.CodeDomAdapter">
       <summary>Gets the code DOM data adapter.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.CodeDom.CodeDomDocDataAdapter" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.PrimaryDocData">
       <summary>Gets the document data object for the <paramref name="primaryDocData" /> that was passed into either of this service's overloaded constructors <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.#ctor(System.IServiceProvider,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,Microsoft.VisualStudio.Shell.Design.Serialization.DocData)" /> or <see cref="M:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.#ctor(System.IServiceProvider,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.UInt32,System.Object)" />.</summary>
@@ -2270,11 +2340,12 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DesignerDocDataService.UseWeakEditLock">
       <summary>Determines whether the DesignerDocDataService instance holds a weak or strong edit lock on the child documents. The default value is false (strong edit lock). Normal designers in document windows should use strong edit lock. Advanced invisible designers should use weak locks, so that when the child document is opened in a visible editor, the control of the edit lock is yielded to the visible editor. The user is then prompted to save the document when the visible editor is closed. </summary>
-      <returns>true if the service holds a weak lock, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the service holds a weak lock, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Buffer">
       <summary>The text buffer contained within the doc data.</summary>
-      <returns>The text buffer if one exists, otherwise null.</returns>
+      <returns>The text buffer if one exists, otherwise <see langword="null" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Data">
       <summary>The actual <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" /> object this class wraps.</summary>
@@ -2282,7 +2353,8 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Modified">
       <summary>Determines whether the buffer has been modified</summary>
-      <returns>true if the buffer has been modified.</returns>
+      <returns>
+          <see langword="true" /> if the buffer has been modified.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocData.Name">
       <summary>Gets the file name of the doc data.</summary>
@@ -2291,22 +2363,22 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextReader.DocData">
       <summary>Gets the doc data object.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Modeling.Shell.DocData" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Modeling.Shell.DocData" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.DocData">
       <summary>Gets the doc data object.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.Serialization.DocData" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.DocDataTextWriter.Encoding">
       <summary>Gets the encoding of this text writer.</summary>
       <returns>
-        <see cref="T:System.Text.UnicodeEncoding" />.</returns>
+          <see cref="T:System.Text.UnicodeEncoding" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideDesignerLoaderAttribute.Scope">
       <summary>Gets the scope of this attribute.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.AttributeScope" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.AttributeScope" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideDesignerLoaderAttribute.ScopeData">
       <summary>Gets the data for the scope.</summary>
@@ -2322,7 +2394,8 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideGeneratorAttribute.GenerateDesignTimeSource">
       <summary>Gets whether source code is generated for use at design time.</summary>
-      <returns>true if the associated code generator generates source code for use at design time, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the associated code generator generates source code for use at design time, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.Serialization.ProvideGeneratorAttribute.GeneratorType">
       <summary>Gets the type of the code generator.</summary>
@@ -2354,7 +2427,8 @@
       <param name="index">The 0-based index of the attribute.</param>
       <returns>An <see cref="T:System.Attribute" /> at the specified index.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="index" /> is less than 0.-or-<paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
+              <paramref name="index" /> is less than 0.-or-
+              <paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Attributes">
       <summary>Gets the collection of <see cref="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Attributes" /> for the virtual type.</summary>
@@ -2363,7 +2437,7 @@
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.BaseType">
       <summary>Gets or sets the base type from which the virtual type is derived.</summary>
       <returns>A <see cref="T:System.Type" /> that represents a base type from which the virtual type is derived.</returns>
-      <exception cref="T:System.ArgumentNullException">The value passed is null.</exception>
+      <exception cref="T:System.ArgumentNullException">The value passed is <see langword="null" />.</exception>
       <exception cref="T:System.ArgumentException">The type passed has a <see cref="P:System.Type.UnderlyingSystemType" /> that differs from the type, or if the type passed is a virtual type.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection.Item(System.Int32)">
@@ -2371,12 +2445,13 @@
       <param name="index">The 0-based index of the element to get or set.</param>
       <returns>The <see cref="T:System.Reflection.ConstructorInfo" /> at the specified index.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="index" /> is less than 0.-or-<paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
+              <paramref name="index" /> is less than 0.-or-
+              <paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Constructors">
       <summary>Gets a collection of constructors for this virtual type.</summary>
       <returns>
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection" />.</returns>
+          <see cref="T:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.ConstructorInfoCollection" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.DeclaringType">
       <summary>Gets or sets the declaring type for the resulting virtual type.</summary>
@@ -2387,7 +2462,8 @@
       <param name="index">The 0-based index of the element to get or set.</param>
       <returns>An <see cref="T:System.Reflection.EventInfo" /> at the specified index.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="index" /> is less than 0.-or-<paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
+              <paramref name="index" /> is less than 0.-or-
+              <paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Events">
       <summary>Gets the collection of <see cref="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Events" /> for the virtual type.</summary>
@@ -2398,7 +2474,8 @@
       <param name="index">The 0-based index of the element to get or set.</param>
       <returns>A <see cref="T:System.Reflection.FieldInfo" /> at the specified index.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="index" /> is less than 0.-or-<paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
+              <paramref name="index" /> is less than 0.-or-
+              <paramref name="index" /> is equal to or greater than <see cref="P:System.Collections.CollectionBase.Count" />.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Fields">
       <summary>Gets the collection of <see cref="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Fields" /> for the resulting virtual type.</summary>
@@ -2410,18 +2487,21 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.IsPublic">
       <summary>Gets or sets a value indicating whether the resulting virtual type has the public access modifier.</summary>
-      <returns>true if the access modifier for the virtual type is public; otherwise, false.</returns>
+      <returns>
+          <see langword="true" /> if the access modifier for the virtual type is public; otherwise, <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.IsSerializable">
       <summary>Gets or sets whether the resulting virtual type is serializable.</summary>
-      <returns>true if the resulting virtual type is serializable, otherwise false.</returns>
+      <returns>
+          <see langword="true" /> if the resulting virtual type is serializable, otherwise <see langword="false" />.</returns>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.MethodInfoCollection.Item(System.Int32)">
       <summary>Gets or sets the method at the specified index.</summary>
       <param name="index">The 0-based index of the method to get or set.</param>
       <returns>A <see cref="T:System.Reflection.MethodInfo" /> at the specified index.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="index" /> is less than 0.-or-<paramref name="index" /> is equal to or greater than the number of items in the collection.</exception>
+              <paramref name="index" /> is less than 0.-or-
+              <paramref name="index" /> is equal to or greater than the number of items in the collection.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.Methods">
       <summary>Gets the collection of methods for the resulting virtual type.</summary>
@@ -2436,7 +2516,8 @@
       <param name="index">The 0-based index of the element to get or set.</param>
       <returns>A <see cref="T:System.Reflection.PropertyInfo" /> at the specified index.</returns>
       <exception cref="T:System.ArgumentException">
-        <paramref name="index" /> is less than 0.-or-<paramref name="index" /> is equal to or greater than the number of items in the collection.</exception>
+              <paramref name="index" /> is less than 0.-or-
+              <paramref name="index" /> is equal to or greater than the number of items in the collection.</exception>
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.VirtualTypeBuilder.TypeName">
       <summary>Gets or sets the type name for the virtual type.</summary>
@@ -2453,11 +2534,9 @@
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.RegisteredWindowPane.BaseType">
       <summary>Retrieves the <paramref name="baseType" /> specified by the overloaded constructor <see cref="M:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.RegisteredWindowPane.#ctor(System.Type,System.String)" />.</summary>
-      <returns />
     </member>
     <member name="P:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.RegisteredWindowPane.WindowPaneTypeName">
       <summary>Retrieves the <paramref name="windowPaneTypeName" /> specified by the overloaded constructor <see cref="M:Microsoft.VisualStudio.Shell.Design.WindowPaneProviderService.RegisteredWindowPane.#ctor(System.Type,System.String)" />.</summary>
-      <returns />
     </member>
     <member name="T:Microsoft.VisualStudio.Shell.Design.AssemblyDeletedEventArgs">
       <summary>Contains event data for the <see cref="E:Microsoft.VisualStudio.Shell.Design.AssemblyDeletedEvent" /> that gets raised when an assembly is deleted.</summary>
@@ -2473,9 +2552,10 @@
     <member name="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventHandler">
       <summary>An event that gets raised when an assembly has become obsolete. This delegate cannot be inherited.</summary>
       <param name="sender">
-        <see cref="T:System.Object" /> that raised the event.</param>
+            <see cref="T:System.Object" /> that raised the event.</param>
       <param name="args">
-        <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs" />specific to the event that is being handled.</param>
+            <see cref="T:Microsoft.VisualStudio.Shell.Design.AssemblyObsoleteEventArgs" />
+          specific to the event that is being handled.</param>
     </member>
     <member name="T:Microsoft.VisualStudio.Shell.Design.AssemblyRefreshedEventArgs">
       <summary>An event that is raised when an assembly has been refreshed.</summary>

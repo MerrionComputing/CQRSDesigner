@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
+﻿namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
 {
     public interface IEventDefinitionEntity
-        : IDocumentedEntity , INamedEntity, ICategorisedEntity
+        : IDocumentedEntity, INamedEntity, ICategorisedEntity
     {
 
         /// <summary>
@@ -16,7 +10,7 @@ namespace CQRSAzure.CQRSdsl.CustomCode.Interfaces
         /// <remarks>
         /// This is made read-only so we can only increment it
         /// </remarks>
-        int Version { get;  }
+        int Version { get; }
 
     }
 }

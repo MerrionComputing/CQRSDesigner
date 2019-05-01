@@ -934,95 +934,6 @@ namespace CQRSAzure.CQRSdsl.Dsl
 		}
 		
 		#endregion
-		#region GenerateEntityFrameworkClasses domain property code
-		
-		/// <summary>
-		/// GenerateEntityFrameworkClasses domain property Id.
-		/// </summary>
-		public static readonly global::System.Guid GenerateEntityFrameworkClassesDomainPropertyId = new global::System.Guid(0x70abc4bb, 0xa679, 0x46ba, 0xad, 0xf1, 0xc3, 0x4e, 0x8a, 0x41, 0x2b, 0x78);
-		
-		/// <summary>
-		/// Storage for GenerateEntityFrameworkClasses
-		/// </summary>
-		private global::System.Boolean generateEntityFrameworkClassesPropertyStorage;
-		
-		/// <summary>
-		/// Gets or sets the value of GenerateEntityFrameworkClasses domain property.
-		/// Should the model build the Entity Framework classes for storing the model in an
-		/// SQL database
-		/// </summary>
-		[DslDesign::DisplayNameResource("CQRSAzure.CQRSdsl.Dsl.CQRSModel/GenerateEntityFrameworkClasses.DisplayName", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
-		[DslDesign::CategoryResource("CQRSAzure.CQRSdsl.Dsl.CQRSModel/GenerateEntityFrameworkClasses.Category", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
-		[DslDesign::DescriptionResource("CQRSAzure.CQRSdsl.Dsl.CQRSModel/GenerateEntityFrameworkClasses.Description", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
-		[DslModeling::DomainObjectId("70abc4bb-a679-46ba-adf1-c34e8a412b78")]
-		public global::System.Boolean GenerateEntityFrameworkClasses
-		{
-			[global::System.Diagnostics.DebuggerStepThrough]
-			get
-			{
-				return generateEntityFrameworkClassesPropertyStorage;
-			}
-			[global::System.Diagnostics.DebuggerStepThrough]
-			set
-			{
-				GenerateEntityFrameworkClassesPropertyHandler.Instance.SetValue(this, value);
-			}
-		}
-		/// <summary>
-		/// Value handler for the CQRSModel.GenerateEntityFrameworkClasses domain property.
-		/// </summary>
-		internal sealed partial class GenerateEntityFrameworkClassesPropertyHandler : DslModeling::DomainPropertyValueHandler<CQRSModel, global::System.Boolean>
-		{
-			private GenerateEntityFrameworkClassesPropertyHandler() { }
-		
-			/// <summary>
-			/// Gets the singleton instance of the CQRSModel.GenerateEntityFrameworkClasses domain property value handler.
-			/// </summary>
-			public static readonly GenerateEntityFrameworkClassesPropertyHandler Instance = new GenerateEntityFrameworkClassesPropertyHandler();
-		
-			/// <summary>
-			/// Gets the Id of the CQRSModel.GenerateEntityFrameworkClasses domain property.
-			/// </summary>
-			public sealed override global::System.Guid DomainPropertyId
-			{
-				[global::System.Diagnostics.DebuggerStepThrough]
-				get
-				{
-					return GenerateEntityFrameworkClassesDomainPropertyId;
-				}
-			}
-			
-			/// <summary>
-			/// Gets a strongly-typed value of the property on specified element.
-			/// </summary>
-			/// <param name="element">Element which owns the property.</param>
-			/// <returns>Property value.</returns>
-			public override sealed global::System.Boolean GetValue(CQRSModel element)
-			{
-				if (element == null) throw new global::System.ArgumentNullException("element");
-				return element.generateEntityFrameworkClassesPropertyStorage;
-			}
-		
-			/// <summary>
-			/// Sets property value on an element.
-			/// </summary>
-			/// <param name="element">Element which owns the property.</param>
-			/// <param name="newValue">New property value.</param>
-			public override sealed void SetValue(CQRSModel element, global::System.Boolean newValue)
-			{
-				if (element == null) throw new global::System.ArgumentNullException("element");
-		
-				global::System.Boolean oldValue = GetValue(element);
-				if (newValue != oldValue)
-				{
-					ValueChanging(element, oldValue, newValue);
-					element.generateEntityFrameworkClassesPropertyStorage = newValue;
-					ValueChanged(element, oldValue, newValue);
-				}
-			}
-		}
-		
-		#endregion
 		#region Framework domain property code
 		
 		/// <summary>
@@ -4026,6 +3937,7 @@ namespace CQRSAzure.CQRSdsl.Dsl
 		/// A tag /category that can be applied to an entity
 		/// </summary>
 		[DslDesign::DisplayNameResource("CQRSAzure.CQRSdsl.Dsl.CommandDefinition/Category.DisplayName", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
+		[DslDesign::CategoryResource("CQRSAzure.CQRSdsl.Dsl.CommandDefinition/Category.Category", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
 		[DslDesign::DescriptionResource("CQRSAzure.CQRSdsl.Dsl.CommandDefinition/Category.Description", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
 		[DslModeling::DomainObjectId("70b7f601-70ac-4415-8c6b-ae0cab68f9ad")]
 		public global::System.String Category
@@ -4090,6 +4002,94 @@ namespace CQRSAzure.CQRSdsl.Dsl
 				{
 					ValueChanging(element, oldValue, newValue);
 					element.categoryPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region IncludeValidationStep domain property code
+		
+		/// <summary>
+		/// IncludeValidationStep domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid IncludeValidationStepDomainPropertyId = new global::System.Guid(0xad606da3, 0x79c1, 0x47e4, 0x89, 0x98, 0xbf, 0x1e, 0x3b, 0xf9, 0x40, 0xe0);
+		
+		/// <summary>
+		/// Storage for IncludeValidationStep
+		/// </summary>
+		private global::System.Boolean includeValidationStepPropertyStorage = true;
+		
+		/// <summary>
+		/// Gets or sets the value of IncludeValidationStep domain property.
+		/// Does this command need a validation step
+		/// </summary>
+		[DslDesign::DisplayNameResource("CQRSAzure.CQRSdsl.Dsl.CommandDefinition/IncludeValidationStep.DisplayName", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("CQRSAzure.CQRSdsl.Dsl.CommandDefinition/IncludeValidationStep.Description", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue(true)]
+		[DslModeling::DomainObjectId("ad606da3-79c1-47e4-8998-bf1e3bf940e0")]
+		public global::System.Boolean IncludeValidationStep
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return includeValidationStepPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				IncludeValidationStepPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the CommandDefinition.IncludeValidationStep domain property.
+		/// </summary>
+		internal sealed partial class IncludeValidationStepPropertyHandler : DslModeling::DomainPropertyValueHandler<CommandDefinition, global::System.Boolean>
+		{
+			private IncludeValidationStepPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the CommandDefinition.IncludeValidationStep domain property value handler.
+			/// </summary>
+			public static readonly IncludeValidationStepPropertyHandler Instance = new IncludeValidationStepPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the CommandDefinition.IncludeValidationStep domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return IncludeValidationStepDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(CommandDefinition element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.includeValidationStepPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(CommandDefinition element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.includeValidationStepPropertyStorage = newValue;
 					ValueChanged(element, oldValue, newValue);
 				}
 			}
@@ -6229,6 +6229,94 @@ namespace CQRSAzure.CQRSdsl.Dsl
 				{
 					ValueChanging(element, oldValue, newValue);
 					element.categoryPropertyStorage = newValue;
+					ValueChanged(element, oldValue, newValue);
+				}
+			}
+		}
+		
+		#endregion
+		#region IncludeValidationStep domain property code
+		
+		/// <summary>
+		/// IncludeValidationStep domain property Id.
+		/// </summary>
+		public static readonly global::System.Guid IncludeValidationStepDomainPropertyId = new global::System.Guid(0xde1eefe9, 0x4218, 0x453b, 0xad, 0x59, 0x7f, 0x4d, 0x02, 0xb7, 0x53, 0x6e);
+		
+		/// <summary>
+		/// Storage for IncludeValidationStep
+		/// </summary>
+		private global::System.Boolean includeValidationStepPropertyStorage = true;
+		
+		/// <summary>
+		/// Gets or sets the value of IncludeValidationStep domain property.
+		/// Does this query need a validation step
+		/// </summary>
+		[DslDesign::DisplayNameResource("CQRSAzure.CQRSdsl.Dsl.QueryDefinition/IncludeValidationStep.DisplayName", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
+		[DslDesign::DescriptionResource("CQRSAzure.CQRSdsl.Dsl.QueryDefinition/IncludeValidationStep.Description", typeof(global::CQRSAzure.CQRSdsl.Dsl.CQRSdslDomainModel), "CQRSAzure.CQRSdsl.Dsl.GeneratedCode.DomainModelResx")]
+		[global::System.ComponentModel.DefaultValue(true)]
+		[DslModeling::DomainObjectId("de1eefe9-4218-453b-ad59-7f4d02b7536e")]
+		public global::System.Boolean IncludeValidationStep
+		{
+			[global::System.Diagnostics.DebuggerStepThrough]
+			get
+			{
+				return includeValidationStepPropertyStorage;
+			}
+			[global::System.Diagnostics.DebuggerStepThrough]
+			set
+			{
+				IncludeValidationStepPropertyHandler.Instance.SetValue(this, value);
+			}
+		}
+		/// <summary>
+		/// Value handler for the QueryDefinition.IncludeValidationStep domain property.
+		/// </summary>
+		internal sealed partial class IncludeValidationStepPropertyHandler : DslModeling::DomainPropertyValueHandler<QueryDefinition, global::System.Boolean>
+		{
+			private IncludeValidationStepPropertyHandler() { }
+		
+			/// <summary>
+			/// Gets the singleton instance of the QueryDefinition.IncludeValidationStep domain property value handler.
+			/// </summary>
+			public static readonly IncludeValidationStepPropertyHandler Instance = new IncludeValidationStepPropertyHandler();
+		
+			/// <summary>
+			/// Gets the Id of the QueryDefinition.IncludeValidationStep domain property.
+			/// </summary>
+			public sealed override global::System.Guid DomainPropertyId
+			{
+				[global::System.Diagnostics.DebuggerStepThrough]
+				get
+				{
+					return IncludeValidationStepDomainPropertyId;
+				}
+			}
+			
+			/// <summary>
+			/// Gets a strongly-typed value of the property on specified element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <returns>Property value.</returns>
+			public override sealed global::System.Boolean GetValue(QueryDefinition element)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+				return element.includeValidationStepPropertyStorage;
+			}
+		
+			/// <summary>
+			/// Sets property value on an element.
+			/// </summary>
+			/// <param name="element">Element which owns the property.</param>
+			/// <param name="newValue">New property value.</param>
+			public override sealed void SetValue(QueryDefinition element, global::System.Boolean newValue)
+			{
+				if (element == null) throw new global::System.ArgumentNullException("element");
+		
+				global::System.Boolean oldValue = GetValue(element);
+				if (newValue != oldValue)
+				{
+					ValueChanging(element, oldValue, newValue);
+					element.includeValidationStepPropertyStorage = newValue;
 					ValueChanged(element, oldValue, newValue);
 				}
 			}

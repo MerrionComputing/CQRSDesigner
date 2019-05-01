@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CQRSAzure.CQRSdsl.CommandLine
 {
@@ -35,7 +31,7 @@ namespace CQRSAzure.CQRSdsl.CommandLine
         {
             get
             {
-                return CommandLineParser.EXAMPLE_ADD_EVENT; 
+                return CommandLineParser.EXAMPLE_ADD_EVENT;
             }
         }
 
@@ -52,14 +48,14 @@ namespace CQRSAzure.CQRSdsl.CommandLine
             throw new NotImplementedException();
         }
 
-        public AddEventCommand(string modelName,string eventName)
-            :base(modelName )
+        public AddEventCommand(string modelName, string eventName)
+            : base(modelName)
         {
-            if (! CreateModelCommand.IsValidModelName(modelName)  )
+            if (!CreateModelCommand.IsValidModelName(modelName))
             {
                 throw new ArgumentException(modelName + " is not a valid model name", nameof(modelName));
             }
-            if (! AddEventCommand.IsValidEventName(eventName ) )
+            if (!AddEventCommand.IsValidEventName(eventName))
             {
                 throw new ArgumentException(eventName + " is not a valid event name", nameof(eventName));
             }
