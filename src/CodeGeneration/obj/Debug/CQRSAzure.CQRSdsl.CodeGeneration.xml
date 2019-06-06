@@ -697,6 +697,14 @@ CQRSAzure.CQRSdsl.CodeGeneration
  These are kept separate from event sourcing but that is not mandatory
  </remarks>
 </member>
+<member name="F:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectClassification.AzureFunctions">
+ <summary>
+ The azure functions code to host this on Azure 
+ </summary>
+ <remarks>
+ This will create the durable function orchestrations and activity functions as required
+ </remarks>
+</member>
 <member name="P:CQRSAzure.CQRSdsl.CodeGeneration.ModelProjectGenerator.ProjectName">
  <summary>
  The base name to save this project file as

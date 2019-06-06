@@ -21,3 +21,4 @@ D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\Dsl.csproj.CoreCompi
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\Dsl.csproj.CopyComplete
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.dll
 D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\CQRSAzure.CQRSdsl.Dsl.pdb
+D:\Source\GIT\CQRSDesigner\codegen.201811\src\Dsl\obj\Debug\Dsl.csprojAssemblyReference.cache

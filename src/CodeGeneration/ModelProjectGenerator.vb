@@ -49,6 +49,13 @@ Public Class ModelProjectGenerator
         ''' These are kept separate from event sourcing but that is not mandatory
         ''' </remarks>
         IdentityGroups
+        ''' <summary>
+        ''' The azure functions code to host this on Azure 
+        ''' </summary>
+        ''' <remarks>
+        ''' This will create the durable function orchestrations and activity functions as required
+        ''' </remarks>
+        AzureFunctions
     End Enum
 
     Private ReadOnly _classification As ProjectClassification
